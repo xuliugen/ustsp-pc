@@ -1,6 +1,13 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['standard', 'standard-jsx'],
+  'plugins': [
+    'flowtype'
+  ],
+  extends: [
+    'standard',
+    'standard-jsx',
+    'plugin:flowtype/recommended'
+  ],
   env: {
     browser: true,
     node: true
