@@ -1,15 +1,23 @@
 // @flow
-import React, { Component } from 'react'
-import Header from 'src/containers/header/Header'
+import React from 'react'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
-class App extends Component {
+import Home from 'src/containers/home/Home'
+import Login from 'src/containers/login/Login'
+
+@withRouter
+@observer
+export default class App extends React.Component<Object> {
   render() {
     return (
       <div>
-        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Redirect from="/" to="/" />
+        </Switch>
       </div>
     )
   }
 }
-
-export default App

@@ -1,5 +1,4 @@
 [ignore]
-.*/node_modules/**
 
 [include]
 
@@ -8,6 +7,9 @@
 [lints]
 
 [options]
-module.system.node.resolve_dirname=src
+esproposal.decorators=ignore
+module.name_mapper='\(src\)' -> '<PROJECT_ROOT>/src'
+module.file_ext=.js
+module.file_ext=.jsx
 
 [strict]
