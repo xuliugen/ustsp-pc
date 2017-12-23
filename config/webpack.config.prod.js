@@ -147,7 +147,17 @@ module.exports = webpackMerge(baseWebpackConfig, {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              compact: true
+              compact: true,
+              babelrc: false,
+              extends: path.resolve(__dirname, '../.babelrc'),
+              plugins: [
+                [
+                  'react-css-modules',
+                  {
+                    'generateScopedName': '[hash:base64]'
+                  }
+                ]
+              ]
             }
           },
           // The notation here is somewhat confusing.
@@ -181,7 +191,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                         modules: true
-                        // localIdentName: '[name]__[local]-[hash:base64:5]'
+                        // localIdentName: '[local]-[hash:base64:5]'
                       }
                     },
                     {

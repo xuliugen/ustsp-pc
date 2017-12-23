@@ -147,7 +147,17 @@ module.exports = webpackMerge(baseWebpackConfig, {
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
-              cacheDirectory: true
+              cacheDirectory: true,
+              babelrc: false,
+              extends: path.resolve(__dirname, '../.babelrc'),
+              plugins: [
+                [
+                  'react-css-modules',
+                  {
+                    'generateScopedName': '[local]-[hash:base64:5]'
+                  }
+                ]
+              ]
             }
           },
           // "postcss" loader applies autoprefixer to our CSS.
@@ -164,7 +174,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: '[name]__[local]-[hash:base64:5]'
+                  localIdentName: '[local]-[hash:base64:5]'
                 }
               },
               {

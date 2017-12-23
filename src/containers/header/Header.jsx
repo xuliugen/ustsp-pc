@@ -1,12 +1,12 @@
 // @flow
 import React from 'react'
 import logo from '../../logo.svg'
-import styles from './styles.css'
+import './header.css'
 
 const Header = () => (
-  <header className={styles['header']}>
-    <img src={logo} className={styles['logo']} alt="logo" />
-    <h1 className={styles['title']}>Welcome to React</h1>
+  <header styleName="header">
+    <img src={logo} styleName="logo" alt="logo" />
+    <h1 styleName="title">Welcome to React</h1>
   </header>
 )
 
