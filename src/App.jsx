@@ -3,8 +3,8 @@ import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react'
 
-import Home from 'src/containers/home/Home'
-import Login from 'src/containers/login/Login'
+import Home from '@/home/Home'
+import Login from '@/login/Login'
 
 @withRouter
 @observer

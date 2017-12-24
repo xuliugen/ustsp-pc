@@ -7,7 +7,9 @@ function resolve(dir) {
 module.exports = {
   resolve: {
     alias: {
-      src: resolve('src')
+      src: resolve('src'),
+      '@': resolve('src/views'),
+      components: resolve('src/components')
     }
   }
 }
