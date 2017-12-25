@@ -1,25 +1,62 @@
-.logo {
-  animation: logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-  text-align: center;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+  opacity: 0.8;
+  font-size: 16px;
 }
 
-.title {
-  font-size: 1.5em;
+.header-inner {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
-.intro {
-  font-size: large;
+.header-nav {
+  margin-left: 32px;
 }
 
-@keyframes logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.header-navItem {
+  padding: 0 16px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.header-navItem:first-child {
+  padding-left: 0px;
+}
+
+.header-userInfo {
+  display: flex;
+  align-items: center;
+  flex: 1 1;
+  justify-content: flex-end;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+}
+
+.separator {
+  height: 24px;
+  width: 1px;
+  margin: 0 11px;
+  background-color: #aaa;
+}
+
+.header-username {
+  padding-left: 11px;
+  color: #3091e6;
+}
+
+.header-logout {
+  color: #aaa;
 }
