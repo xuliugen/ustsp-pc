@@ -1,10 +1,11 @@
 // @flow
 import React from 'react'
+import './talent.css'
 
 export default class Talent extends React.Component<{}> {
   render() {
     return (
-      <div>talent</div>
+      <div styleName="talent">talent</div>
     )
   }
 }
