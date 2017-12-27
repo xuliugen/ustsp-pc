@@ -1,0 +1,13 @@
+
+.list-item {
+  height: auto;
+  display: inline-block;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.list-item img {
+  display: block;
+  /* height: 100%; */
+  width: 100%;
+}
