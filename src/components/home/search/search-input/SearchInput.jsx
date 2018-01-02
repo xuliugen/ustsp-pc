@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import './searchInput.css'
-import icoTriangle from './ico_triangle.png'
+// import icoTriangle from './ico_triangle.png'
 import icoSearch from './ico_search.png'
 
 type State = {
@@ -23,7 +23,7 @@ export default class SearchInput extends React.Component<{}, State> {
       return
     }
     const { dataset, innerHTML } = e.target
-    if (dataset && dataset.searchCur) {
+    if (dataset && (dataset.searchCur || dataset.searchRect)) {
       // debugger // eslint-disable-line
       this.setState((pre) => ({
         showMenu: !pre.showMenu
@@ -49,19 +49,20 @@ export default class SearchInput extends React.Component<{}, State> {
   }
 
   render() {
-    let menuDisplayStyle = this.state.showMenu ? 'block' : 'none'
     const optionsArr = ['人才', '项目', '专利', '成果']
     return (
       <form styleName="search-comp" onSubmit={e => e.preventDefault()}>
         <div styleName="select-box">
           <div styleName="select-current" data-search-cur>
-            {this.state.curOption}&nbsp;<img src={icoTriangle} />
+            {this.state.curOption}&nbsp;<span styleName="rect" data-search-rect />
           </div>
-          <ul styleName="select-option-container" style={{ display: menuDisplayStyle }}>
-            {optionsArr.filter(i => i !== this.state.curOption).map((label, idx) => (
-              <li styleName="select-option" key={idx} data-search-li>{label}</li>
-            ))}
-          </ul>
+          {this.state.showMenu &&
+            <ul styleName="select-menu">
+              {optionsArr.filter(i => i !== this.state.curOption).map((label, idx) => (
+                <li styleName="select-option" key={idx} data-search-li>{label}</li>
+              ))}
+            </ul>
+          }
         </div>
         <div styleName="search-input-container">
           <input styleName="search-input" placeholder="人才、项目、成果、专利" />
