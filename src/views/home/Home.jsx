@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-import { Header } from 'components/common'
-import { Carousel, Search, Talent, Project, News, IP, Footer } from 'components/home'
+import { Header, Footer } from 'components/common'
+import { Carousel, Search, Talent, Project, News, IP } from 'components/home'
 import './home.css'
 
 export default class Home extends React.Component<Object> {
@@ -19,9 +19,9 @@ export default class Home extends React.Component<Object> {
             <Project />
             <News />
             <IP />
-            <Footer />
           </main>
         </div>
+        <Footer />
       </div>
     )
   }
