@@ -14,10 +14,12 @@ export default class Login extends React.Component<Object> {
   render() {
     return (
       <div styleName="login" ref={(div) => { this.loginContainer = div }}>
-        <Link to="/">
-          <img src={imgLogo} width="201" height="49" />
-        </Link>
-        <LoginPanel />
+        <div styleName="login-inner">
+          <Link to="/">
+            <img src={imgLogo} styleName="logo" width="201" height="49" />
+          </Link>
+          <LoginPanel />
+        </div>
       </div>
     )
   }

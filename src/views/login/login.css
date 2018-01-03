@@ -1,6 +1,18 @@
 .login {
+  display: flex;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   background-image: url('./login_bg.jpg');
   background-size: 100% 100%;
+}
+
+.login-inner {
+  margin: 0 auto;
+  margin-top: -150px;
+  width: 520px;
+}
+
+.logo {
+  margin-bottom: 30px;
 }

@@ -1,8 +1,121 @@
 .loginPanel-container {
-  width: 520px;
   background-color: #fff;
 }
 
 .loginPanel-header {
-  height: 60px
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  color: #aaa;
+}
+
+.header-title {
+  font-size: 22px;
+}
+
+.header-pwd {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.ico-q {
+  margin-left: 10px;
+}
+
+.loginForm {
+  padding: 40px 30px;
+}
+
+.loginForm-wrapper {
+  position: relative;
+}
+
+.login-alert {
+  position: absolute;
+  top: 4px;
+  left: 30px;
+  padding: 6px 10px;
+  /* height: 29px;
+  line-height: 29px; */
+  border-radius: 4px;
+  background-color: #ffcccc;
+  font-size: 14px;
+  color: #d46a6a;
+}
+
+.login-alert::after {
+  position: absolute;
+  left: 10px;
+  bottom: -7px;
+  content: ' ';
+  border-top: 7px solid #ffcccc;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.loginForm-ipt {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding-left: 20px;
+  background-color: #eee;
+  font-size: 22px;
+  color: #666;
+  box-sizing: border-box;
+}
+
+.loginForm-ipt:focus {
+  outline: none;
+}
+
+.loginForm-ipt::placeholder {
+  color: #aaa;
+}
+
+.userIpt-wrapper {
+  margin-bottom: 10px;
+}
+
+.pwdIpt-wrapper {
+  margin-bottom: 40px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.loginBtn {
+  width: 260px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: #3a96e7;
+  color: #fff;
+  font-size: 22px;
+}
+
+.registerBtn {
+  width: 190px;
+  height: 60px;
+  border: 1px solid #3a96e7;
+  border-radius: 4px;
+  color: #3a96e7;
+  font-size: 22px;
+}
+
+.ico-arrow {
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  margin-bottom: 5px;
+  transform: rotate(45deg);
+  border-top: 2px solid #3a96e7;
+  border-right: 2px solid #3a96e7;
 }
