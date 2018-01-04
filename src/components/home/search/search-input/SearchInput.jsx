@@ -6,7 +6,8 @@ import icoSearch from './ico_search.png'
 
 type State = {
   showMenu: boolean,
-  curOption: string
+  curOption: string,
+  optionsArr: Array<string>
 }
 
 export default class SearchInput extends React.Component<{}, State> {
@@ -14,7 +15,8 @@ export default class SearchInput extends React.Component<{}, State> {
     super()
     this.state = {
       showMenu: false,
-      curOption: '人才'
+      curOption: '人才',
+      optionsArr: ['人才', '项目', '专利', '成果']
     }
   }
 
@@ -49,7 +51,7 @@ export default class SearchInput extends React.Component<{}, State> {
   }
 
   render() {
-    const optionsArr = ['人才', '项目', '专利', '成果']
+    const { optionsArr } = this.state
     return (
       <form styleName="search-comp" onSubmit={e => e.preventDefault()}>
         <div styleName="select-box">
