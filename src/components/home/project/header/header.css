@@ -9,9 +9,4 @@
   float: right;
   padding-right: 20px;
   font-size: 14px;
-  text-decoration-line: underline;
-}
-
-.more:hover {
-  cursor: pointer;
 }

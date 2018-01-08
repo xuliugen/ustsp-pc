@@ -17,7 +17,7 @@
 .school {
   margin-left: 20px;
   color: #ffffff;
-  padding: 3px;
+  padding: 4px 5px;
   border-radius: 5px;
 }
 
@@ -27,10 +27,14 @@
 
 .time{
   margin-top: 20px;
-  width: 350px;
+  /* width: 350px; */
   color: #8f9ba7;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.time span {
+  padding: 0 20px 0 0;
 }
 
 .price {

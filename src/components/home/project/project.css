@@ -19,11 +19,5 @@
   width: 755px;
   display: flex;
   align-items: center;
-}
-
-.line {
-  display: block;
-  margin-left: 21px;
-  width: 755px;
   border-bottom: 1px dashed #f0f0f0;
 }
