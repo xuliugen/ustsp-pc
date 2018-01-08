@@ -4,9 +4,22 @@
   background-color: #f0f0f0;
 }
 
+.progress-wrapper {
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 64px;
+}
+
+.content-wrapper {
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 107px;
+}
+
 .footer-wrapper {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
 }
