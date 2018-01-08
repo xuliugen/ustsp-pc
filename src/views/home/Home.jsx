@@ -16,7 +16,7 @@ export default class Home extends React.Component<Object> {
           <main styleName="main">
             <Search />
             <Talent />
-            <div styleName="row">
+            <div styleName="pn-container">
               <Project />
               <News />
             </div>
