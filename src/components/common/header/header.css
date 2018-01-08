@@ -28,11 +28,12 @@
   padding-left: 0px;
 }
 
-.header-userInfo {
+.header-right {
   display: flex;
   align-items: center;
   flex: 1 1;
   justify-content: flex-end;
+  color: #aaa;
 }
 
 .header-profile {
@@ -43,10 +44,11 @@
 .header-avatar {
   width: 36px;
   height: 36px;
+
 }
 
 .separator {
-  height: 24px;
+  height: 20px;
   width: 1px;
   margin: 0 11px;
   background-color: #aaa;
@@ -58,5 +60,15 @@
 }
 
 .header-logout {
+  cursor: pointer;
+}
+
+.header-login {
   color: #aaa;
+  text-decoration: none;
+}
+
+.header-register {
+  color: #aaa;
+  text-decoration: none;
 }

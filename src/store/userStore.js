@@ -1,11 +1,18 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 class UserStore {
-  @observable user
+  @observable user = null
 
-  @action login() { }
+  @computed get isLogin() {
+    return !!this.user
+  }
 
-  @action logout() {
+  @action
+  save(data) {
+    this.user = data
+  }
+
+  clear() {
     this.user = null
   }
 }
