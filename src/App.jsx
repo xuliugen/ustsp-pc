@@ -5,16 +5,18 @@ import { observer } from 'mobx-react'
 
 import Home from '@/home/Home'
 import Login from '@/login/Login'
+import Register from '@/register/Register'
 
 @withRouter
 @observer
-export default class App extends React.Component<Object> {
+export default class App extends React.Component<{}> {
   render() {
     return (
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>

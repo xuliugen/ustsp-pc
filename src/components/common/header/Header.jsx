@@ -35,7 +35,7 @@ class Header extends React.Component<{}> {
             <div styleName="header-right">
               <Link styleName="header-login" to="/login">登录</Link>
               <span styleName="separator" />
-              <Link styleName="header-register" to="/register">注册</Link>
+              <Link styleName="header-register" to="/register/1">注册</Link>
             </div>
           )}
         </div>
