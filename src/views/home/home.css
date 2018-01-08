@@ -17,3 +17,7 @@
   position: relative;
   top: -80px;
 }
+
+.row {
+  display: flex;
+}
