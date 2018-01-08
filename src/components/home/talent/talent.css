@@ -1,6 +1,17 @@
 .talent {
+  margin-top: 30px;
   width: 100%;
   height: 300px;
-  margin-top: 30px;
   background-color: #fff;
+}
+
+.talent-items {
+  margin: 0;
+  padding: 0 100px 50px 100px;
+  display: flex;
+  list-style: none;
+}
+
+.talent-items li {
+  padding: 0 40px;
 }

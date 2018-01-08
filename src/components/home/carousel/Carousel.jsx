@@ -59,6 +59,10 @@ export default class Carousel extends React.Component<{}, State> {
     this.goPlay()
   }
 
+  componentWillUnmount() {
+    clearInterval(this.autoPlayFlag)
+  }
+
   render() {
     const count = this.state.imgData.length
     const listItems = this.state.imgData.map((item, idx) => {
