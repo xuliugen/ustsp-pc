@@ -17,3 +17,9 @@
   position: relative;
   top: -80px;
 }
+
+.pn-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}

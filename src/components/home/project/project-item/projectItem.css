@@ -1,0 +1,50 @@
+.project-item {
+  width: 100%;
+}
+
+.item {
+  float: left;
+}
+
+.head {
+  display: flex;
+}
+
+.title {
+  font-size: 22px;
+}
+
+.school {
+  margin-left: 20px;
+  color: #ffffff;
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+
+.school, .time {
+  font-size: 14px;
+}
+
+.time{
+  margin-top: 20px;
+  /* width: 350px; */
+  color: #8f9ba7;
+  display: flex;
+  justify-content: space-around;
+}
+
+.time span {
+  padding: 0 20px 0 0;
+}
+
+.price {
+  margin-top: 10px;
+  margin-right: 20px;
+  color: #8f9ba7;
+  float: right;
+}
+
+.price span{
+  color: #3091e6;
+  font-size: 22px;
+}

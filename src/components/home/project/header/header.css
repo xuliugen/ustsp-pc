@@ -1,0 +1,12 @@
+.title {
+  width: 100%;
+  font-size: 22px;
+  padding-left: 20px;
+  border-left: 6px solid #3091e6;
+}
+
+.more {
+  float: right;
+  padding-right: 20px;
+  font-size: 14px;
+}

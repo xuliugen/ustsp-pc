@@ -1,0 +1,61 @@
+.news-item {
+  width: 100%;
+}
+
+.publisher {
+  height: 32px;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+
+.touxiang {
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+}
+
+.name, .company {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.name {
+  margin: 0 13px 0 10px;
+  color: #1b7ee9;
+}
+
+.time {
+  float: right;
+}
+
+.content {
+  position: relative;
+  margin-left: 45px;
+  font-size: 16px;
+}
+
+.text {
+  display: inline-block;
+  margin-left: 5px;
+  min-width: 14px;
+  max-width: 306px;
+  background-color: #f0f0f0;
+  padding: 13px 18px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.text::before {
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  content : '';
+  width: 0;
+  height: 0;
+  border-right: 10px #f0f0f0 solid;
+  /* border-top: 10px transparent solid; */
+  border-bottom: 10px transparent solid;
+}
