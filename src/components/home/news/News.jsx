@@ -14,9 +14,9 @@ const ITEMS: Array<{}> = [
 
 export default class News extends React.Component<{}> {
   render() {
-    const newsItem = ITEMS.map((item) => {
+    const newsItem = ITEMS.map((item, idx) => {
       return (
-        <div styleName="news-item-wrapper">
+        <div styleName="news-item-wrapper" key={idx}>
           <NewsItem name={item.name} company={item.company} time={item.time} content={item.content} />
         </div>
       )
