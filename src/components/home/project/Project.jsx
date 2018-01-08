@@ -1,38 +1,32 @@
 // @flow
 import React from 'react'
 import './project.css'
-import Header from './header/Header'
+import ProjectHeader from './header/Header'
 import ProjectItem from './project-item/ProjectItem'
+
+const ITEMS: Array<{}> = [
+  {title: '项目标题', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#1dbbae'},
+  {title: '第二个项目标题', school: '西南石油大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 9000, bgColor: '#2b7dd6'},
+  {title: 'An English title project', school: '四川大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 10000, bgColor: '#1dbbae'},
+  {title: '长度为10个字以上的标题样式', school: '西南民族大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 3000, price: 500, bgColor: '#2b7dd6'},
+  {title: '某一个标题', school: '成都大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 12, price: 500, bgColor: '#1dbbae'}
+]
 
 export default class Project extends React.Component<{}> {
   render() {
-    const visitNum = [1346, 890, 890, 3000, 12]
-    const price = [12000, 9000, 10000, 500, 500]
+    const projectItem = ITEMS.map((item) => {
+      return (
+        <div styleName="project-item-wrapper">
+          <ProjectItem title={item.title} school={item.school} startTime={item.startTime} endTime={item.endTime} visitNum={item.visitNum} price={item.price} bgColor={item.bgColor} />
+        </div>
+      )
+    })
     return (
       <div styleName="project">
         <div styleName="header-wrapper">
-          <Header />
+          <ProjectHeader />
         </div>
-        <div styleName="project-item-wrapper">
-          <ProjectItem title="项目标题" school="电子科技大学" startTime="2017-11-30" endTime="2017-12-30" visitNum={visitNum[0]} price={price[0]} bgColor="#1dbbae" />
-        </div>
-        <span styleName="line" />
-        <div styleName="project-item-wrapper">
-          <ProjectItem title="第二个项目标题" school="西南石油大学" startTime="2017-11-30" endTime="2017-12-30" visitNum={visitNum[1]} price={price[1]} bgColor="#2b7dd6" />
-        </div>
-        <span styleName="line" />
-        <div styleName="project-item-wrapper">
-          <ProjectItem title="An English title project" school="四川大学" startTime="2017-11-30" endTime="2017-12-30" visitNum={visitNum[2]} price={price[2]} bgColor="#1dbbae" />
-        </div>
-        <span styleName="line" />
-        <div styleName="project-item-wrapper">
-          <ProjectItem title="长度为10个字以上的标题样式" school="西南民族大学" startTime="2017-11-30" endTime="2017-12-30" visitNum={visitNum[3]} price={price[3]} bgColor="#2b7dd6" />
-        </div>
-        <span styleName="line" />
-        <div styleName="project-item-wrapper">
-          <ProjectItem title="某一个标题" school="成都大学" startTime="2017-11-30" endTime="2017-12-30" visitNum={visitNum[4]} price={price[4]} bgColor="#1dbbae" />
-        </div>
-        <span styleName="line" />
+        {projectItem}
       </div>
     )
   }
