@@ -21,7 +21,6 @@ export default class NewsItem extends React.Component<Props> {
           <span styleName="time">{this.props.time}</span>
         </div>
         <div styleName="content">
-          <span styleName="bot" />
           <span styleName="text">{this.props.content}</span>
         </div>
       </div>

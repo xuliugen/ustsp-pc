@@ -29,25 +29,33 @@
 }
 
 .content {
-  height: 34px;
+  position: relative;
   margin-left: 45px;
   font-size: 16px;
-  line-height: 34px;
-}
-
-.bot {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 10px solid;
-  border-color: #f0f0f0 transparent transparent;
 }
 
 .text {
+  display: inline-block;
   margin-left: 5px;
   min-width: 14px;
   max-width: 306px;
   background-color: #f0f0f0;
-  padding: 6px 18px;
+  padding: 13px 18px;
   border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.text::before {
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  content : '';
+  width: 0;
+  height: 0;
+  border-right: 10px #f0f0f0 solid;
+  /* border-top: 10px transparent solid; */
+  border-bottom: 10px transparent solid;
 }
