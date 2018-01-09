@@ -14,6 +14,9 @@ const paths = require('./paths')
 const getClientEnvironment = require('./env')
 const baseWebpackConfig = require('./webpack.config.base')
 const webpackMerge = require('webpack-merge')
+const fs = require('fs')
+const lessToJs = require('less-vars-to-js')
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'))
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -174,7 +177,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
           // in the main CSS file.
           {
             test: /\.css$/,
-            include: /node_modules|antd\.css/,
+            exclude: /node_modules|antd\.css/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -255,6 +258,19 @@ module.exports = webpackMerge(baseWebpackConfig, {
                       flexbox: 'no-2009'
                     })
                   ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.less$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              {
+                loader: 'less-loader',
+                options: {
+                  modifyVars: themeVariables
                 }
               }
             ]

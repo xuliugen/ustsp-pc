@@ -13,6 +13,9 @@ const getClientEnvironment = require('./env')
 const paths = require('./paths')
 const baseWebpackConfig = require('./webpack.config.base')
 const webpackMerge = require('webpack-merge')
+const fs = require('fs')
+const lessToJs = require('less-vars-to-js')
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'))
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -232,6 +235,19 @@ module.exports = webpackMerge(baseWebpackConfig, {
                       flexbox: 'no-2009'
                     })
                   ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.less$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              {
+                loader: 'less-loader',
+                options: {
+                  modifyVars: themeVariables
                 }
               }
             ]
