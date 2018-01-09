@@ -1,5 +1,6 @@
 import React from 'react'
 import './stepOne.css'
+import { Button } from 'antd'
 
 export default class StepOne extends React.Component<{}> {
   render() {
@@ -32,6 +33,7 @@ export default class StepOne extends React.Component<{}> {
           </div>
           <div styleName="nextBtn-container">
             <button styleName="nextBtn">下一步</button>
+            <Button type="primary">Primary</Button>
           </div>
         </form>
       </div>
