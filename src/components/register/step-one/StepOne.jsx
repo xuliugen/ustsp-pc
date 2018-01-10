@@ -1,17 +1,30 @@
 import React from 'react'
 import './stepOne.css'
 import { Form, Select, Input, Icon, Checkbox, Button } from 'antd'
+import { observer } from 'mobx-react'
 
 const { Option } = Select
 const { Item: FormItem } = Form
 
+@observer
 class StepOne extends React.Component<{}> {
+  handleSubmit = (e) => {
+    e.preventDefault()
+    // this.props.form.validateFields((err, values) => {
+    //   if (!err) {
+    //     console.log('Received values of form: ', values)
+    //   }
+    // })
+    const { history } = this.props
+    history.replace('/register/2')
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
       <div styleName="container">
         <div styleName="title">step 1 : 填写基本信息</div>
-        <Form styleName="form">
+        <Form styleName="form" onSubmit={this.handleSubmit}>
           <FormItem>
             {getFieldDecorator('userType', {
               rules: [{ required: true, message: '请选择用户类型' }]
@@ -85,7 +98,7 @@ class StepOne extends React.Component<{}> {
             )}
           </FormItem>
           <div styleName="nextBtn-container">
-            <Button styleName="nextBtn" type="primary" size="large">下一步</Button>
+            <Button htmlType="submit" styleName="nextBtn" type="primary" size="large">下一步</Button>
           </div>
         </Form>
       </div>
