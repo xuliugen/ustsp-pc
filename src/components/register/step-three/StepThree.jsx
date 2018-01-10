@@ -101,6 +101,10 @@ export default class StepThree extends React.Component<{}> {
         <div styleName="educational-experience">
           <div styleName="divider">
             <span styleName="base-introduce-title">教育经历</span>
+            <div style={{textAlign: 'right', backgroundColor: '#fff', position: 'absolute', right: '0px', top: '-20px', width: '95px'}} >
+              <button styleName="add-button">+ 添加</button>
+            </div>
+
           </div>
         </div>
       </div>

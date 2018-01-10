@@ -26,6 +26,7 @@
 }
 
 .divider {
+  position: relative;
   height: 1px;
   text-align: center;
   margin-top: 40px;
@@ -98,5 +99,14 @@
 }
 
 .educational-experience{
-  margin: 49px 150px 0 150px;
+  margin: 0 150px 0 150px;
+}
+
+.add-button{
+  border-radius: 16px;
+  border: 1px solid #eee;
+  text-align: right;
+  color: #3091e6;
+  font-size: 14px;
+  padding: 8px 18px 8px 18px;
 }
