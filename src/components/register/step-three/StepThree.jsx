@@ -1,10 +1,11 @@
 import React from 'react'
 import './stepThree.css'
-import { Form, Input, Radio, DatePicker, Select } from 'antd'
+import { Form, Input, Radio, DatePicker, Select, Row, Col } from 'antd'
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
 const Option = Select.Option
+const { TextArea } = Input
 
 export default class StepThree extends React.Component<{}> {
   render() {
@@ -51,32 +52,51 @@ export default class StepThree extends React.Component<{}> {
           <div styleName="divider">
             <span styleName="base-introduce-title">个人履历</span>
           </div>
-          <Form styleName="personal-experience-item" layout="inline" >
-            <FormItem label="现读学校" style={{ flexFlow: '1' }}>
-              <Select defaultValue="lucy" style={{ width: 200, display: 'block' }} >
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>Disabled</Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
-            </FormItem>
-            <FormItem label="学院" style={{ flexFlow: '1' }}>
-              <Select defaultValue="lucy" style={{ width: 200 }} >
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>Disabled</Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
-            </FormItem>
-          </Form>
-          <Form layout="inline" >
-            <FormItem label="专业">
-              <Input placeholder="学院" />
-            </FormItem>
-            <FormItem label="年级">
-              <Input placeholder="微信" />
-            </FormItem>
-          </Form>
+          <Row>
+            <Col span={12} >
+              <Form styleName="personal-experience-item" style={{marginRight: '10px'}} layout="vertical" >
+                <FormItem label="现读学校" style={{ flexFlow: '1' }}>
+                  <Select defaultValue="lucy" style={{ width: '100%' }} >
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </FormItem>
+                <FormItem label="专业" style={{ flexFlow: '1' }}>
+                  <Select defaultValue="lucy" style={{ width: '100%' }} >
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </FormItem>
+              </Form>
+            </Col>
+            <Col span={12}>
+              <Form styleName="personal-experience-item" style={{marginLeft: '10px'}} layout="vertical" >
+                <FormItem label="专业">
+                  <Select defaultValue="lucy" style={{ width: '100%' }} >
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </FormItem>
+                <FormItem label="年级">
+                  <Select defaultValue="lucy" style={{ width: '100%' }} >
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                  </Select>
+                </FormItem>
+              </Form>
+            </Col>
+          </Row>
+          <FormItem label="擅长技能">
+            <Input />
+          </FormItem>
+          <FormItem label="个人简介">
+            <TextArea rows={8} />
+            <div styleName="word-limit">字数限制: 0/400</div>
+          </FormItem>
         </div>
         <div styleName="educational-experience">
           <div styleName="divider">
