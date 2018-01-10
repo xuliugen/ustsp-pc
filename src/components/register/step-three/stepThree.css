@@ -15,15 +15,14 @@
 }
 
 .next-step {
+  margin-left: 10px;
   font-size: 16px;
   color: #8f9ba7;
-  margin-left: 10px;
-
 }
 
 .base-info{
-  background-color: #fff;
   margin: 49px 150px 0 150px;
+  background-color: #fff;
 }
 
 .divider {
@@ -56,9 +55,9 @@
 
 .right-info{
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   margin-left: 10px;
-  flex-grow: 1;
   background-color: #fff;
 }
 
@@ -70,9 +69,9 @@
 .sex-radio{
   padding: 15px 0 15px 0;
   flex-grow: 1;
-  text-align: center;
   border-radius: 4px;
   border: 1px solid #eee;
+  text-align: center;
 }
 .photo{
   border:1px solid #eee;
