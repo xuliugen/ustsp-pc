@@ -14,12 +14,13 @@
   width: 900px;
   margin: 0 auto;
   margin-top: 40px;
-  margin-bottom: 107px;
+  /* margin-bottom: 107px; */
+  padding-bottom: 167px;
 }
 
 .footer-wrapper {
-  /* position: absolute;
+  position: absolute;
   bottom: 0;
-  left: 0; */
+  left: 0;
   width: 100%;
 }
