@@ -1,52 +1,40 @@
 import React from 'react'
 import './newExpItem.css'
-import { Form, Input, Row, Col, Select } from 'antd'
+import { Form, Input, Row, Col, DatePicker } from 'antd'
 
 const FormItem = Form.Item
-const Option = Select.Option
+const MonthPicker = DatePicker.MonthPicker
 
 export default class ExpItem extends React.Component<{}> {
   render() {
     return (
       <div>
-        <Form layout="vertical">
-          <FormItem label="学历级别" styleName="form-item" >
+        <Form layout="vertical" styleName="newEdu-form">
+          <FormItem label="学历级别">
             <Input />
           </FormItem>
-          <FormItem label="学校" styleName="form-item" >
+          <FormItem label="学校">
             <Input />
           </FormItem>
-          <FormItem label="学院" styleName="form-item" >
+          <FormItem label="学院">
             <Input />
           </FormItem>
-          <FormItem label="专业" styleName="form-item" >
+          <FormItem label="专业">
             <Input />
           </FormItem>
-        </Form>
-        <Row styleName="form-item">
-          <Col span={12} >
-            <Form styleName="" style={{ marginRight: '10px' }} layout="vertical" >
-              <FormItem label="入学时间" style={{ flexFlow: '1' }}>
-                <Select defaultValue="lucy">
-                  <Option value="jack">Jack</Option>
-                  <Option value="lucy">Lucy</Option>
-                  <Option value="Yiminghe">yiminghe</Option>
-                </Select>
+          <Row gutter={20}>
+            <Col span={12} >
+              <FormItem label="入学时间">
+                <MonthPicker />
               </FormItem>
-            </Form>
-          </Col>
-          <Col span={12}>
-            <Form styleName="" style={{ marginLeft: '10px' }} layout="vertical" >
+            </Col>
+            <Col span={12}>
               <FormItem label="毕业时间">
-                <Select defaultValue="lucy">
-                  <Option value="jack">Jack</Option>
-                  <Option value="lucy">Lucy</Option>
-                  <Option value="Yiminghe">yiminghe</Option>
-                </Select>
+                <MonthPicker />
               </FormItem>
-            </Form>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Form>
         <div>
           <button styleName="store-button">保存</button>
           <button styleName="cancel-button">取消</button>

@@ -1,5 +1,9 @@
-.form-item{
+.newEdu-form {
   width: 400px;
+}
+
+.form-item{
+  /* width: 400px; */
 }
 
 .store-button{
