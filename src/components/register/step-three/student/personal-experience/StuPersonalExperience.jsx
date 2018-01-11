@@ -51,7 +51,7 @@ export default class PersonalExperience extends React.Component {
           </Col>
         </Row>
         <FormItem label="擅长技能">
-          <Input />
+          <Input size="Large" />
         </FormItem>
         <FormItem label="个人简介">
           <TextArea rows={8} />
