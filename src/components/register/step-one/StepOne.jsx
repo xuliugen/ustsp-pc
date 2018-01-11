@@ -1,25 +1,54 @@
 import React from 'react'
 import './stepOne.css'
 import { Form, Select, Input, Icon, Checkbox, Button } from 'antd'
+import { observer, inject } from 'mobx-react'
 
 const { Option } = Select
 const { Item: FormItem } = Form
 
+@inject('registerStore')
+@observer
 class StepOne extends React.Component<{}> {
+  componentDidMount() {
+    this.props.form.setFieldsValue(this.props.registerStore.one)
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      // if (!err) {
+      //   console.log('Received values of form: ', values)
+      // }
+      console.log(err)
+      this.props.registerStore.setOne(values)
+    })
+    const { history } = this.props
+    history.push('/register/3')
+  }
+
+  handleUserTypeChange = (val) => {
+    this.props.form.setFieldsValue({
+      userType: val
+    })
+    this.props.registerStore.changeUserType(val)
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
+    // const { registerStore } = this.props
+    // const { one } = registerStore
     return (
       <div styleName="container">
         <div styleName="title">step 1 : 填写基本信息</div>
-        <Form styleName="form">
+        <Form styleName="form" onSubmit={this.handleSubmit}>
           <FormItem>
             {getFieldDecorator('userType', {
               rules: [{ required: true, message: '请选择用户类型' }]
             })(
               <Select placeholder="选择用户类型" size="large">
-                <Option value="学生">学生</Option>
-                <Option value="教师">教师</Option>
-                <Option value="企业">企业</Option>
+                <Option value="student">学生</Option>
+                <Option value="teacher">教师</Option>
+                <Option value="enterprise">企业</Option>
               </Select>
             )}
           </FormItem>
@@ -85,7 +114,7 @@ class StepOne extends React.Component<{}> {
             )}
           </FormItem>
           <div styleName="nextBtn-container">
-            <Button styleName="nextBtn" type="primary" size="large">下一步</Button>
+            <Button htmlType="submit" styleName="nextBtn" type="primary" size="large">下一步</Button>
           </div>
         </Form>
       </div>
