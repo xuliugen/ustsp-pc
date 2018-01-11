@@ -2,8 +2,8 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 
 import Student from './student/Student'
-import Teacher from './Teacher'
-import Enterprise from './Enterprise'
+import Teacher from './teacher/Teacher'
+import Enterprise from './enterprise/Enterprise'
 
 @inject('registerStore')
 @observer
