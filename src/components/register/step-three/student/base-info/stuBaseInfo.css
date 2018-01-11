@@ -1,0 +1,31 @@
+.base-info{
+}
+
+.content {
+  margin-top: 19px;
+}
+
+.baseInfo-form {
+  width: 100%;
+}
+
+.gender {
+  display: flex;
+  width: 100%;
+}
+
+.gender-radio {
+  padding: 15px 0 15px 0;
+  flex-grow: 1;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.gender-radio:last-child {
+  margin-right: 0px;
+}
+
+.qq {
+  margin-top: 26px;
+}
