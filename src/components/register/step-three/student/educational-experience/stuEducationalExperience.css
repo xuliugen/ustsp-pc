@@ -29,3 +29,30 @@
   margin-left: 20px;
   color: #aaa;
 }
+
+.school-name{
+  font-size: 22px;
+  color: #333;
+}
+.time-text{
+  float: right;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.degree-text{
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.major-text{
+  font-size: 14px;
+  color: #aaa;
+}
+
+.edit-text{
+  float: right;
+  color: #8f9ba7;
+  font-size: 14px;
+}
