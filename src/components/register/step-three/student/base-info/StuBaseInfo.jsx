@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
 
-import { FormTitle } from '../../common'
+import { FormTitle, UploadAvatar } from '../../common'
 import './stuBaseInfo.css'
 
 const RadioGroup = Radio.Group
@@ -20,9 +20,9 @@ export default class StudentBaseInfo extends React.Component {
                   <Input placeholder="姓名" />
                 </FormItem>
                 <FormItem label="性别">
-                  <RadioGroup styleName="sex" name="radiogroup" defaultValue={1}>
-                    <Radio styleName="sex-radio" value={1}>男</Radio>
-                    <Radio styleName="sex-radio" value={2}>女</Radio>
+                  <RadioGroup styleName="gender" name="radiogroup" defaultValue={1}>
+                    <Radio styleName="gender-radio" value={1}>男</Radio>
+                    <Radio styleName="gender-radio" value={2}>女</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem label="选择出生日期">
@@ -33,7 +33,7 @@ export default class StudentBaseInfo extends React.Component {
                 </FormItem>
               </Col>
               <Col span={12}>
-                <div styleName="photo">ss</div>
+                <UploadAvatar />
                 <FormItem styleName="qq" label="QQ">
                   <Input placeholder="QQ" />
                 </FormItem>

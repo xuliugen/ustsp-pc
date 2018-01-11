@@ -2,8 +2,6 @@
 }
 
 .content {
-  display: flex;
-  justify-content: center;
   margin-top: 19px;
 }
 
@@ -11,12 +9,12 @@
   width: 100%;
 }
 
-.sex {
+.gender {
   display: flex;
   width: 100%;
 }
 
-.sex-radio {
+.gender-radio {
   padding: 15px 0 15px 0;
   flex-grow: 1;
   border-radius: 4px;
@@ -24,11 +22,10 @@
   text-align: center;
 }
 
-.photo {
-  border:1px solid #eee;
-  height: 267px;
+.gender-radio:last-child {
+  margin-right: 0px;
 }
 
 .qq {
-  margin-top: 19px;
+  margin-top: 26px;
 }
