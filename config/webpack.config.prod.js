@@ -14,6 +14,9 @@ const paths = require('./paths')
 const getClientEnvironment = require('./env')
 const baseWebpackConfig = require('./webpack.config.base')
 const webpackMerge = require('webpack-merge')
+const fs = require('fs')
+const lessToJs = require('less-vars-to-js')
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'))
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -174,6 +177,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
           // in the main CSS file.
           {
             test: /\.css$/,
+            exclude: /node_modules|antd\.css/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -220,6 +224,56 @@ module.exports = webpackMerge(baseWebpackConfig, {
               )
             )
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          // antd css
+          {
+            test: /\.css$/,
+            include: /node_modules|antd\.css/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1
+                  // 改动
+                  // modules: true,   // 新增对css modules的支持
+                  // localIdentName: '[name]__[local]__[hash:base64:5]', //
+                }
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9' // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.less$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              {
+                loader: 'less-loader',
+                options: {
+                  modifyVars: themeVariables
+                }
+              }
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
