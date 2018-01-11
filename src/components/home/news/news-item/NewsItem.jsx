@@ -20,7 +20,7 @@ export default class NewsItem extends React.Component<Props> {
     return (
       <div styleName="news-item">
         <div styleName="publisher">
-          <span styleName="touxiang"><img src={imgTouxiang} /></span>
+          <span styleName="avatar"><img src={imgTouxiang} /></span>
           <span styleName="name">{news.name}</span>
           <span styleName="company">{news.company}</span>
           <span styleName="time">{news.time}</span>

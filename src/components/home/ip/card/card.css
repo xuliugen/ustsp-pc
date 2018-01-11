@@ -1,4 +1,5 @@
 .ip-card {
+  position: relative;
   height: 100%;
   width: 290px;
   background-color: #fff;
@@ -10,7 +11,7 @@
 }
 
 .ip-card-basic {
-  height: 142px;
+  /* height: 162px; */
   padding: 20px 0 0 20px;
 }
 
@@ -43,11 +44,13 @@
 }
 
 .ip-card-publisher {
+  position: absolute;
+  bottom: 0;
   font-size: 14px;
   margin: 0 20px 24px 20px;
 }
 
-.ip-card-touxiang img {
+.ip-card-avatar img {
   width: 36px;
   height: 36px;
 }

@@ -30,7 +30,7 @@ export default class IpCard extends React.Component<Props> {
           <span styleName="ip-card-patentNum">专利编号: {ip.patentNum}</span>
         </div>
         <div styleName="ip-card-publisher">
-          <span styleName="ip-card-touxiang"><img src={ImgTouxiang} /></span>
+          <span styleName="ip-card-avatar"><img src={ImgTouxiang} /></span>
           <div styleName="ip-card-detail">
             <span styleName="ip-card-name">{ip.name}</span>
             <br />
