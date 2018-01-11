@@ -9,6 +9,10 @@ const { Item: FormItem } = Form
 @inject('registerStore')
 @observer
 class StepOne extends React.Component<{}> {
+  componentWillMount() {
+    this.props.registerStore.changeStep(1)
+  }
+
   componentDidMount() {
     this.props.form.setFieldsValue(this.props.registerStore.one)
   }
