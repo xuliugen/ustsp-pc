@@ -12,7 +12,7 @@ export default class NewExpItem extends React.Component<{}> {
         <div styleName="degree-text">全日制本科</div>
         <div style={{ marginTop: '10px' }}>
           <span styleName="major-text">外语学院/对外汉语专业</span>
-          <span styleName="edit-text" >编辑</span>
+          <button styleName="edit-text" >编辑</button>
         </div>
       </div>
     )
