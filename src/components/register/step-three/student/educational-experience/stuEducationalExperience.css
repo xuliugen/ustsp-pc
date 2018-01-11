@@ -1,3 +1,31 @@
 .educational-experience{
   margin-top: 49px;
+  padding-bottom: 41px;
+}
+
+.content{
+  margin-top: 40px;
+}
+
+.form-item{
+  width: 400px;
+}
+
+.input-height{
+  height: 44px;
+}
+
+.store-button{
+  width: 120px;
+  padding:  13px 16px 13px 16px;
+  border-radius: 4px;
+  border: 1px solid;
+  color: #fff;
+  background-color: #8f9ba7;
+}
+
+.cancel-button{
+  font-size: 14px;
+  margin-left: 20px;
+  color: #aaa;
 }
