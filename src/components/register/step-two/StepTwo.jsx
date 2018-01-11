@@ -1,8 +1,16 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
+
 import './stepTow.css'
 import imgAvatar from 'src/assets/avatar1.png'
 
+@inject('registerStore')
+@observer
 export default class StepTwo extends React.Component<{}> {
+  componentWillMount() {
+    this.props.registerStore.changeStep(2)
+  }
+
   render() {
     return (
       <div styleName="container">
