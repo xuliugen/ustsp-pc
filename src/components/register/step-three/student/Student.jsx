@@ -16,6 +16,7 @@ export default class StepThree extends React.Component<{}> {
           <StuBaseInfo />
           <StuPersonalExperience />
           <StuEducationalExperience />
+          <button styleName="confirm-button">确认</button>
         </div>
       </div>
     )
