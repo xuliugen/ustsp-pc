@@ -1,22 +1,27 @@
-.form-item{
-  width: 400px;
+.school-name{
+  font-size: 22px;
+  color: #333;
 }
-
-.input-height{
-  height: 44px;
-}
-
-.store-button{
-  width: 120px;
-  padding:  13px 16px 13px 16px;
-  border-radius: 4px;
-  border: 1px solid;
-  color: #fff;
-  background-color: #8f9ba7;
-}
-
-.cancel-button{
+.time-text{
+  float: right;
   font-size: 14px;
-  margin-left: 20px;
   color: #aaa;
+}
+
+.degree-text{
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.major-text{
+  font-size: 14px;
+  color: #aaa;
+}
+
+.edit-text{
+  float: right;
+  color: #8f9ba7;
+  font-size: 14px;
+  text-decoration: underline;
 }

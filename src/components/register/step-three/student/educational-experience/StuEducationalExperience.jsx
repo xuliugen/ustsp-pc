@@ -10,8 +10,8 @@ export default class StuEdicationalExperience extends React.Component<{}> {
       <div styleName="educational-experience">
         <FormTitle title={'教育经历'} />
         <div styleName="content">
-          <ExpItem />
           <NewExpItem />
+          <ExpItem />
         </div>
       </div>
     )
