@@ -11,6 +11,11 @@ import registerServiceWorker from './registerServiceWorker'
 
 import App from './App'
 
+// 设置为中文日期
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
+
 // Strict mode enforces that all state modifications are done by an action.
 useStrict(true)
 
