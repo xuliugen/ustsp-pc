@@ -1,5 +1,5 @@
 import React from 'react'
-import './iPItem.css'
+import './IPItem.css'
 
 export default class IPItem extends React.Component<{}> {
   render() {

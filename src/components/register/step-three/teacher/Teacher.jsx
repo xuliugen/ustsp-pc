@@ -5,6 +5,7 @@ import PersonalExperience from './personal-experience/TchPersonalExperience'
 import TchEdicationalExperience from './educational-experience/TchducationalExperience'
 import Research from './research/Research'
 import IP from './ip/IP'
+import RAward from './r-award/RAward'
 
 export default class StepThreeTeacher extends React.Component<{}> {
   render() {
@@ -20,6 +21,7 @@ export default class StepThreeTeacher extends React.Component<{}> {
           <TchEdicationalExperience />
           <Research />
           <IP />
+          <RAward />
           <button styleName="confirm-button">确认</button>
         </div>
       </div>
