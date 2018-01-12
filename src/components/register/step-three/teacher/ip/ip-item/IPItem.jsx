@@ -1,5 +1,6 @@
 import React from 'react'
 import './IPItem.css'
+import { Icon } from 'antd'
 
 export default class IPItem extends React.Component<{}> {
   render() {
@@ -19,7 +20,10 @@ export default class IPItem extends React.Component<{}> {
             <li styleName="li-text">申请于 2017-12-01 / 某某专利申请单位</li>
             <li styleName="li-text">发明人：蔡明、曹雪芹、郭悦、王作斌、贾全</li>
           </ul>
-          <button styleName="edit-text" >编辑</button>
+          <div styleName="edit-container">
+            <Icon type="edit" styleName="edit-incon" />
+            <button styleName="edit-text" >编辑</button>
+          </div>
         </div>
       </div>
     )

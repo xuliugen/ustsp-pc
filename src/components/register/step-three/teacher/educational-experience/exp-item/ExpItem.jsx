@@ -1,5 +1,6 @@
 import React from 'react'
 import './expItem.css'
+import { Icon } from 'antd'
 
 export default class NewExpItem extends React.Component<{}> {
   render() {
@@ -10,9 +11,13 @@ export default class NewExpItem extends React.Component<{}> {
           <span styleName="time-text">2011.9-2013.7</span>
         </div>
         <div styleName="degree-text">全日制本科</div>
-        <div style={{ marginTop: '10px' }}>
+        <div styleName="school-name-container">
           <span styleName="major-text">外语学院/对外汉语专业</span>
-          <button styleName="edit-text" >编辑</button>
+          <div styleName="edit-container">
+            <Icon type="edit" styleName="edit-incon" />
+            <button styleName="edit-text" >编辑</button>
+          </div>
+
         </div>
       </div>
     )

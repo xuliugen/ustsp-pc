@@ -1,5 +1,6 @@
 import React from 'react'
 import './researchItem.css'
+import { Icon } from 'antd'
 
 export default class ResearchItem extends React.Component<{}> {
   render() {
@@ -14,7 +15,10 @@ export default class ResearchItem extends React.Component<{}> {
             <li styleName="li-text">项目级别</li>
             <li styleName="li-text">经费$ 12000</li>
           </ul>
-          <button styleName="edit-text" >编辑</button>
+          <div styleName="edit-container">
+            <Icon type="edit" styleName="edit-incon" />
+            <button styleName="edit-text" >编辑</button>
+          </div>
         </div>
       </div>
     )

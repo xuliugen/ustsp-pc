@@ -1,3 +1,7 @@
+.school-name-container{
+  margin-top: 10px;
+}
+
 .school-name{
   font-size: 22px;
   color: #333;
@@ -19,9 +23,21 @@
   color: #aaa;
 }
 
+.edit-container{
+  position: relative;
+}
+
+.edit-incon{
+  position: absolute;
+  bottom: 1px;
+  right: 36px;
+}
 .edit-text{
-  float: right;
+  position: absolute;
+  bottom: -1px;
+  right: 0;
   color: #8f9ba7;
   font-size: 14px;
+  padding-left: 2px;
   text-decoration: underline;
 }
