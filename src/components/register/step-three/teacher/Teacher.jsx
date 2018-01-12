@@ -2,6 +2,7 @@ import React from 'react'
 import './teacher.css'
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
+import TchEdicationalExperience from './educational-experience/TchducationalExperience'
 
 export default class StepThreeTeacher extends React.Component<{}> {
   render() {
@@ -14,6 +15,7 @@ export default class StepThreeTeacher extends React.Component<{}> {
         <div styleName="form-container">
           <TchBaseInfo />
           <PersonalExperience />
+          <TchEdicationalExperience />
           <button styleName="confirm-button">确认</button>
         </div>
       </div>
