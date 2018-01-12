@@ -3,6 +3,7 @@ import './teacher.css'
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
 import TchEdicationalExperience from './educational-experience/TchducationalExperience'
+import Research from './research/Research'
 
 export default class StepThreeTeacher extends React.Component<{}> {
   render() {
@@ -16,6 +17,7 @@ export default class StepThreeTeacher extends React.Component<{}> {
           <TchBaseInfo />
           <PersonalExperience />
           <TchEdicationalExperience />
+          <Research />
           <button styleName="confirm-button">确认</button>
         </div>
       </div>

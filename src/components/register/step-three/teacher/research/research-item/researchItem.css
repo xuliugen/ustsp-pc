@@ -1,0 +1,24 @@
+.research-name{
+  font-size: 22px;
+  color: #333;
+}
+.time-text{
+  float: right;
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+.li-text{
+  font-size: 14px;
+  color: #aaa;
+}
+
+.edit-text{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #8f9ba7;
+  font-size: 14px;
+  text-decoration: underline;
+}

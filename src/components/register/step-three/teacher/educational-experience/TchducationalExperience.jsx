@@ -3,7 +3,7 @@ import { FormTitle } from '../../common'
 import './tchEducationalExperience.css'
 import ExpItem from './exp-item/ExpItem'
 
-export default class TchEdicationalExperience extends React.Component<{}> {
+export default class StuEdicationalExperience extends React.Component<{}> {
   render() {
     return (
       <div styleName="educational-experience">
