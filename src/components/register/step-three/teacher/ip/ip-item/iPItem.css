@@ -1,11 +1,19 @@
-.research-name{
+.ip-name{
   font-size: 22px;
   color: #333;
 }
-.time-text{
-  float: right;
+
+.ip-name-container{
+  position: relative;
+}
+.ip-type{
+  position: absolute;
+  bottom: 3px;
+  right: 5px;
+  padding: 2px 6px 2px 6px;
+  background-color: #f0f0f0;
   font-size: 14px;
-  color: #aaa;
+  color: #666;
 }
 
 .ul-container{
@@ -17,6 +25,17 @@
   font-size: 14px;
   margin-top: 10px;
   color: #666;
+}
+
+.ip-info{
+  margin-top: 19px;
+}
+
+.ip-info-text{
+  font-size: 14px;
+  color: #aaa;
+  margin-right: 19px;
+
 }
 .edit-text{
   position: absolute;
