@@ -1,0 +1,38 @@
+.research-name{
+  font-size: 22px;
+  color: #333;
+}
+.time-text{
+  float: right;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.ul-container{
+  position: relative;
+  margin-top:7px;
+}
+
+.li-text{
+  font-size: 14px;
+  margin-top: 10px;
+  color: #666;
+}
+.edit-container{
+  position: relative;
+}
+
+.edit-incon{
+  position: absolute;
+  bottom: 1px;
+  right: 36px;
+}
+.edit-text{
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  color: #8f9ba7;
+  font-size: 14px;
+  padding-left: 2px;
+  text-decoration: underline;
+}
