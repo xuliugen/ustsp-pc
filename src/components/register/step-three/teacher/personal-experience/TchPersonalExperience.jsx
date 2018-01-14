@@ -12,7 +12,7 @@ export default class PersonalExperience extends React.Component {
     return (
       <div styleName="personal-experience">
         <FormTitle title={'个人履历'} />
-        <Form styleName="personal-experience-item" style={{ marginRight: '10px' }} layout="vertical" >
+        <Form styleName="personal-experience-item" layout="vertical" >
           <Row gutter={20}>
             <Col span={12} >
               <FormItem label="就职学校" style={{ flexFlow: '1' }}>
