@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormTitle } from '../../common'
-import './tchEducationalExperience.css'
+import './tchEduExp.css'
 import ExpItem from './exp-item/ExpItem'
 
 export default class StuEdicationalExperience extends React.Component<{}> {

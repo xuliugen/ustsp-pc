@@ -1,5 +1,5 @@
 import React from 'react'
-import './IPItem.css'
+import './iPItem.css'
 import { Icon } from 'antd'
 
 export default class IPItem extends React.Component<{}> {
