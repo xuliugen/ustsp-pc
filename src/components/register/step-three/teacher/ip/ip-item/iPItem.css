@@ -1,29 +1,23 @@
+.ip {
+  position: relative;
+}
+
 .ip-name{
   font-size: 22px;
   color: #333;
 }
 
 .ip-name-container{
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .ip-type{
-  position: absolute;
-  bottom: 3px;
-  right: 5px;
-  padding: 2px 6px 2px 6px;
+  padding: 5px 10px;
+  border-radius: 4px;
   background-color: #f0f0f0;
   font-size: 14px;
-  color: #666;
-}
-
-.ul-container{
-  position: relative;
-  margin-top:7px;
-}
-
-.li-text{
-  font-size: 14px;
-  margin-top: 10px;
   color: #666;
 }
 
@@ -34,25 +28,34 @@
 .ip-info-text{
   font-size: 14px;
   color: #aaa;
-  margin-right: 19px;
+}
 
+.ul-container{
+  margin-top: 10px;
+}
+
+.li-text {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.li-text:last-child {
+  margin-bottom: 0;
 }
 
 .edit-container{
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-.edit-incon{
-  position: absolute;
-  bottom: 1px;
-  right: 36px;
+.edit-icon{
 }
+
 .edit-text{
-  position: absolute;
-  bottom: -1px;
-  right: 0;
+  padding-left: 2px;
   color: #8f9ba7;
   font-size: 14px;
-  padding-left: 2px;
   text-decoration: underline;
 }
