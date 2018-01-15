@@ -13,7 +13,7 @@ export default class OtherInfo extends React.Component<{}> {
       <div styleName="other-info">
         <FormTitle title="其他信息" />
         <div styleName="content">
-          <Form layout="verticle" styleName="other-info-form">
+          <Form layout="vertical" styleName="other-info-form">
             <FormItem label="公司主页" >
               <Input placeholder="公司主页" />
             </FormItem>

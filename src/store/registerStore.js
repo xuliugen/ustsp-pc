@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 class RegisterStore {
   @observable step = 1
   @observable one = {
-    userType: 'teacher'
+    userType: 'student'
   }
 
   @action
