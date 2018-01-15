@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormTitle } from '../../common'
-import './IP.css'
+import './ip.css'
 import IPItem from './ip-item/IPItem'
 
 export default class IP extends React.Component<{}> {

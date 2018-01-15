@@ -1,11 +1,16 @@
-.school-name-container{
+.row {
   margin-top: 10px;
+}
+
+.row:first-child {
+  margin-top: 0;
 }
 
 .school-name{
   font-size: 22px;
   color: #333;
 }
+
 .time-text{
   float: right;
   font-size: 14px;
@@ -24,20 +29,13 @@
 }
 
 .edit-container{
-  position: relative;
+  /* position: relative; */
+  float: right;
 }
 
-.edit-incon{
-  position: absolute;
-  bottom: 1px;
-  right: 36px;
-}
 .edit-text{
-  position: absolute;
-  bottom: -1px;
-  right: 0;
+  padding-left: 2px;
   color: #8f9ba7;
   font-size: 14px;
-  padding-left: 2px;
   text-decoration: underline;
 }

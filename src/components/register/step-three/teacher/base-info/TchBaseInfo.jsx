@@ -10,7 +10,7 @@ const FormItem = Form.Item
 export default class StudentBaseInfo extends React.Component {
   render() {
     return (
-      <div styleName="base-info">
+      <div>
         <FormTitle title={'基本信息'} />
         <div styleName="content">
           <Form layout="vertical" styleName="baseInfo-form">
@@ -39,16 +39,15 @@ export default class StudentBaseInfo extends React.Component {
                 </FormItem>
               </Col>
             </Row>
-            <Upload
-              name="avatar"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action="//jsonplaceholder.typicode.com/posts/">
-              <div>
+            <Row>
+              <Upload
+                name="avatar"
+                listType="picture-card"
+                showUploadList={false}
+                action="//jsonplaceholder.typicode.com/posts/">
                 <div styleName="upload-tch-photo-text">+ 上传教师证照片</div>
-              </div>
-            </Upload>
+              </Upload>
+            </Row>
           </Form>
         </div>
       </div>
