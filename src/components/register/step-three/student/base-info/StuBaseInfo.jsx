@@ -34,6 +34,9 @@ export default class StudentBaseInfo extends React.Component {
               </Col>
               <Col span={12}>
                 <UploadAvatar />
+                <FormItem label="姓名">
+                  <div>asdf</div>
+                </FormItem>
                 <FormItem styleName="qq" label="QQ">
                   <Input placeholder="QQ" />
                 </FormItem>
