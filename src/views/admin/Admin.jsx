@@ -1,8 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-// todo: 更好的路由
-import { Home, NewDemand } from 'components/admin'
+import { Home, Demand } from 'components/admin'
 
 export default class Admin extends React.Component {
   render() {
@@ -13,7 +12,7 @@ export default class Admin extends React.Component {
         {/* <Sider /> */}
         <Switch>
           <Route exact path={`${match.url}/`} component={Home} />
-          <Route path={`${match.url}/new-demand`} component={NewDemand} />
+          <Route path={`${match.url}/demand`} component={Demand} />
         </Switch>
       </div>
     )
