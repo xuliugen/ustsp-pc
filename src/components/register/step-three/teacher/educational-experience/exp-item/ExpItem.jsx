@@ -17,7 +17,6 @@ export default class NewExpItem extends React.Component<{}> {
             <Icon type="edit" styleName="edit-incon" />
             <button styleName="edit-text" >编辑</button>
           </div>
-
         </div>
       </div>
     )
