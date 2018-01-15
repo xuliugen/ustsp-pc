@@ -7,7 +7,8 @@ import imgAvatar from 'src/assets/avatar1.png'
 import imgVeriSuccess from 'src/assets/veri_success.png'
 
 type STATE = {
-  email: string
+  email: string,
+  verifyModelVisible: boolean
 }
 
 @inject('registerStore')
@@ -16,7 +17,8 @@ export default class StepTwo extends React.Component<{}, STATE> {
   constructor() {
     super()
     this.state = {
-      email: '32445436@qq.com'
+      email: '32445436@qq.com',
+      verifyModelVisible: true
     }
   }
 
@@ -38,14 +40,18 @@ export default class StepTwo extends React.Component<{}, STATE> {
           <button styleName="no-button">不是</button>
           <button styleName="next-button">是的，下一步</button>
         </div>
-        <div styleName="pop">
-          <div styleName="mailbox-verification">
-            <div styleName="success-pic"><img src={imgVeriSuccess} /></div>
-            <div styleName="already-sent">验证邮件已经发送到您的注册邮箱</div>
-            <div styleName="email">{this.state.email}</div>
-            <div styleName="veri-btn"><button>去验证</button></div>
+        {this.state.verifyModelVisible &&
+          <div styleName="pop">
+            <div styleName="mailbox-verification">
+              <div styleName="success-pic"><img src={imgVeriSuccess} /></div>
+              <div styleName="already-sent">验证邮件已经发送到您的注册邮箱</div>
+              <div styleName="email">{this.state.email}</div>
+              <div styleName="veri-btn">
+                <button onClick={() => { this.setState({ verifyModelVisible: false }) }}>去验证</button>
+              </div>
+            </div>
           </div>
-        </div>
+        }
       </div>
     )
   }
