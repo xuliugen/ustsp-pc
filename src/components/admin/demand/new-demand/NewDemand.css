@@ -2,6 +2,13 @@
   width: 900px;
 }
 
+.title{
+  padding-left: 24px;
+  padding-top: 24px;
+  margin-bottom: 22px;
+  border-left: #3091e6 6px solid;
+
+}
 .demand-info{
   padding: 41px 135px 0 135px;
 }

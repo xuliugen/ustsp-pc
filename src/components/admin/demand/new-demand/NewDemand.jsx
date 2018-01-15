@@ -14,8 +14,8 @@ export default class NewDemand extends React.Component {
     return (
       <div styleName="container">
         <div>
-          <span>填写需求(*为必填)</span>
-          <hr />
+          <span styleName="title">填写需求(*为必填)</span>
+          <hr style={{ border: '1 solid #f0f0f0' }} />
         </div>
         <div styleName="demand-info" >
           <Form layout="vertical" styleName="demandInfo-form">
@@ -149,7 +149,6 @@ export default class NewDemand extends React.Component {
         <div style={{textAlign: 'center', marginTop: '60px', marginBottom: '40px'}}>
           <button styleName="release-button">立即发布</button>
         </div>
-
       </div>
     )
   }
