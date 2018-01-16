@@ -1,7 +1,8 @@
 import React from 'react'
-import { Form, Select, Input, Icon, Checkbox, Button } from 'antd'
+import { Form, Select, Input, Icon, Checkbox, Button, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
+import { UserApi } from 'src/ajax'
 import './regForm.css'
 
 const { Option } = Select
@@ -25,21 +26,28 @@ class RegForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.form.resetFields()
+    // this.props.form.resetFields()
     this.props.form.setFieldsValue(this.props.registerStore.initial)
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
-      // if (!err) {
-      //   console.log('Received values of form: ', values)
-      // }
-      console.log(err)
-      this.props.registerStore.setInitialData(values)
+    this.props.form.validateFields(async (err, values) => {
+      if (!err) {
+        const regData = {
+          phone: values.userTel,
+          password: values.pwd,
+          userType: values.userType,
+          email: values.userMail
+        }
+        const uid = await UserApi.register(regData)
+        if (uid) {
+          message.success('注册成功，进入下一步')
+          this.props.registerStore.saveInitialData({ uid })
+          this.props.history.push('/register/3')
+        }
+      }
     })
-    // const { history } = this.props
-    // history.push('/register/3')
   }
 
   handleUserTypeChange = (val) => {
@@ -52,7 +60,14 @@ class RegForm extends React.Component {
   handleValidateVerCode = (rule, value, callback) => {
     if (this.state.verify.validateStatus === 'success') {
       callback()
+      return
     }
+    const code = this.props.form.getFieldValue('userVer')
+    const tel = this.props.form.getFieldValue('userTel')
+    if (!tel || !code) {
+      return
+    }
+
     if (value) {
       this.setState(pre => ({
         verify: {
@@ -60,28 +75,21 @@ class RegForm extends React.Component {
           validateStatus: 'validating'
         }
       }))
-      setTimeout(() => {
-        const isMath = true
-        if (isMath) {
-          this.setState(pre => ({
-            verify: {
-              ...pre.verify,
-              validateStatus: 'success',
-              btnDisabled: true,
-              btnText: '验证成功'
-            }
-          }))
-          callback()
-        } else {
-          this.setState(pre => ({
-            verify: {
-              ...pre.verify,
-              validateStatus: 'error'
-            }
-          }))
-          callback(new Error('验证码错误'))
-        }
-      }, 300)
+      UserApi.checkVerifyCode(code, tel, 'phone')
+        .then(res => {
+          if (res) {
+            this.terminate()
+            callback()
+          } else {
+            this.setState(pre => ({
+              verify: {
+                ...pre.verify,
+                validateStatus: 'error'
+              }
+            }))
+            callback(new Error('验证码错误'))
+          }
+        })
     }
   }
 
@@ -107,9 +115,11 @@ class RegForm extends React.Component {
   fetchVerCode = () => {
     const { getFieldValue } = this.props.form
     const tel = getFieldValue('userTel')
-    this.props.form.validateFields(['userTel'], (err) => {
+    this.props.form.validateFields(['userTel'], async (err) => {
       if (!err) {
-        console.log('get code', tel)
+        const data = await UserApi.fetchVerifyCode(tel)
+        console.log(data)
+        // todo
         this.process()
       }
     })
@@ -126,9 +136,17 @@ class RegForm extends React.Component {
   }
 
   terminate = () => {
-    clearTimeout(this.processId)
-    this.btnDisabled = false
-    this.btnText = '验证成功'
+    if (this.state.verify.processId) {
+      clearTimeout(this.state.verify.processId)
+    }
+    this.setState(pre => ({
+      verify: {
+        ...pre.verify,
+        validateStatus: 'success',
+        btnDisabled: true,
+        btnText: '验证成功'
+      }
+    }))
   }
 
   performProcessing = () => {
@@ -164,9 +182,9 @@ class RegForm extends React.Component {
             rules: [{ required: true, message: '请选择用户类型' }]
           })(
             <Select placeholder="选择用户类型" size="large" onChange={this.handleUserTypeChange}>
-              <Option value="student">学生</Option>
-              <Option value="teacher">教师</Option>
-              <Option value="enterprise">企业</Option>
+              <Option value={1}>学生</Option>
+              <Option value={2}>教师</Option>
+              <Option value={3}>企业</Option>
             </Select>
           )}
         </FormItem>

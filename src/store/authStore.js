@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import { SessionAPI } from 'src/ajax'
+import { SessionApi } from 'src/ajax'
 import { userStore } from 'src/store'
 
 class AuthStore {
@@ -13,7 +13,7 @@ class AuthStore {
         username: this.username,
         password: this.password
       }
-      const userInfo = await SessionAPI.login(req)
+      const userInfo = await SessionApi.login(req)
       this.setPassword('')
       userStore.save(userInfo)
     } catch (err) {
