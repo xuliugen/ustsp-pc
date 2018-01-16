@@ -1,0 +1,39 @@
+.company-card {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.company-brand {
+  width: 24.5%;
+}
+
+.company-brand img {
+  width: 100%;
+}
+
+.detail {
+  margin-left: 26px;
+}
+
+.name {
+  font-size: 22px;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #666666;
+}
+
+.location {
+  font-size: 16px;
+  color: #8f9ba7;
+}
