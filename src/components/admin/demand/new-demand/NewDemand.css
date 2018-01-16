@@ -1,13 +1,15 @@
 .container{
   width: 900px;
+  background-color: white;
 }
 
 .title{
+  font-size: 16px;
+  display: inline-block;
   padding-left: 24px;
-  padding-top: 24px;
-  margin-bottom: 22px;
+  /* padding-top: 24px; */
+  margin: 22px 0;
   border-left: #3091e6 6px solid;
-
 }
 .demand-info{
   padding: 41px 135px 0 135px;
@@ -19,11 +21,14 @@
 
 .add-button{
   color: #3091e6;
+  background-color: white;
+  border-style: none;
 }
 
 .skills-require-info{
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 25px;
 }
 
 .object {
@@ -32,7 +37,7 @@
 }
 
 .object-radio {
-  padding: 15px 0 15px 0;
+  padding: 15px 0;
   flex-grow: 1;
   border-radius: 4px;
   border: 1px solid #eee;
@@ -59,7 +64,7 @@
 
 .release-button{
   background-color: #3091e6;
-  padding: 15px 47px 14px 47px;
+  padding: 15px 47px;
   color: #fff;
   font-size: 14px;
   border-radius: 4px;
