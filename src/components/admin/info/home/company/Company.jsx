@@ -22,7 +22,7 @@ export default class Company extends React.Component<{}, State> {
         { name: '腾讯科技', field: '移动互联网 / 游戏', location: '中国·深圳' },
         { name: '华为HUAWEI', field: '移动互联网 / 企业服务', location: '中国·深圳' },
         { name: 'tap4fun', field: '移动互联网 / 游戏', location: '中国·成都' },
-        { name: 'Intel英特尔（中国）', field: '移动互联网', location: '中国·北京' }
+        { name: 'Intel英特尔(中国)', field: '移动互联网', location: '中国·北京' }
       ]
     }
   }
