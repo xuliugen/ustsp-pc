@@ -18,6 +18,8 @@ module.exports = {
       named: 'never',
       asyncArrow: 'always'
     }],
+    // allow debugger during development
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'jsx-quotes': ['error', 'prefer-double']
   }
 }
