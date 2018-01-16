@@ -15,7 +15,7 @@ export default class NewDemand extends React.Component {
       <div styleName="container">
         <div>
           <span styleName="title">填写需求(*为必填)</span>
-          <hr style={{ border: '1px solid #f0f0f0' }} />
+          <hr style={{ border: '1 solid #f0f0f0' }} />
         </div>
         <div styleName="demand-info" >
           <Form layout="vertical" styleName="demandInfo-form">
@@ -136,7 +136,7 @@ export default class NewDemand extends React.Component {
               </FormItem>
               <FormItem label="需求描述">
                 <div styleName="description-container">
-                  <TextArea rows={8} style={{overflowY: 'hidden'}} />
+                  <TextArea rows={8} />
                   <span styleName="word-limit">字数限制: 0/400</span>
                 </div>
               </FormItem>
@@ -146,7 +146,7 @@ export default class NewDemand extends React.Component {
             </div>
           </Form>
         </div>
-        <div style={{textAlign: 'center', paddingTop: '60px', paddingBottom: '40px'}}>
+        <div style={{textAlign: 'center', marginTop: '60px', marginBottom: '40px'}}>
           <button styleName="release-button">立即发布</button>
         </div>
       </div>
