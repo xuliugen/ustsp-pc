@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import Project from './project/Project'
 import Teacher from './teacher/Teacher'
+import Student from './student/Student'
 
 export default class Home extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class Home extends React.Component {
           </div>
           <div styleName="ts-container">
             <Teacher />
-            <div>student</div>
+            <Student />
           </div>
         </div>
         <div>company</div>
