@@ -9,6 +9,7 @@
 }
 
 .verifyIpt {
+  display: inline-block;
   width: 290px;
   margin-right: 10px;
 }
