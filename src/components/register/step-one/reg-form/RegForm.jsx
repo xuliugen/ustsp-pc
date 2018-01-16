@@ -15,7 +15,11 @@ class RegForm extends React.Component {
     super(props)
     this.state = {
       verify: {
-        validateStatus: '' // success, error, validating
+        validateStatus: '', // success, error, validating
+        cd: 60,
+        processId: null,
+        btnDisabled: false,
+        btnText: '获取'
       }
     }
   }
@@ -50,20 +54,31 @@ class RegForm extends React.Component {
       callback()
     }
     if (value) {
-      this.setState({
-        verify: { validateStatus: 'validating' }
-      })
+      this.setState(pre => ({
+        verify: {
+          ...pre.verify,
+          validateStatus: 'validating'
+        }
+      }))
       setTimeout(() => {
         const isMath = true
         if (isMath) {
-          this.setState({
-            verify: { validateStatus: 'success' }
-          })
+          this.setState(pre => ({
+            verify: {
+              ...pre.verify,
+              validateStatus: 'success',
+              btnDisabled: true,
+              btnText: '验证成功'
+            }
+          }))
           callback()
         } else {
-          this.setState({
-            verify: { validateStatus: 'error' }
-          })
+          this.setState(pre => ({
+            verify: {
+              ...pre.verify,
+              validateStatus: 'error'
+            }
+          }))
           callback(new Error('验证码错误'))
         }
       }, 300)
@@ -95,8 +110,49 @@ class RegForm extends React.Component {
     this.props.form.validateFields(['userTel'], (err) => {
       if (!err) {
         console.log('get code', tel)
+        this.process()
       }
     })
+  }
+
+  process = () => {
+    const processId = setTimeout(() => {
+      this.performProcessing()
+    }, 1000)
+    this.setState((pre) => {
+      const verify = Object.assign({}, pre.verify, { processId })
+      return { verify }
+    })
+  }
+
+  terminate = () => {
+    clearTimeout(this.processId)
+    this.btnDisabled = false
+    this.btnText = '验证成功'
+  }
+
+  performProcessing = () => {
+    const { cd } = this.state.verify
+    if (cd === 0) {
+      this.setState((pre) => {
+        const verify = Object.assign({}, pre.verify, {
+          btnText: '获取',
+          btnDisabled: false,
+          cd: 60
+        })
+        return { verify }
+      })
+    } else {
+      this.setState((pre) => {
+        const verify = Object.assign({}, pre.verify, {
+          btnDisabled: true,
+          cd: pre.verify.cd - 1,
+          btnText: `重新${pre.verify.cd - 1}s`
+        })
+        return { verify }
+      })
+      this.process()
+    }
   }
 
   render() {
@@ -157,11 +213,17 @@ class RegForm extends React.Component {
               <Input
                 size="large"
                 prefix={<Icon type="check-circle-o" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                // validateStatus={this.state.verify.validateStatus}
                 placeholder="验证码" />
             )}
           </FormItem>
-          <Button styleName="verifyBtn" size="large" type="primary" onClick={this.fetchVerCode}>获取</Button>
+          <Button
+            styleName="verifyBtn"
+            size="large"
+            type="primary"
+            disabled={this.state.verify.btnDisabled}
+            onClick={this.fetchVerCode}>
+            {this.state.verify.btnText}
+          </Button>
         </div>
         <FormItem>
           {getFieldDecorator('pwd', {
