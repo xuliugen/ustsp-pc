@@ -14,7 +14,8 @@ class StepOne extends React.Component<{}> {
   }
 
   componentDidMount() {
-    this.props.form.setFieldsValue(this.props.registerStore.one)
+    this.props.form.resetFields()
+    this.props.form.setFieldsValue(this.props.registerStore.initial)
   }
 
   handleSubmit = (e) => {
@@ -24,23 +25,22 @@ class StepOne extends React.Component<{}> {
       //   console.log('Received values of form: ', values)
       // }
       console.log(err)
-      this.props.registerStore.setOne(values)
+      this.props.registerStore.setInitialData(values)
     })
     const { history } = this.props
     history.push('/register/3')
   }
 
   handleUserTypeChange = (val) => {
-    this.props.form.setFieldsValue({
+    const { setInitialData } = this.props.registerStore
+    setInitialData({
       userType: val
     })
-    this.props.registerStore.changeUserType(val)
   }
 
   render() {
     const { getFieldDecorator } = this.props.form
     // const { registerStore } = this.props
-    // const { one } = registerStore
     return (
       <div styleName="container">
         <div styleName="title">step 1 : 填写基本信息</div>
@@ -49,7 +49,7 @@ class StepOne extends React.Component<{}> {
             {getFieldDecorator('userType', {
               rules: [{ required: true, message: '请选择用户类型' }]
             })(
-              <Select placeholder="选择用户类型" size="large">
+              <Select placeholder="选择用户类型" size="large" onChange={this.handleUserTypeChange}>
                 <Option value="student">学生</Option>
                 <Option value="teacher">教师</Option>
                 <Option value="enterprise">企业</Option>

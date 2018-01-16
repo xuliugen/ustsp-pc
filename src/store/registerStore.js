@@ -1,9 +1,21 @@
-import { observable, action } from 'mobx'
+import { observable, action, extendObservable, reaction } from 'mobx'
 
 class RegisterStore {
   @observable step = 1
-  @observable one = {
-    userType: 'student'
+  @observable initial = {}
+
+  constructor() {
+    this.loadData()
+    this.saveInitialData()
+
+    this.setInitialData = this.setInitialData.bind(this)
+  }
+
+  loadData() {
+    const defaultValue = { userType: 'teacher' }
+    const fromStorage = JSON.parse(window.sessionStorage.getItem('reg1')) || {}
+    const data = Object.assign({}, fromStorage, defaultValue)
+    extendObservable(this, { initial: data })
   }
 
   @action
@@ -12,13 +24,18 @@ class RegisterStore {
   }
 
   @action
-  changeUserType = (type) => {
-    this.one.userType = type
+  setInitialData(data) {
+    extendObservable(this, { initial: data })
   }
 
-  @action
-  setOne(data) {
-    this.one = data
+  saveInitialData() {
+    reaction(
+      () => this.initial,
+      initial => {
+        const storageStr = JSON.stringify(initial)
+        window.sessionStorage.setItem('reg1', storageStr)
+      }
+    )
   }
 }
 

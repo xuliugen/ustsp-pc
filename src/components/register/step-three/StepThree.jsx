@@ -13,7 +13,7 @@ export default class StepThree extends React.Component {
   }
 
   render() {
-    const { userType } = this.props.registerStore.one
+    const { userType } = this.props.registerStore.initial
     let content = null
     switch (userType) {
       case 'student':
