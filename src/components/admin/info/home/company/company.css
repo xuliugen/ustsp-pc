@@ -1,0 +1,19 @@
+.company-interested {
+  width: 100%;
+  background-color: #fff
+}
+
+.header-wrapper{
+  padding: 19px 0 24px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.company-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-card-wrapper {
+  width: 23.2%;
+  margin: 20px;
+}
