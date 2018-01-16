@@ -1,6 +1,4 @@
 .project-interested {
-  width: 770px;
-  /* height: 990px; */
   background-color: #fff;
 }
 
@@ -10,9 +8,9 @@
 }
 
 .project-item-wrapper {
-  margin: 0 30px;
-  height: 116px;
-  width: 711px;
+  margin: 0 auto;
+  padding: 25px 0;
+  width: 92%;
   display: flex;
   align-items: center;
   border-bottom: 1px dashed #f0f0f0;
