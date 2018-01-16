@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { Home, Demand } from 'components/admin'
+import { Home, Demand, Mgnt } from 'components/admin'
 
 export default class Admin extends React.Component {
   render() {
@@ -13,6 +13,7 @@ export default class Admin extends React.Component {
         <Switch>
           <Route exact path={`${match.url}/`} component={Home} />
           <Route path={`${match.url}/demand`} component={Demand} />
+          <Route path={`${match.url}/mgnt`} component={Mgnt} />
         </Switch>
       </div>
     )
