@@ -16,13 +16,13 @@ export default class StepThree extends React.Component {
     const { userType } = this.props.registerStore.initial
     let content = null
     switch (userType) {
-      case 'student':
+      case 1:
         content = <Student />
         break
-      case 'teacher':
+      case 2:
         content = <Teacher />
         break
-      case 'enterprise':
+      case 3:
         content = <Enterprise />
         break
     }
