@@ -16,7 +16,7 @@ class RegForm extends React.Component {
     super(props)
     this.state = {
       verify: {
-        validateStatus: '', // success, error, validating
+        validateStatus: null, // success, error, validating
         cd: 60,
         processId: null,
         btnDisabled: false,
@@ -65,6 +65,13 @@ class RegForm extends React.Component {
     const code = this.props.form.getFieldValue('userVer')
     const tel = this.props.form.getFieldValue('userTel')
     if (!tel || !code) {
+      this.setState(pre => ({
+        verify: {
+          ...pre.verify,
+          validateStatus: 'error'
+        }
+      }))
+      callback()
       return
     }
 
