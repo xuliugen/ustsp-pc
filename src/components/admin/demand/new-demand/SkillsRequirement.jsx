@@ -1,13 +1,15 @@
 import React from 'react'
 import './skillsRequirement.css'
-import { Icon } from 'antd'
+import { Tag } from 'antd'
 
 export default class SkillsRequirement extends React.Component {
+  log(e) {
+    console.log(e)
+  }
+
   render() {
     return (
-      <span styleName="container">{this.props.skill}
-        <Icon type="minus-circle" styleName="icon" />
-      </span>
+      <Tag closable onClose={this.log} styleName="container">{this.props.skill}</Tag>
     )
   }
 }
