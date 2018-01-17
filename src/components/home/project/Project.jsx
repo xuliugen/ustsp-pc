@@ -19,11 +19,11 @@ export default class Project extends React.Component<{}, State> {
     super()
     this.state = {
       projects: [
-        { title: '项目标题', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#1dbbae' },
-        { title: '第二个项目标题', school: '西南石油大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 9000, bgColor: '#2b7dd6' },
-        { title: 'An English title project', school: '四川大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 10000, bgColor: '#1dbbae' },
-        { title: '长度为10个字以上的标题样式', school: '西南民族大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 3000, price: 500, bgColor: '#2b7dd6' },
-        { title: '某一个标题', school: '成都大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 12, price: 500, bgColor: '#1dbbae' }
+        { title: '基于Android的翻页动画设计与实现', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#1dbbae' },
+        { title: '网络传输质量动态监测程序', school: '西南石油大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 9000, bgColor: '#2b7dd6' },
+        { title: '基于UNIX/Linux的自学系统', school: '四川大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 890, price: 10000, bgColor: '#1dbbae' },
+        { title: '基于ClientServer结构的多进程调度平衡系统', school: '西南民族大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 3000, price: 500, bgColor: '#2b7dd6' },
+        { title: '数据库增量数据同步', school: '成都大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 12, price: 500, bgColor: '#1dbbae' }
       ]
     }
   }
