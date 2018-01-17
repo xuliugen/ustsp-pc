@@ -3,6 +3,11 @@ import React from 'react'
 import NewsHeader from './header/NewsHeader'
 import NewsItem from './news-item/NewsItem'
 import './news.css'
+import avatar1 from 'src/assets/avatar6.png'
+import avatar2 from 'src/assets/avatar7.png'
+import avatar3 from 'src/assets/avatar8.png'
+import avatar4 from 'src/assets/avatar9.png'
+import avatar5 from 'src/assets/avatar10.png'
 
 type NewsObj = {
   name: string,
@@ -20,11 +25,11 @@ export default class News extends React.Component<{}, State> {
     super()
     this.state = {
       news: [
-        {name: '陈萌', company: '西南石油大学', time: '12-17 17:55', content: '舞法天女社团成立啦！！'},
-        {name: '徐日', company: '四川大学', time: '12-17 17:55', content: '急求会html+css和AE的ui设计师'},
-        {name: '周楼楼', company: '最爱毛jio有限公司', time: '12-17 17:55', content: '高薪招java了'},
-        {name: '陈皮皮', company: '小米科技', time: '12-17 17:55', content: '一排能显示的长度只有这么多再多就...'},
-        {name: '利兹堡', company: '西南财经大学', time: '12-17 17:55', content: '拒绝雾霾天！快来参加节能减排社团dddd'}
+        { name: '陈萌', company: '电子科技大学', time: '12-17 17:55', content: '高中新课标古诗文背诵增加学生负担？教育部回应', avatar: avatar1 },
+        { name: '徐思航', company: '四川大学', time: '12-17 17:55', content: '急求会html+css和AE的ui设计师', avatar: avatar2 },
+        { name: '王晓峰', company: '京东方技术有限公司', time: '12-17 17:55', content: '急聘移动端开发工程师', avatar: avatar3 },
+        { name: '陈星', company: '小米科技', time: '12-17 17:55', content: '团队有着丰富的项目经验，承接各种项目开发工作', avatar: avatar4 },
+        { name: '王立飞', company: '西南财经大学', time: '12-17 17:55', content: '我校成功研发了数据库增量数据同步系统', avatar: avatar5 }
       ]
     }
   }
