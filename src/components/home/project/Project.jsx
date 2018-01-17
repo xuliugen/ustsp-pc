@@ -2,7 +2,7 @@
 import React from 'react'
 import './project.css'
 import ProjectHeader from './header/Header'
-import ProjectItem from './project-item/ProjectItem'
+import ProjectItem from '../../common/project-item/ProjectItem'
 
 type ProjectObj = {
   title: string,

@@ -1,0 +1,17 @@
+.project-interested {
+  background-color: #fff;
+}
+
+.header-wrapper{
+  padding: 19px 0 24px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.project-item-wrapper {
+  margin: 0 auto;
+  padding: 25px 0;
+  width: 92%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dashed #f0f0f0;
+}
