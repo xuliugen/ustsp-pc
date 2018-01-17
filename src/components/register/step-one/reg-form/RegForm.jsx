@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Select, Input, Icon, Checkbox, Button, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
-import { UserApi } from 'src/ajax'
+import { RegisterApi } from 'src/ajax'
 import './regForm.css'
 
 const { Option } = Select
@@ -40,7 +40,7 @@ class RegForm extends React.Component {
           userType: values.userType,
           email: values.userMail
         }
-        const uid = await UserApi.register(regData)
+        const uid = await RegisterApi.register(regData)
         if (uid) {
           message.success('注册成功，进入下一步')
           this.props.registerStore.saveInitialData({ uid })
@@ -75,7 +75,7 @@ class RegForm extends React.Component {
           validateStatus: 'validating'
         }
       }))
-      UserApi.checkVerifyCode(code, tel, 'phone')
+      RegisterApi.checkVerifyCode(code, tel, 'phone')
         .then(res => {
           if (res) {
             this.terminate()
@@ -117,7 +117,7 @@ class RegForm extends React.Component {
     const tel = getFieldValue('userTel')
     this.props.form.validateFields(['userTel'], async (err) => {
       if (!err) {
-        const data = await UserApi.fetchVerifyCode(tel)
+        const data = await RegisterApi.fetchVerifyCode(tel)
         console.log(data)
         // todo
         this.process()
