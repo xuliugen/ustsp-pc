@@ -1,8 +1,6 @@
 // @flow
 import React from 'react'
 import './card.css'
-import ImgTouxiang from './wdf.png'
-
 type IPObj = {
   title: string,
   type: string,
@@ -13,12 +11,13 @@ type IPObj = {
 }
 
 type Props = {
-  ip: IPObj
+  ip: IPObj,
+  avatar: string
 }
 
 export default class IpCard extends React.Component<Props> {
   render() {
-    const { ip } = this.props
+    const { ip, avatar } = this.props
     return (
       <div styleName="ip-card">
         <div styleName="ip-card-basic">
@@ -30,7 +29,7 @@ export default class IpCard extends React.Component<Props> {
           <span styleName="ip-card-patentNum">专利编号: {ip.patentNum}</span>
         </div>
         <div styleName="ip-card-publisher">
-          <span styleName="ip-card-avatar"><img src={ImgTouxiang} /></span>
+          <span styleName="ip-card-avatar"><img src={avatar} /></span>
           <div styleName="ip-card-detail">
             <span styleName="ip-card-name">{ip.name}</span>
             <br />
