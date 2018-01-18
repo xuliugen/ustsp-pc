@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form, Input, Radio, DatePicker, Row, Col, Upload } from 'antd'
+import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { FormTitle, UploadAvatar } from '../../common'
 import './tchBaseInfo.css'
-
+import uploadTchPhoto from './upload-tch-photo/uploadTchPhoto'
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
@@ -77,13 +77,7 @@ export default class TchBaseInfo extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Upload
-              name="avatar"
-              listType="picture-card"
-              showUploadList={false}
-              action="//jsonplaceholder.typicode.com/posts/">
-              <div styleName="upload-tch-photo-text">+ 上传教师证照片</div>
-            </Upload>
+            <uploadTchPhoto />
           </Row>
         </div>
       </div>
