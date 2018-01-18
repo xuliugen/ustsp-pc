@@ -43,7 +43,7 @@ class RegForm extends React.Component {
         const uid = await RegisterApi.register(regData)
         if (uid) {
           message.success('注册成功，进入下一步')
-          this.props.registerStore.saveInitialData({ uid })
+          this.props.registerStore.setInitialData({ uid })
           this.props.history.push('/register/3')
         }
       }

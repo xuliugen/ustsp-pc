@@ -24,7 +24,7 @@ class StepThreeTeacher extends React.Component<{}> {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const tchInfo = {
-          id: 'd761509f597d4963b7aa3a31f0a5318a',
+          id: this.props.registerStore.initial.uid,
           realName: values.realName,
           sex: values.render,
           birth: values.birth,

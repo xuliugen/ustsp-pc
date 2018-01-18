@@ -25,7 +25,8 @@ class RegisterStore {
 
   @action
   setInitialData(data) {
-    extendObservable(this, { initial: data })
+    // extendObservable(this, { initial: data })
+    Object.assign(this.initial, data)
   }
 
   saveInitialData() {
