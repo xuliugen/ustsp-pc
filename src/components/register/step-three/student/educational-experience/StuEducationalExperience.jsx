@@ -7,7 +7,7 @@ import NewExpItem from './new-exp-item/NewExpItem'
 export default class StuEdicationalExperience extends React.Component<{}> {
   render() {
     return (
-      <div styleName="educational-experience">
+      <div styleName="educational-experience" ref={this.props.containerRef}>
         <FormTitle title={'教育经历'} />
         <div styleName="content">
           <NewExpItem />

@@ -10,7 +10,7 @@ const { TextArea } = Input
 export default class PersonalExperience extends React.Component {
   render() {
     return (
-      <div styleName="personal-experience">
+      <div styleName="personal-experience" ref={this.props.containerRef}>
         <FormTitle title={'个人履历'} />
         <Form styleName="personal-experience-item" style={{ marginRight: '10px' }} layout="vertical" >
           <Row gutter={20}>

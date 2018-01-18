@@ -11,7 +11,7 @@ const Option = Select.Option
 export default class EnterBaseInfor extends React.Component<{}> {
   render() {
     return (
-      <div styleName="base-info">
+      <div styleName="base-info" ref={this.props.containerRef} >
         <FormTitle title={'基本信息'} />
         <div styleName="content" >
           <Form layout="vertical" styleName="base-info-form" >
