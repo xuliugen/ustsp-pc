@@ -1,5 +1,7 @@
 import React from 'react'
 import './teacher.css'
+import { Form } from 'antd'
+
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
 import TchEdicationalExperience from './educational-experience/TchEduExp'
@@ -8,7 +10,7 @@ import IP from './ip/IP'
 import RAward from './r-award/RAward'
 import NRAward from './nr-award/NRAward'
 
-export default class StepThreeTeacher extends React.Component<{}> {
+class StepThreeTeacher extends React.Component<{}> {
   render() {
     return (
       <div styleName="container">
@@ -17,8 +19,10 @@ export default class StepThreeTeacher extends React.Component<{}> {
           <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
         </div>
         <div styleName="form-container">
-          <TchBaseInfo />
-          <PersonalExperience />
+          <Form layout="vertical" styleName="baseInfo-form">
+            <TchBaseInfo />
+            <PersonalExperience />
+          </Form>
           <TchEdicationalExperience />
           <Research />
           <IP />
@@ -30,3 +34,5 @@ export default class StepThreeTeacher extends React.Component<{}> {
     )
   }
 }
+
+export default Form.create()(StepThreeTeacher)

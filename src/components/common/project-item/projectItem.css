@@ -29,8 +29,8 @@
   margin-top: 20px;
   /* width: 350px; */
   color: #8f9ba7;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex; */
+  /* justify-content: space-between; */
 }
 
 .time span {

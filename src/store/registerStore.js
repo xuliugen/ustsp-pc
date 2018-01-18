@@ -12,9 +12,9 @@ class RegisterStore {
   }
 
   loadData() {
-    const defaultValue = { userType: 'teacher' }
+    const defaultValue = { userType: 2 }
     const fromStorage = JSON.parse(window.sessionStorage.getItem('reg1')) || {}
-    const data = Object.assign({}, fromStorage, defaultValue)
+    const data = Object.assign({}, defaultValue, fromStorage)
     extendObservable(this, { initial: data })
   }
 
