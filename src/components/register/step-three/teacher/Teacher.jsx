@@ -44,8 +44,14 @@ class StepThreeTeacher extends React.Component<{}> {
           photo: 'values.photo',
           isRealName: 'true'
         }
-        await TchInfoApi.completeTchInfo(tchInfo)
-        message.success('注册成功，进入下一步')
+        try {
+          await TchInfoApi.completeTchInfo(tchInfo)
+          message.success('注册成功，进入下一步')
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        message.error('请先完善必填信息')
       }
     })
   }

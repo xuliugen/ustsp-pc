@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { message } from 'antd'
 
 // Create an instance using the config defaults provided by the library
 const instance = axios.create({
@@ -22,14 +23,22 @@ instance.interceptors.request.use(function(config) {
 instance.interceptors.response.use((res) => {
   // Do something with response data
   // console.log(res)
-  return res.data
+  return res
 }, (error) => {
   // Do something with response error
   // return Promise.reject(err)
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
-    // console.warn(error.response)
+    console.error(error.response)
+    const { status } = error.response
+    switch (status) {
+      case 500:
+        message.error('oops, 服务器出了点问题...')
+        break
+      default:
+        break
+    }
   } else if (error.request) {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -40,6 +49,7 @@ instance.interceptors.response.use((res) => {
     console.warn('Error', error.message)
   }
   // console.log(error.config)
+  throw error
 })
 
 export default instance

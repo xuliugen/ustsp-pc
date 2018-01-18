@@ -67,7 +67,7 @@ export default class TchBaseInfo extends React.Component {
                 {getFieldDecorator('qq', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { type: 'number', message: '请输入纯数字', transform: val => Number(val) }
+                    { required: false, type: 'number', message: '请输入纯数字', transform: val => Number(val) }
                   ]
                 })(
                   <Input
