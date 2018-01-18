@@ -36,7 +36,8 @@ export default class uploadTchPhoto extends React.Component {
         listType="picture"
         styleName="license-uploader"
         showUploadList={false}
-        action="//jsonplaceholder.typicode.com/posts/"
+        data={{ id: '5dc98a9959b84811bfbdfa12b3cde49e' }}
+        action="http://192.168.1.213:8080/upload/avatar"
         onChange={this.handleChange}
       >
         {imageUrl ? <img src={imageUrl} alt="教师证照片" height="85" /> : uploadButton}

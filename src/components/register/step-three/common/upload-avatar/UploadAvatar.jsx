@@ -41,7 +41,8 @@ export default class UploadAvatar extends React.Component {
         styleName="upload-wrapper"
         // className="avatar-uploader"
         showUploadList={false}
-        action="//jsonplaceholder.typicode.com/posts/"
+        data={{ id: '5dc98a9959b84811bfbdfa12b3cde49e' }}
+        action="http://192.168.1.213:8080/upload/avatar"
         // beforeUpload={beforeUpload}
         onChange={this.handleChange}
       >

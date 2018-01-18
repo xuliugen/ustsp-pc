@@ -76,7 +76,7 @@ export default class TchBaseInfo extends React.Component {
               </FormItem>
             </Col>
           </Row>
-          <Row>
+          <Row gutter={20}>
             <uploadTchPhoto />
           </Row>
         </div>
