@@ -12,7 +12,7 @@ export default class PersonalExperience extends React.Component {
     return (
       <div styleName="personal-experience">
         <FormTitle title={'个人履历'} />
-        <Form styleName="personal-experience-item" layout="vertical" >
+        <div styleName="personal-experience-item" layout="vertical" >
           <Row gutter={20}>
             <Col span={12} >
               <FormItem label="就职学校" style={{ flexFlow: '1' }}>
@@ -77,7 +77,7 @@ export default class PersonalExperience extends React.Component {
               <span styleName="word-limit">字数限制: 0/400</span>
             </div>
           </FormItem>
-        </Form>
+        </div>
       </div>
     )
   }
