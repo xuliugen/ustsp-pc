@@ -43,7 +43,7 @@ export default class uploadTchPhoto extends React.Component {
         styleName="license-uploader"
         showUploadList={false}
         data={{ id: '5dc98a9959b84811bfbdfa12b3cde49e' }}
-        action="http://192.168.1.213:8080/upload/avatar"
+        action={`${window.config.API_ORIGIN}/upload/avatar`}
         onChange={this.handleChange}
       >
         {imageUrl ? <img src={imageUrl} alt="教师证照片" height="85" /> : uploadButton}
