@@ -1,6 +1,8 @@
 .upload-content {
+   width: 582px;
   font-size: 14px;
-  color: #aaaaaa;
+  text-align: center;
+  color: #aaa;
   cursor: pointer;
 }
 

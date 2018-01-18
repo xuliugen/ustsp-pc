@@ -17,8 +17,17 @@ class StepThreeTeacher extends React.Component<{}> {
   constructor() {
     super()
     this.handleOnClickConfirm = this.handleOnClickConfirm.bind(this)
+    this.setTchAvatar = this.setTchAvatar.bind(this)
+    this.state = {
+      tchAvatar: null
+    }
   }
 
+  setTchAvatar(avatar) {
+    this.setState({
+      tchAvatar: avatar
+    })
+  }
   handleOnClickConfirm(e) {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
@@ -41,7 +50,7 @@ class StepThreeTeacher extends React.Component<{}> {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: 'values.photo',
+          photo: this.state.tchAvatar,
           isRealName: 'true'
         }
         await TchInfoApi.completeTchInfo(tchInfo)
@@ -59,7 +68,7 @@ class StepThreeTeacher extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
-            <TchBaseInfo form={this.props.form} />
+            <TchBaseInfo form={this.props.form} avatar={this.state.tchAvatar} setAvatar={this.setTchAvatar} />
             <PersonalExperience form={this.props.form} />
           </Form>
           <TchEdicationalExperience />

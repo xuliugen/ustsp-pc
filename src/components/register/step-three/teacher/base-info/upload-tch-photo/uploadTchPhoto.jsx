@@ -1,6 +1,6 @@
 import React from 'react'
 import './uploadTchPhoto.css'
-import { Upload, Icon } from 'antd'
+import { Upload, Icon, message } from 'antd'
 
 export default class uploadTchPhoto extends React.Component {
   state = {
@@ -13,6 +13,12 @@ export default class uploadTchPhoto extends React.Component {
       return
     }
     if (info.file.status === 'done') {
+      message.success('上传照片成功')
+
+      // let pics = JSON.parse(info.file.response))
+
+      let avatars = JSON.parse(JSON.stringify(info.file.response))
+      this.props.setAvatar(avatars[0].file_url)
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
@@ -32,7 +38,7 @@ export default class uploadTchPhoto extends React.Component {
 
     return (
       <Upload
-        name="license-picture"
+        name="files"
         listType="picture"
         styleName="license-uploader"
         showUploadList={false}

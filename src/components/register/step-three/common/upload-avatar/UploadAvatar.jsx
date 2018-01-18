@@ -1,5 +1,5 @@
 import React from 'react'
-import { Upload, Icon } from 'antd'
+import { Upload, Icon, message } from 'antd'
 
 import './uploadAvatar.css'
 import imgDefaultAvatar from './defaultAvatar.svg'
@@ -14,13 +14,14 @@ export default class UploadAvatar extends React.Component {
     //   this.setState({ loading: true })
     //   return
     // }
-    // if (info.file.status === 'done') {
+    if (info.file.status === 'done') {
     // Get this url from response in real world.
-    getBase64(info.file.originFileObj, imageUrl => this.setState({
-      imageUrl,
-      loading: false
-    }))
-    // }
+      message.success('上传照片成功')
+      getBase64(info.file.originFileObj, imageUrl => this.setState({
+        imageUrl,
+        loading: false
+      }))
+    }
   }
 
   render() {

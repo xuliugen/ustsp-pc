@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { FormTitle, UploadAvatar } from '../../common'
 import './tchBaseInfo.css'
-import uploadTchPhoto from './upload-tch-photo/uploadTchPhoto'
+import UploadTchPhoto from './upload-tch-photo/uploadTchPhoto'
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
@@ -76,8 +76,8 @@ export default class TchBaseInfo extends React.Component {
               </FormItem>
             </Col>
           </Row>
-          <Row gutter={20}>
-            <uploadTchPhoto />
+          <Row>
+            <UploadTchPhoto avatar={this.props.avatar} setAvatar={this.props.setAvatar} />
           </Row>
         </div>
       </div>
