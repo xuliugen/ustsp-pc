@@ -1,6 +1,6 @@
-// @flow
+/* eslint-disable import/first */
 // import 'normalize.css'
-import './app.css'
+import './config/'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { useStrict } from 'mobx'
@@ -10,6 +10,7 @@ import * as store from 'src/store'
 import registerServiceWorker from './registerServiceWorker'
 
 import App from './App'
+import './app.css'
 
 // 设置为中文日期
 import moment from 'moment'
