@@ -1,9 +1,11 @@
 import React from 'react'
 import { Upload, Icon, message } from 'antd'
-
+import { observer, inject } from 'mobx-react'
 import './uploadAvatar.css'
 import imgDefaultAvatar from './defaultAvatar.svg'
 
+@inject('registerStore')
+@observer
 export default class UploadAvatar extends React.Component {
   state = {
     loading: false
@@ -37,13 +39,13 @@ export default class UploadAvatar extends React.Component {
     )
     return (
       <Upload
-        name="avatar"
+        name="files"
         listType="picture"
         styleName="upload-wrapper"
         // className="avatar-uploader"
         showUploadList={false}
-        data={{ id: '5dc98a9959b84811bfbdfa12b3cde49e' }}
-        action="http://192.168.1.213:8080/upload/avatar"
+        data={{ id: this.props.registerStore.initial.uid }}
+        action={`${window.config.API_ORIGIN}/upload/avatar`}
         // beforeUpload={beforeUpload}
         onChange={this.handleChange}
       >

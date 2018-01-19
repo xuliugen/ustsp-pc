@@ -77,7 +77,7 @@ export default class TchBaseInfo extends React.Component {
             </Col>
           </Row>
           <Row>
-            <UploadTchPhoto avatar={this.props.avatar} setAvatar={this.props.setAvatar} />
+            <UploadTchPhoto tchCertificate={this.props.tchCertificate} setTchCertificate={this.props.setTchCertificate} />
           </Row>
         </div>
       </div>

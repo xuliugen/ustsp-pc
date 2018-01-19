@@ -17,15 +17,15 @@ class StepThreeTeacher extends React.Component<{}> {
   constructor() {
     super()
     this.handleOnClickConfirm = this.handleOnClickConfirm.bind(this)
-    this.setTchAvatar = this.setTchAvatar.bind(this)
+    this.setTchCertificate = this.setTchCertificate.bind(this)
     this.state = {
-      tchAvatar: null
+      tchCertificate: null
     }
   }
 
-  setTchAvatar(avatar) {
+  setTchCertificate(certificate) {
     this.setState({
-      tchAvatar: avatar
+      tchCertificate: certificate
     })
   }
   handleOnClickConfirm(e) {
@@ -39,7 +39,7 @@ class StepThreeTeacher extends React.Component<{}> {
           birth: values.birth,
           wechat: values.wechat,
           qq: values.qq,
-          certificate: values.certificate,
+          certificate: this.state.tchCertificate,
           school: values.school,
           college: values.college,
           major: values.major,
@@ -50,7 +50,7 @@ class StepThreeTeacher extends React.Component<{}> {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: this.state.tchAvatar,
+          photo: 'photo',
           isRealName: 'true'
         }
         try {
@@ -74,7 +74,7 @@ class StepThreeTeacher extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
-            <TchBaseInfo form={this.props.form} avatar={this.state.tchAvatar} setAvatar={this.setTchAvatar} />
+            <TchBaseInfo form={this.props.form} tchCertificate={this.state.tchCertificate} setTchCertificate={this.setTchCertificate} />
             <PersonalExperience form={this.props.form} />
           </Form>
           <TchEdicationalExperience />

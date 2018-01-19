@@ -1,7 +1,10 @@
 import React from 'react'
 import './uploadTchPhoto.css'
 import { Upload, Icon, message } from 'antd'
+import { observer, inject } from 'mobx-react'
 
+@inject('registerStore')
+@observer
 export default class uploadTchPhoto extends React.Component {
   state = {
     loading: false
@@ -17,8 +20,8 @@ export default class uploadTchPhoto extends React.Component {
 
       // let pics = JSON.parse(info.file.response))
 
-      let avatars = JSON.parse(JSON.stringify(info.file.response))
-      this.props.setAvatar(avatars[0].file_url)
+      let tchCertificates = JSON.parse(JSON.stringify(info.file.response))
+      this.props.setTchCertificate(tchCertificates[0].file_url)
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
@@ -42,7 +45,7 @@ export default class uploadTchPhoto extends React.Component {
         listType="picture"
         styleName="license-uploader"
         showUploadList={false}
-        data={{ id: '5dc98a9959b84811bfbdfa12b3cde49e' }}
+        data={{ id: this.props.registerStore.initial.uid }}
         action={`${window.config.API_ORIGIN}/upload/avatar`}
         onChange={this.handleChange}
       >
