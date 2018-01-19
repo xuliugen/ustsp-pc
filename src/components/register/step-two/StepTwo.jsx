@@ -42,7 +42,7 @@ export default class StepTwo extends React.Component {
 
   render() {
     const { claimData } = this.props.registerStore
-    const avatar = (claimData && claimData.icon) ? window.config.USA_ORIGIN + claimData.icon : defaultAvatar
+    const avatar = (claimData && claimData.icon) ? claimData.icon : defaultAvatar
     return (
       <div styleName="container">
         <div styleName="title">step2:检测到相关已有资料，可以进行认领。</div>

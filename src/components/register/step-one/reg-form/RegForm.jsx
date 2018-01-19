@@ -38,6 +38,7 @@ class RegForm extends React.Component {
     this.props.form.validateFields(async (err, values) => {
       const { data } = await TchInfoApi.claimTchInfo('YuLiu@uestc.edu.cn')
       if (data.code === 200) {
+        data.data.icon = window.config.USA_ORIGIN + data.data.icon
         registerStore.setClaimData(data.data)
         this.props.history.push('/register/2')
       }

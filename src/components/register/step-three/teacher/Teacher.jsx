@@ -39,6 +39,9 @@ class StepThreeTeacher extends React.Component<{}> {
         introduction: claimData.introduction,
         academicExperience: claimData.experience
       })
+      this.setState({
+        tchPhoto: claimData.icon
+      })
     }
   }
 
