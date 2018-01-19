@@ -27,7 +27,7 @@ class NewIPItem extends React.Component<{}> {
           applyDate: values.applyDate.valueOf(),
           applyUnit: values.applyUnit,
           inventor: values.inventor,
-          rank: values.rank
+          rank: Number(values.rank)
         }
         this.setState({ loading: true })
         try {
@@ -104,7 +104,7 @@ class NewIPItem extends React.Component<{}> {
                         { required: true, message: '请填写产权级别' }
                       ]
                     })(
-                      <Input placeholder="产权级别" />
+                      <Input placeholder="产权级别" type="number" />
                     )}
                   </FormItem>
                 </Col>
