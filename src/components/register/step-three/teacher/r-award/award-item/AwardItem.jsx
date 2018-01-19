@@ -1,9 +1,9 @@
 import React from 'react'
-import './RAwardItem.css'
+import './awardItem.css'
 import { Icon } from 'antd'
 import moment from 'moment'
 
-export default class RAwardItem extends React.Component<{}> {
+export default class AwardItem extends React.Component<{}> {
   render() {
     return (
       <div>

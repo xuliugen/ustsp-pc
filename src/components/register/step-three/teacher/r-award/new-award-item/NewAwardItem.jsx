@@ -1,5 +1,5 @@
 import React from 'react'
-import './newRAwardItem.css'
+import './newAwardItem.css'
 import { Form, Row, Col, Input, DatePicker, Modal, Button, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
@@ -9,7 +9,7 @@ const { TextArea } = Input
 
 @inject('registerStore')
 @observer
-class NewRAwardItem extends React.Component<{}> {
+class NewAwardItem extends React.Component<{}> {
   constructor() {
     super()
     this.state = {
@@ -27,7 +27,7 @@ class NewRAwardItem extends React.Component<{}> {
           time: values.time.valueOf(),
           level: values.level,
           rank: values.rank,
-          isResearch: 1
+          isResearch: this.props.isResearch
         }
         this.setState({ loading: true })
         try {
@@ -126,4 +126,4 @@ class NewRAwardItem extends React.Component<{}> {
   }
 }
 
-export default Form.create()(NewRAwardItem)
+export default Form.create()(NewAwardItem)
