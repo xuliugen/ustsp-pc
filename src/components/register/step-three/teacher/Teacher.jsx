@@ -18,9 +18,17 @@ class StepThreeTeacher extends React.Component<{}> {
     super()
     this.handleOnClickConfirm = this.handleOnClickConfirm.bind(this)
     this.setTchCertificate = this.setTchCertificate.bind(this)
+    this.setTchPhoto = this.setTchPhoto.bind(this)
     this.state = {
-      tchCertificate: null
+      tchCertificate: null,
+      tchPhoto: null
     }
+  }
+
+  setTchPhoto(photo) {
+    this.setState({
+      tchPhoto: photo
+    })
   }
 
   setTchCertificate(certificate) {
@@ -28,6 +36,7 @@ class StepThreeTeacher extends React.Component<{}> {
       tchCertificate: certificate
     })
   }
+
   handleOnClickConfirm(e) {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
@@ -50,7 +59,7 @@ class StepThreeTeacher extends React.Component<{}> {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: 'photo',
+          photo: this.state.tchPhoto,
           isRealName: 'true'
         }
         try {
@@ -74,7 +83,12 @@ class StepThreeTeacher extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
-            <TchBaseInfo form={this.props.form} tchCertificate={this.state.tchCertificate} setTchCertificate={this.setTchCertificate} />
+            <TchBaseInfo form={this.props.form}
+              tchCertificate={this.state.tchCertificate}
+              setTchCertificate={this.setTchCertificate}
+              tchPhoto={this.state.tchPhoto}
+              setTchPhoto={this.setTchPhoto}
+            />
             <PersonalExperience form={this.props.form} />
           </Form>
           <TchEdicationalExperience />

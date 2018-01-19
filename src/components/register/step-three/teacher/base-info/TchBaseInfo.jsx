@@ -62,7 +62,10 @@ export default class TchBaseInfo extends React.Component {
               </FormItem>
             </Col>
             <Col span={12}>
-              <UploadAvatar />
+              <UploadAvatar
+                tchPhoto={this.props.tchPhoto}
+                setTchPhoto={this.props.setTchPhoto}
+              />
               <FormItem styleName="qq" label="QQ">
                 {getFieldDecorator('qq', {
                   validateTrigger: 'onBlur',

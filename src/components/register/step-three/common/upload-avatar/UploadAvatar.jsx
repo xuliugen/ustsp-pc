@@ -19,6 +19,9 @@ export default class UploadAvatar extends React.Component {
     if (info.file.status === 'done') {
     // Get this url from response in real world.
       message.success('上传照片成功')
+      let tchPhotos = JSON.parse(JSON.stringify(info.file.response))
+      console.log(tchPhotos[0].file_url)
+      this.props.setTchPhoto(tchPhotos[0].file_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false
