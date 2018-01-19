@@ -1,21 +1,47 @@
-import { observable, action } from 'mobx'
+import { observable, action, extendObservable, reaction } from 'mobx'
 import { SessionApi } from 'src/ajax'
 import { userStore } from 'src/store'
 
 class AuthStore {
   @observable username = ''
   @observable password = ''
+  @observable token = null
+
+  constructor() {
+    this.loadData()
+    reaction(
+      () => this.token,
+      token => {
+        if (token) {
+          const storageStr = JSON.stringify(token)
+          window.sessionStorage.setItem('token', storageStr)
+        } else {
+          window.sessionStorage.removeItem('token')
+        }
+      }
+    )
+  }
+
+  loadData() {
+    const fromStorage = window.sessionStorage.getItem('token') || ''
+    if (fromStorage) {
+      extendObservable(this, { token: fromStorage })
+    }
+  }
 
   @action
   async login() {
     try {
       const req = {
-        username: this.username,
+        phone: this.username,
         password: this.password
       }
-      const userInfo = await SessionApi.login(req)
+      const { data } = await SessionApi.login(req)
       this.setPassword('')
-      userStore.save(userInfo)
+      userStore.save(data.user)
+      this.setToken(data.token)
+
+      return data
     } catch (err) {
       console.log(err)
     }
@@ -23,6 +49,7 @@ class AuthStore {
 
   @action logout() {
     userStore.clear()
+    this.setToken(null)
   }
 
   @action setUsername(username) {
@@ -31,6 +58,10 @@ class AuthStore {
 
   @action setPassword(password) {
     this.password = password
+  }
+
+  @action setToken(token) {
+    this.token = token
   }
 }
 
