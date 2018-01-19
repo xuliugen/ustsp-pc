@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Select, Input, Icon, Checkbox, Button, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
-import { RegisterApi } from 'src/ajax'
+import { RegisterApi, TchInfoApi } from 'src/ajax'
 import './regForm.css'
 
 const { Option } = Select
@@ -32,7 +32,13 @@ class RegForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    const { registerStore } = this.props
     this.props.form.validateFields(async (err, values) => {
+      const { data } = await TchInfoApi.claimTchInfo('YuLiu@uestc.edu.cn')
+      if (data.code === 200) {
+        registerStore.setClaimData(data.data)
+        this.props.history.push('/register/2')
+      }
       if (!err) {
         const regData = {
           phone: values.userTel,
@@ -44,7 +50,14 @@ class RegForm extends React.Component {
           const { data: uid } = await RegisterApi.register(regData)
           if (uid) {
             message.success('注册成功，进入下一步')
-            this.props.registerStore.setInitialData({ uid })
+            registerStore.setInitialData({ uid, email: values.userMail })
+            if (values.userType === 2) {
+              const { data } = await TchInfoApi.claimTchInfo(values.userMail)
+              if (data.code === 200) {
+                registerStore.setClaimData(data.data)
+                this.props.history.push('/register/2')
+              }
+            }
             this.props.history.push('/register/3')
           }
         } catch (err) {
