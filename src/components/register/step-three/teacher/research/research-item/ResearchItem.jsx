@@ -1,6 +1,7 @@
 import React from 'react'
 import './researchItem.css'
 import { Icon } from 'antd'
+import moment from 'moment'
 
 export default class ResearchItem extends React.Component<{}> {
   render() {
@@ -8,7 +9,7 @@ export default class ResearchItem extends React.Component<{}> {
       <div>
         <div>
           <span styleName="research-name">{this.props.rea.projectName}</span>
-          <span styleName="time-text">{this.props.rea.startTime}</span>
+          <span styleName="time-text">{moment(this.props.rea.startTime).format('YYYY-MM-DD')}</span>
         </div>
         <div styleName="ul-container">
           <ul style={{ paddingLeft: '18px' }}>

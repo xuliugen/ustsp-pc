@@ -1,6 +1,7 @@
 import React from 'react'
 import './expItem.css'
 import { Icon } from 'antd'
+import moment from 'moment'
 
 export default class ExpItem extends React.Component<{}> {
   render() {
@@ -8,7 +9,7 @@ export default class ExpItem extends React.Component<{}> {
       <div styleName="exp-item">
         <div styleName="row">
           <span styleName="school-name">{this.props.exp.school}</span>
-          <span styleName="time-text">{this.props.exp.date}</span>
+          <span styleName="time-text">{moment(this.props.exp.date).format('YYYY-MM-DD')}</span>
         </div>
         <div styleName="row">
           <span styleName="degree-text">{this.props.exp.level}</span>

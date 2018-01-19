@@ -1,6 +1,7 @@
 import React from 'react'
 import './iPItem.css'
 import { Icon } from 'antd'
+import moment from 'moment'
 
 export default class IPItem extends React.Component<{}> {
   render() {
@@ -17,7 +18,7 @@ export default class IPItem extends React.Component<{}> {
         </div>
         <div styleName="ul-container">
           <ul style={{ paddingLeft: '18px' }}>
-            <li styleName="li-text">申请于 {this.props.ip.applyDate} / {this.props.ip.applyUnit}</li>
+            <li styleName="li-text">申请于 {moment(this.props.ip.applyDate).format('YYYY-MM-DD')} / {this.props.ip.applyUnit}</li>
             <li styleName="li-text">发明人：{this.props.ip.inventor}</li>
           </ul>
         </div>

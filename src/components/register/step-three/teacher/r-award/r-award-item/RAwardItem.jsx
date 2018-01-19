@@ -1,6 +1,7 @@
 import React from 'react'
 import './RAwardItem.css'
 import { Icon } from 'antd'
+import moment from 'moment'
 
 export default class RAwardItem extends React.Component<{}> {
   render() {
@@ -12,7 +13,7 @@ export default class RAwardItem extends React.Component<{}> {
           <button styleName="edit-text" >编辑</button>
         </div>
         <div styleName="award-info">
-          <span styleName="award-info-text">获奖时间: {this.props.RAward.time}</span>
+          <span styleName="award-info-text">获奖时间: {moment(this.props.RAward.time).format('YYYY-MM-DD')}</span>
           <span styleName="award-info-text">级别:{this.props.RAward.level}</span>
           <span styleName="award-info-text">排名：{this.props.RAward.rank}</span>
         </div>
