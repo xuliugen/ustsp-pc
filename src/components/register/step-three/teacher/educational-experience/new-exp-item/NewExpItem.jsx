@@ -24,14 +24,14 @@ class NewExpItem extends React.Component<{}> {
           college: values.college,
           major: values.major,
           level: values.level,
-          date: values.date
+          date: values.date.valueOf() // get timestamp
         }
         this.setState({ loading: true })
         try {
           await TchInfoApi.completeEducation(educationExperience)
           message.success('添加成功')
           this.setState({ loading: false })
-          this.props.closeModal(false)
+          this.props.confirmAdd(false, educationExperience)
         } catch (e) {
           console.log(e)
         }
@@ -85,12 +85,9 @@ class NewExpItem extends React.Component<{}> {
                   </FormItem>
                   <FormItem label="开始时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('date', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请选择开始时间' }
-                      ]
+                      rules: [{ required: true, message: '请选择开始时间' }]
                     })(
-                      <DatePicker placeholder="请选择" style={{ width: '100%' }} />
+                      <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                     )}
                   </FormItem>
                 </Col>
@@ -116,13 +113,10 @@ class NewExpItem extends React.Component<{}> {
                     )}
                   </FormItem>
                   <FormItem label="结束时间" style={{ flexFlow: '1' }}>
-                    {getFieldDecorator('finishTime', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入学校' }
-                      ]
+                    {getFieldDecorator('birth', {
+                      rules: [{ required: true, message: '请选择结束时间' }]
                     })(
-                      <DatePicker placeholder="请选择" style={{ width: '100%' }} />
+                      <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                     )}
                   </FormItem>
                 </Col>
