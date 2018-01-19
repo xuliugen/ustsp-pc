@@ -2,7 +2,7 @@ import React from 'react'
 import './expItem.css'
 import { Icon } from 'antd'
 
-export default class NewExpItem extends React.Component<{}> {
+export default class ExpItem extends React.Component<{}> {
   render() {
     return (
       <div>
