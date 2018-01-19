@@ -71,7 +71,7 @@ class NewAwardItem extends React.Component<{}> {
                     {getFieldDecorator('name', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权名称' }
+                        { required: true, message: '请输入获奖名称' }
                       ]
                     })(
                       <Input placeholder="产权名称" />
@@ -81,27 +81,24 @@ class NewAwardItem extends React.Component<{}> {
                     {getFieldDecorator('level', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权类别' }
+                        { required: true, message: '请输入类别' }
                       ]
                     })(
-                      <Input placeholder="产权类别" />
+                      <Input placeholder="级别" />
                     )}
                   </FormItem>
                 </Col>
                 <Col span={12}>
                   <FormItem label="排名" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('rank', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请填写产权级别' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
-                      <Input placeholder="产权级别" />
+                      <Input placeholder="排名" />
                     )}
                   </FormItem>
                   <FormItem label="获奖时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('time', {
-                      rules: [{ required: true, message: '请选择申请时间' }]
+                      rules: [{ required: true, message: '请选择获奖时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}
@@ -111,10 +108,7 @@ class NewAwardItem extends React.Component<{}> {
             </div>
             <FormItem label="获奖描述" style={{ flexFlow: '1' }}>
               {getFieldDecorator('introduction', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  { required: true }
-                ]
+                validateTrigger: 'onBlur'
               })(
                 <TextArea rows={4} />
               )}

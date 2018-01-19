@@ -107,19 +107,23 @@ class NewIPItem extends React.Component<{}> {
                       <Input placeholder="产权级别" type="number" />
                     )}
                   </FormItem>
+                  <FormItem label="产权排名" style={{ flexFlow: '1' }}>
+                    {getFieldDecorator('rank', {
+                      validateTrigger: 'onBlur'
+                    })(
+                      <Input placeholder="产权排名" type="number" />
+                    )}
+                  </FormItem>
                 </Col>
                 <Col span={12}>
-                  <FormItem label="产权归属地" style={{ flexFlow: '1' }}>
+                  <FormItem label="国家" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('country', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入产权归属地' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="产权归属地" />
                     )}
                   </FormItem>
-                  <FormItem label="产权注册号" style={{ flexFlow: '1' }}>
+                  <FormItem label="产权登记编号" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('registrationNumber', {
                       validateTrigger: 'onBlur',
                       rules: [
@@ -131,17 +135,13 @@ class NewIPItem extends React.Component<{}> {
                   </FormItem>
                   <FormItem label="申请单位" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('applyUnit', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入申请单位' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="申请单位" />
                     )}
                   </FormItem>
                   <FormItem label="申请时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('applyDate', {
-                      rules: [{ required: true, message: '请选择申请时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}
