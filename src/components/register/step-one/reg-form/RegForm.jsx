@@ -27,7 +27,9 @@ class RegForm extends React.Component {
 
   componentDidMount() {
     // this.props.form.resetFields()
-    this.props.form.setFieldsValue(this.props.registerStore.initial)
+    if (this.props.registerStore.initial) {
+      this.props.form.setFieldsValue(this.props.registerStore.initial)
+    }
   }
 
   handleSubmit = (e) => {
