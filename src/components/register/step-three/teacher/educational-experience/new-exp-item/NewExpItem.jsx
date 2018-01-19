@@ -50,6 +50,7 @@ class NewExpItem extends React.Component<{}> {
         <Modal
           visible={this.props.visible}
           title="教育经历"
+          destroyOnClose="true"
           onOk={this.handleConfirm}
           onCancel={this.handleCancel}
           footer={[
