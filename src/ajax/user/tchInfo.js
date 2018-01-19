@@ -11,5 +11,9 @@ export default {
 
   completeResearch(body) {
     return ajax.post('/teacher/completeResearch', body)
+  },
+
+  completeIntellectualProperty(body) {
+    return ajax.post('/teacher/completeIntellectualProperty', body)
   }
 }
