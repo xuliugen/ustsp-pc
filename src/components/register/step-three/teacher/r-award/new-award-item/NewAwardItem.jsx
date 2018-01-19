@@ -52,7 +52,7 @@ class NewAwardItem extends React.Component<{}> {
       <div>
         <Modal
           visible={this.props.visible}
-          title="科研获奖"
+          title={this.props.title}
           destroyOnClose="true"
           onOk={this.handleConfirm}
           onCancel={this.handleCancel}

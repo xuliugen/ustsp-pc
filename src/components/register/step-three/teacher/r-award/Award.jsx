@@ -40,7 +40,9 @@ export default class Award extends React.Component<{}> {
         <FormTitle title={this.props.title} hasAddBtn handleAddClick={this.showModal} />
         <div styleName="content">
           {RAwardItems}
-          <NewAwardItem visible={this.state.visible}
+          <NewAwardItem
+            title={this.props.title}
+            visible={this.state.visible}
             closeModal={this.closeModal}
             confirmAdd={this.confirmAdd}
             isResearch={this.props.isResearch} />
