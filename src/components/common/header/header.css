@@ -39,6 +39,7 @@
 .header-profile {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .header-avatar {
