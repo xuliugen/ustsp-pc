@@ -25,6 +25,23 @@ class StepThreeTeacher extends React.Component<{}> {
     }
   }
 
+  componentDidMount() {
+    const { form } = this.props
+    const { claimData, isClaimDataAccept } = this.props.registerStore
+
+    if (isClaimDataAccept) {
+      form.setFieldsValue({
+        realName: claimData.name,
+        render: claimData.gender === '男' ? '0' : '1',
+        school: claimData.university,
+        college: claimData.school,
+        title: claimData.title,
+        introduction: claimData.introduction,
+        academicExperience: claimData.experience
+      })
+    }
+  }
+
   setTchPhoto(photo) {
     this.setState({
       tchPhoto: photo
