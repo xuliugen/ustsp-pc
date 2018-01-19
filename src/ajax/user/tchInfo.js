@@ -7,5 +7,9 @@ export default {
 
   completeEducation(body) {
     return ajax.post('/teacher/completeEducation', body)
+  },
+
+  completeResearch(body) {
+    return ajax.post('/teacher/completeResearch', body)
   }
 }

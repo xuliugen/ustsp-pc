@@ -125,7 +125,6 @@ class NewExpItem extends React.Component<{}> {
             </div>
           </Form>
         </Modal>
-
       </div>
     )
   }

@@ -7,13 +7,13 @@ export default class ResearchItem extends React.Component<{}> {
     return (
       <div>
         <div>
-          <span styleName="research-name">科研研究标题一</span>
-          <span styleName="time-text">2011.9-2013.7</span>
+          <span styleName="research-name">{this.props.rea.projectName}</span>
+          <span styleName="time-text">{this.props.rea.startTime}</span>
         </div>
         <div styleName="ul-container">
           <ul style={{ paddingLeft: '18px' }}>
-            <li styleName="li-text">项目级别</li>
-            <li styleName="li-text">经费$ 12000</li>
+            <li styleName="li-text">{this.props.rea.projectLevel}</li>
+            <li styleName="li-text">经费: {this.props.rea.funding}</li>
           </ul>
           <div styleName="edit-container">
             <Icon type="edit" styleName="edit-incon" />
