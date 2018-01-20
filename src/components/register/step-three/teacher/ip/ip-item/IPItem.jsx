@@ -1,24 +1,25 @@
 import React from 'react'
 import './iPItem.css'
 import { Icon } from 'antd'
+import moment from 'moment'
 
 export default class IPItem extends React.Component<{}> {
   render() {
     return (
       <div styleName="ip">
         <div styleName="ip-name-container">
-          <span styleName="ip-name">知识产权一</span>
-          <span styleName="ip-type">外观专业/ 中国</span>
+          <span styleName="ip-name">{this.props.ip.name}</span>
+          <span styleName="ip-type">{this.props.ip.type} / {this.props.ip.country}</span>
         </div>
         <div styleName="ip-info">
-          <span styleName="ip-info-text">ID: 3132131231</span>
-          <span styleName="ip-info-text">登记编号:2342342342</span>
-          <span styleName="ip-info-text">已受理</span>
+          <span styleName="ip-info-text">ID :{this.props.ip.registrationNumber}ID: 3132131231</span>
+          <span styleName="ip-info-text">{this.props.ip.registrationNumber}</span>
+          <span styleName="ip-info-text">{this.props.ip.type}</span>
         </div>
         <div styleName="ul-container">
           <ul style={{ paddingLeft: '18px' }}>
-            <li styleName="li-text">申请于 2017-12-01 / 某某专利申请单位</li>
-            <li styleName="li-text">发明人：蔡明、曹雪芹、郭悦、王作斌、贾全</li>
+            <li styleName="li-text">申请于 {moment(this.props.ip.applyDate).format('YYYY-MM-DD')} / {this.props.ip.applyUnit}</li>
+            <li styleName="li-text">发明人：{this.props.ip.inventor}</li>
           </ul>
         </div>
         <div styleName="edit-container">

@@ -22,12 +22,13 @@
 }
 
 .ip-info{
-  margin-top: 19px;
+  margin-top: 19px
 }
 
 .ip-info-text{
   font-size: 14px;
   color: #aaa;
+  margin-left: 3px;
 }
 
 .ul-container{

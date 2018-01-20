@@ -26,7 +26,7 @@ class Header extends React.Component<{}> {
             <div styleName="header-right">
               <div styleName="header-profile">
                 <img styleName="header-avatar" src={avatar} />
-                <div styleName="header-username">{userStore.user.username}</div>
+                {userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
               </div>
               <span styleName="separator" />
               <div styleName="header-logout" onClick={() => { authStore.logout() }}>登出</div>
