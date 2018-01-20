@@ -74,7 +74,7 @@ class NewAwardItem extends React.Component<{}> {
                         { required: true, message: '请输入获奖名称' }
                       ]
                     })(
-                      <Input placeholder="产权名称" />
+                      <Input placeholder="获奖名称" />
                     )}
                   </FormItem>
                   <FormItem label="级别" style={{ flexFlow: '1' }}>
@@ -93,7 +93,7 @@ class NewAwardItem extends React.Component<{}> {
                     {getFieldDecorator('rank', {
                       validateTrigger: 'onBlur'
                     })(
-                      <Input placeholder="排名" />
+                      <Input placeholder="排名" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="获奖时间" style={{ flexFlow: '1' }}>

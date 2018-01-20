@@ -12,7 +12,7 @@ export default class IPItem extends React.Component<{}> {
           <span styleName="ip-type">{this.props.ip.type} / {this.props.ip.country}</span>
         </div>
         <div styleName="ip-info">
-          <span styleName="ip-info-text">ID :{this.props.ip.registrationNumber}ID: 3132131231</span>
+          <span styleName="ip-info-text">ID :{this.props.ip.registrationNumber} &nbsp&nbsp 登记编号: {this.props.ip.registrationNumber} </span>
           <span styleName="ip-info-text">{this.props.ip.registrationNumber}</span>
           <span styleName="ip-info-text">{this.props.ip.type}</span>
         </div>

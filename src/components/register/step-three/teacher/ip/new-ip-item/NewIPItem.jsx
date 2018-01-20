@@ -84,7 +84,7 @@ class NewIPItem extends React.Component<{}> {
                         { required: true, message: '请输入产权类别' }
                       ]
                     })(
-                      <Input placeholder="产权类别" />
+                      <Input placeholder="产权类别" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="发明人" style={{ flexFlow: '1' }}>
@@ -95,16 +95,6 @@ class NewIPItem extends React.Component<{}> {
                       ]
                     })(
                       <Input placeholder="发明人" />
-                    )}
-                  </FormItem>
-                  <FormItem label="产权级别" style={{ flexFlow: '1' }}>
-                    {getFieldDecorator('rank', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请填写产权级别' }
-                      ]
-                    })(
-                      <Input placeholder="产权级别" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="产权排名" style={{ flexFlow: '1' }}>
@@ -130,7 +120,7 @@ class NewIPItem extends React.Component<{}> {
                         { required: true, message: '请输入产权注册号' }
                       ]
                     })(
-                      <Input placeholder="产权注册号" />
+                      <Input placeholder="产权注册号" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="申请单位" style={{ flexFlow: '1' }}>

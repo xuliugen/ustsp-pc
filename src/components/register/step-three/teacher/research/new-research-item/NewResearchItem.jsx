@@ -93,7 +93,7 @@ class NewResearchItem extends React.Component<{}> {
                     {getFieldDecorator('funding', {
                       validateTrigger: 'onBlur'
                     })(
-                      <Input placeholder="经费" />
+                      <Input placeholder="经费" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="开始时间" style={{ flexFlow: '1' }}>
