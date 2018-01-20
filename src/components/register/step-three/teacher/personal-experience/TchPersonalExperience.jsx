@@ -82,40 +82,32 @@ export default class PersonalExperience extends React.Component {
             {getFieldDecorator('introduction', {
               validateTrigger: 'onBlur'
             })(
-              <div styleName="intro-container">
-                <TextArea rows={8} />
-                <span styleName="word-limit">字数限制: 0/400</span>
-              </div>
+              <TextArea rows={8} />
             )}
           </FormItem>
           <FormItem label="学术经历">
             {getFieldDecorator('academicExperience', {
               validateTrigger: 'onBlur'
             })(
-              <div styleName="intro-container">
-                <TextArea rows={8} />
-                <span styleName="word-limit">字数限制: 0/400</span>
-              </div>
+              <TextArea rows={8} />
             )}
           </FormItem>
           <FormItem label="科研简介">
             {getFieldDecorator('scienceIntroduction', {
               validateTrigger: 'onBlur'
             })(
-              <div styleName="intro-container">
-                <TextArea rows={8} />
-                <span styleName="word-limit">字数限制: 0/400</span>
-              </div>
+              <TextArea rows={8} />
             )}
           </FormItem>
           <FormItem label="发表文章">
             {getFieldDecorator('publishPaper', {
               validateTrigger: 'onBlur'
             })(
-              <div styleName="intro-container">
-                <TextArea rows={8} />
-                <span styleName="word-limit">字数限制: 0/400</span>
-              </div>
+              <TextArea rows={8} />
+              // <div styleName="intro-container">
+              //   <TextArea rows={8} />
+              //   <span styleName="word-limit">字数限制: 0/400</span>
+              // </div>
             )}
           </FormItem>
         </div>

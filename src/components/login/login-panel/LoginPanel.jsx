@@ -2,6 +2,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
+import { message } from 'antd'
 
 import './loginPanel.css'
 import imgQ from './ico_q.png'
@@ -10,16 +11,16 @@ import imgQ from './ico_q.png'
 @withRouter
 @observer
 export default class LoginPanel extends React.Component {
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
-    this.props.authStore.login().then(() => {
-      this.props.history.replace('/')
-    })
+    await this.props.authStore.login()
+    message.success('登录成功')
+    this.props.history.replace('/')
   }
 
   render() {
     const { authStore } = this.props
-    const wrongInfo = true
+    const wrongInfo = false
     const { username, password } = authStore
     return (
       <div styleName="loginPanel-container">
@@ -51,7 +52,7 @@ export default class LoginPanel extends React.Component {
             </div>
             <div>
               <button styleName="loginBtn" type="submit">登 录</button>
-              <button styleName="registerBtn">注册账号&nbsp;<i styleName="ico-arrow" /></button>
+              <button styleName="registerBtn" type="button">注册账号&nbsp;<i styleName="ico-arrow" /></button>
             </div>
           </form>
         </div>

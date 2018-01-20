@@ -1,21 +1,30 @@
-import { observable, action, extendObservable, reaction } from 'mobx'
+import { observable, action, extendObservable, reaction, computed } from 'mobx'
 
 class RegisterStore {
   @observable step = 1
-  @observable initial = {}
+  @observable initial = { userType: 2 }
+  @observable claimData = {}
+
+  @computed
+  get isClaimDataAccept() {
+    return this.claimData.isAccept
+  }
 
   constructor() {
     this.loadData()
     this.saveInitialData()
+    this.saveClaimData()
 
     this.setInitialData = this.setInitialData.bind(this)
   }
 
   loadData() {
-    const defaultValue = { userType: 2 }
-    const fromStorage = JSON.parse(window.sessionStorage.getItem('reg1')) || {}
-    const data = Object.assign({}, defaultValue, fromStorage)
-    extendObservable(this, { initial: data })
+    const fromStorage = {
+      initial: JSON.parse(window.sessionStorage.getItem('reg1')),
+      claimData: JSON.parse(window.sessionStorage.getItem('reg2'))
+    }
+    extendObservable(this.initial, fromStorage.initial)
+    extendObservable(this.claimData, fromStorage.claimData)
   }
 
   @action
@@ -39,6 +48,21 @@ class RegisterStore {
         window.sessionStorage.setItem('reg1', storageStr)
       }
     )
+  }
+
+  saveClaimData() {
+    reaction(
+      () => this.claimData,
+      claimData => {
+        const storageStr = JSON.stringify(claimData)
+        window.sessionStorage.setItem('reg2', storageStr)
+      }
+    )
+  }
+
+  @action
+  setClaimData(data) {
+    this.claimData = data
   }
 }
 
