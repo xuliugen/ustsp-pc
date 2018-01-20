@@ -1,10 +1,11 @@
 import React from 'react'
 import './newIPItem.css'
-import { Form, Row, Col, Input, DatePicker, Modal, Button, message } from 'antd'
+import { Form, Row, Col, Input, DatePicker, Modal, Button, message, Select } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
 
 const FormItem = Form.Item
+const Option = Select.Option
 
 @inject('registerStore')
 @observer
@@ -20,9 +21,10 @@ class NewIPItem extends React.Component<{}> {
       if (!err) {
         const ip = {
           userId: this.props.registerStore.initial.uid,
-          type: values.type,
+          type: Number(values.type),
           country: values.country,
           name: values.name,
+          status: Number(values.status),
           registrationNumber: values.registrationNumber,
           applyDate: values.applyDate.valueOf(),
           applyUnit: values.applyUnit,
@@ -81,10 +83,14 @@ class NewIPItem extends React.Component<{}> {
                     {getFieldDecorator('type', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权类别' }
+                        { required: true, message: '请选择产权类别' }
                       ]
                     })(
-                      <Input placeholder="产权类别" />
+                      <Select placeholder="产权类别">
+                        <Option value="0">发明</Option>
+                        <Option value="1">实用新型</Option>
+                        <Option value="2">外观设计</Option>
+                      </Select>
                     )}
                   </FormItem>
                   <FormItem label="发明人" style={{ flexFlow: '1' }}>
@@ -97,51 +103,54 @@ class NewIPItem extends React.Component<{}> {
                       <Input placeholder="发明人" />
                     )}
                   </FormItem>
-                  <FormItem label="产权级别" style={{ flexFlow: '1' }}>
+                  <FormItem label="产权排名" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('rank', {
+                      validateTrigger: 'onBlur'
+                    })(
+                      <Input placeholder="产权排名" type="number" />
+                    )}
+                  </FormItem>
+                  <FormItem label="受理状态" style={{ flexFlow: '1' }}>
+                    {getFieldDecorator('status', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请填写产权级别' }
+                        { required: true, message: '请选择受理状态' }
                       ]
                     })(
-                      <Input placeholder="产权级别" type="number" />
+                      <Select placeholder="受理状态">
+                        <Option value="1">已受理</Option>
+                        <Option value="2">未受理</Option>
+                      </Select>
                     )}
                   </FormItem>
                 </Col>
                 <Col span={12}>
-                  <FormItem label="产权归属地" style={{ flexFlow: '1' }}>
+                  <FormItem label="国家" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('country', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入产权归属地' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="产权归属地" />
                     )}
                   </FormItem>
-                  <FormItem label="产权注册号" style={{ flexFlow: '1' }}>
+                  <FormItem label="产权登记编号" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('registrationNumber', {
                       validateTrigger: 'onBlur',
                       rules: [
                         { required: true, message: '请输入产权注册号' }
                       ]
                     })(
-                      <Input placeholder="产权注册号" />
+                      <Input placeholder="产权注册号" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="申请单位" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('applyUnit', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入申请单位' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="申请单位" />
                     )}
                   </FormItem>
                   <FormItem label="申请时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('applyDate', {
-                      rules: [{ required: true, message: '请选择申请时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}

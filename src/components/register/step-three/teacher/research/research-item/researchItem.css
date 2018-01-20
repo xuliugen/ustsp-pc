@@ -1,3 +1,12 @@
+.research-item{
+  margin-bottom: 60px;
+  padding-right: 17px;
+}
+
+.research-item:last-child {
+  margin-bottom: 0;
+}
+
 .research-name{
   font-size: 22px;
   color: #333;
@@ -6,6 +15,7 @@
   float: right;
   font-size: 14px;
   color: #aaa;
+  padding-right: 6px;
 }
 
 .ul-container{

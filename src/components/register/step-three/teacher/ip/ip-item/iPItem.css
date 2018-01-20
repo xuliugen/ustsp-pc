@@ -1,5 +1,11 @@
 .ip {
   position: relative;
+  margin-bottom: 60px;
+  padding-right: 17px;
+}
+
+.ip:last-child {
+  margin-bottom: 0;
 }
 
 .ip-name{
@@ -48,7 +54,7 @@
 .edit-container{
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 17px;
 }
 
 .edit-icon{

@@ -7,8 +7,7 @@ import PersonalExperience from './personal-experience/TchPersonalExperience'
 import TchEdicationalExperience from './educational-experience/TchEduExp'
 import Research from './research/Research'
 import IP from './ip/IP'
-import RAward from './r-award/RAward'
-import NRAward from './nr-award/NRAward'
+import Award from './r-award/Award'
 import { TchInfoApi } from 'src/ajax'
 
 @inject('registerStore')
@@ -114,8 +113,8 @@ class StepThreeTeacher extends React.Component<{}> {
           <TchEdicationalExperience />
           <Research />
           <IP />
-          <RAward />
-          <NRAward />
+          <Award title={'科研获奖'} isResearch={1} />
+          <Award title={'非科研获奖'} isResearch={0} />
           <button onClick={this.handleOnClickConfirm} styleName="confirm-button">确认</button>
         </div>
       </div>
