@@ -1,4 +1,10 @@
-.stu-edu-experience, .row {
+.stu-edu-experience{
+  margin-top: 29px;
+  padding-bottom: 29px;
+  border-bottom: 1px dashed #f0f0f0
+}
+
+.row {
   margin-top: 10px;
 }
 
