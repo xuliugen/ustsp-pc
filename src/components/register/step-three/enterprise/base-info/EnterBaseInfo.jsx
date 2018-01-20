@@ -21,51 +21,114 @@ export default class EnterBaseInfor extends React.Component<{}> {
                 {getFieldDecorator('realName', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入姓名' }
+                    { required: true, message: '请输入企业名' }
                   ]
                 })(
                   <Input placeholder="企业名" />
                 )}
               </FormItem>
               <FormItem label="地点">
-                <Input placeholder="地点" />
+                {getFieldDecorator('place', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请输入地点' }
+                  ]
+                })(
+                  <Input placeholder="地点" />
+                )}
               </FormItem>
               <FormItem label="成立时间">
-                <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                {getFieldDecorator('birth', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请输入成立时间' }
+                  ]
+                })(
+                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                )}
               </FormItem>
               <FormItem label="规模">
-                <Select defaultValue="10~20人" style={{ width: '100%' }} >
-                  <Option value="10~20人">10~20人</Option>
-                  <Option value="20~50人">20~50人</Option>
-                  <Option value="50人以上">50人以上</Option>
-                </Select>
+                {getFieldDecorator('scale', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请选择企业规模' }
+                  ]
+                })(
+                  <Select style={{ width: '100%' }} >
+                    <Option value="10~20人">10~20人</Option>
+                    <Option value="20~50人">20~50人</Option>
+                    <Option value="50人以上">50人以上</Option>
+                  </Select>
+                )}
               </FormItem>
               <FormItem label="性质">
-                <Select defaultValue="私营企业" style={{ width: '100%' }} >
-                  <Option value="私营企业">私营企业</Option>
-                  <Option value="国有企业">国有企业</Option>
-                  <Option value="外商投资企业">外商投资企业</Option>
-                </Select>
+                {getFieldDecorator('nature', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请选择企业性质' }
+                  ]
+                })(
+                  <Select style={{ width: '100%' }} >
+                    <Option value="私营企业">私营企业</Option>
+                    <Option value="国有企业">国有企业</Option>
+                    <Option value="外商投资企业">外商投资企业</Option>
+                  </Select>
+                )}
               </FormItem>
               <FormItem label="企业营业执照号">
-                <Input placeholder="企业营业执照号" />
+                {getFieldDecorator('businessLicence', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请输入企业营业执照号' }
+                  ]
+                })(
+                  <Input placeholder="企业营业执照号" />
+                )}
               </FormItem>
             </Col>
             <Col span={12}>
               <UploadAvatar />
               <FormItem label="行业" style={{ marginTop: '12px' }}>
-                <Select defaultValue="计算机网络/大金融" style={{ width: '100%' }} >
-                  <Option value="计算机网络/大金融">计算机网络/大金融</Option>
-                </Select>
+                {getFieldDecorator('industry', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请输入企业行业' }
+                  ]
+                })(
+                  // <Select style={{ width: '100%' }} >
+                  //   <Option value="计算机网络/大金融">计算机网络/大金融</Option>
+                  // </Select>
+                  <Input placeholder="行业" />
+                )}
               </FormItem>
               <FormItem label="发展阶段">
-                <Select defaultValue="未融资" style={{ width: '100%' }} >
-                  <Option value="未融资">未融资</Option>
-                </Select>
+                {getFieldDecorator('stage', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请选择发展阶段' }
+                  ]
+                })(
+                  <Select style={{ width: '100%' }} >
+                    <Option value="不需要融资">不需要融资</Option>
+                    <Option value="天使轮">天使轮</Option>
+                    <Option value="A轮">A轮</Option>
+                    <Option value="B轮">B轮</Option>
+                    <Option value="C轮">C轮</Option>
+                    <Option value="D轮及以上">D轮及以上</Option>
+                    <Option value="上市公司">上市公司</Option>
+                  </Select>
+                )}
               </FormItem>
-              <FormItem label="企业营业执照号">
-                <Input placeholder="企业营业执照号" />
-              </FormItem>
+              {/* <FormItem label="企业营业执照号">
+                {getFieldDecorator('businessLicence', {
+                  validateTrigger: 'onBlur',
+                  rules: [
+                    { required: true, message: '请输入企业营业执照号' }
+                  ]
+                })(
+                  <Input placeholder="企业营业执照号" />
+                )}
+              </FormItem> */}
             </Col>
           </Row>
           <FormItem label="企业营业执照照片">

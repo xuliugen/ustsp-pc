@@ -6,6 +6,13 @@ import EnterBaseInfo from './base-info/EnterBaseInfo'
 import EnterOtherInfo from './other-info/EnterOtherInfo'
 
 class StepThreeEnterprise extends React.Component<{}> {
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.form.validateFields(async (err, values) => {
+      console.log(err, values)
+    })
+  }
+
   render() {
     return (
       <div styleName="container" >
@@ -14,11 +21,11 @@ class StepThreeEnterprise extends React.Component<{}> {
           <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
         </div>
         <div styleName="form-container">
-          <Form layout="vertical">
+          <Form layout="vertical" onSubmit={this.handleSubmit}>
             <EnterBaseInfo form={this.props.form} />
-            <EnterOtherInfo />
+            <EnterOtherInfo form={this.props.form} />
             <div styleName="confirm-btn">
-              <button>确认</button>
+              <button type="submit">确认</button>
             </div>
           </Form>
         </div>
