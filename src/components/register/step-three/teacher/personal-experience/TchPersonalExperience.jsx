@@ -80,30 +80,42 @@ export default class PersonalExperience extends React.Component {
           </FormItem>
           <FormItem label="个人简介">
             {getFieldDecorator('introduction', {
-              validateTrigger: 'onBlur'
+              validateTrigger: 'onBlur',
+              rules: [
+                { max: 400, message: '字数不能超过400' }
+              ]
             })(
-              <TextArea rows={8} />
+              <TextArea rows={8} maxLength={400} />
             )}
           </FormItem>
           <FormItem label="学术经历">
             {getFieldDecorator('academicExperience', {
-              validateTrigger: 'onBlur'
+              validateTrigger: 'onBlur',
+              rules: [
+                { max: 400, message: '字数不能超过400' }
+              ]
             })(
-              <TextArea rows={8} />
+              <TextArea rows={8} maxLength={400} />
             )}
           </FormItem>
           <FormItem label="科研简介">
             {getFieldDecorator('scienceIntroduction', {
-              validateTrigger: 'onBlur'
+              validateTrigger: 'onBlur',
+              rules: [
+                { max: 400, message: '字数不能超过400' }
+              ]
             })(
-              <TextArea rows={8} />
+              <TextArea rows={8} maxLength={400} />
             )}
           </FormItem>
           <FormItem label="发表文章">
             {getFieldDecorator('publishPaper', {
-              validateTrigger: 'onBlur'
+              validateTrigger: 'onBlur',
+              rules: [
+                { max: 400, message: '字数不能超过400' }
+              ]
             })(
-              <TextArea rows={8} />
+              <TextArea rows={8} maxLength={400} />
               // <div styleName="intro-container">
               //   <TextArea rows={8} />
               //   <span styleName="word-limit">字数限制: 0/400</span>
