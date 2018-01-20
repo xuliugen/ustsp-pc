@@ -1,10 +1,11 @@
 import React from 'react'
 import './newIPItem.css'
-import { Form, Row, Col, Input, DatePicker, Modal, Button, message } from 'antd'
+import { Form, Row, Col, Input, DatePicker, Modal, Button, message, Select } from 'antd'
 import { observer, inject } from 'mobx-react'
-import { TchInfoApi } from 'src/ajax'
+// import { TchInfoApi } from 'src/ajax'
 
 const FormItem = Form.Item
+const Option = Select.Option
 
 @inject('registerStore')
 @observer
@@ -20,7 +21,7 @@ class NewIPItem extends React.Component<{}> {
       if (!err) {
         const ip = {
           userId: this.props.registerStore.initial.uid,
-          type: values.type,
+          type: Number(values.type),
           country: values.country,
           name: values.name,
           registrationNumber: values.registrationNumber,
@@ -31,7 +32,7 @@ class NewIPItem extends React.Component<{}> {
         }
         this.setState({ loading: true })
         try {
-          await TchInfoApi.completeIntellectualProperty(ip)
+          // await TchInfoApi.completeIntellectualProperty(ip)
           message.success('添加成功')
           this.setState({ loading: false })
           this.props.confirmAdd(false, ip)
@@ -81,10 +82,14 @@ class NewIPItem extends React.Component<{}> {
                     {getFieldDecorator('type', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权类别' }
+                        { required: true, message: '请选择产权类别' }
                       ]
                     })(
-                      <Input placeholder="产权类别" type="number" />
+                      <Select defaultValue="0" placeholder="产权类别">
+                        <Option value="0">发明</Option>
+                        <Option value="1">实用新型</Option>
+                        <Option value="2">外观设计</Option>
+                      </Select>
                     )}
                   </FormItem>
                   <FormItem label="发明人" style={{ flexFlow: '1' }}>
