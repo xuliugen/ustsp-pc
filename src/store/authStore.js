@@ -38,7 +38,10 @@ class AuthStore {
       }
       const { data } = await SessionApi.login(req)
       this.setPassword('')
-      userStore.save(data.user)
+      userStore.save({
+        realName: data.realName,
+        ...data.user
+      })
       this.setToken(data.token)
     } catch (err) {
       throw err

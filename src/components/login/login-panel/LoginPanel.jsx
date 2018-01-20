@@ -13,9 +13,16 @@ import imgQ from './ico_q.png'
 export default class LoginPanel extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
-    await this.props.authStore.login()
-    message.success('登录成功')
-    this.props.history.replace('/')
+    try {
+      await this.props.authStore.login()
+      message.success('登录成功')
+      this.props.history.replace('/')
+    } catch (err) {
+      const status = err.response.status
+      if (status === 401 || status === 404) {
+        message.error('用户名或密码错误')
+      }
+    }
   }
 
   render() {
