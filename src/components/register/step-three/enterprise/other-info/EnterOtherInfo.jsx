@@ -10,7 +10,7 @@ const { TextArea } = Input
 export default class OtherInfo extends React.Component<{}> {
   render() {
     return (
-      <div styleName="other-info" ref={this.props.containerRef} >
+      <div styleName="other-info" >
         <FormTitle title="其他信息" />
         <div styleName="content">
           <FormItem label="公司主页" >

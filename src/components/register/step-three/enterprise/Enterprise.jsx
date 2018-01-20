@@ -4,11 +4,9 @@ import { Form } from 'antd'
 
 import EnterBaseInfo from './base-info/EnterBaseInfo'
 import EnterOtherInfo from './other-info/EnterOtherInfo'
-import SideNav from '../common/side-nav/SideNav'
 
 class StepThreeEnterprise extends React.Component<{}> {
   render() {
-    const navItems = ['基本信息', '其他信息']
     return (
       <div styleName="container" className="element-container" >
         <div styleName="title-wrapper">

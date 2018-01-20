@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
-
 import { FormTitle, UploadAvatar } from '../../common'
 import './stuBaseInfo.css'
 

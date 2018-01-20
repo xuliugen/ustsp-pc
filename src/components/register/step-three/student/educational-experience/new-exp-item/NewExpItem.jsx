@@ -96,7 +96,7 @@ class NewExpItem extends React.Component<{}> {
                 <FormItem label="学校">
                   {getFieldDecorator('school', {
                     validateTrigger: 'onBlur',
-                    rules: [{ required: true, message: '请输入就职学校' }]
+                    rules: [{ required: true, message: '请输入就读学校' }]
                   })(
                     <Input />
                   )}
