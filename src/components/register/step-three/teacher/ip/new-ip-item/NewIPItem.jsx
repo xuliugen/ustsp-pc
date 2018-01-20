@@ -2,7 +2,7 @@ import React from 'react'
 import './newIPItem.css'
 import { Form, Row, Col, Input, DatePicker, Modal, Button, message, Select } from 'antd'
 import { observer, inject } from 'mobx-react'
-// import { TchInfoApi } from 'src/ajax'
+import { TchInfoApi } from 'src/ajax'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -24,6 +24,7 @@ class NewIPItem extends React.Component<{}> {
           type: Number(values.type),
           country: values.country,
           name: values.name,
+          status: Number(values.status),
           registrationNumber: values.registrationNumber,
           applyDate: values.applyDate.valueOf(),
           applyUnit: values.applyUnit,
@@ -32,7 +33,7 @@ class NewIPItem extends React.Component<{}> {
         }
         this.setState({ loading: true })
         try {
-          // await TchInfoApi.completeIntellectualProperty(ip)
+          await TchInfoApi.completeIntellectualProperty(ip)
           message.success('添加成功')
           this.setState({ loading: false })
           this.props.confirmAdd(false, ip)
@@ -85,7 +86,7 @@ class NewIPItem extends React.Component<{}> {
                         { required: true, message: '请选择产权类别' }
                       ]
                     })(
-                      <Select defaultValue="0" placeholder="产权类别">
+                      <Select placeholder="产权类别">
                         <Option value="0">发明</Option>
                         <Option value="1">实用新型</Option>
                         <Option value="2">外观设计</Option>
@@ -107,6 +108,19 @@ class NewIPItem extends React.Component<{}> {
                       validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="产权排名" type="number" />
+                    )}
+                  </FormItem>
+                  <FormItem label="受理状态" style={{ flexFlow: '1' }}>
+                    {getFieldDecorator('status', {
+                      validateTrigger: 'onBlur',
+                      rules: [
+                        { required: true, message: '请选择受理状态' }
+                      ]
+                    })(
+                      <Select placeholder="受理状态">
+                        <Option value="1">已受理</Option>
+                        <Option value="2">未受理</Option>
+                      </Select>
                     )}
                   </FormItem>
                 </Col>
