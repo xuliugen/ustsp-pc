@@ -2,7 +2,7 @@ import { observable, action, extendObservable, reaction, computed } from 'mobx'
 
 class RegisterStore {
   @observable step = 1
-  @observable initial = {}
+  @observable initial = { userType: 2 }
   @observable claimData = {}
 
   @computed
@@ -19,13 +19,12 @@ class RegisterStore {
   }
 
   loadData() {
-    const defaultValue = { userType: 2 }
     const fromStorage = {
       initial: JSON.parse(window.sessionStorage.getItem('reg1')),
       claimData: JSON.parse(window.sessionStorage.getItem('reg2'))
     }
-    const data = Object.assign({}, defaultValue, fromStorage)
-    extendObservable(this, data)
+    extendObservable(this.initial, fromStorage.initial)
+    extendObservable(this.claimData, fromStorage.claimData)
   }
 
   @action
