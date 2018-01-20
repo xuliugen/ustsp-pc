@@ -11,7 +11,7 @@ export default class OtherInfo extends React.Component<{}> {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <div styleName="other-info">
+      <div styleName="other-info" >
         <FormTitle title="其他信息" />
         <div styleName="content">
           <FormItem label="公司主页" >

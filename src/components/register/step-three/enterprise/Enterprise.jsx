@@ -47,7 +47,7 @@ class StepThreeEnterprise extends React.Component {
 
   render() {
     return (
-      <div styleName="container" >
+      <div styleName="container" className="element-container" >
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
           <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>

@@ -11,7 +11,7 @@ export default class EnterBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <div styleName="base-info">
+      <div styleName="base-info" >
         <FormTitle title={'基本信息'} />
         <div styleName="content" >
           <Row gutter={20}>
