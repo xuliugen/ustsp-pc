@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { Form, Row, Col, Input, DatePicker, Select } from 'antd'
 import { FormTitle, UploadAvatar } from '../../common'
@@ -8,7 +7,7 @@ import UploadLicensePic from '../upload-license-picture/UploadLicensePic'
 const FormItem = Form.Item
 const Option = Select.Option
 
-export default class EnterBaseInfor extends React.Component<{}> {
+export default class EnterBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -39,9 +38,8 @@ export default class EnterBaseInfor extends React.Component<{}> {
               </FormItem>
               <FormItem label="成立时间">
                 {getFieldDecorator('birth', {
-                  validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入成立时间' }
+                    { required: true, message: '请选择成立时间' }
                   ]
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
@@ -87,7 +85,7 @@ export default class EnterBaseInfor extends React.Component<{}> {
               </FormItem>
             </Col>
             <Col span={12}>
-              <UploadAvatar />
+              <UploadAvatar tchPhoto={this.props.photo} setTchPhoto={this.props.setPhoto} />
               <FormItem label="行业" style={{ marginTop: '12px' }}>
                 {getFieldDecorator('industry', {
                   validateTrigger: 'onBlur',

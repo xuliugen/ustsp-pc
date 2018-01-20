@@ -3,10 +3,12 @@ import axios from './config'
 import SessionApi from './user/session'
 import RegisterApi from './user/register'
 import TchInfoApi from './user/tchInfo'
+import EtpInfoApi from './user/etpInfo'
 
 export default axios
 export {
   SessionApi,
   RegisterApi,
-  TchInfoApi
+  TchInfoApi,
+  EtpInfoApi
 }

@@ -40,10 +40,8 @@ class AuthStore {
       this.setPassword('')
       userStore.save(data.user)
       this.setToken(data.token)
-
-      return data
     } catch (err) {
-      console.log(err)
+      throw err
     }
   }
 

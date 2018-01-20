@@ -1,15 +1,46 @@
 import React from 'react'
 import './enterprise.css'
-import { Form } from 'antd'
+import { Form, message } from 'antd'
+import { EtpInfoApi } from 'src/ajax'
+import { observer, inject } from 'mobx-react'
 
 import EnterBaseInfo from './base-info/EnterBaseInfo'
 import EnterOtherInfo from './other-info/EnterOtherInfo'
 
-class StepThreeEnterprise extends React.Component<{}> {
+@inject('registerStore')
+@observer
+class StepThreeEnterprise extends React.Component {
+  state = {
+    photo: '17a3dc9ce423411fbda064a8f93954fa.png'
+  }
+
+  constructor() {
+    super()
+    this.setPhoto = this.setPhoto.bind(this)
+  }
+
+  setPhoto(url) {
+    this.setState({
+      photo: url
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
-      console.log(err, values)
+      console.log(err)
+      try {
+        await EtpInfoApi.completeInfo({
+          id: this.props.registerStore.initial.uid,
+          photo: this.state.photo,
+          businessPhoto: '',
+          ...values,
+          birth: values.birth.valueOf()
+        })
+        message.success('注册成功')
+      } catch (e) {
+        console.log(e)
+      }
     })
   }
 
@@ -22,7 +53,10 @@ class StepThreeEnterprise extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" onSubmit={this.handleSubmit}>
-            <EnterBaseInfo form={this.props.form} />
+            <EnterBaseInfo
+              form={this.props.form}
+              photo={this.state.photo}
+              setPhoto={this.setPhoto} />
             <EnterOtherInfo form={this.props.form} />
             <div styleName="confirm-btn">
               <button type="submit">确认</button>
