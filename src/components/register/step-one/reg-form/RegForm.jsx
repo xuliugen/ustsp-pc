@@ -49,7 +49,8 @@ class RegForm extends React.Component {
             message.success('注册成功，进入下一步')
             registerStore.setInitialData({ uid: data.user.id, email: values.userMail })
             if (values.userType === 2) {
-              const { data } = await TchInfoApi.claimTchInfo('YuLiu@uestc.edu.cn')
+              // YuLiu@uestc.edu.cn
+              const { data } = await TchInfoApi.claimTchInfo(values.userMail)
               if (data.code === 200) {
                 data.data.icon = window.config.USA_ORIGIN + data.data.icon
                 registerStore.setClaimData(data.data)

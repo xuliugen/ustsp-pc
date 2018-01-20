@@ -11,7 +11,7 @@ import EnterOtherInfo from './other-info/EnterOtherInfo'
 @observer
 class StepThreeEnterprise extends React.Component {
   state = {
-    photo: '17a3dc9ce423411fbda064a8f93954fa.png'
+    photo: ''
   }
 
   constructor() {
@@ -38,6 +38,7 @@ class StepThreeEnterprise extends React.Component {
           birth: values.birth.valueOf()
         })
         message.success('注册成功')
+        this.props.history.push('/')
       } catch (e) {
         console.log(e)
       }
