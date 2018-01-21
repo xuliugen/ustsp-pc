@@ -1,5 +1,6 @@
 import React from 'react'
 import './teacher.css'
+import { withRouter } from 'react-router-dom'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import TchBaseInfo from './base-info/TchBaseInfo'
@@ -10,6 +11,7 @@ import IP from './ip/IP'
 import Award from './r-award/Award'
 import { TchInfoApi } from 'src/ajax'
 
+@withRouter
 @inject('registerStore')
 @observer
 class StepThreeTeacher extends React.Component<{}> {
@@ -36,7 +38,9 @@ class StepThreeTeacher extends React.Component<{}> {
         college: claimData.school,
         title: claimData.title,
         introduction: claimData.introduction,
-        academicExperience: claimData.experience
+        academicExperience: claimData.experience,
+        scienceIntroduction: claimData.project,
+        publishPaper: claimData.paper
       })
       this.setState({
         tchPhoto: claimData.icon
@@ -83,7 +87,8 @@ class StepThreeTeacher extends React.Component<{}> {
         }
         try {
           await TchInfoApi.completeTchInfo(tchInfo)
-          message.success('注册成功，进入下一步')
+          message.success('完善信息成功')
+          this.props.history.push('/')
         } catch (e) {
           console.log(e)
         }
