@@ -1,12 +1,30 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Menu, Icon } from 'antd'
 import './sidebar.css'
 
 const SubMenu = Menu.SubMenu
 
+@withRouter
 export default class Sidebar extends React.Component {
   state = {
     collased: false
+  }
+
+  constructor() {
+    super()
+    this.handleItemSelect = this.handleItemSelect.bind(this)
+  }
+
+  handleItemSelect({ key }) {
+    const { history } = this.props
+    switch (key) {
+      case 'demand-new':
+        history.push('/admin/demand/new-demand')
+        break
+      default:
+        break
+    }
   }
 
   render() {
@@ -14,35 +32,21 @@ export default class Sidebar extends React.Component {
       <section styleName="sidebar-inner">
         <Menu
           styleName="sidebar"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          // defaultSelectedKeys={['5']}
+          defaultOpenKeys={['info']}
           mode="inline"
-          inlineCollapsed={this.state.collapsed}>
-          <Menu.Item key="1">
-            <Icon type="pie-chart" />
-            <span>Option 1</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="desktop" />
-            <span>Option 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="inbox" />
-            <span>Option 3</span>
-          </Menu.Item>
-          <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-            <Menu.Item key="5">Option 5</Menu.Item>
-            <Menu.Item key="6">Option 6</Menu.Item>
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
+          inlineCollapsed={this.state.collapsed}
+          inlineIndent={30}
+          onSelect={this.handleItemSelect}>
+          <SubMenu key="info" title={<span><Icon type="user" /><span style={{ fontSize: '18px' }}>个人信息</span></span>}>
+            <Menu.Item key="info-detail" style={{ fontSize: '18px' }}>信息查看</Menu.Item>
+            <Menu.Item key="info-mod" style={{ fontSize: '18px' }}>修改信息</Menu.Item>
+            <Menu.Item key="info-security" style={{ fontSize: '18px' }}>修改密码</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
-            </SubMenu>
+          <SubMenu key="demand" title={<span><Icon type="check-square-o" /><span style={{ fontSize: '18px' }}>需求对接</span></span>}>
+            <Menu.Item key="demand-new" style={{ fontSize: '18px' }}>发起新需求</Menu.Item>
+            <Menu.Item key="demand-publish" style={{ fontSize: '18px' }}>已发布的需求</Menu.Item>
+            <Menu.Item key="demand-process" style={{ fontSize: '18px' }}>已报名/已承接的需求</Menu.Item>
           </SubMenu>
         </Menu>
       </section>
