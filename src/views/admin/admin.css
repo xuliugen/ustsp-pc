@@ -2,8 +2,14 @@
   position: relative;
 }
 
+.header-wrapper {
+  position: relative;
+  z-index: 100;
+}
+
 .sidebar-wrapper {
   position: absolute;
+  z-index: 90;
   top: 0;
   left: 0;
   padding-top: 90px;

@@ -13,7 +13,9 @@ export default class Admin extends React.Component {
     const { match } = this.props
     return (
       <div styleName="admin">
-        <Header />
+        <div styleName="header-wrapper">
+          <Header />
+        </div>
         <aside styleName="sidebar-wrapper">
           <Sidebar />
         </aside>
