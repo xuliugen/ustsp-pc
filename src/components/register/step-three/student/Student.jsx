@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react'
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
 import StuEducationalExperience from './educational-experience/StuEducationalExperience'
-import SideNav from '../common/side-nav/SideNav'
+// import SideNav from '../common/side-nav/SideNav'
 import { StuInfoApi } from 'src/ajax'
 
 @inject('registerStore')
@@ -61,7 +61,7 @@ class StepThreeStudent extends React.Component<{}> {
   }
 
   render() {
-    const navItems = ['基本信息', '个人履历', '教育经历']
+    // const navItems = ['基本信息', '个人履历', '教育经历']
     return (
       <div styleName="container" className="element-container">
         <div styleName="title-wrapper">
@@ -79,7 +79,7 @@ class StepThreeStudent extends React.Component<{}> {
           </Form>
           <StuEducationalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
           <button styleName="confirm-button" onClick={this.handleClickConfirm} >确认</button>
-          <SideNav navItems={navItems} pos={this.pos} />
+          {/* <SideNav navItems={navItems} pos={this.pos} /> */}
         </div>
       </div>
     )

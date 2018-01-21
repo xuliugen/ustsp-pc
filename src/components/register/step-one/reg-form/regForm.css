@@ -1,21 +1,25 @@
-.form {
+.form-wrapper {
   width: 400px;
   margin: 0 auto;
   margin-top: 40px;
+}
+
+.form-wrapper .form {
+  width: 100%;
 }
 
 .row > * {
   width: 100%;
 }
 
-.verifyIpt {
+.verfiyRow .verifyIpt {
   display: inline-block;
   width: 290px;
   margin-right: 10px;
 }
 
-.verifyBtn {
-  width: 100px !important;
+.verfiyRow .verifyBtn {
+  width: 100px;
 }
 
 .nextBtn-container {
