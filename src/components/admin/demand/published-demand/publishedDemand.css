@@ -1,0 +1,34 @@
+.published-demand-container {
+  width: 100%;
+  background-color: #e0e6f0;
+}
+
+.status-tags {
+  width: 100%;
+  margin: 0 0 30px 30px;
+  color: #666666;
+  font-size: 16px;
+}
+
+.status-tags > span{
+  display: inline-block;
+  padding: 10px 24px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.demand-status {
+  font-size: 16px;
+}
+
+.demand-items {
+  width: 100%;
+  background-color: #fff;
+  padding: 30px 30px 0 30px;
+}
+
+:global(.demand-status-selected),  :global(.demand-status-selected) .demand-status{
+  color: #3091e6;
+  background-color: #fff;
+  border-radius: 18px;
+}
