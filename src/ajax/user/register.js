@@ -5,6 +5,10 @@ export default {
     return ajax.get(`/user/code/phone?phone=${phone}`)
   },
 
+  sendCheckEmail(email) {
+    return ajax.get(`/user/code/email?mail=${email}`)
+  },
+
   checkVerifyCode(code, id, type) {
     switch (type) {
       case 'phone':

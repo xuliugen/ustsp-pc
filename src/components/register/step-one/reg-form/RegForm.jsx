@@ -54,10 +54,13 @@ class RegForm extends React.Component {
               if (data.code === 200) {
                 data.data.icon = window.config.USA_ORIGIN + data.data.icon
                 registerStore.setClaimData(data.data)
-                this.props.history.push('/register/2')
+                RegisterApi.sendCheckEmail(values.userMail)
+                this.props.history.replace('/register/2')
+              } else {
+                this.props.history.replace('/register/3')
               }
             } else {
-              this.props.history.push('/register/3')
+              this.props.history.replace('/register/3')
             }
           }
         } catch (err) {
@@ -141,9 +144,8 @@ class RegForm extends React.Component {
     const tel = getFieldValue('userTel')
     this.props.form.validateFields(['userTel'], async (err) => {
       if (!err) {
-        const data = await RegisterApi.fetchVerifyCode(tel)
-        console.log(data)
-        // todo
+        // const data = await RegisterApi.fetchVerifyCode(tel)
+        RegisterApi.fetchVerifyCode(tel)
         this.process()
       }
     })
