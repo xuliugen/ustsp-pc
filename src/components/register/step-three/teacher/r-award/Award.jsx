@@ -1,10 +1,10 @@
 import React from 'react'
 import { FormTitle } from '../../common'
-import './RAward.css'
-import NewRAwardItem from './new-r-award-item/NewRAwardItem'
-import RAwardItem from './r-award-item/RAwardItem'
+import './award.css'
+import NewAwardItem from './new-award-item/NewAwardItem'
+import AwardItem from './award-item/AwardItem'
 
-export default class RAward extends React.Component<{}> {
+export default class Award extends React.Component<{}> {
   constructor() {
     super()
     this.state = {
@@ -34,13 +34,18 @@ export default class RAward extends React.Component<{}> {
     }))
   }
   render() {
-    const RAwardItems = this.state.RAwards.map((rAwardItem, idx) => <RAwardItem RAward={rAwardItem} key={idx} />)
+    const RAwardItems = this.state.RAwards.map((rAwardItem, idx) => <AwardItem RAward={rAwardItem} key={idx} />)
     return (
       <div styleName="r-award">
-        <FormTitle title={'科研获奖'} hasAddBtn handleAddClick={this.showModal} />
+        <FormTitle title={this.props.title} hasAddBtn handleAddClick={this.showModal} />
         <div styleName="content">
           {RAwardItems}
-          <NewRAwardItem visible={this.state.visible} closeModal={this.closeModal} confirmAdd={this.confirmAdd} />
+          <NewAwardItem
+            title={this.props.title}
+            visible={this.state.visible}
+            closeModal={this.closeModal}
+            confirmAdd={this.confirmAdd}
+            isResearch={this.props.isResearch} />
         </div>
       </div>
     )

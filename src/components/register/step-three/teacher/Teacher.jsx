@@ -1,5 +1,6 @@
 import React from 'react'
 import './teacher.css'
+import { withRouter, Link } from 'react-router-dom'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import TchBaseInfo from './base-info/TchBaseInfo'
@@ -7,10 +8,10 @@ import PersonalExperience from './personal-experience/TchPersonalExperience'
 import TchEdicationalExperience from './educational-experience/TchEduExp'
 import Research from './research/Research'
 import IP from './ip/IP'
-import RAward from './r-award/RAward'
-import NRAward from './nr-award/NRAward'
+import Award from './r-award/Award'
 import { TchInfoApi } from 'src/ajax'
 
+@withRouter
 @inject('registerStore')
 @observer
 class StepThreeTeacher extends React.Component<{}> {
@@ -37,7 +38,9 @@ class StepThreeTeacher extends React.Component<{}> {
         college: claimData.school,
         title: claimData.title,
         introduction: claimData.introduction,
-        academicExperience: claimData.experience
+        academicExperience: claimData.experience,
+        scienceIntroduction: claimData.project,
+        publishPaper: claimData.paper
       })
       this.setState({
         tchPhoto: claimData.icon
@@ -84,7 +87,8 @@ class StepThreeTeacher extends React.Component<{}> {
         }
         try {
           await TchInfoApi.completeTchInfo(tchInfo)
-          message.success('注册成功，进入下一步')
+          message.success('完善信息成功')
+          this.props.history.push('/')
         } catch (e) {
           console.log(e)
         }
@@ -99,7 +103,7 @@ class StepThreeTeacher extends React.Component<{}> {
       <div styleName="container">
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
-          <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
+          <Link styleName="next-step" to="/">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
@@ -114,8 +118,8 @@ class StepThreeTeacher extends React.Component<{}> {
           <TchEdicationalExperience />
           <Research />
           <IP />
-          <RAward />
-          <NRAward />
+          <Award title={'科研获奖'} isResearch={1} />
+          <Award title={'非科研获奖'} isResearch={0} />
           <button onClick={this.handleOnClickConfirm} styleName="confirm-button">确认</button>
         </div>
       </div>

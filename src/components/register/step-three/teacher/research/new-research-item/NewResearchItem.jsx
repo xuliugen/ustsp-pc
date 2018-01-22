@@ -76,17 +76,13 @@ class NewResearchItem extends React.Component<{}> {
                   </FormItem>
                   <FormItem label="项目级别" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('projectLevel', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入项目级别' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
                       <Input placeholder="项目级别" />
                     )}
                   </FormItem>
                   <FormItem label="结束时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('endTime', {
-                      rules: [{ required: true, message: '请选择结束时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}
@@ -95,17 +91,13 @@ class NewResearchItem extends React.Component<{}> {
                 <Col span={12}>
                   <FormItem label="经费">
                     {getFieldDecorator('funding', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请输入经费' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
-                      <Input placeholder="经费" />
+                      <Input placeholder="经费" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="开始时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('startTime', {
-                      rules: [{ required: true, message: '请选择开始时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}

@@ -1,5 +1,5 @@
 import React from 'react'
-import './newRAwardItem.css'
+import './newAwardItem.css'
 import { Form, Row, Col, Input, DatePicker, Modal, Button, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
@@ -9,7 +9,7 @@ const { TextArea } = Input
 
 @inject('registerStore')
 @observer
-class NewRAwardItem extends React.Component<{}> {
+class NewAwardItem extends React.Component<{}> {
   constructor() {
     super()
     this.state = {
@@ -27,7 +27,7 @@ class NewRAwardItem extends React.Component<{}> {
           time: values.time.valueOf(),
           level: values.level,
           rank: values.rank,
-          isResearch: 1
+          isResearch: this.props.isResearch
         }
         this.setState({ loading: true })
         try {
@@ -52,7 +52,7 @@ class NewRAwardItem extends React.Component<{}> {
       <div>
         <Modal
           visible={this.props.visible}
-          title="科研获奖"
+          title={this.props.title}
           destroyOnClose="true"
           onOk={this.handleConfirm}
           onCancel={this.handleCancel}
@@ -71,37 +71,34 @@ class NewRAwardItem extends React.Component<{}> {
                     {getFieldDecorator('name', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权名称' }
+                        { required: true, message: '请输入获奖名称' }
                       ]
                     })(
-                      <Input placeholder="产权名称" />
+                      <Input placeholder="获奖名称" />
                     )}
                   </FormItem>
                   <FormItem label="级别" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('level', {
                       validateTrigger: 'onBlur',
                       rules: [
-                        { required: true, message: '请输入产权类别' }
+                        { required: true, message: '请输入类别' }
                       ]
                     })(
-                      <Input placeholder="产权类别" />
+                      <Input placeholder="级别" />
                     )}
                   </FormItem>
                 </Col>
                 <Col span={12}>
                   <FormItem label="排名" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('rank', {
-                      validateTrigger: 'onBlur',
-                      rules: [
-                        { required: true, message: '请填写产权级别' }
-                      ]
+                      validateTrigger: 'onBlur'
                     })(
-                      <Input placeholder="产权级别" />
+                      <Input placeholder="排名" type="number" />
                     )}
                   </FormItem>
                   <FormItem label="获奖时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('time', {
-                      rules: [{ required: true, message: '请选择申请时间' }]
+                      rules: [{ required: true, message: '请选择获奖时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%' }} />
                     )}
@@ -111,10 +108,7 @@ class NewRAwardItem extends React.Component<{}> {
             </div>
             <FormItem label="获奖描述" style={{ flexFlow: '1' }}>
               {getFieldDecorator('introduction', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  { required: true }
-                ]
+                validateTrigger: 'onBlur'
               })(
                 <TextArea rows={4} />
               )}
@@ -126,4 +120,4 @@ class NewRAwardItem extends React.Component<{}> {
   }
 }
 
-export default Form.create()(NewRAwardItem)
+export default Form.create()(NewAwardItem)

@@ -4,7 +4,7 @@ import { message } from 'antd'
 // Create an instance using the config defaults provided by the library
 const instance = axios.create({
   baseURL: `${window.config.API_ORIGIN}`,
-  timeout: 1000 * 8,
+  // timeout: 1000 * 8,
   validateStatus(status) {
     return status < 300 || status === 304
   }

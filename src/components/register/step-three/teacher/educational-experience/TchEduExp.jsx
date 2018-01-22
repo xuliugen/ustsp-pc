@@ -40,7 +40,7 @@ export default class TchEdicationalExperience extends React.Component<{}> {
       <div styleName="educational-experience">
         <FormTitle title={'教育经历'} hasAddBtn handleAddClick={this.showModal} />
         <div styleName="content">
-          {expItems}
+          <div>{expItems}</div>
           <NewExpItem visible={this.state.visible} closeModal={this.closeModal} confirmAdd={this.confirmAdd} />
         </div>
       </div>

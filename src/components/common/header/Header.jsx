@@ -5,13 +5,14 @@ import { inject, observer } from 'mobx-react'
 
 import './header.css'
 import logo from 'src/assets/logo.png'
-import avatar from 'src/assets/avatar1.png'
+import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
 @inject('userStore', 'authStore')
 @observer
 class Header extends React.Component<{}> {
   render() {
     const { userStore, authStore } = this.props
+    const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
         <div styleName="header-inner">
@@ -26,7 +27,7 @@ class Header extends React.Component<{}> {
             <div styleName="header-right">
               <div styleName="header-profile">
                 <img styleName="header-avatar" src={avatar} />
-                {userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
+                {userStore.user && userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
               </div>
               <span styleName="separator" />
               <div styleName="header-logout" onClick={() => { authStore.logout() }}>登出</div>

@@ -1,7 +1,11 @@
 .exp-item{
-  margin-top: 10px;
+  margin-bottom: 60px;
+  padding-right: 17px;
 }
 
+.exp-item:last-child {
+  margin-bottom: 0;
+}
 .row {
   margin-top: 10px;
 }
@@ -19,17 +23,18 @@
   float: right;
   font-size: 14px;
   color: #aaa;
+  padding-right: 6px;
 }
 
 .degree-text{
   font-size: 14px;
-  color: #aaa;
+  color: #666;
   margin-top: 10px;
 }
 
 .major-text{
   font-size: 14px;
-  color: #aaa;
+  color: #666;
 }
 
 .edit-container{

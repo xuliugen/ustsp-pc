@@ -24,7 +24,8 @@ class NewExpItem extends React.Component<{}> {
           college: values.college,
           major: values.major,
           level: values.level,
-          date: values.date.valueOf() // get timestamp
+          startTime: values.startTime.valueOf(), // get timestamp
+          endTime: values.endTime.valueOf()
         }
         this.setState({ loading: true })
         try {
@@ -85,7 +86,7 @@ class NewExpItem extends React.Component<{}> {
                     )}
                   </FormItem>
                   <FormItem label="开始时间" style={{ flexFlow: '1' }}>
-                    {getFieldDecorator('date', {
+                    {getFieldDecorator('startTime', {
                       rules: [{ required: true, message: '请选择开始时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
@@ -114,7 +115,7 @@ class NewExpItem extends React.Component<{}> {
                     )}
                   </FormItem>
                   <FormItem label="结束时间" style={{ flexFlow: '1' }}>
-                    {getFieldDecorator('birth', {
+                    {getFieldDecorator('endTime', {
                       rules: [{ required: true, message: '请选择结束时间' }]
                     })(
                       <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />

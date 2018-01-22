@@ -2,11 +2,13 @@ import React from 'react'
 import './student.css'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
+import { StuInfoApi } from 'src/ajax'
+
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
 import StuEducationalExperience from './educational-experience/StuEducationalExperience'
-import SideNav from '../common/side-nav/SideNav'
-import { StuInfoApi } from 'src/ajax'
+// import SideNav from '../common/side-nav/SideNav'
 
 @inject('registerStore')
 @observer
@@ -61,12 +63,12 @@ class StepThreeStudent extends React.Component<{}> {
   }
 
   render() {
-    const navItems = ['基本信息', '个人履历', '教育经历']
+    // const navItems = ['基本信息', '个人履历', '教育经历']
     return (
       <div styleName="container" className="element-container">
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
-          <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
+          <Link to="/" styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="form-info">
@@ -79,7 +81,7 @@ class StepThreeStudent extends React.Component<{}> {
           </Form>
           <StuEducationalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
           <button styleName="confirm-button" onClick={this.handleClickConfirm} >确认</button>
-          <SideNav navItems={navItems} pos={this.pos} />
+          {/* <SideNav navItems={navItems} pos={this.pos} /> */}
         </div>
       </div>
     )
