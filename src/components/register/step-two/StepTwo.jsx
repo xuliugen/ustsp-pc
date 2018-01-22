@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { message } from 'antd'
+import { message, Input, Button } from 'antd'
 
 import './stepTow.css'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
@@ -12,7 +12,7 @@ export default class StepTwo extends React.Component {
   constructor() {
     super()
     this.state = {
-      verifyModelVisible: false
+      verifyModelVisible: true
     }
   }
 
@@ -62,8 +62,9 @@ export default class StepTwo extends React.Component {
               <div styleName="success-pic"><img src={imgVeriSuccess} /></div>
               <div styleName="already-sent">验证邮件已经发送到您的注册邮箱</div>
               <div styleName="email">{claimData.email}</div>
-              <div styleName="veri-btn">
-                <button onClick={() => { this.setState({ verifyModelVisible: false }) }}>去验证</button>
+              <div styleName="veri-block">
+                <Input styleName="veri-ipt" placeholder="邮箱验证码" size="large" />
+                <Button size="large" type="primary" onClick={() => { this.setState({ verifyModelVisible: false }) }}>验证</Button>
               </div>
             </div>
           </div>
