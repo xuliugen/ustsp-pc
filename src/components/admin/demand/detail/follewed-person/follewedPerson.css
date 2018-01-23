@@ -12,10 +12,6 @@
   color: #666;
 }
 
-.name:hover{
- color: #3091e6;
-}
-
 .render{
   margin-left: 2px;
   color: #f56a00;
@@ -23,11 +19,6 @@
 }
 
 .person-info{
-  color: #8f9ba7;
-  font-size: 14px;
-}
-
-.register-time{
   color: #8f9ba7;
   font-size: 14px;
 }

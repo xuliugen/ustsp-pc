@@ -1,6 +1,7 @@
 import React from 'react'
 import './demandDetail.css'
 import RegisteredPerson from './registered-person/RegisteredPerson'
+import FollewedPerson from './follewed-person/FollewedPerson'
 
 export default class DemandDetail extends React.Component {
   render() {
@@ -12,13 +13,19 @@ export default class DemandDetail extends React.Component {
         </div>
         <div styleName="persons">
           <div styleName="registered" >
-            <div styleName="registered-title">已报名</div>
+            <div styleName="persons-title">已报名(19)</div>
             <div styleName="persons-form">
               <RegisteredPerson />
               <RegisteredPerson />
             </div>
           </div>
-          <div styleName="followed">s</div>
+          <div styleName="followed">
+            <div styleName="persons-title">已关注(7)</div>
+            <div styleName="persons-form">
+              <FollewedPerson />
+              <FollewedPerson />
+            </div>
+          </div>
         </div>
       </div>
     )

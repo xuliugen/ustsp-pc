@@ -1,8 +1,8 @@
 import React from 'react'
-import './registeredPerson.css'
+import './follewedPerson.css'
 import { Avatar } from 'antd'
 
-export default class RegisteredPerson extends React.Component {
+export default class FollewedPerson extends React.Component {
   render() {
     return (
       <div styleName="person-item">
@@ -12,9 +12,9 @@ export default class RegisteredPerson extends React.Component {
             icon="user" />
           <span styleName="name">钟爽</span>
           <Avatar icon="man" size="small" styleName="render">男</Avatar>
+
         </div>
-        <span styleName="person-info">学生 / 西南财经大学 / email@163.com </span>
-        <span styleName="register-time">报名时间：2014-10-24 19:20  </span>
+        <span styleName="person-info">学生 / 西南财经大学</span>
       </div>
     )
   }
