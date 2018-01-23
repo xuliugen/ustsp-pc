@@ -74,9 +74,8 @@ class NewDemand extends React.Component {
       }
     })
   }
-
   showContactWay = () => {
-    const { email, phone, qq, weChat } = this.props.userStore.user
+    const { email = null, phone = null, qq = null, weChat = null } = this.props.userStore.user || {}
 
     const contactWay = []
     if (email != null) {

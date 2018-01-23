@@ -29,7 +29,7 @@ export const routes = [
     children: [
       {
         key: 'demand-new',
-        to: '',
+        to: '/admin/demand/new-demand',
         text: '发布新需求'
       }, {
         key: 'demand-mod',
