@@ -9,7 +9,9 @@ const SubMenu = Menu.SubMenu
 @withRouter
 export default class Sidebar extends React.Component {
   state = {
-    collased: false
+    collased: false,
+    openKeys: [],
+    selectedKeys: []
   }
 
   constructor() {
@@ -18,6 +20,28 @@ export default class Sidebar extends React.Component {
   }
 
   componentWillMount() {
+    console.log(this.props.history)
+    const { pathname } = this.props.history.location
+    const route = pathname.split('/admin/')[1]
+    if (!route) return
+    const routeModule = route.split('/')[0]
+    routes.forEach(({ key, children }) => {
+      if (key === routeModule) {
+        this.setState((pre) => ({
+          openKeys: pre.openKeys.concat(key)
+        }))
+      }
+      const routeChild = route.split('/')[1]
+      if (routeChild) {
+        children.forEach(({ key }) => {
+          if (key === routeChild) {
+            this.setState({
+              selectedKeys: [key]
+            })
+          }
+        })
+      }
+    })
   }
 
   handleItemSelect({ key }) {
@@ -36,14 +60,14 @@ export default class Sidebar extends React.Component {
       <section styleName="sidebar-inner">
         <Menu
           styleName="sidebar"
-          // defaultSelectedKeys={['5']}
-          defaultOpenKeys={['info']}
+          defaultSelectedKeys={this.state.selectedKeys}
+          defaultOpenKeys={this.state.openKeys}
           mode="inline"
           inlineCollapsed={this.state.collapsed}
           inlineIndent={30}>
           {/* // onSelect={this.handleItemSelect}> */}
           {routes.map(({key, title, children}) => {
-            const SubMenuIcon = title.icon ? <Icon type="check-square-o" /> : null
+            const SubMenuIcon = title.icon ? <Icon type={title.icon} /> : null
             const MenuItems = children.map(({key, to, text}) => {
               const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
               return (

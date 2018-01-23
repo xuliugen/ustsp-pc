@@ -24,19 +24,19 @@ export const routes = [
     key: 'demand',
     title: {
       icon: 'check-square-o',
-      text: '个人信息'
+      text: '需求对接'
     },
     children: [
       {
-        key: 'demand-new',
+        key: 'new-demand',
         to: '/admin/demand/new-demand',
         text: '发布新需求'
       }, {
-        key: 'demand-mod',
-        to: '',
+        key: 'published-demand',
+        to: '/admin/demand/published-demand',
         text: '已发布的需求'
       }, {
-        key: 'demand-security',
+        key: 'undertaken-demand',
         to: '',
         text: '已报名/已承接的需求'
       }

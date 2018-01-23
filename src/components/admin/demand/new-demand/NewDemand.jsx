@@ -272,7 +272,7 @@ class NewDemand extends React.Component {
             </FormItem>
           </div>
           <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
-            <button htmlType="submit" styleName="release-button">立即发布</button>
+            <button type="submit" styleName="release-button">立即发布</button>
           </div>
         </Form>
       </div>
