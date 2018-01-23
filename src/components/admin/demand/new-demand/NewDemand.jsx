@@ -12,6 +12,7 @@ const RadioGroup = Radio.Group
 const { TextArea } = Input
 
 @inject('registerStore')
+@inject('userStore')
 @observer
 class NewDemand extends React.Component {
   constructor() {
@@ -54,7 +55,7 @@ class NewDemand extends React.Component {
             startTime: values.startTime.valueOf(),
             endTime: values.endTime.valueOf(),
             deadLine: values.deadLine.valueOf(),
-            phoneNumber: Number(values.phoneNumber),
+            phoneNumber: values.phoneNumber,
             province: values.province,
             city: values.city,
             money: Number(values.money),
@@ -76,6 +77,7 @@ class NewDemand extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { email, phone } = this.props.userStore.user
     return (
       <div styleName="container">
         <div>
@@ -178,9 +180,10 @@ class NewDemand extends React.Component {
                   ]
                 })(
                   <Select style={{ width: '100%' }} >
+                    <Option value={phone}>电话号码:{phone}</Option>
                     <Option value="QQ">QQ:</Option>
                     <Option value="微信">微信:</Option>
-                    <Option value="电话号码">电话号码:</Option>
+                    <Option value={email}>邮箱:{email}</Option>
                   </Select>
                 )}
               </FormItem>
@@ -239,9 +242,9 @@ class NewDemand extends React.Component {
                 initialValue: 1
               })(
                 <RadioGroup styleName="object" name="radiogroup" >
-                  <Radio styleName="object-radio" value={1}>不限</Radio>
-                  <Radio styleName="object-radio" value={2}>老师</Radio>
-                  <Radio styleName="object-radio" value={3}>学生</Radio>
+                  <Radio styleName="object-radio" value="不限">不限</Radio>
+                  <Radio styleName="object-radio" value="老师">老师</Radio>
+                  <Radio styleName="object-radio" value="学生">学生</Radio>
                 </RadioGroup>
               )}
             </FormItem>
