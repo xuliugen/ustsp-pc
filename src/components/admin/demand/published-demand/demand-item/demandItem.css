@@ -1,0 +1,55 @@
+.demand-item {
+  padding: 30px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+}
+
+.demand-title {
+  font-size: 22px;
+  color: #333;
+}
+
+.demand-status {
+  font-size: 14px;
+  background-color: #ccc;
+  /* background-color: #8f9ba7; */
+  /* background-color: #1dbbae; */
+  /* background-color: #ccc;   */
+  padding: 5px 10px 5px 8px;
+  border-radius: 4px;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.demand-base {
+  margin-top: 27px;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+
+.recieve-type {
+  margin: 0 27px;
+}
+
+.right {
+}
+
+.demand-time {
+  font-size: 14px;
+  color: #8f9ba7;
+  margin-bottom: 20px;
+}
+
+.demand-detail-btn button {
+  float: right;
+  font-size: 16px;
+  color: #666666;
+  padding: 13px 28px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
