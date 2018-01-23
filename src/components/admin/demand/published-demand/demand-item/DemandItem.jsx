@@ -14,14 +14,18 @@ export default class DemandItem extends React.Component<{}> {
             <span styleName="demand-status" style={{ backgroundColor: styleList.backgroundColor, color: styleList.color, border: styleList.border }}>{status}</span>
           </div>
           <div styleName="demand-base">
-            <span>{this.props.demand.subject}</span>
+            <span>{this.props.demand.major}</span>
             <span styleName="recieve-type">接包类型：{this.props.demand.recieveType}</span>
             <span>金额 ¥{this.props.demand.price}</span>
           </div>
         </div>
         <div styleName="right">
           <div styleName="demand-time">发布于 {this.props.demand.time}</div>
-          <div styleName="demand-detail-btn"><button>{this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}</button></div>
+          <div styleName="demand-detail-btn">
+            <button>
+              {this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}
+            </button>
+          </div>
         </div>
       </div>
     )

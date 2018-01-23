@@ -7,7 +7,7 @@ import DemandItem from './demand-item/DemandItem'
 type DemandObj = {
   title: string,
   status: string,
-  subject: string,
+  major: string,
   recieveType: string,
   price: number,
   time: string
@@ -22,18 +22,17 @@ export default class PublishedDemand extends React.Component<{}, State> {
     super()
     this.state = {
       demands: [
-        { title: '发布的项目名称一', status: '待审核', subject: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一加几个字', status: '待报名', number: 10, subject: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一加几个字', status: '已签单', subject: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称', status: '已签单', subject: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '项目名称', status: '待验收', subject: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '项目名称中等长度', status: '已评价', subject: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '中断的项目名称七中等长度', status: '已中断', subject: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一', status: '待审核', subject: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' }
+        { title: '发布的项目名称一', status: '待审核', major: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' },
+        { title: '发布的项目名称一加几个字', status: '待报名', number: 10, major: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '发布的项目名称一加几个字', status: '已签单', major: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '发布的项目名称', status: '已签单', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '项目名称', status: '待验收', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '项目名称中等长度', status: '已评价', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '中断的项目名称七中等长度', status: '已中断', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
+        { title: '发布的项目名称一', status: '待审核', major: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' }
       ],
       showDot: [false, true, false, false, true, false, false],
-      total: 8,
-      current: 1
+      pagination: {total: 8, current: 1, currentPageSize: 4}
     }
   }
 
@@ -46,9 +45,13 @@ export default class PublishedDemand extends React.Component<{}, State> {
   }
 
   handlePagiChange = (page, pageSize) => {
-    this.setState({
-      current: page
-    })
+    this.setState((prevState) => ({
+      pagination: {
+        total: prevState.pagination.total,
+        current: page,
+        currentPageSize: pageSize
+      }
+    }))
   }
 
   render() {
@@ -61,6 +64,9 @@ export default class PublishedDemand extends React.Component<{}, State> {
       { name: '已评价', status: 'commented' },
       { name: '已中断', status: 'Discontinued' }
     ]
+    const current = this.state.pagination.current
+    const currentPageSize = this.state.pagination.currentPageSize
+
     return (
       <div styleName="published-demand-container">
         <div styleName="status-tags">
@@ -84,14 +90,14 @@ export default class PublishedDemand extends React.Component<{}, State> {
           })}
         </div>
         <div styleName="demand-items">
-          {this.state.demands.slice((this.state.current - 1) * 4, this.state.current * 4).map((item, idx) => {
+          {this.state.demands.slice((current - 1) * currentPageSize, current * currentPageSize).map((item, idx) => {
             return (
               <DemandItem key={idx} demand={item} />
             )
           })}
         </div>
         <div styleName="demand-pagination">
-          <Pagination current={this.state.current} total={this.state.total} pageSize={4} onChange={this.handlePagiChange} />
+          <Pagination current={current} total={this.state.pagination.total} pageSize={currentPageSize} onChange={this.handlePagiChange} />
         </div>
       </div>
     )
