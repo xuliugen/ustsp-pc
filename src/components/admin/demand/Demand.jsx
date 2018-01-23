@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { NewDemand, PublishedDemand } from '.'
+import { NewDemand, PublishedDemand, DemandDetail } from '.'
 
 export default class DemandModule extends React.Component {
   render() {
@@ -9,7 +9,8 @@ export default class DemandModule extends React.Component {
     return (
       <Switch>
         <Route path={`${match.url}/new-demand`} component={NewDemand} />
-        <Route path={`${match.url}/published-demand`} component={PublishedDemand} />
+        <Route path={`${match.url}/published-demand`} component={PublishedDemand} exact />
+        <Route path={`${match.url}/published-demand/:id`} component={DemandDetail} />
       </Switch>
     )
   }
