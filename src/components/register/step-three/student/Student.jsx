@@ -2,11 +2,13 @@ import React from 'react'
 import './student.css'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
+import { StuInfoApi } from 'src/ajax'
+
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
 import StuEducationalExperience from './educational-experience/StuEducationalExperience'
 // import SideNav from '../common/side-nav/SideNav'
-import { StuInfoApi } from 'src/ajax'
 
 @inject('registerStore')
 @observer
@@ -66,7 +68,7 @@ class StepThreeStudent extends React.Component<{}> {
       <div styleName="container" className="element-container">
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
-          <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
+          <Link to="/" styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="form-info">

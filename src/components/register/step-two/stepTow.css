@@ -107,7 +107,6 @@
 }
 
 .already-sent {
-
 }
 
 .email {
@@ -115,9 +114,14 @@
   margin: 7px 0 27px 0;
 }
 
-.veri-btn button {
+.veri-block > .veri-ipt {
+   width: 130px;
+   margin-right: 20px;
+}
+
+.veri-block .veri-btn {
   color: white;
-  padding: 15px 55px;
+  padding: 11px 20px;
   border-radius: 4px;
   background-color: #3091e6;
 }

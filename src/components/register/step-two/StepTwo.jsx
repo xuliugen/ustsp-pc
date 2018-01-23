@@ -1,8 +1,9 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { message } from 'antd'
-
+import { message, Input, Button } from 'antd'
+import { RegisterApi } from 'src/ajax'
 import './stepTow.css'
+
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 import imgVeriSuccess from './veri_success.png'
 
@@ -12,7 +13,8 @@ export default class StepTwo extends React.Component {
   constructor() {
     super()
     this.state = {
-      verifyModelVisible: false
+      verifyCode: null,
+      verifyModelVisible: true
     }
   }
 
@@ -27,7 +29,7 @@ export default class StepTwo extends React.Component {
       isAccept: false
     })
     message.success('进入完善信息页面')
-    this.props.history.push('/register/3')
+    this.props.history.replace('/register/3')
   }
 
   handleAcceptData = () => {
@@ -37,7 +39,21 @@ export default class StepTwo extends React.Component {
       isAccept: true
     })
     message.success('信息认领成功，下面进入完善信息页面')
-    this.props.history.push('/register/3')
+    this.props.history.replace('/register/3')
+  }
+
+  handleVerfiyEmailCode = async () => {
+    try {
+      const { data: isPass } = await RegisterApi.checkVerifyCode(this.state.verifyCode, this.props.registerStore.initial.email, 'email')
+      if (isPass) {
+        this.setState({ verifyModelVisible: false })
+        message.success('邮箱验证成功')
+      } else {
+        message.error('验证码有误')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {
@@ -62,8 +78,14 @@ export default class StepTwo extends React.Component {
               <div styleName="success-pic"><img src={imgVeriSuccess} /></div>
               <div styleName="already-sent">验证邮件已经发送到您的注册邮箱</div>
               <div styleName="email">{claimData.email}</div>
-              <div styleName="veri-btn">
-                <button onClick={() => { this.setState({ verifyModelVisible: false }) }}>去验证</button>
+              <div styleName="veri-block">
+                <Input
+                  styleName="veri-ipt"
+                  placeholder="邮箱验证码"size="large"
+                  value={this.state.verifyCode}
+                  onChange={(e) => { this.setState({verifyCode: e.target.value}) }}
+                  onPressEnter={this.handleVerfiyEmailCode} />
+                <Button size="large" type="primary" onClick={this.handleVerfiyEmailCode}>验证</Button>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import './teacher.css'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import TchBaseInfo from './base-info/TchBaseInfo'
@@ -103,7 +103,7 @@ class StepThreeTeacher extends React.Component<{}> {
       <div styleName="container">
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
-          <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
+          <Link styleName="next-step" to="/">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">

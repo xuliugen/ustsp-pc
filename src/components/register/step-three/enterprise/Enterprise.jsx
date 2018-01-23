@@ -2,6 +2,7 @@ import React from 'react'
 import './enterprise.css'
 import { Form, message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
+import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 
 import EnterBaseInfo from './base-info/EnterBaseInfo'
@@ -50,7 +51,7 @@ class StepThreeEnterprise extends React.Component {
       <div styleName="container" className="element-container" >
         <div styleName="title-wrapper">
           <span styleName="title">step 3：完善详细信息</span>
-          <span styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</span>
+          <Link to="/" styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" onSubmit={this.handleSubmit}>
