@@ -1,7 +1,10 @@
 import React from 'react'
 import './uploadFile.css'
-import { Upload, Icon } from 'antd'
+import { Upload, Icon, message } from 'antd'
+import { observer, inject } from 'mobx-react'
 
+@inject('registerStore')
+@observer
 export default class uploadLicensePic extends React.Component {
   state = {
     loading: false
@@ -13,6 +16,10 @@ export default class uploadLicensePic extends React.Component {
       return
     }
     if (info.file.status === 'done') {
+      message.success('上传文件成功')
+      let files = info.file.response
+      this.props.setUploadFile(files[0].file_url)
+
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
@@ -32,11 +39,12 @@ export default class uploadLicensePic extends React.Component {
 
     return (
       <Upload
-        name="license-picture"
+        name="files"
         listType="picture"
-        styleName="license-uploader"
+        styleName="file-uploader"
         showUploadList={false}
-        action="//jsonplaceholder.typicode.com/posts/"
+        data={{ id: this.props.registerStore.initial.uid }}
+        action={`${window.config.API_ORIGIN}/upload/project/file`}
         onChange={this.handleChange}
       >
         {imageUrl ? <img src={imageUrl} alt="文件" height="85" /> : uploadButton}
