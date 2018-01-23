@@ -1,0 +1,29 @@
+.person-item{
+   display: flex;
+   padding: 5px 0px 5px 0px;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom:1px solid #ddd;
+}
+
+.name{
+  margin-left: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.render{
+  margin-left: 2px;
+  color: #f56a00;
+  background-color: transparent;
+}
+
+.person-info{
+  color: #8f9ba7;
+  font-size: 14px;
+}
+
+.register-time{
+  color: #8f9ba7;
+  font-size: 14px;
+}

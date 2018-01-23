@@ -1,0 +1,43 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fff;
+  border-bottom:1px solid #ddd;
+}
+
+.title-text{
+  font-size: 14px;
+  color: #aaaaaae0;
+}
+
+.title-button{
+  float: right;
+  color: #3091e6;
+  font-size: 14px;
+}
+
+.persons{
+  padding-left: 30px;
+  background-color: #fff;
+  display: flex;
+}
+
+.registered{
+  border-right: #ddd 1px solid;
+  width: 63%;
+}
+
+.registered-title{
+  margin-top: 39px;
+  padding-left: 23px;
+  border-left: #3091e6 6px solid;
+}
+
+.followed{
+  width: 37%;
+}
+
+.persons-form{
+  margin: 32px 60px 52px 10px;
+}
+
+
