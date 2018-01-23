@@ -5,7 +5,6 @@ export default class DemandItem extends React.Component<{}> {
   render() {
     const status = this.props.demand.status
     const styleList = setStyleList(this.props.demand)
-    console.log(styleList)
     return (
       <div styleName="demand-item">
         <div styleName="left">

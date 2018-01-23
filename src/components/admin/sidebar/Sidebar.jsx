@@ -20,7 +20,6 @@ export default class Sidebar extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.history)
     const { pathname } = this.props.history.location
     const route = pathname.split('/admin/')[1]
     if (!route) return
