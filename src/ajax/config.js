@@ -30,7 +30,6 @@ instance.interceptors.response.use((res) => {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
-    console.error(error.response)
     const { status } = error.response
     switch (status) {
       case 500:
@@ -39,17 +38,19 @@ instance.interceptors.response.use((res) => {
       default:
         break
     }
+    throw error
   } else if (error.request) {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
     // http.ClientRequest in node.js
-    console.warn('Network error', error.request)
+    message.error('网络异常')
+    // console.warn('Network error', error.request)
   } else {
     // Something happened in setting up the request that triggered an Error
     console.warn('Error', error.message)
+    throw error
   }
   // console.log(error.config)
-  throw error
 })
 
 export default instance

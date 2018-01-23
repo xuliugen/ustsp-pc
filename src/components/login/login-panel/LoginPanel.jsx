@@ -18,9 +18,13 @@ export default class LoginPanel extends React.Component {
       message.success('登录成功')
       this.props.history.replace('/')
     } catch (err) {
-      const status = err.response.status
-      if (status === 401 || status === 404) {
-        message.error('用户名或密码错误')
+      if (err.response) {
+        const status = err.response.status
+        if (status === 401 || status === 404) {
+          message.error('用户名或密码错误')
+        }
+      } else {
+        console.error('login err', err)
       }
     }
   }
