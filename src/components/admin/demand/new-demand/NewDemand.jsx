@@ -61,7 +61,7 @@ class NewDemand extends React.Component {
             money: Number(values.money),
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
-            ownerId: this.props.registerStore.initial.uid,
+            ownerId: this.props.userStore.user.id,
             status: 0
           }
         }
@@ -75,14 +75,30 @@ class NewDemand extends React.Component {
     })
   }
 
+  showContactWay = () => {
+    const { email, phone, qq, weChat } = this.props.userStore.user
+
+    const contactWay = []
+    if (email != null) {
+      contactWay.push(<Option key={1} value={email}>邮箱:{email}</Option>)
+    }
+    if (phone != null) {
+      contactWay.push(<Option key={2} value={phone}>手机号码:{phone}</Option>)
+    }
+    if (qq != null) {
+      contactWay.push(<Option key={3} value={qq}>QQ:{qq}</Option>)
+    }
+    if (weChat != null) {
+      contactWay.push(<Option key={4} value={weChat}>微信:{weChat}</Option>)
+    }
+    return contactWay
+  }
   render() {
     const { getFieldDecorator } = this.props.form
-    const { email, phone } = this.props.userStore.user
     return (
       <div styleName="container">
-        <div>
+        <div style={{ borderBottom: '1px solid #f0f0f0' }}>
           <span styleName="title">填写需求(*为必填)</span>
-          <hr style={{ border: '1 solid #f0f0f0' }} />
         </div>
         <Form layout="vertical" styleName="demand-info" onSubmit={this.handleSubmit}>
           <Row gutter={20}>
@@ -176,14 +192,11 @@ class NewDemand extends React.Component {
                 {getFieldDecorator('phoneNumber', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入联系方式' }
+                    { required: true, message: '请选择联系方式' }
                   ]
                 })(
                   <Select style={{ width: '100%' }} >
-                    <Option value={phone}>电话号码:{phone}</Option>
-                    <Option value="QQ">QQ:</Option>
-                    <Option value="微信">微信:</Option>
-                    <Option value={email}>邮箱:{email}</Option>
+                    {this.showContactWay()}
                   </Select>
                 )}
               </FormItem>
