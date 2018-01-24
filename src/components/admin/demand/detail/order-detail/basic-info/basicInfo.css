@@ -1,0 +1,46 @@
+.order-basic-info {
+
+}
+
+.basic-info-title {
+  font-size: 14px;
+}
+
+.basic-info-title span {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+}
+
+.basic-info-content {
+  margin: 11px 28px 40px 28px;
+  border-bottom: 1px dotted #f0f0f0;
+}
+
+.demand-title {
+  font-size: 22px;
+  color: #666;
+}
+
+.demand-content-items {
+  margin: 50px 0 40px 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.demand-content-items > li {
+  list-style: none;
+  display: inline-block;
+  /* margin-right: 80px; */
+}
+
+.item-title {
+  font-size: 14px;
+  color: #8f9ba7;
+  margin-bottom: 12px;
+}
+
+.item-detail {
+  font-size: 16px;
+  color: #666;
+}
