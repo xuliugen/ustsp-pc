@@ -8,6 +8,7 @@ import Home from '@/home/Home'
 import Login from '@/login/Login'
 import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
+import Project from '@/detail/project/Project'
 
 @withRouter
 @observer
@@ -21,6 +22,7 @@ export default class App extends React.Component<{}> {
           <Route path="/register" component={Register} />
           <Route path="/admin" component={Admin} />
           {/* <PrivateRoute path="/admin" component={Admin} /> */}
+          <Route path="/project/:id" component={Project} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>
