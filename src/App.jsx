@@ -2,6 +2,7 @@
 import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react'
+// import PrivateRoute from 'src/common/PrivateRoute'
 
 import Home from '@/home/Home'
 import Login from '@/login/Login'
@@ -19,6 +20,7 @@ export default class App extends React.Component<{}> {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/admin" component={Admin} />
+          {/* <PrivateRoute path="/admin" component={Admin} /> */}
           <Redirect from="/" to="/" />
         </Switch>
       </div>
