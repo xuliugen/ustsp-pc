@@ -25,10 +25,10 @@ class Header extends React.Component<{}> {
           </nav>
           {userStore.isLogin ? (
             <div styleName="header-right">
-              <div styleName="header-profile">
+              <Link to="/admin" styleName="header-profile">
                 <img styleName="header-avatar" src={avatar} />
                 {userStore.user && userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
-              </div>
+              </Link>
               <span styleName="separator" />
               <div styleName="header-logout" onClick={() => { authStore.logout() }}>登出</div>
             </div>
