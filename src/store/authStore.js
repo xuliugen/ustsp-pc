@@ -33,7 +33,7 @@ class AuthStore {
   async login() {
     try {
       const req = {
-        phone: this.username,
+        userName: this.username,
         password: this.password
       }
       const { data } = await SessionApi.login(req)
