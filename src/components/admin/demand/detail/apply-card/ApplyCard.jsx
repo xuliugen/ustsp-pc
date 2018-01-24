@@ -3,8 +3,12 @@ import './applyCard.css'
 import RegisteredPerson from './registered-person/RegisteredPerson'
 import FollewedPerson from './follewed-person/FollewedPerson'
 
-export default class DemandDetail extends React.Component {
+export default class ApplyCard extends React.Component {
   render() {
+    const registeredPersons = [<RegisteredPerson />, <RegisteredPerson />]
+    const follewedPersons = [<FollewedPerson />, <FollewedPerson />]
+    // const registeredPersons = this.props.registeredPersons.map((registeredPerson, idx) => <RegisteredPerson registeredPerson={registeredPerson} key={idx} />)
+    // const follewedPersons = this.props.follewedPersons.map((follewedPerson, idx) => <FollewedPersons follewedPerson={follewedPerson} key={idx} />)
     return (
       <div>
         <div styleName="title">
@@ -13,17 +17,15 @@ export default class DemandDetail extends React.Component {
         </div>
         <div styleName="persons">
           <div styleName="registered" >
-            <div styleName="persons-title">已报名(19)</div>
+            <div styleName="persons-title">已报名(19{/* this.props.registeredPersons.length */})</div>
             <div styleName="persons-form">
-              <RegisteredPerson />
-              <RegisteredPerson />
+              {registeredPersons}
             </div>
           </div>
           <div styleName="followed">
-            <div styleName="persons-title">已关注(7)</div>
+            <div styleName="persons-title">已关注(7{/* this.props.follewedPersons.length */})</div>
             <div styleName="persons-form">
-              <FollewedPerson />
-              <FollewedPerson />
+              {follewedPersons}
             </div>
           </div>
         </div>
