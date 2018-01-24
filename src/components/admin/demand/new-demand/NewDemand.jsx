@@ -74,9 +74,8 @@ class NewDemand extends React.Component {
       }
     })
   }
-
   showContactWay = () => {
-    const { email, phone, qq, weChat } = this.props.userStore.user
+    const { email = null, phone = null, qq = null, weChat = null } = this.props.userStore.user || {}
 
     const contactWay = []
     if (email != null) {
@@ -273,7 +272,7 @@ class NewDemand extends React.Component {
             </FormItem>
           </div>
           <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
-            <button htmlType="submit" styleName="release-button">立即发布</button>
+            <button type="submit" styleName="release-button">立即发布</button>
           </div>
         </Form>
       </div>

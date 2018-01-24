@@ -36,7 +36,7 @@ export default class Company extends React.Component<{}, State> {
         <div styleName="company-cards">
           {this.state.company.map((item, idx) => {
             return (
-              <div styleName="company-card-wrapper">
+              <div styleName="company-card-wrapper" key={idx}>
                 <CompanyItem company={item} />
               </div>
             )
