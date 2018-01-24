@@ -1,9 +1,12 @@
 import React from 'react'
 import './publishedDemand.css'
 import { Badge, Pagination } from 'antd'
+import { observer, inject } from 'mobx-react'
 import DemandItem from './demand-item/DemandItem'
 import { DemandApi } from 'src/ajax'
 
+@inject('userStore')
+@observer
 export default class PublishedDemand extends React.Component {
   constructor() {
     super()
@@ -21,11 +24,11 @@ export default class PublishedDemand extends React.Component {
 
   setDemand = async (current, pageSize, status) => {
     try {
-      const { data } = await DemandApi.getPublishedDemand(current, pageSize, status)
+      const { data } = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
       console.log(data.data)
       this.setState((prevState) => ({
         demands: data.data,
-        pagination: { ...prevState.pagination, total: data.rows }
+        pagination: { ...prevState.pagination, total: data.totalPage }
       }))
     } catch (e) {
       console.log(e)

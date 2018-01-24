@@ -5,10 +5,10 @@ export default {
     return ajax.post('/project/publish', body)
   },
 
-  getPublishedDemand(page, row, status) {
+  getPublishedDemand(userId, page, row, status) {
     if (status === undefined) {
-      return ajax.get(`/project/query/status?page=${page}&rows=${row}`)
+      return ajax.get(`/project/query/status?userid=${userId}&page=${page}&rows=${row}`)
     }
-    return ajax.get(`/project/query/status?status=${status}&page=${page}&rows=${row}`)
+    return ajax.get(`/project/query/status?userid=${userId}&status=${status}&page=${page}&rows=${row}`)
   }
 }
