@@ -1,0 +1,16 @@
+.project-progress {
+  width: 100%;
+}
+
+.title {
+  font-size: 14px;
+}
+
+.title span {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+}
+
+.progress {
+  margin: 60px 0 20px 0;
+}
