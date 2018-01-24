@@ -16,7 +16,15 @@ export default class Sidebar extends React.Component {
           </button>
         </div>
         <nav styleName="nav">
-          <div />
+          <ul styleName="navbar">
+            <Link to="/" styleName="nav-home-wrapper">
+              <Icon styleName="nav-home" type="home" />
+            </Link>
+            <Link styleName="navbar-li" to="/">找需求</Link>
+            <Link styleName="navbar-li" to="/">找老师</Link>
+            <Link styleName="navbar-li" to="/">找学生</Link>
+            <Link styleName="navbar-li" to="/">找团队</Link>
+          </ul>
         </nav>
       </header>
     )
