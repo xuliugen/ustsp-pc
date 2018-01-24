@@ -73,3 +73,32 @@
 .navbar-li:last-child::after {
   display: none;
 }
+
+/* user */
+.header-right {
+  display: flex;
+  align-items: center;
+  flex: 1 1;
+  justify-content: flex-end;
+  color: #aaa;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.header-username {
+  padding-left: 11px;
+  color: #3091e6;
+}
+
+.header-avatar {
+  width: 50px;
+}
+
+.header-logout {
+  cursor: pointer;
+}

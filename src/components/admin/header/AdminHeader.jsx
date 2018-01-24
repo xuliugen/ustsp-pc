@@ -1,11 +1,24 @@
 import React from 'react'
 import { Icon } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
+
 import imgLogo from 'src/assets/logo.png'
 import './adminHeader.css'
+import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
+@withRouter
+@inject('userStore', 'authStore')
+@observer
 export default class Sidebar extends React.Component {
+  handleLogoutClick = () => {
+    this.props.authStore.logout()
+    this.props.history.replace('/')
+  }
+
   render() {
+    const { userStore } = this.props
+    const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
         <div styleName="logo-block">
@@ -25,6 +38,13 @@ export default class Sidebar extends React.Component {
             <Link styleName="navbar-li" to="/">找学生</Link>
             <Link styleName="navbar-li" to="/">找团队</Link>
           </ul>
+          <div styleName="header-right">
+            <div styleName="header-profile">
+              <img styleName="header-avatar" src={avatar} />
+              {userStore.user && userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
+            </div>
+            <div styleName="header-logout" onClick={this.handleLogoutClick}>退出登录</div>
+          </div>
         </nav>
       </header>
     )
