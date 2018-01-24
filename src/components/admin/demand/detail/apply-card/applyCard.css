@@ -1,0 +1,43 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.title-text{
+  font-size: 14px;
+  color: #aaa;
+}
+
+.title-button{
+  float: right;
+  color: #3091e6;
+  font-size: 14px;
+}
+
+.persons{
+  background-color: #fff;
+  display: flex;
+}
+
+.registered{
+   padding-left: 30px;
+  border-right: #ddd 1px solid;
+  width: 63%;
+}
+
+.followed{
+  padding-left: 30px;
+  width: 37%;
+}
+
+.persons-title{
+  margin-top: 39px;
+  padding-left: 23px;
+  border-left: #3091e6 6px solid;
+}
+
+.persons-form{
+margin: 32px 60px 52px 10px;
+}
+
