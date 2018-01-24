@@ -1,47 +1,49 @@
-// @flow
 import React from 'react'
 import './publishedDemand.css'
 import { Badge, Pagination } from 'antd'
 import DemandItem from './demand-item/DemandItem'
+import { DemandApi } from 'src/ajax'
 
-type DemandObj = {
-  title: string,
-  status: string,
-  major: string,
-  recieveType: string,
-  price: number,
-  time: string
-}
-
-type State = {
-  demands: Array<DemandObj>
-}
-
-export default class PublishedDemand extends React.Component<{}, State> {
+export default class PublishedDemand extends React.Component {
   constructor() {
     super()
     this.state = {
-      demands: [
-        { title: '发布的项目名称一', status: '待审核', major: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一加几个字', status: '待报名', number: 10, major: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一加几个字', status: '已签单', major: '计算机技术专业 / 前端编程', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称', status: '已签单', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '项目名称', status: '待验收', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '项目名称中等长度', status: '已评价', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '中断的项目名称七中等长度', status: '已中断', major: '艺术设计', recieveType: '不限', price: 9999, time: '2017-12-24 12:34' },
-        { title: '发布的项目名称一', status: '待审核', major: '计算机技术专业', recieveType: '不限', price: 20000, time: '2017-12-24 12:34' }
-      ],
+      demands: [],
       showDot: [false, true, false, false, true, false, false],
-      pagination: {total: 8, current: 1, currentPageSize: 4}
+      pagination: { total: 8, current: 1, currentPageSize: 8 },
+      status: ''
+    }
+  }
+
+  componentDidMount() {
+    this.setDemand(this.state.pagination.current, this.state.pagination.currentPageSize)
+  }
+
+  setDemand = async (current, pageSize, status) => {
+    try {
+      const { data } = await DemandApi.getPublishedDemand(current, pageSize, status)
+      console.log(data.data)
+      this.setState((prevState) => ({
+        demands: data.data,
+        pagination: { ...prevState.pagination, total: data.rows }
+      }))
+    } catch (e) {
+      console.log(e)
     }
   }
 
   handleClick = (status, idx, e) => {
-    console.log(status)
+    // 改变tag样式
     changeClass(e.currentTarget)
     this.setState((prev) => ({
       showDot: prev.showDot.map((item, i) => (i === idx ? false : item))
     }))
+
+    // 渲染数据
+    this.setState((prevState) => ({
+      pagination: { ...prevState.pagination, current: 1 }
+    }))
+    this.setDemand(this.state.pagination.current, this.state.pagination.currentPageSize, status)
   }
 
   handlePagiChange = (page, pageSize) => {
@@ -52,17 +54,18 @@ export default class PublishedDemand extends React.Component<{}, State> {
         currentPageSize: pageSize
       }
     }))
+    this.setDemand(page, pageSize, this.state.status)
   }
 
   render() {
     const statusTags = [
-      { name: '全部', status: 'all' },
-      { name: '待审核', status: 'pendingReview' },
-      { name: '待报名', status: 'pendingRegister' },
-      { name: '已签单', status: 'signed' },
-      { name: '待验收', status: 'pendingCheck' },
-      { name: '已评价', status: 'commented' },
-      { name: '已中断', status: 'Discontinued' }
+      { name: '全部', status: '' },
+      { name: '待审核', status: 1 },
+      { name: '待报名', status: 2 },
+      { name: '已签单', status: 3 },
+      { name: '待验收', status: 4 },
+      { name: '已评价', status: 5 },
+      { name: '已中断', status: 6 }
     ]
     const current = this.state.pagination.current
     const currentPageSize = this.state.pagination.currentPageSize
@@ -90,14 +93,18 @@ export default class PublishedDemand extends React.Component<{}, State> {
           })}
         </div>
         <div styleName="demand-items">
-          {this.state.demands.slice((current - 1) * currentPageSize, current * currentPageSize).map((item, idx) => {
+          {this.state.demands.length !== 0 ? this.state.demands.map((item, idx) => {
             return (
-              <DemandItem key={idx} demand={item} />
+              <DemandItem key={idx} demand={item.projectResearchInfo} />
             )
-          })}
+          }) : (
+            <div styleName="demand-blank">
+              <span>这里暂时还没有条目...</span>
+            </div>
+          )}
         </div>
         <div styleName="demand-pagination">
-          <Pagination current={current} total={this.state.pagination.total} pageSize={currentPageSize} onChange={this.handlePagiChange} />
+          <Pagination hideOnSinglePage current={current} total={this.state.pagination.total} pageSize={currentPageSize} onChange={this.handlePagiChange} />
         </div>
       </div>
     )
