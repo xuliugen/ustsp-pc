@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Header } from 'components/common/'
-import { SearchBar, SearchProject } from 'components/search'
+import { SearchBar, ProjectResult } from 'components/search'
 
 export default class Search extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class Search extends React.Component {
       <div>
         <Header />
         <SearchBar />
-        <SearchProject />
+        <ProjectResult />
       </div>
     )
   }

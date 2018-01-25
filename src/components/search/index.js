@@ -1,7 +1,7 @@
 import SearchBar from './search-bar/SearchBar'
-import SearchProject from './project/Project'
+import ProjectResult from './project/ProjectResult'
 
 export {
   SearchBar,
-  SearchProject
+  ProjectResult
 }
