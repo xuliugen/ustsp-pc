@@ -52,10 +52,10 @@ class NewDemand extends React.Component {
             type: values.type,
             subject: values.subject,
             major: values.major,
-            startTime: values.startTime.valueOf(),
-            endTime: values.endTime.valueOf(),
+            startTime: values.startTime ? values.startTime.valueOf() : null,
+            endTime: values.endTime ? values.endTime.valueOf() : null,
             deadLine: values.deadLine.valueOf(),
-            phoneNumber: values.phoneNumber,
+            contactWay: values.contactWay,
             province: values.province,
             city: values.city,
             money: Number(values.money),
@@ -188,7 +188,7 @@ class NewDemand extends React.Component {
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="联系方式">
-                {getFieldDecorator('phoneNumber', {
+                {getFieldDecorator('contactWay', {
                   validateTrigger: 'onBlur',
                   rules: [
                     { required: true, message: '请选择联系方式' }
