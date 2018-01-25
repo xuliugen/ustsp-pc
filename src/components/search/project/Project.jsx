@@ -1,11 +1,11 @@
 import React from 'react'
-import Projects from './projects/Projects'
+import ProjectResult from './project-result/ProjectResult'
 
 export default class SearchProject extends React.Component {
   render() {
     return (
       <div>
-        <Projects />
+        <ProjectResult />
       </div>
     )
   }

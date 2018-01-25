@@ -1,9 +1,9 @@
 import React from 'react'
 import ProjectItem from './project-item/ProjectItem'
-import './projects.css'
+import './projectResult.css'
 import { Pagination } from 'antd'
 
-export default class SearchProject extends React.Component {
+export default class ProjectResult extends React.Component {
   constructor() {
     super()
     this.state = {
