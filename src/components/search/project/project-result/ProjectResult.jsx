@@ -28,6 +28,9 @@ export default class ProjectResult extends React.Component {
     const { current, currentPageSize, total } = this.state.pagination
     return (
       <div styleName="project-items">
+        <div styleName="title">共为您找到
+          <span styleName="projects-number">56</span>
+        个项目</div>
         <ProjectItem />
         <ProjectItem />
         <ProjectItem />
