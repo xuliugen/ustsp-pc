@@ -10,6 +10,13 @@ export default {
       return ajax.get(`/project/query/status?userid=${userId}&page=${page}&rows=${row}`)
     }
     return ajax.get(`/project/query/status?userid=${userId}&status=${status}&page=${page}&rows=${row}`)
-  }
+  },
 
+  getDemandApplicants(userId, projectId) {
+    return ajax.get(`/project/query/applicants?userId=${userId}&projectId=${projectId}`)
+  },
+
+  getDemandFollowers(projectId) {
+    return ajax.get(`/project/query/followers?projectId=${projectId}`)
+  }
 }
