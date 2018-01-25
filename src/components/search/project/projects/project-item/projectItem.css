@@ -1,0 +1,50 @@
+.project-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 39px 52px 30px 20px;
+  width: 100%;
+  border-top:1px #ddd solid;
+  border-left:1px #ddd solid;
+  border-right:1px #ddd solid;
+}
+
+.project-info{
+  display: flex;
+  align-items: center;
+}
+
+.info-text{
+  margin-left: 19px;
+  margin-bottom: 5px;
+}
+
+.project-name{
+  color: #333;
+  font-size: 22px;
+}
+
+.visible-icon{
+  margin-left: 19px;
+  font-size: 20px;
+  color: #8f9ba7;
+}
+
+.visible-person-number{
+  color: #8f9ba7;
+}
+
+.school-info{
+  color: #666;
+  font-size: 14px;
+}
+
+.end-time{
+  margin-left: 25px;
+  color: #8f9ba7;
+}
+
+.money{
+  font-size: 20px;
+  color: #3091e6;
+}
