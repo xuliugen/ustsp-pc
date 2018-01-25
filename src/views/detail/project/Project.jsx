@@ -2,6 +2,7 @@ import React from 'react'
 import './project.css'
 
 import { Header, Footer } from 'components/common'
+import DemandInfo from 'components/detail/project/demand-info/DemandInfo'
 
 export default class Project extends React.Component {
   state = {
@@ -16,10 +17,10 @@ export default class Project extends React.Component {
         </div>
         <div styleName="mid-container" className="clearfix">
           <div styleName="nav-container">
-            nav
+            123
           </div>
           <main styleName="left-container">
-            123
+            <DemandInfo />
           </main>
           <div styleName="right-container">
             456

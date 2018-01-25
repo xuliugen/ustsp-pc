@@ -1,0 +1,32 @@
+.download-file {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #e2e2e2;
+  color: #666;
+}
+
+.download-file:hover .name, .download-file:hover a {
+  color: #3091e6;
+  text-decoration: underline;
+}
+
+.file-name {
+  font-size: 16px;
+}
+
+.name {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 30px;
+}
+
+.download-link {
+  font-size: 14px;
+  margin: 18px 22px 0 0;
+}
+
+.download-file a {
+  color: #8f9ba7;
+}
