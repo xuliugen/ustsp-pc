@@ -1,5 +1,7 @@
 import React from 'react'
 import { Input } from 'antd'
+import { inject, observer } from 'mobx-react'
+
 import './searchBar.css'
 
 const Search = Input.Search
@@ -18,16 +20,11 @@ const types = [{
   text: '信息搜索'
 }]
 
+@inject('searchStore')
+@observer
 export default class SearchBar extends React.Component {
-  state = {
-    // talent, project
-    type: 'talent'
-  }
-
   handleSearchTypeClick(type) {
-    this.setState({
-      type
-    })
+    this.props.searchStore.setType(type)
   }
 
   render() {
@@ -39,7 +36,7 @@ export default class SearchBar extends React.Component {
               <ul styleName="search-type-box">
                 {types.map(({type, text}) => {
                   let styleName = 'search-type-item'
-                  if (type === this.state.type) {
+                  if (type === this.props.searchStore.type) {
                     styleName += ' search-type-item-active'
                   }
                   return <li key={type} styleName={styleName} onClick={this.handleSearchTypeClick.bind(this, type)}>{text}</li>
