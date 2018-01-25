@@ -1,10 +1,14 @@
 import React from 'react'
-import SearchProject from 'components/search/project/Project'
+
+import { Header } from 'components/common/'
+import { SearchBar, SearchProject } from 'components/search'
 
 export default class Search extends React.Component {
   render() {
     return (
       <div>
+        <Header />
+        <SearchBar />
         <SearchProject />
       </div>
     )

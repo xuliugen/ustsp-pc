@@ -1,0 +1,55 @@
+import React from 'react'
+import { Input } from 'antd'
+import './searchBar.css'
+
+const Search = Input.Search
+
+const types = [{
+  type: 'talent',
+  text: '人才搜索'
+}, {
+  type: 'project',
+  text: '项目对接'
+}, {
+  type: 'achievement',
+  text: '成果转化'
+}, {
+  type: 'info',
+  text: '信息搜索'
+}]
+
+export default class SearchBar extends React.Component {
+  state = {
+    // talent, project
+    type: 'talent'
+  }
+
+  handleSearchTypeClick(type) {
+    this.setState({
+      type
+    })
+  }
+
+  render() {
+    return (
+      <div styleName="searchBar-wrapper">
+        <div styleName="searchBar-inner">
+          <div styleName="search-box">
+            <div styleName="search-box-inner">
+              <ul styleName="search-type-box">
+                {types.map(({type, text}) => {
+                  let styleName = 'search-type-item'
+                  if (type === this.state.type) {
+                    styleName += ' search-type-item-active'
+                  }
+                  return <li key={type} styleName={styleName} onClick={this.handleSearchTypeClick.bind(this, type)}>{text}</li>
+                })}
+              </ul>
+              <Search styleName="search" enterButton="搜索" size="large" />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
