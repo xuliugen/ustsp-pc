@@ -8,13 +8,21 @@ import { DemandApi } from 'src/ajax'
 @inject('userStore')
 @observer
 export default class PublishedDemand extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
+      type: '', // published, undertaken
       demands: [],
       showDot: [false, true, false, false, true, false, false],
       pagination: { total: 8, current: 1, currentPageSize: 8 },
       status: ''
+    }
+    // set type
+    const { pathname } = this.props.history.location
+    if (pathname.indexOf('published') !== -1) {
+      this.state.type = 'published'
+    } else if (pathname.indexOf('undertaken') !== -1) {
+      this.state.type = 'undertaken'
     }
   }
 
@@ -24,8 +32,16 @@ export default class PublishedDemand extends React.Component {
 
   setDemand = async (current, pageSize, status) => {
     try {
-      const { data } = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
-      console.log(data.data)
+      let res = null
+      if (this.state.type === 'published') {
+        res = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
+      } else if (this.state.type === 'undertaken') {
+        // const { data } = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
+        res = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
+      } else {
+        throw new Error('type undefined')
+      }
+      const { data } = res
       this.setState((prevState) => ({
         demands: data.data,
         pagination: { ...prevState.pagination, total: data.totalPage }
