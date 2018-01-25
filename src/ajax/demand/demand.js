@@ -4,4 +4,5 @@ export default {
   pubishDemand(body) {
     return ajax.post('/project/publish', body)
   }
+
 }
