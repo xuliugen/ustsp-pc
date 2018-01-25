@@ -12,42 +12,49 @@ export default class SideNav extends React.Component<{}> {
     // 设置监听
     let items = []
     const itemsTop = elements.map((element) => element.offsetTop - offTop)
-    window.addEventListener('scroll', () => {
-      let scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-      if (itemsTop.length === 2) {
-        if (scrollTop < itemsTop[1]) {
-          items = document.getElementsByClassName('side-nav-item')
-          changeClass(items[0])
-        } else if (scrollTop > itemsTop[1]) {
-          items = document.getElementsByClassName('side-nav-item')
-          changeClass(items[1])
-        }
-      } else if (itemsTop.length > 2) {
-        for (let i = 0; i < itemsTop.length; i++) {
-          if (i === 0) {
-            continue
-          } else if (i === 1) {
-            if (scrollTop < itemsTop[1]) {
-              items = document.getElementsByClassName('side-nav-item')
-              changeClass(items[0])
-            }
-          } else if (i < itemsTop.length - 1) {
-            if (scrollTop > itemsTop[i - 1] && scrollTop < itemsTop[i]) {
-              items = document.getElementsByClassName('side-nav-item')
-              changeClass(items[i - 1])
-            }
-          } else if (i === itemsTop.length - 1) {
-            if (scrollTop > itemsTop[i - 1] && scrollTop < itemsTop[i]) {
-              items = document.getElementsByClassName('side-nav-item')
-              changeClass(items[i - 1])
-            } else if (scrollTop > itemsTop[i]) {
-              items = document.getElementsByClassName('side-nav-item')
-              changeClass(items[i])
-            }
+    this.onScrollListener = this.onScrollListener.bind(this, items, itemsTop)
+    window.addEventListener('scroll', this.onScrollListener)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScrollListener)
+  }
+
+  onScrollListener(items, itemsTop) {
+    let scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+    if (itemsTop.length === 2) {
+      if (scrollTop < itemsTop[1]) {
+        items = document.getElementsByClassName('side-nav-item')
+        changeClass(items[0])
+      } else if (scrollTop > itemsTop[1]) {
+        items = document.getElementsByClassName('side-nav-item')
+        changeClass(items[1])
+      }
+    } else if (itemsTop.length > 2) {
+      for (let i = 0; i < itemsTop.length; i++) {
+        if (i === 0) {
+          continue
+        } else if (i === 1) {
+          if (scrollTop < itemsTop[1]) {
+            items = document.getElementsByClassName('side-nav-item')
+            changeClass(items[0])
+          }
+        } else if (i < itemsTop.length - 1) {
+          if (scrollTop > itemsTop[i - 1] && scrollTop < itemsTop[i]) {
+            items = document.getElementsByClassName('side-nav-item')
+            changeClass(items[i - 1])
+          }
+        } else if (i === itemsTop.length - 1) {
+          if (scrollTop > itemsTop[i - 1] && scrollTop < itemsTop[i]) {
+            items = document.getElementsByClassName('side-nav-item')
+            changeClass(items[i - 1])
+          } else if (scrollTop > itemsTop[i]) {
+            items = document.getElementsByClassName('side-nav-item')
+            changeClass(items[i])
           }
         }
       }
-    })
+    }
   }
 
   handleClick = (idx, e) => {
@@ -56,18 +63,10 @@ export default class SideNav extends React.Component<{}> {
   }
 
   render() {
-    const navItems = (
-      this.props.navItems.map((item, idx) => {
-        if (idx === 0) {
-          return (
-            <li key={idx} ><span className="side-nav-item active-nav" onClick={(e) => this.handleClick(idx, e)} >{item}</span></li>
-          )
-        }
-        return (
-          <li key={idx}><span className="side-nav-item" onClick={(e) => this.handleClick(idx, e)} >{item}</span></li>
-        )
-      })
-    )
+    const navItems = this.props.navItems.map((item, idx) => {
+      const className = `side-nav-item ${idx === 0 ? 'active-nav' : ''}`
+      return <li key={idx} ><span className={className} onClick={(e) => this.handleClick(idx, e)} >{item}</span></li>
+    })
     return (
       <div styleName="side-nav-container" ref={(el) => { this.sideNav = el }} >
         <ul>
