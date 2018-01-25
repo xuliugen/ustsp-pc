@@ -9,6 +9,8 @@ import Login from '@/login/Login'
 import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
 import Teacher from '@/detail/teacher/Teacher'
+import Project from '@/detail/project/Project'
+import Search from '@/search/Search'
 
 @withRouter
 @observer
@@ -23,6 +25,8 @@ export default class App extends React.Component<{}> {
           <Route path="/admin" component={Admin} />
           <Route path="/teacher" component={Teacher} />
           {/* <PrivateRoute path="/admin" component={Admin} /> */}
+          <Route path="/project/:id" component={Project} />
+          <Route path="/search" component={Search} />
           <Redirect from="/" to="/" />
         </Switch>
       </div>

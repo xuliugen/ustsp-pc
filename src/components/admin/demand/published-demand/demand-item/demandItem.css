@@ -16,9 +16,6 @@
 .demand-status {
   font-size: 14px;
   background-color: #ccc;
-  /* background-color: #8f9ba7; */
-  /* background-color: #1dbbae; */
-  /* background-color: #ccc;   */
   padding: 5px 10px 5px 8px;
   border-radius: 4px;
   color: #fff;
@@ -46,9 +43,10 @@
 
 .demand-detail-btn button {
   float: right;
+  width: 120px;
   font-size: 16px;
   color: #666666;
-  padding: 13px 28px;
+  padding: 13px 0;
   border-radius: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
