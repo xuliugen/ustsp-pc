@@ -1,5 +1,5 @@
 
-.project-items{
+.talent-items{
   border-bottom:1px #ddd solid;
 }
 
@@ -10,11 +10,11 @@
   margin-bottom: 20px;
 }
 
-.projects-number{
+.talents-number{
   color: #3091e6;
 }
 
 .pagination{
-   float: right;
+  float: right;
   margin-top: 19px;
 }

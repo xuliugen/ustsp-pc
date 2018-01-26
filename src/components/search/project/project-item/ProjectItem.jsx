@@ -7,7 +7,8 @@ export default class ProjectItem extends React.Component {
     return (
       <div styleName="project-item">
         <div styleName="project-info">
-          <Avatar shape="square" size="large"
+          <Avatar shape="square"
+            style={{width: '55px', height: '55px'}}
           // src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
           />
           <div styleName="info-text">
@@ -18,7 +19,7 @@ export default class ProjectItem extends React.Component {
                 <span styleName="visible-person-number">1415</span>
               </div>
             </div>
-            <div style={{ marginTop: '10px' }}>
+            <div style={{ marginTop: '13px' }}>
               <span styleName="school-info">电子科技大学 / IT(计算机相关)</span>
               <span styleName="end-time">报名截止时间： 2017-12-14 </span>
             </div>
