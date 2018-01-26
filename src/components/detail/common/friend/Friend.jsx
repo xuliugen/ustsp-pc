@@ -30,11 +30,7 @@ export default class Friend extends React.Component<{}, State> {
   }
   render() {
     const friendItem = this.state.friends.map((item, idx) => {
-      return (
-        <div key={idx}>
-          <FriendItem friend={item} />
-        </div>
-      )
+      return <FriendItem friend={item} key={idx} />
     })
     return (
       <div styleName="friend">
