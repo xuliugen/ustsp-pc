@@ -1,28 +1,35 @@
-// @flow
 import React from 'react'
 import './talentItem.css'
 import imgFire from './fire.png'
+import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
-type Props = {
-}
+export default class TalentItem extends React.Component {
+  state = {
+    avatar: this.props.talent.photo
+  }
 
-export default class TalentItem extends React.Component<Props> {
+  onLoadAvatarError(a) {
+    this.setState({
+      avatar: defaultAvatar
+    })
+  }
+
   render() {
     return (
       <div styleName="talentItem-container">
         <a href="/" styleName="talent-avatar-container">
-          <img styleName="talent-avatar" src={this.props.talent.imgAvatar} />
+          <img styleName="talent-avatar" src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} />
           <div styleName="hoverLayer">
-            <img src={imgFire} width="22" height="24" />
+            <img src={imgFire} width="22" height="24" alt="头像" />
             <div styleName="avatar-hoverText">
-              <span styleName="highlight">人气</span>&nbsp;1234
+              <span styleName="highlight">人气</span>&nbsp;{this.props.talent.pageView}
             </div>
           </div>
         </a>
         <div styleName="talent-info-box">
-          <a href="/" styleName="info-name">{this.props.talent.name}</a>
+          <a href="/" styleName="info-name">{this.props.talent.realName}</a>
           <div styleName="info-title">{this.props.talent.title}</div>
-          <div styleName="info-department">{this.props.talent.department}</div>
+          <div styleName="info-department">{this.props.talent.major}</div>
         </div>
       </div>
     )
