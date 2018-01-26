@@ -58,6 +58,7 @@ class NewDemand extends React.Component {
             contactWay: values.contactWay,
             province: values.province,
             city: values.city,
+            uploadfileUrl: this.state.uploadFile,
             money: Number(values.money),
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
