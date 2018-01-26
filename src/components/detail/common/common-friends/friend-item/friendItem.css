@@ -1,6 +1,5 @@
 .friend-item {
   width: 120px;
-  height: 125px;
   font-size: 14px;
   text-align: center;
 }
@@ -9,6 +8,7 @@
   margin-top: 18px;
   width: 80px;
   height: 80px;
+  border-radius: 50%;
 }
 
 .name {

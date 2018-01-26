@@ -10,14 +10,15 @@
 .avatar {
   width: 30px;
   height: 30px;
+  border-radius: 50%;
 }
 
 .name {
   margin-left: 10px;
-  color: #666666;
+  color: #666;
 }
 
 .university-item {
   float: right;
-  color: #b9c0c7;
+  color: #8f9ba7;
 }

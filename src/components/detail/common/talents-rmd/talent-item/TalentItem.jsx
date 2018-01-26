@@ -1,19 +1,15 @@
 // @flow
 import React from 'react'
-import './similarItem.css'
+import './talentItem.css'
 
-type SimilarObj = {
+type Props = {
   name: string,
   university: string,
   title: string,
   avatar: string
 }
 
-type Props = {
-  similar: Array<SimilarObj>
-}
-
-export default class SimilarItem extends React.Component<Props> {
+export default class TalentItem extends React.Component<Props> {
   render() {
     const { similar } = this.props
     return (

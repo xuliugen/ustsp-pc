@@ -6,6 +6,7 @@ import TchInfoApi from './user/tchInfo'
 import EtpInfoApi from './user/etpInfo'
 import StuInfoApi from './user/stuInfo'
 import DemandApi from './demand/demand'
+import TalentApi from './user/talent'
 
 export default axios
 export {
@@ -14,5 +15,6 @@ export {
   TchInfoApi,
   EtpInfoApi,
   StuInfoApi,
-  DemandApi
+  DemandApi,
+  TalentApi
 }
