@@ -1,0 +1,28 @@
+.project-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #f0f0f0;
+  padding: 20px 0 20px 0;
+  font-size: 14px;
+  margin: 0 20px;
+}
+
+.project-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.project-name{
+  color: #666;
+}
+
+.major{
+  margin-top: 10px;
+  color: #8f9ba7;
+}
+
+.money{
+  color: #3091e6;
+  font-size: 16px;
+}
