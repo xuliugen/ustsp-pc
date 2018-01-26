@@ -3,6 +3,7 @@ import './project.css'
 
 import { Header, Footer } from 'components/common'
 import DemandInfo from 'components/detail/project/demand-info/DemandInfo'
+import { ProjectsRmd } from 'components/detail/common'
 
 export default class Project extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export default class Project extends React.Component {
             <DemandInfo />
           </main>
           <div styleName="right-container">
-            456
+            <ProjectsRmd />
           </div>
         </div>
         <div styleName="footer-wrapper">

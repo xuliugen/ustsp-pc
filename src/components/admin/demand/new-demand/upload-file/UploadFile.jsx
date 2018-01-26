@@ -18,8 +18,12 @@ export default class uploadLicensePic extends React.Component {
     if (info.file.status === 'done') {
       message.success('上传文件成功')
       let files = info.file.response
-      this.props.setUploadFile(files[0].file_url)
-
+      let result = JSON.parse(files[0].result)
+      let file = {
+        fileUrl: result.data.access_url,
+        fileName: files[0].original_name
+      }
+      this.props.setUploadFile(file)
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
