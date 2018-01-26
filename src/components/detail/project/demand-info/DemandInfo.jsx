@@ -5,10 +5,61 @@ import PartAInfo from './partA-info/PartAInfo'
 import DownloadFile from './download-file/DownloadFile'
 import ImgEye from '../../../../assets/ico_eye.png'
 import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
+import { ProjectApi } from 'src/ajax'
+import { message } from 'antd'
 
+@withRouter
 @inject('userStore')
 @observer
 export default class DemandInfo extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      ownerId: ''
+    }
+  }
+  componentDidMount() {
+    console.log(this.props.userStore.user)
+    console.log(this.props.match.params.id)
+    this.getApplicationDetail()
+  }
+
+  getApplicationDetail = async () => {
+    try {
+      const { data } = await ProjectApi.getApplicationDetail('134af19441fe438d9f951541d8f3b66b')
+      console.log(data.projectInfoVo.projectResearchInfo.ownerId)
+      this.setState({
+        ownerId: data.projectInfoVo.projectResearchInfo.ownerId
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  handleSighUp = async () => {
+    try {
+      const user = this.props.userStore.user
+      const projectJoin = {
+        projectId: '134af19441fe438d9f951541d8f3b66b',
+        ownerId: this.state.ownerId,
+        partyId: user.id,
+        status: 1,
+        partyAvatar: user.avatar,
+        partyName: user.realName,
+        partySex: 1,
+        partyType: user.userType,
+        partyLocation: '成都',
+        partyContact: user.email || user.phone || user.wechat || user.qq || '',
+        date: new Date().getTime()
+      }
+      await ProjectApi.signUpInfo(projectJoin)
+      message.success('报名成功')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   render() {
     return (
       <div styleName="demand-info">
@@ -23,7 +74,7 @@ export default class DemandInfo extends React.Component {
             </div>
             {this.props.userStore.isLogin ? (
               <div>
-                <button styleName="sign-up">我要报名</button>
+                <button styleName="sign-up" onClick={this.handleSighUp}>我要报名</button>
                 <button styleName="follow">关注</button>
               </div>) : null}
           </div>
