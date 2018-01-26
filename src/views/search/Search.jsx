@@ -9,13 +9,13 @@ import { SearchBar, ProjectResult, TalentResult } from 'components/search'
 @observer
 export default class Search extends React.Component {
   render() {
-    let SearchResult = null
+    let searchPanel = null
     switch (this.props.searchStore.type) {
       case 'project':
-        SearchResult = ProjectResult
+        searchPanel = <ProjectResult />
         break
       case 'talent':
-        SearchResult = TalentResult
+        searchPanel = <TalentResult />
         break
       default:
         break
@@ -26,7 +26,7 @@ export default class Search extends React.Component {
         <SearchBar />
         <div styleName="result-wrapper" className="clearfix">
           <div styleName="left-container">
-            <SearchResult />
+            {searchPanel}
           </div>
           <div styleName="right-container">
             23
