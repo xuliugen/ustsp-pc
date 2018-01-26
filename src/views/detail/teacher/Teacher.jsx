@@ -2,9 +2,6 @@ import React from 'react'
 import { Header, Footer } from 'components/common'
 import { Divider } from 'antd'
 import './teacher.css'
-import Similar from 'components/detail/common/similar/Similar'
-import Friend from 'components/detail/common/friend/Friend'
-import Others from 'components/detail/common/others/Others'
 import Nav from 'components/detail/teacher/nav/Nav'
 import InfoTeacher from 'components/detail/teacher/info-teacher/InfoTeacher'
 import Projects from 'components/detail/teacher/projects/Projects'
@@ -12,6 +9,8 @@ import Introduction from 'components/detail/teacher/introduction/Introduction'
 import Educations from 'components/detail/teacher/educations/Educations'
 import Awards from 'components/detail/teacher/awards/Awards'
 import Experiences from 'components/detail/teacher/experiences/Experiences'
+
+import { TalentsRmd, CommonFriends, Others } from 'components/detail/common'
 
 export default class Teacher extends React.Component {
   render() {
@@ -38,8 +37,8 @@ export default class Teacher extends React.Component {
             <Experiences />
           </div>
           <div styleName="right-container">
-            <Similar />
-            <Friend />
+            <TalentsRmd />
+            <CommonFriends />
             <Others />
           </div>
         </div>

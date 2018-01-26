@@ -28,11 +28,7 @@ export default class Others extends React.Component<{}, State> {
   }
   render() {
     const othersItem = this.state.others.map((item, idx) => {
-      return (
-        <div key={idx}>
-          <OthersItem others={item} />
-        </div>
-      )
+      return <OthersItem others={item} key={idx} />
     })
     return (
       <div styleName="others">

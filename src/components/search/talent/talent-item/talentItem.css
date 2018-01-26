@@ -1,0 +1,53 @@
+.talent-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 18px 20px;
+  width: 100%;
+  border-top:1px #ddd solid;
+  border-left:1px #ddd solid;
+  border-right:1px #ddd solid;
+}
+
+.talent-info{
+  display: flex;
+  align-items: center;
+}
+
+.info-text{
+  margin-left: 19px;
+  margin-bottom: 5px;
+}
+
+.talent-name{
+  color: #333;
+  font-size: 22px;
+}
+
+.visible-icon{
+  font-size: 20px;
+  color: #8f9ba7;
+}
+
+.visible-person-number{
+  color: #8f9ba7;
+}
+
+.school-info{
+  color: #666;
+  font-size: 14px;
+}
+
+.major{
+  margin-left: 25px;
+  color: #8f9ba7;
+}
+
+.add-friend{
+  background-color: #3a96e7;
+  font-size: 16px;
+  color: #fff;
+  padding: 12px 15px 12px 10px;
+  border: 2px solid;
+  border-radius: 5px;
+}

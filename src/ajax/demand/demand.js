@@ -18,5 +18,9 @@ export default {
 
   getDemandFollowers(projectId) {
     return ajax.get(`/project/query/followers?projectId=${projectId}`)
+  },
+
+  geteDemanOrderDetail(projectId) {
+    return ajax.get(`/project/query/project-detail?projectId=${projectId}`)
   }
 }

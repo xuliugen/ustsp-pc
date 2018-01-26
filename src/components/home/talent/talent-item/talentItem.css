@@ -6,6 +6,8 @@
 
 .talent-avatar-container {
   position: relative;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .talent-avatar {
