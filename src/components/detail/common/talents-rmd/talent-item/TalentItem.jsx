@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import './similarItem.css'
+import './talentItem.css'
 
 type Props = {
   name: string,
@@ -9,7 +9,7 @@ type Props = {
   avatar: string
 }
 
-export default class SimilarItem extends React.Component<Props> {
+export default class TalentItem extends React.Component<Props> {
   render() {
     const { similar } = this.props
     return (

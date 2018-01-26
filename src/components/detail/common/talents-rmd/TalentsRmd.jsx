@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import Header from 'components/detail/common/header/Header'
-import SimilarItem from './similar-item/SimilarItem'
+import TalentItem from './talent-item/TalentItem'
 import avatar1 from 'src/assets/avatar1.png'
-import './similar.css'
+import './talentsRmd.css'
 
 type SimilarObj = {
   name: string,
@@ -16,7 +16,7 @@ type State = {
   similar: Array<SimilarObj>
 }
 
-export default class Similar extends React.Component<{}, State> {
+export default class TalentsRmd extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
@@ -30,7 +30,7 @@ export default class Similar extends React.Component<{}, State> {
   }
   render() {
     const similarItem = this.state.similars.map((item, idx) => {
-      return <SimilarItem similar={item} key={idx} />
+      return <TalentItem similar={item} key={idx} />
     })
     return (
       <div styleName="similar">

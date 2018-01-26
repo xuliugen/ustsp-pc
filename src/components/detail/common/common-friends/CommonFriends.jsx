@@ -3,7 +3,7 @@ import React from 'react'
 import Header from 'components/detail/common/header/Header'
 import FriendItem from './friend-item/FriendItem'
 import avatar1 from 'src/assets/avatar1.png'
-import './friend.css'
+import './commonFriends.css'
 
 type FriendObj = {
   name: string,
@@ -14,7 +14,7 @@ type State = {
   friends: Array<FriendObj>
 }
 
-export default class Friend extends React.Component<{}, State> {
+export default class CommonFriends extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
