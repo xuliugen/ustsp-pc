@@ -1,8 +1,14 @@
 import React from 'react'
-import './demandItem.css'
+import { withRouter } from 'react-router-dom'
 import moment from 'moment'
+import './demandItem.css'
 
+@withRouter
 export default class DemandItem extends React.Component<{}> {
+  handleSeeDetailClick(id) {
+    this.props.history.push(`${this.props.match.url}/${id}`)
+  }
+
   render() {
     const styleList = setStyleList(this.props.demand)
 
@@ -22,7 +28,7 @@ export default class DemandItem extends React.Component<{}> {
         <div styleName="right">
           <div styleName="demand-time">发布于 {moment(this.props.demand.releaseTime).format('YYYY-MM-DD')}</div>
           <div styleName="demand-detail-btn">
-            <button>
+            <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand.id)}>
               {this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}
             </button>
           </div>

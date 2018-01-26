@@ -37,7 +37,7 @@ export const routes = [
         text: '已发布的需求'
       }, {
         key: 'undertaken-demand',
-        to: '',
+        to: '/admin/demand/undertaken-demand',
         text: '已报名/已承接的需求'
       }
     ]

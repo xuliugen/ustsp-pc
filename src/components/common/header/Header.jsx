@@ -7,11 +7,11 @@ import './header.css'
 import logo from 'src/assets/logo.png'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
-@inject('userStore', 'authStore')
+@inject('userStore', 'authStore', 'searchStore')
 @observer
 class Header extends React.Component<{}> {
   render() {
-    const { userStore, authStore } = this.props
+    const { userStore, authStore, searchStore } = this.props
     const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
@@ -19,9 +19,9 @@ class Header extends React.Component<{}> {
           <a href="/"><img src={logo} /></a>
           <nav styleName="header-nav">
             <Link styleName="header-navItem" to="/">首页</Link>
-            <Link styleName="header-navItem" to="/">人才</Link>
-            <Link styleName="header-navItem" to="/">项目</Link>
-            <Link styleName="header-navItem" to="/">知识产权</Link>
+            <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('talent') }}>人才</Link>
+            <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('project') }}>项目</Link>
+            <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('achievement') }}>知识产权</Link>
           </nav>
           {userStore.isLogin ? (
             <div styleName="header-right">

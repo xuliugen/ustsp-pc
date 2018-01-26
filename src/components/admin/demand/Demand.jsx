@@ -11,6 +11,7 @@ export default class DemandModule extends React.Component {
         <Route path={`${match.url}/new-demand`} component={NewDemand} />
         <Route path={`${match.url}/published-demand`} component={PublishedDemand} exact />
         <Route path={`${match.url}/published-demand/:id`} component={DemandDetail} />
+        <Route path={`${match.url}/undertaken-demand`} component={PublishedDemand} exact />
       </Switch>
     )
   }
