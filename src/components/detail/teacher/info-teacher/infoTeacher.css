@@ -1,6 +1,5 @@
 .info-teacher {
   height: 360px;
-  margin-top: 30px;
   background-color: #efeef0;
   display: flex;
   justify-content: center;
@@ -10,7 +9,7 @@
   font-size: 20px;
   color: #8f9ba7;
   position: relative;
-  left: -250px;
+  left: -300px;
   top: 30px;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .contact span{
-  color: #96a1ad;
+  color: #8f9ba7;
 }
 
 .contact-icon{
@@ -62,6 +61,6 @@
 
 .add {
   position: relative;
-  left: 250px;
-  top: 20px;
+  left: 300px;
+  top: 30px;
 }

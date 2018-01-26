@@ -1,5 +1,5 @@
 .award-items {
-  width: 660px;
+  width: 760px;
   height: 80px;
   line-height: 35px;
   margin: 0 20px;
@@ -17,12 +17,12 @@
 .award-category {
   font-size: 14px;
   display: block;
-  color: #c9c9c9;
+  color: #aaaaaa;
 }
 
 .award-time {
   float: right;
   font-size: 14px;
   line-height: 60px;
-  color: #c9c9c9
+  color: #aaaaaa
 }

@@ -1,5 +1,5 @@
 .education-item {
-  width: 660px;
+  width: 760px;
   height: 80px;
   line-height: 35px;
   margin: 0 20px;
@@ -22,13 +22,13 @@
 .edu-major {
   font-size: 14px;
   display: block;
-  color: #c9c9c9;
+  color: #aaaaaa;
 }
 
 .edu-duration {
   float: right;
   font-size: 14px;
   line-height: 60px;
-  color: #c9c9c9
+  color: #aaaaaa;
 }
 

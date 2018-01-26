@@ -1,5 +1,5 @@
 .project-item {
-  width: 660px;
+  width: 760px;
   height: 60px;
   line-height: 60px;
   margin: 0 20px;
@@ -21,7 +21,7 @@
 
 .project-process {
   float: right;
-  color: #bdbdbd
+  color: #aaaaaa
 }
 
 .more-project{

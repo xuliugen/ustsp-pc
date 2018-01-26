@@ -20,9 +20,11 @@ export default class Teacher extends React.Component {
         <div styleName="header-wrapper">
           <Header />
         </div>
-        <div styleName="inf-container">
+        <div styleName="nav-container">
           <Nav />
-          <div styleName="info-detail">
+        </div>
+        <div styleName="mid-container">
+          <div styleName="left-container">
             <InfoTeacher />
             <Divider><span styleName="divider">TA参与的平台项目</span></Divider>
             <Projects />
@@ -35,7 +37,7 @@ export default class Teacher extends React.Component {
             <Divider><span styleName="divider">项目经验</span></Divider>
             <Experiences />
           </div>
-          <div styleName="inf-more">
+          <div styleName="right-container">
             <Similar />
             <Friend />
             <Others />

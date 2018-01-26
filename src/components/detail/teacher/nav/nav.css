@@ -1,11 +1,11 @@
 .teacher-menu {
-  margin: 130px 10px;
   width: 200px;
   height: 300px;
+  display: block;
 }
 
 .menu-info {
   font-size: 16px;
   float: right;
-  color: #98a3ae;
+  color: #8f9ba7;
 }
