@@ -1,0 +1,9 @@
+.friend {
+  width: 370px;
+  height: 320px;
+}
+
+.friend-item-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
