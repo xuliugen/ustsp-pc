@@ -21,10 +21,11 @@ export default class DemandInfo extends React.Component {
                 <span styleName="visit-num"><img src={ImgEye} /> 1145</span>
               </div>
             </div>
-            <div>
-              <button styleName="sign-up">我要报名</button>
-              <button styleName="follow">关注</button>
-            </div>
+            {this.props.userStore.isLogin ? (
+              <div>
+                <button styleName="sign-up">我要报名</button>
+                <button styleName="follow">关注</button>
+              </div>) : null}
           </div>
           <div styleName="content">
             <ul styleName="left">
