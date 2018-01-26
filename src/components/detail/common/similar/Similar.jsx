@@ -30,11 +30,7 @@ export default class Similar extends React.Component<{}, State> {
   }
   render() {
     const similarItem = this.state.similars.map((item, idx) => {
-      return (
-        <div key={idx}>
-          <SimilarItem similar={item} />
-        </div>
-      )
+      return <SimilarItem similar={item} key={idx} />
     })
     return (
       <div styleName="similar">
