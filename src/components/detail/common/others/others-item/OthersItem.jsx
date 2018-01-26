@@ -2,13 +2,9 @@
 import React from 'react'
 import './othersItem.css'
 
-type OthersObj = {
+type Props = {
   title: string,
   date: string
-}
-
-type Props = {
-  others: Array<OthersObj>
 }
 
 export default class OthersItem extends React.Component<Props> {
