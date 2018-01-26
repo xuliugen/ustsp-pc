@@ -1,10 +1,12 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import './orderDetail.css'
 import OrderBasicInfo from './basic-info/BasicInfo'
 import ProjectProgress from './project-progress/ProjectProgress'
 import { DemandApi } from 'src/ajax'
 import moment from 'moment'
 
+@withRouter
 export default class OrderDetail extends React.Component {
   constructor() {
     super()
@@ -15,7 +17,7 @@ export default class OrderDetail extends React.Component {
   }
 
   async componentDidMount() {
-    const { data } = await DemandApi.geteDemanOrderDetail(this.props.projectId)
+    const { data } = await DemandApi.geteDemanOrderDetail(this.props.match.params.id)
     this.setState({
       demand: {
         type: data.type,
