@@ -80,10 +80,10 @@ export default class PublishedDemand extends React.Component {
     const statusTags = [
       { name: '全部', status: '' },
       { name: '待审核', status: 1 },
-      { name: '待报名', status: 2 },
-      { name: '已签单', status: 3 },
-      { name: '待验收', status: 4 },
-      { name: '已评价', status: 5 },
+      { name: '待签单', status: 2 },
+      { name: '待验收', status: 3 },
+      { name: '待评价', status: 4 },
+      { name: '已互评', status: 5 },
       { name: '已中断', status: 6 }
     ]
     const current = this.state.pagination.current

@@ -54,25 +54,25 @@ function setStyleList(item) {
       styleList.message = '查看进展'
       return styleList
     case 2:
-      styleList.status = '待报名'
+      styleList.status = '待签单'
       styleList.backgroundColor = '#1dbbae'
       styleList.color = '#fff'
       styleList.message = '人已报名'
       return styleList
     case 3:
-      styleList.status = '已签单'
-      styleList.backgroundColor = '#3091e6'
-      styleList.color = '#fff'
-      styleList.message = '查看详细'
-      return styleList
-    case 4:
       styleList.status = '待验收'
       styleList.backgroundColor = '#3091e6'
       styleList.color = '#fff'
       styleList.message = '查看详细'
       return styleList
+    case 4:
+      styleList.status = '待评价'
+      styleList.backgroundColor = '#3091e6'
+      styleList.color = '#fff'
+      styleList.message = '查看详细'
+      return styleList
     case 5:
-      styleList.status = '已评价'
+      styleList.status = '已互评'
       styleList.backgroundColor = '#8f9ba7'
       styleList.color = '#fff'
       styleList.message = '查看详细'
