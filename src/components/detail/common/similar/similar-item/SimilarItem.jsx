@@ -2,15 +2,11 @@
 import React from 'react'
 import './similarItem.css'
 
-type SimilarObj = {
+type Props = {
   name: string,
   university: string,
   title: string,
   avatar: string
-}
-
-type Props = {
-  similar: Array<SimilarObj>
 }
 
 export default class SimilarItem extends React.Component<Props> {
