@@ -124,9 +124,11 @@ class NewDemand extends React.Component {
                   ]
                 })(
                   <Select style={{ width: '100%' }} >
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    <Option value="工程开发">工程开发</Option>
+                    <Option value="成果转化">成果转化</Option>
+                    <Option value="学术研究">学术研究</Option>
+                    <Option value="承接合作">承接合作</Option>
+                    <Option value="其他">其他</Option>
                   </Select>
                 )}
               </FormItem>

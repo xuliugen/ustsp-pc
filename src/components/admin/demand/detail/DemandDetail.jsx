@@ -27,7 +27,7 @@ export default class DemandDetail extends React.Component {
   render() {
     return (
       <div>
-        <OrderDetail />
+        <OrderDetail projectId={this.props.match.params.id} />
         <div styleName="apply-card-wrapper">
           <ApplyCard registeredPersons={this.state.registeredPersons} follewedPersons={this.state.follewedPersons} />
         </div>

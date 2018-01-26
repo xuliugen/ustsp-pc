@@ -13,12 +13,12 @@ export default class ProjectProgress extends React.Component {
         </div>
         <div styleName="progress">
           <Steps progressDot current={this.props.currentStatus}>
-            <Step title="审核" />
-            <Step title="报名中" />
-            <Step title="签单/执行" />
-            <Step title="正在进行" />
-            <Step title="验收" />
-            <Step title="评价" />
+            <Step title="待审核" />
+            <Step title="待报名" />
+            <Step title="已签单" />
+            <Step title="待验收" />
+            <Step title="已评价" />
+            <Step title="已中断" />
           </Steps>
         </div>
       </div>
