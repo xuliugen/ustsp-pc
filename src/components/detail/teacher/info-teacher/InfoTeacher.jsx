@@ -50,7 +50,7 @@ export default class InfoTeacher extends React.Component<{}, State> {
             <Icon type="mail" styleName="contact-icon" /><span>{teacherInfo.email}</span>
           </div>
         </div>
-        <div styleName="add">
+        <div styleName="friend-status">
           <Button type="primary" icon="plus" size="large">加好友</Button>
         </div>
       </div>
