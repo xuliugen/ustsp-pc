@@ -34,41 +34,9 @@ export default class TeacherContent extends React.Component {
         qq: 999999999,
         email: 'wfd@163.com'
       },
-      userAwardInfos: [{
-        id: '6a388d38dd6c4ce5a16807e7be5b989e',
-        userId: 'd54abc32cbbd4a159adc3990e4103a12',
-        name: '12323',
-        introduction: '321123',
-        time: 1516961680000,
-        level: '123231',
-        rank: 123213,
-        isResearch: 1,
-        createTime: 1516356882000,
-        updateTime: 1517047577000
-      }],
-      userEducationInfos: [{
-        id: 'd54abc32cbbd4a159adc3990e4103a12',
-        userId: 'd54abc32cbbd4a159adc3990e4103a12',
-        school: 'asdfaf',
-        college: 'dsfaf',
-        major: 'dsafdasfasf',
-        level: 'asdfasf',
-        startTime: 1517043119000,
-        endTime: 1517043119000,
-        createTime: 1516259241000,
-        updateTime: 1517043119000
-      }],
-      researchInfos: [{
-        id: '04d359ee7b204d4e807f3b846f42521e',
-        userId: 'd54abc32cbbd4a159adc3990e4103a12',
-        projectName: '科研项目一',
-        projectLevel: '省级',
-        funding: 10000,
-        startTime: 1514961409000,
-        endTime: 1517035005000,
-        createTime: 1516430212000,
-        updateTime: 1517043123000
-      }]
+      userAwardInfos: [],
+      userEducationInfos: [],
+      researchInfos: []
     }
   }
   async componentDidMount() {
