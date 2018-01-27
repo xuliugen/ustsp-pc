@@ -1,22 +1,8 @@
-// @flow
 import React from 'react'
 import { Icon } from 'antd'
-import './projects.css'
+import './projectsJoin.css'
 
-type ProjectObj = {
-  projectName: string,
-  role: string,
-  signUp: number,
-  join: number,
-  aspect: string,
-  process: string
-}
-
-type State = {
-  projects: Array<ProjectObj>
-}
-
-export default class Projects extends React.Component<{}, State> {
+export default class ProjectsJoin extends React.Component {
   constructor() {
     super()
     this.state = {
