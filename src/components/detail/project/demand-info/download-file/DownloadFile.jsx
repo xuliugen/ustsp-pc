@@ -8,10 +8,10 @@ export default class DownloadFile extends React.Component {
       <div styleName="download-file">
         <div styleName="file-name">
           <span><img src={ImgLink} /></span>
-          <span styleName="name">项目详细需求文档.doc</span>
+          <span styleName="name">{this.props.download.uploadFileName}</span>
         </div>
         <div styleName="download-link">
-          <a href="#">点击下载</a>
+          <a href={this.props.download.uploadFileUrl} >点击下载</a>
         </div>
       </div>
     )

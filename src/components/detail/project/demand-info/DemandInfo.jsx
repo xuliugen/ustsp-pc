@@ -8,6 +8,7 @@ import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { ProjectApi } from 'src/ajax'
 import { message } from 'antd'
+import moment from 'moment'
 
 @withRouter
 @inject('userStore')
@@ -16,21 +17,64 @@ export default class DemandInfo extends React.Component {
   constructor() {
     super()
     this.state = {
-      ownerId: ''
+      demandDetail: {},
+      skills: [],
+      ownerInfo: {},
+      upload: {}
     }
   }
   componentDidMount() {
     console.log(this.props.userStore.user)
-    console.log(this.props.match.params.id)
     this.getApplicationDetail()
   }
 
   getApplicationDetail = async () => {
     try {
-      const { data } = await ProjectApi.getApplicationDetail('134af19441fe438d9f951541d8f3b66b')
-      console.log(data.projectInfoVo.projectResearchInfo.ownerId)
+      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id)
+      const projectInfo = data.projectInfoVo.projectResearchInfo
+      const projectSkill = data.projectInfoVo.projectSkillList
+
+      // 项目详细信息
       this.setState({
-        ownerId: data.projectInfoVo.projectResearchInfo.ownerId
+        demandDetail: {
+          name: projectInfo.projectName,
+          releaseTime: projectInfo.releaseTime,
+          view: projectInfo.projectView,
+          type: projectInfo.type,
+          subject: projectInfo.subject,
+          major: projectInfo.major,
+          money: projectInfo.money,
+          toOriented: projectInfo.toOriented,
+          startTime: projectInfo.startTime,
+          endTime: projectInfo.endTime,
+          deadline: projectInfo.deadline,
+          demandIntr: projectInfo.projectIntroduction
+        }
+      })
+
+      // 相关下载信息
+      this.setState({
+        upload: {
+          uploadFileName: projectInfo.uploadfileName,
+          uploadFileUrl: projectInfo.uploadfileUrl
+        }
+      })
+
+      // 技能要求信息
+      this.setState({
+        skills: projectSkill
+      })
+
+      // 甲方信息
+      this.setState({
+        ownerInfo: {
+          ownerId: projectInfo.ownerId,
+          name: data.ownerName,
+          location: data.ownerLocation,
+          avatar: data.ownerAvatarUrl,
+          type: data.ownerType,
+          contact: projectInfo.contactWay
+        }
       })
     } catch (e) {
       console.log(e)
@@ -41,8 +85,8 @@ export default class DemandInfo extends React.Component {
     try {
       const user = this.props.userStore.user
       const projectJoin = {
-        projectId: '134af19441fe438d9f951541d8f3b66b',
-        ownerId: this.state.ownerId,
+        projectId: this.props.match.params.id,
+        ownerId: this.state.ownerInfo.ownerId,
         partyId: user.id,
         status: 1,
         partyAvatar: user.avatar,
@@ -61,15 +105,17 @@ export default class DemandInfo extends React.Component {
   }
 
   render() {
+    const demandDetail = this.state.demandDetail
+
     return (
       <div styleName="demand-info">
         <div styleName="name-card">
           <div styleName="card-title">
             <div>
-              <div styleName="name">学生签到系统开发平台及APP</div>
+              <div styleName="name">{demandDetail.name}</div>
               <div styleName="other">
-                <span>发布于 2017-12-24</span>
-                <span styleName="visit-num"><img src={ImgEye} /> 1145</span>
+                <span>发布于 {moment(demandDetail.releaseTime).format('YYYY-MM-DD')}</span>
+                <span styleName="visit-num"><img src={ImgEye} /> {demandDetail.view}</span>
               </div>
             </div>
             {this.props.userStore.isLogin ? (
@@ -80,37 +126,39 @@ export default class DemandInfo extends React.Component {
           </div>
           <div styleName="content">
             <ul styleName="left">
-              <li><span styleName="list-title">需求类型</span>工程开发</li>
-              <li><span styleName="list-title">需求学科</span>IT（计算机相关）</li>
-              <li><span styleName="list-title">需求专业</span>移动应用</li>
-              <li><span styleName="list-title">预设金额</span>¥12000</li>
+              <li><span styleName="list-title">需求类型</span>{demandDetail.type}</li>
+              <li><span styleName="list-title">需求学科</span>{demandDetail.subject}</li>
+              <li><span styleName="list-title">需求专业</span>{demandDetail.major}</li>
+              <li><span styleName="list-title">预设金额</span>¥{demandDetail.money}</li>
             </ul>
             <ul styleName="right">
-              <li><span styleName="list-title">对接倾向</span>不限</li>
-              <li><span styleName="list-title">开始时间</span>2017-12-29</li>
-              <li><span styleName="list-title">结束时间</span>2018-01-29</li>
-              <li><span styleName="list-title">报名截止</span>2018-01-01</li>
+              <li><span styleName="list-title">对接倾向</span>{demandDetail.toOriented}</li>
+              <li><span styleName="list-title">开始时间</span>{demandDetail.startTime ? moment(demandDetail.startTime).format('YYYY-MM-DD') : '暂无'}</li>
+              <li><span styleName="list-title">结束时间</span>{demandDetail.endTime ? moment(demandDetail.startTime).format('YYYY-MM-DD') : '暂无'}</li>
+              <li><span styleName="list-title">报名截止</span>{demandDetail.deadline ? moment(demandDetail.deadline).format('YYYY-MM-DD') : '暂无'}</li>
             </ul>
           </div>
         </div>
         <div styleName="demand-intr">
           <Header title="需求信息描述" />
           <div styleName="intr-content">
-            描述
+            {demandDetail.demandIntr}
           </div>
         </div>
         <div styleName="skill">
           <Header title="技能要求" />
           <div styleName="skill-content">
-            <button>UI设计</button>
-            <button>项目策划</button>
-            <button>后台管理</button>
+            {this.state.skills ? this.state.skills.map((it, idx) => {
+              return (
+                <button key={idx}>{it.skill}</button>
+              )
+            }) : '暂无要求'}
           </div>
         </div>
         <div styleName="PartAInfo">
           <Header title="甲方信息" />
           <div styleName="PartAInfo-content">
-            {this.props.userStore.isLogin ? <PartAInfo /> : (
+            {this.props.userStore.isLogin ? <PartAInfo ownerInfo={this.state.ownerInfo} /> : (
               <div style={{ fontSize: '16px', color: '#666' }}>您当前的身份为游客，需要登陆才能查看甲方信息</div>
             )}
           </div>
@@ -118,7 +166,7 @@ export default class DemandInfo extends React.Component {
         <div styleName="download">
           <Header title="相关下载" />
           <div styleName="download-content">
-            {this.props.userStore.isLogin ? <DownloadFile /> : (
+            {this.props.userStore.isLogin ? <DownloadFile download={this.state.upload} /> : (
               <div style={{ fontSize: '16px', color: '#666' }}>您当前的身份为游客，需要登陆才能查看甲方信息</div>
             )}
           </div>
