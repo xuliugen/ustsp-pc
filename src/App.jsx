@@ -8,8 +8,6 @@ import Home from '@/home/Home'
 import Login from '@/login/Login'
 import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
-import Teacher from '@/detail/teacher/Teacher'
-import Student from '@/detail/student/Student'
 import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
 
@@ -25,8 +23,8 @@ export default class App extends React.Component<{}> {
           <Route path="/register" component={Register} />
           {/* <PrivateRoute path="/admin" component={Admin} /> */}
           <Route path="/admin" component={Admin} />
-          <Route path="/teacher" component={Teacher} />
-          <Route path="/student" component={Student} />
+          <Route path="/teacher/:id" component={Detail} />
+          <Route path="/student/:id" component={Detail} />
           <Route path="/project/:id" component={Detail} />
           <Route path="/search" component={Search} />
           <Redirect from="/" to="/" />

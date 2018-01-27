@@ -2,7 +2,7 @@ import React from 'react'
 import './detail.css'
 
 import { Header, Footer } from 'components/common'
-import DemandInfo from 'components/detail/project/demand-info/DemandInfo'
+import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
 import { ProjectsRmd } from 'components/detail/common'
 
 export default class Detail extends React.Component {
@@ -14,12 +14,16 @@ export default class Detail extends React.Component {
     const pathname = this.props.location.pathname
     switch (pathname.split('/')[1]) {
       case 'project':
-        MainContent = <DemandInfo />
+        MainContent = <ProjectContent />
         RmdContent = <ProjectsRmd />
         break
       case 'teacher':
+        MainContent = <TeacherContent />
+        RmdContent = <ProjectsRmd />
         break
       case 'student':
+        MainContent = <StudentContent />
+        RmdContent = <ProjectsRmd />
         break
       default:
         break
