@@ -6,7 +6,7 @@ import './nav.css'
 export default class Nav extends React.Component<{}> {
   render() {
     return (
-      <Menu styleName="teacher-menu" mode="inline" defaultOpenKeys={['1']}>
+      <Menu styleName="nav-menu" mode="inline" defaultOpenKeys={['1']}>
         <Menu.Item key="1">
           <span styleName="menu-info">基本信息</span>
         </Menu.Item>
