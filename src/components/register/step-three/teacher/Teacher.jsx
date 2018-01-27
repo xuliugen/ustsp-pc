@@ -68,7 +68,7 @@ class StepThreeTeacher extends React.Component<{}> {
           id: this.props.registerStore.initial.uid,
           realName: values.realName,
           sex: values.render,
-          birth: values.birth,
+          birth: values.birth ? values.birth.valueOf() : null,
           wechat: values.wechat,
           qq: values.qq,
           certificate: this.state.tchCertificate,

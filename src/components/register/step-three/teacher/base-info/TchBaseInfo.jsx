@@ -46,9 +46,7 @@ export default class TchBaseInfo extends React.Component {
                 )}
               </FormItem>
               <FormItem label="选择出生日期">
-                {getFieldDecorator('birth', {
-                  rules: [{ required: true, message: '请选择出生日期' }]
-                })(
+                {getFieldDecorator('birth')(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}
               </FormItem>
