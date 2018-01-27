@@ -1,0 +1,71 @@
+.student-card {
+  height: 360px;
+  background-color: #efeef0;
+  display: flex;
+  justify-content: center;
+}
+
+.read {
+  font-size: 20px;
+  color: #8f9ba7;
+  position: relative;
+  left: -300px;
+  top: 30px;
+}
+
+.read-number {
+  font-size: 14px;
+  position: absolute;
+  top: 3px;
+  left: 22px;
+}
+
+.info-list {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  text-align: center;
+  color: #666666;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
+.name {
+  font-size: 22px;
+  line-height: 50px;
+}
+
+.details {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.contact {
+  line-height: 30px;
+  color: #cccccc;
+  display: inline-block;
+}
+
+.contact span{
+  color: #8f9ba7;
+}
+
+.contact-icon{
+  margin: 0 5px 0 10px;
+}
+
+.friend-status {
+  position: relative;
+  left: 300px;
+  top: 30px;
+}
+
+.friend-status button {
+  background-color: #1dbbae;
+  border: none;
+}
