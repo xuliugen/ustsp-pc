@@ -8,6 +8,8 @@ import Introduction from './introduction/Introduction'
 import Educations from './educations/Educations'
 import Awards from './awards/Awards'
 import Experiences from './experiences/Experiences'
+import News from './news/StdNews'
+
 export {
   TalentsRmd,
   CommonFriends,
@@ -18,5 +20,6 @@ export {
   Introduction,
   Educations,
   Awards,
-  Experiences
+  Experiences,
+  News
 }

@@ -3,7 +3,7 @@ import './detail.css'
 
 import { Header, Footer } from 'components/common'
 import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
-import { ProjectsRmd } from 'components/detail/common'
+import { ProjectsRmd, TalentsRmd, CommonFriends, Others, News } from 'components/detail/common'
 
 export default class Detail extends React.Component {
   render() {
@@ -19,13 +19,23 @@ export default class Detail extends React.Component {
         break
       case 'teacher':
         MainContent = <TeacherContent />
-        RmdContent = <ProjectsRmd />
+        RmdContent = (
+          <div>
+            <TalentsRmd />
+            <CommonFriends />
+            <Others />
+          </div>
+        )
         break
       case 'student':
         MainContent = <StudentContent />
-        RmdContent = <ProjectsRmd />
-        break
-      default:
+        RmdContent = (
+          <div>
+            <News />
+            <TalentsRmd />
+            <CommonFriends />
+          </div>
+        )
         break
     }
 
