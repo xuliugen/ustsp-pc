@@ -7,5 +7,13 @@ export default {
 
   completeStuEducation(body) {
     return ajax.post('./student/completeEducation', body)
+  },
+
+  getInfo(userId) {
+    return ajax.get(`./student/getInfo?id=${userId}`)
+  },
+
+  getEduInfo(userId) {
+    return ajax.get(`/student/getOtherAddInfo?id=${userId}`)
   }
 }
