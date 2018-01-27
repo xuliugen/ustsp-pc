@@ -18,7 +18,10 @@ class NewDemand extends React.Component {
   constructor() {
     super()
     this.state = {
-      uploadFile: null,
+      uploadFile: {
+        fileName: null,
+        fileUrl: null
+      },
       skills: []
     }
   }
@@ -54,7 +57,7 @@ class NewDemand extends React.Component {
             major: values.major,
             startTime: values.startTime ? values.startTime.valueOf() : null,
             endTime: values.endTime ? values.endTime.valueOf() : null,
-            deadLine: values.deadLine.valueOf(),
+            deadline: values.deadLine.valueOf(),
             contactWay: values.contactWay,
             province: values.province,
             city: values.city,

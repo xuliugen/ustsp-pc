@@ -9,6 +9,11 @@
   margin-right: 19px;
 }
 
+.avatar img {
+  width: 80px;
+  height: 80px;
+}
+
 .identity {
   display: inline-block;
   vertical-align: middle;
