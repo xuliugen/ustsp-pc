@@ -10,7 +10,7 @@ import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
 import Teacher from '@/detail/teacher/Teacher'
 import Student from '@/detail/student/Student'
-import Project from '@/detail/project/Project'
+import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
 
 @withRouter
@@ -23,11 +23,11 @@ export default class App extends React.Component<{}> {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          {/* <PrivateRoute path="/admin" component={Admin} /> */}
           <Route path="/admin" component={Admin} />
           <Route path="/teacher" component={Teacher} />
           <Route path="/student" component={Student} />
-          {/* <PrivateRoute path="/admin" component={Admin} /> */}
-          <Route path="/project/:id" component={Project} />
+          <Route path="/project/:id" component={Detail} />
           <Route path="/search" component={Search} />
           <Redirect from="/" to="/" />
         </Switch>
