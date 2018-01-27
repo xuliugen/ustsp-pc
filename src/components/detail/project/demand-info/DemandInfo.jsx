@@ -7,7 +7,7 @@ import ImgEye from '../../../../assets/ico_eye.png'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { ProjectApi } from 'src/ajax'
-import { message } from 'antd'
+import { message, Spin } from 'antd'
 import moment from 'moment'
 
 @withRouter
@@ -20,17 +20,26 @@ export default class DemandInfo extends React.Component {
       demandDetail: {},
       skills: [],
       ownerInfo: {},
-      upload: {}
+      upload: null,
+      signUpBtn: {
+        msg: '我要报名',
+        loading: false,
+        disable: false
+      },
+      followBtn: {
+        msg: '关注',
+        loading: false,
+        disable: false
+      }
     }
   }
   componentDidMount() {
-    console.log(this.props.userStore.user)
     this.getApplicationDetail()
   }
 
   getApplicationDetail = async () => {
     try {
-      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id)
+      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id, this.props.userStore.user.id)
       const projectInfo = data.projectInfoVo.projectResearchInfo
       const projectSkill = data.projectInfoVo.projectSkillList
 
@@ -53,12 +62,14 @@ export default class DemandInfo extends React.Component {
       })
 
       // 相关下载信息
-      this.setState({
-        upload: {
-          uploadFileName: projectInfo.uploadfileName,
-          uploadFileUrl: projectInfo.uploadfileUrl
-        }
-      })
+      if (projectInfo.uploadfileUrl) {
+        this.setState({
+          upload: {
+            uploadFileName: projectInfo.uploadfileName,
+            uploadFileUrl: projectInfo.uploadfileUrl
+          }
+        })
+      }
 
       // 技能要求信息
       this.setState({
@@ -76,12 +87,19 @@ export default class DemandInfo extends React.Component {
           contact: projectInfo.contactWay
         }
       })
+
+      // 报名状态
+      if (data.dockingStatus !== 0) this.setState({ signUpBtn: { msg: '已报名', loading: false, disable: true } })
     } catch (e) {
       console.log(e)
     }
   }
 
   handleSighUp = async () => {
+    if (this.props.userStore.user.id === this.state.ownerInfo.ownerId) {
+      message.warning('发布者不可以报名')
+      return
+    }
     try {
       const user = this.props.userStore.user
       const projectJoin = {
@@ -97,8 +115,14 @@ export default class DemandInfo extends React.Component {
         partyContact: user.email || user.phone || user.wechat || user.qq || '',
         date: new Date().getTime()
       }
+      this.setState((prevState) => ({
+        signUpBtn: { ...prevState.signUpBtn, loading: true }
+      }))
       await ProjectApi.signUpInfo(projectJoin)
       message.success('报名成功')
+      this.setState({
+        signUpBtn: { msg: '已报名', loading: false, disable: true }
+      })
     } catch (e) {
       console.log(e)
     }
@@ -120,8 +144,16 @@ export default class DemandInfo extends React.Component {
             </div>
             {this.props.userStore.isLogin ? (
               <div>
-                <button styleName="sign-up" onClick={this.handleSighUp}>我要报名</button>
-                <button styleName="follow">关注</button>
+                <div style={{ display: 'inline-block' }}>
+                  <Spin spinning={this.state.signUpBtn.loading}>
+                    <button styleName="sign-up" onClick={this.handleSighUp} disabled={this.state.signUpBtn.disable} >{this.state.signUpBtn.msg}</button>
+                  </Spin>
+                </div>
+                <div style={{ display: 'inline-block' }}>
+                  <Spin spinning={this.state.followBtn.loading}>
+                    <button styleName="follow">{this.state.followBtn.msg}</button>
+                  </Spin>
+                </div>
               </div>) : null}
           </div>
           <div styleName="content">
@@ -134,7 +166,7 @@ export default class DemandInfo extends React.Component {
             <ul styleName="right">
               <li><span styleName="list-title">对接倾向</span>{demandDetail.toOriented}</li>
               <li><span styleName="list-title">开始时间</span>{demandDetail.startTime ? moment(demandDetail.startTime).format('YYYY-MM-DD') : '暂无'}</li>
-              <li><span styleName="list-title">结束时间</span>{demandDetail.endTime ? moment(demandDetail.startTime).format('YYYY-MM-DD') : '暂无'}</li>
+              <li><span styleName="list-title">结束时间</span>{demandDetail.endTime ? moment(demandDetail.endTime).format('YYYY-MM-DD') : '暂无'}</li>
               <li><span styleName="list-title">报名截止</span>{demandDetail.deadline ? moment(demandDetail.deadline).format('YYYY-MM-DD') : '暂无'}</li>
             </ul>
           </div>

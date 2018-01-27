@@ -1,6 +1,6 @@
 import React from 'react'
 import './partAInfo.css'
-import imgAvatar from '../../../../../assets/avatar11.png'
+// import imgAvatar from '../../../../../assets/avatar11.png'
 
 export default class PartAInfo extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class PartAInfo extends React.Component {
     return (
       <div styleName="PartA">
         <div>
-          <div styleName="avatar"><img src={ownerInfo.avatar ? ownerInfo.avatar : imgAvatar} alt="头像" style={{width: '80', height: '80'}} /></div>
+          <div styleName="avatar"><img src={ownerInfo.avatar} alt="头像" /></div>
           <div styleName="identity">
             <div styleName="name">{ownerInfo.name}</div>
             <div>{ownerInfo.location} / {getOwnerType(ownerInfo.type)}</div>

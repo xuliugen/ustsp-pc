@@ -4,7 +4,7 @@ import ImgLink from '../../../../../assets/link.png'
 
 export default class DownloadFile extends React.Component {
   render() {
-    return (
+    return (this.props.download ? (
       <div styleName="download-file">
         <div styleName="file-name">
           <span><img src={ImgLink} /></span>
@@ -14,6 +14,8 @@ export default class DownloadFile extends React.Component {
           <a href={this.props.download.uploadFileUrl} >点击下载</a>
         </div>
       </div>
-    )
+    ) : (
+      <div>暂无相关下载文件</div>
+    ))
   }
 }
