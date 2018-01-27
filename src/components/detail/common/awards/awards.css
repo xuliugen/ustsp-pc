@@ -1,0 +1,28 @@
+.award-items {
+  width: 760px;
+  height: 80px;
+  line-height: 35px;
+  margin: 0 20px;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.award-items:last-child {
+  border: none;
+}
+
+.award-name {
+  font-size: 16px;
+}
+
+.award-category {
+  font-size: 14px;
+  display: block;
+  color: #aaaaaa;
+}
+
+.award-time {
+  float: right;
+  font-size: 14px;
+  line-height: 60px;
+  color: #aaaaaa
+}
