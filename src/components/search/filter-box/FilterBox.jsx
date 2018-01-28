@@ -4,27 +4,47 @@ import { Tag } from 'antd'
 import FilterLine from './FilterLine'
 import './styles.css'
 
-import { Major, Province, Title, Type } from './data'
+import { Major, Province, School, Title, Type } from './data'
 
 @inject('searchStore')
 @observer
 export default class FilterBox extends React.Component {
+  state = {
+    ProvinceSchool: []
+  }
+
+  constructor() {
+    super()
+    this.onProvinceChange = this.onProvinceChange.bind(this)
+  }
+
   handleTagClose = (condition) => {
     this.props.searchStore.removeCondition(condition)
   }
 
+  onProvinceChange({ label }) {
+    const provinceSchoolArr = School[label]
+    if (provinceSchoolArr) {
+      const ProvinceSchool = provinceSchoolArr.map(school => ({label: school, value: school}))
+      this.setState({ProvinceSchool})
+    } else {
+      this.setState({ProvinceSchool: []})
+    }
+  }
+
   render() {
     const searchStore = this.props.searchStore
+    const ProvinceSchool = {
+      category: '大学',
+      field: 'school',
+      items: this.state.ProvinceSchool
+    }
     return (
       <div styleName="filter-box">
         <FilterLine conditions={Major} />
-        <FilterLine conditions={Province} />
-        <div styleName="line">
-          <div styleName="line-title">学校</div>
-          <div styleName="line-items">
-            <span styleName="item" className="item-active">不限</span>
-          </div>
-        </div>
+        <FilterLine conditions={Province} addDisabled callback={this.onProvinceChange} />
+        {this.state.ProvinceSchool.length > 0 &&
+          <FilterLine conditions={ProvinceSchool} />}
         <FilterLine conditions={Title} />
         <FilterLine conditions={Type} />
         <div styleName="conditions">

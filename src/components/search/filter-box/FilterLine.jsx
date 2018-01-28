@@ -16,7 +16,7 @@ export default class FilterLine extends React.Component {
       this.props.searchStore.addCondition({...condition, category, field}, isMulti)
     }
     if (typeof callback === 'function') {
-      callback()
+      callback(condition)
     }
   }
 
