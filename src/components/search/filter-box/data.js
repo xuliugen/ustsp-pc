@@ -78,11 +78,11 @@ const Type = {
     },
     {
       label: '教师',
-      value: '教师'
+      value: 2
     },
     {
       label: '学生',
-      value: '学生'
+      value: 1
     }
   ]
 }

@@ -59,8 +59,8 @@ export default class FilterBox extends React.Component {
         <FilterLine conditions={Title} selected={searchStore.talentTitle} />
         <FilterLine conditions={Type} selected={searchStore.talentType} />
         <div styleName="conditions">
-          {searchStore.conditions.map(({ category, field, value }) => {
-            return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, {field, value})}>{category}: {value}</Tag>
+          {searchStore.conditions.map(({ category, field, value, label }) => {
+            return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, {field, value})}>{category}: {label}</Tag>
           })}
         </div>
       </div>

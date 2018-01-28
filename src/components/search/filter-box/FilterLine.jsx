@@ -16,8 +16,8 @@ export default class FilterLine extends React.Component {
   }
 
   handleItemClick(condition) {
-    const { conditions: { category, field }, callback, isMulti = false } = this.props
-    this.props.searchStore.addCondition({...condition, category, field}, isMulti)
+    const { searchStore, conditions: { category, field }, callback, isMulti = false } = this.props
+    searchStore.addCondition({...condition, category, field}, isMulti)
     if (typeof callback === 'function') {
       callback(condition)
     }
