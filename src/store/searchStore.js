@@ -11,17 +11,13 @@ class SearchStore {
   }
 
   @action
-  addCondition(category, field, value, isMulti) {
+  addCondition(condition, isMulti) {
+    const { field, value } = condition
     if (!value) {
       this.conditions = this.conditions.filter(condition => {
         return !(condition.field === field)
       })
       return
-    }
-    const condition = {
-      category,
-      field,
-      value
     }
     if (isMulti) {
       this.conditions.push(condition)
@@ -44,7 +40,7 @@ class SearchStore {
   }
 
   @action
-  removeCondition(field, value) {
+  removeCondition({field, value}) {
     this.conditions = this.conditions.filter(condition => {
       return !(condition.field === field && condition.value === value)
     })
