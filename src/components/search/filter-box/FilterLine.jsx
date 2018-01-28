@@ -5,6 +5,10 @@ import './styles.css'
 @inject('searchStore')
 @observer
 export default class FilterLine extends React.Component {
+  state = {
+    isUnfold: false
+  }
+
   constructor(props) {
     super(props)
     this.handleItemClick = this.handleItemClick.bind(this)
@@ -21,11 +25,12 @@ export default class FilterLine extends React.Component {
   }
 
   render() {
-    const { conditions } = this.props
+    const { conditions, hasMore } = this.props
+    // line-unfold
     return (
-      <div styleName="line line-unfold">
+      <div styleName="line">
         <div styleName="line-title">{conditions.category}</div>
-        <div styleName="line-items">
+        <div styleName={`line-items ${this.state.isUnfold ? '' : 'line-items-fold'}`} style={this.props.style}>
           {conditions.items.map((condition, idx) => {
             const { value, label } = condition
             return (
@@ -37,6 +42,8 @@ export default class FilterLine extends React.Component {
               </span>
             )
           })}
+          {hasMore &&
+            <button styleName="more" onClick={() => { this.setState(pre => ({isUnfold: !pre.isUnfold})) }}>更多</button>}
         </div>
       </div>
     )

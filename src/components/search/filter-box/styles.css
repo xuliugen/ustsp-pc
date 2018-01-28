@@ -5,15 +5,8 @@
 }
 
 .line {
-  height: 50px;
-  overflow: hidden;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-}
-
-.line.line-unfold {
-  height: 100%;
-  overflow: auto;
 }
 
 .line-title {
@@ -28,13 +21,21 @@
 }
 
 .line-items {
-  height: 100%;
+  position: relative;
+  height: 150px;
   line-height: 50px;
   margin-left: 100px;
   padding-left: 10px;
+  padding-right: 40px;
   border-left: 1px solid #ddd;
   color: #8f9ba7;
   font-size: 14px;
+  overflow-y: scroll;
+}
+
+.line-items.line-items-fold {
+  overflow: hidden;
+  height: 50px;
 }
 
 .item {
@@ -68,4 +69,10 @@
   border-radius: 4px;
   background-color: #ccc;
   color: #666;
+}
+
+.more {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

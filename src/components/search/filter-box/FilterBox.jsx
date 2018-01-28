@@ -37,14 +37,17 @@ export default class FilterBox extends React.Component {
     const ProvinceSchool = {
       category: '大学',
       field: 'school',
-      items: this.state.ProvinceSchool
+      items: [{
+        label: '不限',
+        value: ''
+      }].concat(this.state.ProvinceSchool)
     }
     return (
       <div styleName="filter-box">
-        <FilterLine conditions={Major} />
-        <FilterLine conditions={Province} addDisabled callback={this.onProvinceChange} />
+        <FilterLine conditions={Major} style={{height: '100px'}} />
+        <FilterLine conditions={Province} addDisabled callback={this.onProvinceChange} hasMore />
         {this.state.ProvinceSchool.length > 0 &&
-          <FilterLine conditions={ProvinceSchool} />}
+          <FilterLine conditions={ProvinceSchool} hasMore />}
         <FilterLine conditions={Title} />
         <FilterLine conditions={Type} />
         <div styleName="conditions">
