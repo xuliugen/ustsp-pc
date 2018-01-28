@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 
-:global(.item-active) {
+.item-active {
   background-color: #8f9ba7;
   color: #fff;
 }

@@ -1,9 +1,39 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 class SearchStore {
   // talent, project
   @observable type = 'talent'
   @observable conditions = []
+
+  getValueByField(field) {
+    for (let i = 0, len = this.conditions.length; i < len; i++) {
+      if (this.conditions[i].field === field) {
+        return this.conditions[i].value
+      }
+    }
+    return ''
+  }
+
+  @computed
+  get talentMajor() {
+    return this.getValueByField('major')
+  }
+  @computed
+  get talentProvince() {
+    return this.getValueByField('province')
+  }
+  @computed
+  get talentSchool() {
+    return this.getValueByField('school')
+  }
+  @computed
+  get talentTitle() {
+    return this.getValueByField('title')
+  }
+  @computed
+  get talentType() {
+    return this.getValueByField('type')
+  }
 
   @action
   setType(type) {

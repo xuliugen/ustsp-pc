@@ -44,15 +44,23 @@ export default class FilterBox extends React.Component {
     }
     return (
       <div styleName="filter-box">
-        <FilterLine conditions={Major} style={{height: '100px'}} />
-        <FilterLine conditions={Province} addDisabled callback={this.onProvinceChange} hasMore />
+        <FilterLine
+          conditions={Major}
+          style={{height: '100px'}}
+          selected={searchStore.talentMajor} />
+        <FilterLine
+          conditions={Province}
+          selected={searchStore.talentProvince}
+          addDisabled
+          callback={this.onProvinceChange}
+          hasMore />
         {this.state.ProvinceSchool.length > 0 &&
-          <FilterLine conditions={ProvinceSchool} hasMore />}
-        <FilterLine conditions={Title} />
-        <FilterLine conditions={Type} />
+          <FilterLine conditions={ProvinceSchool} hasMore selected={searchStore.talentSchool} />}
+        <FilterLine conditions={Title} selected={searchStore.talentTitle} />
+        <FilterLine conditions={Type} selected={searchStore.talentType} />
         <div styleName="conditions">
           {searchStore.conditions.map(({ category, field, value }) => {
-            return <Tag key={value} closable afterClose={this.handleTagClose.bind(this, {field, value})}>{category}: {value}</Tag>
+            return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, {field, value})}>{category}: {value}</Tag>
           })}
         </div>
       </div>
