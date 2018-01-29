@@ -28,7 +28,6 @@ class SearchStore {
             }
           }
         })
-        this.dispatchSearch(req)
       }
     )
   }
