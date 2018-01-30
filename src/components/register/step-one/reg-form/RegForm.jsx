@@ -77,6 +77,34 @@ class RegForm extends React.Component {
     })
   }
 
+  validateEmailExist = async (rule, value, callback) => {
+    const { getFieldValue } = this.props.form
+    const email = getFieldValue('userMail')
+    if (email) {
+      const { data } = await RegisterApi.checkUserExist(`?mail=${email}`)
+      if (data) {
+        // 已经存在了
+        callback(new Error('邮箱已注册'))
+      } else {
+        callback()
+      }
+    }
+  }
+
+  validateTelExist = async (rule, value, callback) => {
+    const { getFieldValue } = this.props.form
+    const tel = getFieldValue('userTel')
+    if (tel) {
+      const { data } = await RegisterApi.checkUserExist(`?phone=${tel}`)
+      if (data) {
+        // 已经存在了
+        callback(new Error('手机号已注册'))
+      } else {
+        callback()
+      }
+    }
+  }
+
   handleValidateVerCode = (rule, value, callback) => {
     if (this.state.verify.validateStatus === 'success') {
       callback()
@@ -220,7 +248,8 @@ class RegForm extends React.Component {
               validateTrigger: 'onBlur',
               rules: [
                 { required: true, message: '请输入邮箱' },
-                { type: 'email', message: '邮箱格式有误' }
+                { type: 'email', message: '邮箱格式有误' },
+                { validator: this.validateEmailExist }
               ]
             })(
               <Input
@@ -234,7 +263,8 @@ class RegForm extends React.Component {
               validateTrigger: 'onBlur',
               rules: [
                 { required: true, message: '请输入手机号' },
-                { pattern: /^1[0-9]{10}$/, message: '手机号格式有误' }
+                { pattern: /^1[0-9]{10}$/, message: '手机号格式有误' },
+                { validator: this.validateTelExist }
               ]
             })(
               <Input
