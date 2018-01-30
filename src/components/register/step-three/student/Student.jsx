@@ -37,7 +37,7 @@ class StepThreeStudent extends React.Component<{}> {
           id: this.props.registerStore.initial.uid,
           realName: value.realName,
           sex: value.sex,
-          birth: value.birth,
+          birth: value.birth ? value.birth.valueOf() : null,
           stuLevel: value.stuLevel,
           wechat: value.wechat,
           qq: value.qq,
@@ -47,7 +47,7 @@ class StepThreeStudent extends React.Component<{}> {
           grade: 1,
           skill: value.skill,
           introduction: value.skill,
-          isRealName: 'true',
+          isRealName: 'false',
           photo: this.state.stuPhoto
         }
         try {

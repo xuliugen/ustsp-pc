@@ -36,7 +36,7 @@ class StepThreeEnterprise extends React.Component {
           photo: this.state.photo,
           businessPhoto: '',
           ...values,
-          birth: values.birth.valueOf()
+          birth: values.birth ? values.birth.valueOf() : null
         })
         message.success('注册成功')
         this.props.history.push('/')
