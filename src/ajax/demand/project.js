@@ -5,8 +5,8 @@ export default {
     return ajax.get('/project/query/home-page/projects')
   },
 
-  getApplicationDetail(projectId) {
-    return ajax.get(`/project/query/application-detail?projectId=${projectId}`)
+  getApplicationDetail(projectId, userId) {
+    return ajax.get(`/project/query/application-detail?projectId=${projectId}&userId=${userId}`)
   },
 
   signUpInfo(body) {

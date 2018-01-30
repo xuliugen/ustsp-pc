@@ -23,11 +23,12 @@ export default class RegisteredPerson extends React.Component {
 
   showUserType = () => {
     let user = null
-    if (this.props.registeredPerson.userType === 1) {
+    console.log(this.props.registeredPerson)
+    if (this.props.registeredPerson.partyType === 1) {
       user = '学生'
-    } else if (this.props.registeredPerson.userType === 2) {
+    } else if (this.props.registeredPerson.partyType === 2) {
       user = '教师'
-    } else if (this.props.registeredPerson.userType === 3) {
+    } else if (this.props.registeredPerson.partyType === 3) {
       user = '企业'
     }
     return user
