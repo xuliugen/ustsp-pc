@@ -27,6 +27,16 @@ export default class SearchBar extends React.Component {
     this.props.searchStore.setType(type)
   }
 
+  handleSearchIptChange = (e) => {
+    this.props.searchStore.setContent(e.target.value)
+  }
+
+  handleSearch = (val) => {
+    if (val) {
+      this.props.searchStore.dispatchSearch()
+    }
+  }
+
   render() {
     return (
       <div styleName="searchBar-wrapper">
@@ -42,7 +52,12 @@ export default class SearchBar extends React.Component {
                   return <li key={type} styleName={styleName} onClick={this.handleSearchTypeClick.bind(this, type)}>{text}</li>
                 })}
               </ul>
-              <Search styleName="search" enterButton="搜索" size="large" />
+              <Search
+                styleName="search"
+                enterButton="搜索"
+                size="large"
+                onChange={this.handleSearchIptChange}
+                onSearch={this.handleSearch} />
             </div>
           </div>
         </div>

@@ -1,31 +1,48 @@
-import { observable, action, reaction } from 'mobx'
+import { observable, action, reaction, runInAction } from 'mobx'
 import { TalentApi } from 'src/ajax'
+
+const reqTemplate = {
+  major: '',
+  school: '',
+  title: '',
+  type: ''
+}
 
 class SearchStore {
   // talent, project
   @observable type = 'talent'
   @observable content = ''
   @observable conditions = []
-  @observable result = []
+  @observable req = {}
+  @observable pageSize = 10
+  @observable currentPage = 1
+  @observable result = {
+    data: []
+  }
 
   constructor() {
+    this.req = {
+      ...reqTemplate
+    }
+    this.onConditionChange()
+  }
+
+  onConditionChange() {
     reaction(
       () => JSON.stringify(this.conditions),
       conditionsStr => {
         const conditions = JSON.parse(conditionsStr)
-        let req = {
-          major: '',
-          school: '',
-          title: '',
-          type: '',
-          condition: this.content
-        }
-        conditions.forEach(({ field, value }) => {
-          req = {
-            ...req,
-            [field]: value
+        const req = {}
+        conditions.forEach(({ field, value, notCondition }) => {
+          if (!notCondition) {
+            req[field] = value
           }
         })
+        this.req = {
+          ...reqTemplate,
+          ...req
+        }
+        this.dispatchSearch()
       }
     )
   }
@@ -33,6 +50,11 @@ class SearchStore {
   @action
   setType(type) {
     this.type = type
+  }
+
+  @action
+  setContent(content) {
+    this.content = content
   }
 
   @action
@@ -71,10 +93,18 @@ class SearchStore {
     })
   }
 
-  async dispatchSearch(req) {
+  async dispatchSearch() {
+    this.req = {
+      ...this.req,
+      condition: this.content,
+      pageSize: this.pageSize,
+      currentPage: this.currentPage
+    }
     try {
-      const res = await TalentApi.searchTalents(req)
-      this.result = res.data
+      const res = await TalentApi.searchTalents(this.req)
+      runInAction(() => {
+        this.result = res.data
+      })
     } catch (e) {
       console.log(e)
     }

@@ -8,7 +8,7 @@ import { Major, Province, School, Title, Type } from './data'
 
 @inject('searchStore')
 @observer
-export default class FilterBox extends React.Component {
+export default class TalentFilterBox extends React.Component {
   state = {
     ProvinceSchool: []
   }
