@@ -14,7 +14,7 @@ class SearchStore {
   @observable content = ''
   @observable conditions = []
   @observable req = {}
-  @observable pageSize = 10
+  @observable pageSize = 5
   @observable currentPage = 1
   @observable result = {
     data: []
@@ -50,6 +50,11 @@ class SearchStore {
   @action
   setType(type) {
     this.type = type
+  }
+
+  @action
+  setCurrentPage(currentPage) {
+    this.currentPage = currentPage
   }
 
   @action
@@ -102,6 +107,7 @@ class SearchStore {
     }
     try {
       const res = await TalentApi.searchTalents(this.req)
+      console.log(res)
       runInAction(() => {
         this.result = res.data
       })
