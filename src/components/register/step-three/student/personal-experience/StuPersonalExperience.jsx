@@ -71,16 +71,14 @@ export default class PersonalExperience extends React.Component {
           </Row>
           <FormItem label="擅长技能">
             {getFieldDecorator('skill', {
-              validateTrigger: 'onBlur',
-              rules: [{ required: true, message: '请输入擅长技能' }]
+              validateTrigger: 'onBlur'
             })(
               <Input size="large" />
             )}
           </FormItem>
           <FormItem label="个人简介">
             {getFieldDecorator('introduction', {
-              validateTrigger: 'onBlur',
-              rules: [{ required: true, max: 400, message: '请输入个人简介' }]
+              validateTrigger: 'onBlur'
             })(
               <div styleName="intro-container">
                 <TextArea rows={8} />

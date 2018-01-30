@@ -1,7 +1,7 @@
 import React from 'react'
 import { Divider } from 'antd'
 import './teacherContent.css'
-
+import { withRouter } from 'react-router-dom'
 import InfoTeacher from 'components/detail/teacher/info-teacher/InfoTeacher'
 import Awards from './awards/Awards'
 import Experiences from './experiences/Experiences'
@@ -13,6 +13,7 @@ import { observer, inject } from 'mobx-react'
 
 @inject('userStore')
 @observer
+@withRouter
 export default class TeacherContent extends React.Component {
   constructor() {
     super()
@@ -40,11 +41,11 @@ export default class TeacherContent extends React.Component {
     }
   }
   async componentDidMount() {
-    const { data } = await TchInfoApi.getTeacherInfo(this.props.userStore.user.id)
-    const res = await TchInfoApi.getOtherAddInfo(this.props.userStore.user.id)
+    const { data } = await TchInfoApi.getTeacherInfo(this.props.match.params.id)
+    const res = await TchInfoApi.getOtherAddInfo(this.props.match.params.id)
     console.log(res)
-    res.data.teacherInfoDTO.email = res.data.teacherInfoDTO.email
-    res.data.teacherInfoDTO.pageView = res.data.teacherInfoDTO.pageView
+    data.teacherInfoDTO.email = data.userInfoDTO.email
+    data.teacherInfoDTO.pageView = data.userInfoDTO.pageView
     this.setState({
       intro: {
         introduction: data.teacherInfoDTO.introduction,

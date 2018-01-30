@@ -20,7 +20,7 @@ class SearchStore {
   @observable content = ''
   @observable conditions = []
   @observable req = {}
-  @observable pageSize = 10
+  @observable pageSize = 5
   @observable currentPage = 1
   @observable result = {
     data: []
@@ -57,6 +57,11 @@ class SearchStore {
     this.result = {
       data: []
     }
+  }
+
+  @action
+  setCurrentPage(currentPage) {
+    this.currentPage = currentPage
   }
 
   @action

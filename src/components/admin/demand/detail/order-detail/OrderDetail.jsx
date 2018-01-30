@@ -20,6 +20,7 @@ export default class OrderDetail extends React.Component {
     const { data } = await DemandApi.geteDemanOrderDetail(this.props.match.params.id)
     this.setState({
       demand: {
+        projectName: data.projectName,
         type: data.type,
         money: data.money,
         startTime: data.startTime ? moment(data.startTime.valueOf()).format('YYYY-MM-DD') : '无',
