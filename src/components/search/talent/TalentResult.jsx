@@ -16,8 +16,7 @@ export default class TalentResult extends React.Component {
   }
 
   handlePagiChange = (page, pageSize) => {
-    console.log(page)
-    console.log(pageSize)
+    console.log('执行了')
     this.setState((prevState) => ({
       pagination: {
         total: prevState.pagination.total,
@@ -27,9 +26,13 @@ export default class TalentResult extends React.Component {
     }))
   }
 
+  componentDidMount() {
+    this.props.searchStore.dispatchSearch()
+  }
+
   render() {
     const { currentPage, pageSize, result } = this.props.searchStore
-    const total = result.length
+    const total = result.data.length
     return (
       <div styleName="talent-items">
         <div styleName="title">共为您找到
