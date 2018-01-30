@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction } from 'mobx'
+import { observable, action, reaction } from 'mobx'
 import { TalentApi } from 'src/ajax'
 
 class SearchStore {
@@ -21,45 +21,13 @@ class SearchStore {
           condition: this.content
         }
         conditions.forEach(({ field, value }) => {
-          if (field !== 'province') {
-            req = {
-              ...req,
-              [field]: value
-            }
+          req = {
+            ...req,
+            [field]: value
           }
         })
       }
     )
-  }
-
-  getValueByField(field) {
-    for (let i = 0, len = this.conditions.length; i < len; i++) {
-      if (this.conditions[i].field === field) {
-        return this.conditions[i].value
-      }
-    }
-    return ''
-  }
-
-  @computed
-  get talentMajor() {
-    return this.getValueByField('major')
-  }
-  @computed
-  get talentProvince() {
-    return this.getValueByField('province')
-  }
-  @computed
-  get talentSchool() {
-    return this.getValueByField('school')
-  }
-  @computed
-  get talentTitle() {
-    return this.getValueByField('title')
-  }
-  @computed
-  get talentType() {
-    return this.getValueByField('type')
   }
 
   @action

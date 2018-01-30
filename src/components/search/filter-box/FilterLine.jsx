@@ -7,7 +7,7 @@ import './styles.css'
 export default class FilterLine extends React.Component {
   state = {
     isUnfold: false,
-    selected: this.props.selected
+    selected: ''
   }
 
   constructor(props) {
@@ -16,8 +16,14 @@ export default class FilterLine extends React.Component {
   }
 
   handleItemClick(condition) {
+    this.setState({
+      selected: condition.value
+    })
+
     const { searchStore, conditions: { category, field }, callback, isMulti = false } = this.props
-    searchStore.addCondition({...condition, category, field}, isMulti)
+    if (!this.props.addDisabled) {
+      searchStore.addCondition({ ...condition, category, field }, isMulti)
+    }
     if (typeof callback === 'function') {
       callback(condition)
     }
@@ -34,7 +40,7 @@ export default class FilterLine extends React.Component {
             const { value, label } = condition
             return (
               <span
-                styleName={this.props.selected === value ? 'item item-active' : 'item'}
+                styleName={this.state.selected === value ? 'item item-active' : 'item'}
                 key={value}
                 onClick={this.handleItemClick.bind(this, condition)}>{label}
               </span>
