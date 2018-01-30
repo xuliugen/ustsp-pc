@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react'
@@ -15,7 +14,7 @@ import Search from '@/search/Search'
 
 @withRouter
 @observer
-export default class App extends React.Component<{}> {
+export default class App extends React.Component {
   render() {
     return (
       <div>

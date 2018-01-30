@@ -1,10 +1,16 @@
 import { observable, action, reaction, runInAction } from 'mobx'
-import { TalentApi } from 'src/ajax'
+import { TalentApi, ProjectApi } from 'src/ajax'
 
-const reqTemplate = {
+const talTemplate = {
   major: '',
   school: '',
   title: '',
+  type: ''
+}
+
+const proTemplate = {
+  subject: '',
+  oriented: '',
   type: ''
 }
 
@@ -21,9 +27,6 @@ class SearchStore {
   }
 
   constructor() {
-    this.req = {
-      ...reqTemplate
-    }
     this.onConditionChange()
   }
 
@@ -38,10 +41,6 @@ class SearchStore {
             req[field] = value
           }
         })
-        this.req = {
-          ...reqTemplate,
-          ...req
-        }
         this.dispatchSearch()
       }
     )
@@ -50,6 +49,14 @@ class SearchStore {
   @action
   setType(type) {
     this.type = type
+    this.content = ''
+    this.conditions = []
+    this.pageSize = 10
+    this.currentPage = 1
+    this.req = {}
+    this.result = {
+      data: []
+    }
   }
 
   @action
@@ -94,14 +101,34 @@ class SearchStore {
   }
 
   async dispatchSearch() {
-    this.req = {
-      ...this.req,
+    const req = {
       condition: this.content,
       pageSize: this.pageSize,
-      currentPage: this.currentPage
+      currentPage: this.currentPage,
+      ...this.req
     }
     try {
-      const res = await TalentApi.searchTalents(this.req)
+      let res = {
+        data: []
+      }
+      switch (this.type) {
+        case 'talent':
+          this.req = {
+            ...talTemplate,
+            ...req
+          }
+          res = await TalentApi.searchTalents(this.req)
+          break
+        case 'project':
+          this.req = {
+            ...proTemplate,
+            ...req
+          }
+          res = await ProjectApi.searchProjects(this.req)
+          break
+        default:
+          break
+      }
       runInAction(() => {
         this.result = res.data
       })
