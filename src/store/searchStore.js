@@ -1,12 +1,11 @@
-import { observable, action, reaction } from 'mobx'
+import { observable, action, reaction, runInAction } from 'mobx'
 import { TalentApi } from 'src/ajax'
 
 const reqTemplate = {
   major: '',
   school: '',
   title: '',
-  type: '',
-  condition: ''
+  type: ''
 }
 
 class SearchStore {
@@ -17,12 +16,13 @@ class SearchStore {
   @observable req = {}
   @observable pageSize = 10
   @observable currentPage = 1
-  @observable result = []
+  @observable result = {
+    data: []
+  }
 
   constructor() {
     this.req = {
-      ...reqTemplate,
-      condition: this.content
+      ...reqTemplate
     }
     this.onConditionChange()
   }
@@ -40,9 +40,7 @@ class SearchStore {
         })
         this.req = {
           ...reqTemplate,
-          ...req,
-          pageSize: this.pageSize,
-          currentPage: this.currentPage
+          ...req
         }
         this.dispatchSearch()
       }
@@ -52,6 +50,11 @@ class SearchStore {
   @action
   setType(type) {
     this.type = type
+  }
+
+  @action
+  setContent(content) {
+    this.content = content
   }
 
   @action
@@ -91,9 +94,17 @@ class SearchStore {
   }
 
   async dispatchSearch() {
+    this.req = {
+      ...this.req,
+      condition: this.content,
+      pageSize: this.pageSize,
+      currentPage: this.currentPage
+    }
     try {
       const res = await TalentApi.searchTalents(this.req)
-      this.result = res.data
+      runInAction(() => {
+        this.result = res.data
+      })
     } catch (e) {
       console.log(e)
     }
