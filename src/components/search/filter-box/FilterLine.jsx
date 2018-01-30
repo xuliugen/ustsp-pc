@@ -1,29 +1,47 @@
+// @flow
 import React from 'react'
 import { observer, inject } from 'mobx-react'
+import { computed } from 'mobx'
 import './styles.css'
+
+type Props = {
+  conditions: {
+    category: string,
+    field: string,
+    items: Array<{
+      label: string,
+      value: any
+    }>
+  },
+  addDisabled?: boolean,
+  isMulti?: boolean,
+  hasMore?: boolean,
+  style?: Object,
+  callback?: Function
+}
+
+type State = {
+  isUnfold: boolean
+}
 
 @inject('searchStore')
 @observer
-export default class FilterLine extends React.Component {
+export default class FilterLine extends React.Component<Props, State> {
+  @computed get selected() {
+    const condition = this.props.searchStore.conditions.find(({ field }) => this.props.conditions.field === field)
+    return condition ? condition.value : ''
+  }
+
   state = {
-    isUnfold: false,
-    selected: ''
+    isUnfold: false
   }
 
-  constructor(props) {
-    super(props)
-    this.handleItemClick = this.handleItemClick.bind(this)
-  }
-
-  handleItemClick(condition) {
-    this.setState({
-      selected: condition.value
-    })
-
+  handleItemClick(condition: {
+    label: string,
+    value: any
+  }) {
     const { searchStore, conditions: { category, field }, callback, isMulti = false } = this.props
-    if (!this.props.addDisabled) {
-      searchStore.addCondition({ ...condition, category, field }, isMulti)
-    }
+    searchStore.addCondition({ ...condition, category, field, notCondition: this.props.addDisabled }, isMulti)
     if (typeof callback === 'function') {
       callback(condition)
     }
@@ -31,7 +49,6 @@ export default class FilterLine extends React.Component {
 
   render() {
     const { conditions, hasMore } = this.props
-    // line-unfold
     return (
       <div styleName="line">
         <div styleName="line-title">{conditions.category}</div>
@@ -40,7 +57,7 @@ export default class FilterLine extends React.Component {
             const { value, label } = condition
             return (
               <span
-                styleName={this.state.selected === value ? 'item item-active' : 'item'}
+                styleName={this.selected === value ? 'item item-active' : 'item'}
                 key={value}
                 onClick={this.handleItemClick.bind(this, condition)}>{label}
               </span>

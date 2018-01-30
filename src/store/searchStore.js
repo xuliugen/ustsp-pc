@@ -1,31 +1,50 @@
 import { observable, action, reaction } from 'mobx'
 import { TalentApi } from 'src/ajax'
 
+const reqTemplate = {
+  major: '',
+  school: '',
+  title: '',
+  type: '',
+  condition: ''
+}
+
 class SearchStore {
   // talent, project
   @observable type = 'talent'
   @observable content = ''
   @observable conditions = []
+  @observable req = {}
+  @observable pageSize = 10
+  @observable currentPage = 1
   @observable result = []
 
   constructor() {
+    this.req = {
+      ...reqTemplate,
+      condition: this.content
+    }
+    this.onConditionChange()
+  }
+
+  onConditionChange() {
     reaction(
       () => JSON.stringify(this.conditions),
       conditionsStr => {
         const conditions = JSON.parse(conditionsStr)
-        let req = {
-          major: '',
-          school: '',
-          title: '',
-          type: '',
-          condition: this.content
-        }
-        conditions.forEach(({ field, value }) => {
-          req = {
-            ...req,
-            [field]: value
+        const req = {}
+        conditions.forEach(({ field, value, notCondition }) => {
+          if (!notCondition) {
+            req[field] = value
           }
         })
+        this.req = {
+          ...reqTemplate,
+          ...req,
+          pageSize: this.pageSize,
+          currentPage: this.currentPage
+        }
+        this.dispatchSearch()
       }
     )
   }
@@ -71,9 +90,9 @@ class SearchStore {
     })
   }
 
-  async dispatchSearch(req) {
+  async dispatchSearch() {
     try {
-      const res = await TalentApi.searchTalents(req)
+      const res = await TalentApi.searchTalents(this.req)
       this.result = res.data
     } catch (e) {
       console.log(e)

@@ -13,5 +13,6 @@ module.name_mapper='\(@\)' -> '<PROJECT_ROOT>/src/views'
 module.name_mapper='\(components\)' -> '<PROJECT_ROOT>/src/components'
 module.file_ext=.js
 module.file_ext=.jsx
+nsafe.enable_getters_and_setters=true
 
 [strict]
