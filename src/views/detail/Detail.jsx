@@ -1,9 +1,9 @@
 import React from 'react'
 import './detail.css'
 
-import { Header, Footer, ProjectsRmd, TalentsRmd } from 'components/common'
+import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
 import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
-import { Others, News } from 'components/detail/common'
+import { Others } from 'components/detail/common'
 
 export default class Detail extends React.Component {
   render() {
