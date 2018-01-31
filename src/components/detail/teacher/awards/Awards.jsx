@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import './awards.css'
+import moment from 'moment'
 
 type AwardObj = {
   award: string,
@@ -14,27 +15,18 @@ type State = {
 }
 
 export default class Awards extends React.Component<{}, State> {
-  constructor() {
-    super()
-    this.state = {
-      awards: [
-        { award: 'xx杯xxx奖', category: '计算机技术类', level: '全国', time: '2011.2.2' },
-        { award: 'xxxx杯xxxxxx奖', category: '计算机技术类', level: '全国', time: '2011.3.4' }
-      ]
-    }
-  }
   render() {
-    const AwardItem = this.state.awards.map((item, idx) => {
+    const AwardItem = this.props.userAwardInfos.map((item, idx) => {
       return (
         <div key={idx} styleName="award-items">
-          <span styleName="award-name">{item.award}</span>
-          <span styleName="award-time">获得时间：{item.time}</span>
-          <span styleName="award-category">{item.category} / {item.level}</span>
+          <span styleName="award-name">{item.name}</span>
+          <span styleName="award-time">获得时间：{moment(item.time).format('YYYY-MM-DD')}</span>
+          <span styleName="award-category">{item.level}</span>
         </div>
       )
     })
     return (
-      <div>{ AwardItem }</div>
+      <div>{AwardItem}</div>
     )
   }
 }

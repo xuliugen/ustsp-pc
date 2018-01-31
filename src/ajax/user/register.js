@@ -30,5 +30,9 @@ export default {
 
   register(body) {
     return ajax.post('/user/register', body)
+  },
+
+  checkUserExist(param) {
+    return ajax.get(`/user/getUser${param}`)
   }
 }

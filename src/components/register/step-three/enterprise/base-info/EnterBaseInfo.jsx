@@ -26,67 +26,7 @@ export default class EnterBaseInfo extends React.Component {
                   <Input placeholder="企业名" />
                 )}
               </FormItem>
-              <FormItem label="地点">
-                {getFieldDecorator('place', {
-                  validateTrigger: 'onBlur',
-                  rules: [
-                    { required: true, message: '请输入地点' }
-                  ]
-                })(
-                  <Input placeholder="地点" />
-                )}
-              </FormItem>
-              <FormItem label="成立时间">
-                {getFieldDecorator('birth', {
-                  rules: [
-                    { required: true, message: '请选择成立时间' }
-                  ]
-                })(
-                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
-                )}
-              </FormItem>
-              <FormItem label="规模">
-                {getFieldDecorator('scale', {
-                  validateTrigger: 'onBlur',
-                  rules: [
-                    { required: true, message: '请选择企业规模' }
-                  ]
-                })(
-                  <Select style={{ width: '100%' }} >
-                    <Option value="10~20人">10~20人</Option>
-                    <Option value="20~50人">20~50人</Option>
-                    <Option value="50人以上">50人以上</Option>
-                  </Select>
-                )}
-              </FormItem>
-              <FormItem label="性质">
-                {getFieldDecorator('nature', {
-                  validateTrigger: 'onBlur',
-                  rules: [
-                    { required: true, message: '请选择企业性质' }
-                  ]
-                })(
-                  <Select style={{ width: '100%' }} >
-                    <Option value="私营企业">私营企业</Option>
-                    <Option value="国有企业">国有企业</Option>
-                    <Option value="外商投资企业">外商投资企业</Option>
-                  </Select>
-                )}
-              </FormItem>
-              <FormItem label="企业营业执照号">
-                {getFieldDecorator('businessLicence', {
-                  validateTrigger: 'onBlur',
-                  rules: [
-                    { required: true, message: '请输入企业营业执照号' }
-                  ]
-                })(
-                  <Input placeholder="企业营业执照号" />
-                )}
-              </FormItem>
-            </Col>
-            <Col span={12}>
-              <UploadAvatar tchPhoto={this.props.photo} setTchPhoto={this.props.setPhoto} />
-              <FormItem label="行业" style={{ marginTop: '12px' }}>
+              <FormItem label="行业">
                 {getFieldDecorator('industry', {
                   validateTrigger: 'onBlur',
                   rules: [
@@ -99,12 +39,53 @@ export default class EnterBaseInfo extends React.Component {
                   <Input placeholder="行业" />
                 )}
               </FormItem>
+              <FormItem label="成立时间">
+                {getFieldDecorator('birth')(
+                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                )}
+              </FormItem>
+              <FormItem label="规模">
+                {getFieldDecorator('scale', {
+                  validateTrigger: 'onBlur'
+                })(
+                  <Select style={{ width: '100%' }} >
+                    <Option value="10~20人">10~20人</Option>
+                    <Option value="20~50人">20~50人</Option>
+                    <Option value="50人以上">50人以上</Option>
+                  </Select>
+                )}
+              </FormItem>
+              <FormItem label="性质">
+                {getFieldDecorator('nature', {
+                  validateTrigger: 'onBlur'
+                })(
+                  <Select style={{ width: '100%' }} >
+                    <Option value="私营企业">私营企业</Option>
+                    <Option value="国有企业">国有企业</Option>
+                    <Option value="外商投资企业">外商投资企业</Option>
+                  </Select>
+                )}
+              </FormItem>
+              <FormItem label="企业营业执照号">
+                {getFieldDecorator('businessLicence', {
+                  validateTrigger: 'onBlur'
+                })(
+                  <Input placeholder="企业营业执照号" />
+                )}
+              </FormItem>
+            </Col>
+            <Col span={12}>
+              <UploadAvatar tchPhoto={this.props.photo} setTchPhoto={this.props.setPhoto} />
+              <FormItem label="地点" style={{ marginTop: '12px' }}>
+                {getFieldDecorator('place', {
+                  validateTrigger: 'onBlur'
+                })(
+                  <Input placeholder="地点" />
+                )}
+              </FormItem>
               <FormItem label="发展阶段">
                 {getFieldDecorator('stage', {
-                  validateTrigger: 'onBlur',
-                  rules: [
-                    { required: true, message: '请选择发展阶段' }
-                  ]
+                  validateTrigger: 'onBlur'
                 })(
                   <Select style={{ width: '100%' }} >
                     <Option value="不需要融资">不需要融资</Option>

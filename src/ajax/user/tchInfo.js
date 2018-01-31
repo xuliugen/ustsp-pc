@@ -24,5 +24,14 @@ export default {
 
   completeAward(body) {
     return ajax.post('/teacher/completeAward', body)
+  },
+
+  getOtherAddInfo(userId) {
+    return ajax.get(`/teacher/getOtherAddInfo?id=${userId}`)
+  },
+
+  getTeacherInfo(userId) {
+    return ajax.get(`/teacher/getInfo?id=${userId}`)
   }
+
 }

@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import './search.css'
 
 import { Header, Footer } from 'components/common/'
-import { SearchBar, ProjectResult, TalentResult } from 'components/search'
+import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResult } from 'components/search'
 
 @inject('searchStore')
 @observer
@@ -12,10 +12,20 @@ export default class Search extends React.Component {
     let searchPanel = null
     switch (this.props.searchStore.type) {
       case 'project':
-        searchPanel = <ProjectResult />
+        searchPanel = (
+          <div>
+            <ProjectFilterBox />
+            <ProjectResult />
+          </div>
+        )
         break
       case 'talent':
-        searchPanel = <TalentResult />
+        searchPanel = (
+          <div>
+            <TalentFilterBox />
+            <TalentResult />
+          </div>
+        )
         break
       default:
         break

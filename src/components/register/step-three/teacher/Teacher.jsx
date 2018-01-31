@@ -68,11 +68,11 @@ class StepThreeTeacher extends React.Component<{}> {
           id: this.props.registerStore.initial.uid,
           realName: values.realName,
           sex: values.render,
-          birth: values.birth,
+          birth: values.birth ? values.birth.valueOf() : null,
           wechat: values.wechat,
-          qq: values.qq,
+          qq: Number(values.qq),
           certificate: this.state.tchCertificate,
-          school: values.school,
+          school: values.school[values.school.length - 1],
           college: values.college,
           major: values.major,
           title: values.title,
@@ -83,8 +83,9 @@ class StepThreeTeacher extends React.Component<{}> {
           publishPaper: values.publishPaper,
           introduction: values.introduction,
           photo: this.state.tchPhoto,
-          isRealName: 'true'
+          isRealName: this.props.registerStore.isClaimDataAccept
         }
+        console.log(tchInfo)
         try {
           await TchInfoApi.completeTchInfo(tchInfo)
           message.success('完善信息成功')

@@ -11,7 +11,7 @@ export default class OrderBasicInfo extends React.Component {
           <span>项目名</span>
         </div>
         <div styleName="basic-info-content">
-          <div styleName="demand-title">被查看的项目标题一</div>
+          <div styleName="demand-title">{this.props.demand.projectName}</div>
           <ul styleName="demand-content-items">
             <li>
               <div styleName="item-title">项目类型</div>

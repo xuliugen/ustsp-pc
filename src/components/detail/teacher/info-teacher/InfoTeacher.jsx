@@ -1,53 +1,24 @@
-// @flow
 import React from 'react'
 import { Icon, Button } from 'antd'
-import avatar1 from 'src/assets/avatar1.png'
 import './infoTeacher.css'
 
-type State = {
-  name: string,
-  avatar: string,
-  read: number,
-  title: string,
-  university: string,
-  major: string,
-  wechat: string,
-  qq: number,
-  email: string
-}
-
-export default class InfoTeacher extends React.Component<{}, State> {
-  constructor() {
-    super()
-    this.state = {
-      name: '王德福',
-      avatar: avatar1,
-      read: 1145,
-      title: '教授 / 博士',
-      university: '中国科学院 /计算技术研究所',
-      major: '擅长领域:计算技术 / 前端编程',
-      wechat: 'wfd560823',
-      qq: 999999999,
-      email: 'wfd@163.com'
-    }
-  }
+export default class InfoTeacher extends React.Component {
   render() {
-    const teacherInfo = this.state
     return (
       <div styleName="info-teacher">
         <div styleName="read">
-          <Icon type="eye" /><span styleName="read-number">{teacherInfo.read}</span>
+          <Icon type="eye" /><span styleName="read-number">{this.props.infoTeacher.pageView}</span>
         </div>
         <div styleName="info-list">
-          <img styleName="photo" src={teacherInfo.avatar} />
-          <span styleName="name">{teacherInfo.name}</span>
-          <span styleName="details">{teacherInfo.title}</span>
-          <span styleName="details">{teacherInfo.university}</span>
-          <span styleName="details">{teacherInfo.major}</span>
+          <img styleName="photo" src={this.props.infoTeacher.photo} />
+          <span styleName="name">{this.props.infoTeacher.realName}</span>
+          <span styleName="details">{this.props.infoTeacher.title}</span>
+          <span styleName="details">{this.props.infoTeacher.school}</span>
+          <span styleName="details">擅长领域:{this.props.infoTeacher.major} / {this.props.infoTeacher.researchArea}</span>
           <div styleName="contact">
-            <Icon styleName="contact-icon" type="wechat" /><span>{teacherInfo.wechat}</span>
-            <Icon type="qq" styleName="contact-icon" /><span>{teacherInfo.qq}</span>
-            <Icon type="mail" styleName="contact-icon" /><span>{teacherInfo.email}</span>
+            <Icon styleName="contact-icon" type="wechat" /><span>{this.props.infoTeacher.wechat}</span>
+            <Icon type="qq" styleName="contact-icon" /><span>{this.props.infoTeacher.qq}</span>
+            <Icon type="mail" styleName="contact-icon" /><span>{this.props.infoTeacher.email}</span>
           </div>
         </div>
         <div styleName="friend-status">

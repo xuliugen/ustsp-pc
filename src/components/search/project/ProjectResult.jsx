@@ -1,8 +1,11 @@
 import React from 'react'
 import ProjectItem from './project-item/ProjectItem'
+import { observer, inject } from 'mobx-react'
 import './projectResult.css'
 import { Pagination } from 'antd'
 
+@inject('searchStore')
+@observer
 export default class ProjectResult extends React.Component {
   constructor() {
     super()
@@ -25,16 +28,17 @@ export default class ProjectResult extends React.Component {
   }
 
   render() {
-    const { current, currentPageSize, total } = this.state.pagination
+    const { total } = this.state.pagination
+    const { currentPage, pageSize, result } = this.props.searchStore
     return (
       <div styleName="project-items">
         <div styleName="title">共为您找到
           <span styleName="projects-number">56</span>
         个项目</div>
-        <ProjectItem />
-        <ProjectItem />
-        <ProjectItem />
-        <Pagination styleName="pagination" hideOnSinglePage current={current} total={total} pageSize={currentPageSize} onChange={this.handlePagiChange} />
+        {result.data.map((talent, idx) => {
+          return <ProjectItem key={idx} talent={talent} />
+        })}
+        <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
       </div>
     )
   }

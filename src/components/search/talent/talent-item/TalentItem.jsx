@@ -4,6 +4,7 @@ import { Avatar, Icon } from 'antd'
 import authorityPic from './authority.png'
 export default class talentItem extends React.Component {
   render() {
+    const talent = this.props.talent
     return (
       <div styleName="talent-item">
         <div styleName="talent-info">
@@ -13,16 +14,16 @@ export default class talentItem extends React.Component {
           />
           <div styleName="info-text">
             <div style={{display: 'flex', alignItems: 'center'}}>
-              <span styleName="talent-name">张俪</span>
+              <span styleName="talent-name">{talent.realName}</span>
               <img size="small" src={authorityPic} style={{marginLeft: '9px'}} />
             </div>
             <div style={{ marginTop: '10px' }}>
-              <span styleName="school-info">电子科技大学 / 副教授</span>
-              <span styleName="major">计算技术研究所 / 电子信息系 </span>
+              <span styleName="school-info">{talent.school} / {talent.title}</span>
+              <span styleName="major">{talent.college} / {talent.major} </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '11px' }}>
               <Icon type="eye" styleName="visible-icon" />
-              <span styleName="visible-person-number">1415</span>
+              <span styleName="visible-person-number">{talent.pageView}</span>
             </div>
           </div>
         </div>
