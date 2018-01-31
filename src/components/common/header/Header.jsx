@@ -16,7 +16,7 @@ class Header extends React.Component<{}> {
     return (
       <header styleName="header">
         <div styleName="header-inner">
-          <a href="/"><img src={logo} /></a>
+          <Link to="/"><img src={logo} /></Link>
           <nav styleName="header-nav">
             <Link styleName="header-navItem" to="/">首页</Link>
             <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('talent') }}>人才</Link>

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { message } from 'antd'
 
 import './loginPanel.css'
@@ -63,7 +63,7 @@ export default class LoginPanel extends React.Component {
             </div>
             <div>
               <button styleName="loginBtn" type="submit">登 录</button>
-              <button styleName="registerBtn" type="button">注册账号&nbsp;<i styleName="ico-arrow" /></button>
+              <Link to="/register/1"><button styleName="registerBtn" type="button">注册账号&nbsp;<i styleName="ico-arrow" /></button></Link>
             </div>
           </form>
         </div>
