@@ -113,7 +113,7 @@ class NewDemand extends React.Component {
         <div style={{ borderBottom: '1px solid #f0f0f0' }}>
           <span styleName="title">填写需求(*为必填)</span>
         </div>
-        <Form layout="vertical" styleName="demand-info" onSubmit={this.handleSubmit}>
+        <Form layout="vertical" style={{padding: '41px 135px 0 135px'}} onSubmit={this.handleSubmit}>
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="项目名称">
