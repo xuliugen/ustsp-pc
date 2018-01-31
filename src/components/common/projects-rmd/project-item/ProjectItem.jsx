@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './projectItem.css'
 
 type Props = {
@@ -14,7 +15,9 @@ export default class projectItem extends React.Component<Props> {
     return (
       <div styleName="project-item">
         <div styleName="project-info">
-          <span styleName="project-name">{project.projectName}</span>
+          <Link to={`/project/${project.id}`}>
+            <span styleName="project-name">{project.projectName}</span>
+          </Link>
           <span styleName="major">{project.subject}</span>
         </div>
         <span styleName="money">¥ {project.money}</span>
