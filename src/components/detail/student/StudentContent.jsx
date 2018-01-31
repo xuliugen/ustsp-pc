@@ -1,7 +1,7 @@
 import React from 'react'
 import { Divider } from 'antd'
 import './studentContent.css'
-
+import { withRouter } from 'react-router-dom'
 import StudentCard from 'components/detail/student/student-card/StudentCard'
 import Introduction from './introduction/Introduction'
 import Educations from './educations/Educations'
@@ -10,6 +10,7 @@ import { observer, inject } from 'mobx-react'
 
 @inject('userStore')
 @observer
+@withRouter
 export default class StudentContent extends React.Component {
   constructor() {
     super()
@@ -53,8 +54,8 @@ export default class StudentContent extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await StuInfoApi.getInfo(this.props.userStore.user.id)
-    const eduRes = await StuInfoApi.getEduInfo(this.props.userStore.user.id)
+    const res = await StuInfoApi.getInfo(this.props.match.params.id)
+    const eduRes = await StuInfoApi.getEduInfo(this.props.match.params.id)
 
     res.data.studentInfoDTO.email = res.data.userInfoDTO.email
     res.data.studentInfoDTO.pageView = res.data.userInfoDTO.pageView

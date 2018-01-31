@@ -63,10 +63,61 @@ const Province = {
 
 const School = dataset.school
 
+const Subject = {
+  category: '学科行业',
+  field: 'subject',
+  items: majorItems
+}
+
+const Oriented = {
+  category: '对接倾向',
+  field: 'oriented',
+  items: [
+    {
+      label: '不限',
+      value: ''
+    },
+    {
+      label: '教师',
+      value: '教师'
+    },
+    {
+      label: '学生',
+      value: '学生'
+    }
+  ]
+}
+
+const Publisher = {
+  category: '发布者分类',
+  field: 'type',
+  items: [
+    {
+      label: '不限',
+      value: ''
+    },
+    {
+      label: '教师',
+      value: 2
+    },
+    {
+      label: '学生',
+      value: 1
+    },
+    {
+      label: '企业',
+      value: 3
+    }
+  ]
+}
+
 export {
   Major,
   Title,
   Province,
   School,
-  Type
+  Type,
+  Subject,
+  Oriented,
+  Publisher
 }

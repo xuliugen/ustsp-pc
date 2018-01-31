@@ -28,8 +28,8 @@ class NewExpItem extends React.Component<{}> {
           college: values.college,
           major: values.major,
           level: values.level,
-          startTime: values.date.valueOf(),
-          endTime: values.finishTime.valueOf()
+          startTime: values.date ? values.date.valueOf() : null,
+          endTime: values.finishTime ? values.finishTime.valueOf() : null
         }
         this.setState({ loading: true })
         try {
@@ -85,9 +85,7 @@ class NewExpItem extends React.Component<{}> {
                   )}
                 </FormItem>
                 <FormItem label="入学时间">
-                  {getFieldDecorator('date', {
-                    rules: [{ required: true, message: '请选择入学时间' }]
-                  })(
+                  {getFieldDecorator('date')(
                     <MonthPicker style={{ width: '100%' }} />
                   )}
                 </FormItem>
@@ -110,9 +108,7 @@ class NewExpItem extends React.Component<{}> {
                   )}
                 </FormItem>
                 <FormItem label="毕业时间">
-                  {getFieldDecorator('finishTime', {
-                    rules: [{ required: true, message: '请选择毕业时间' }]
-                  })(
+                  {getFieldDecorator('finishTime')(
                     <MonthPicker style={{ width: '100%' }} />
                   )}
                 </FormItem>

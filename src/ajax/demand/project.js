@@ -11,5 +11,10 @@ export default {
 
   signUpInfo(body) {
     return ajax.post('/project/docking', body)
+  },
+
+  // 搜索项目
+  searchProjects(req) {
+    return ajax.post('/search/project/detail', req)
   }
 }

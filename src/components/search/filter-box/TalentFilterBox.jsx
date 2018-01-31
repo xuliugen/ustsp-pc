@@ -1,12 +1,11 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
-import { Tag } from 'antd'
+import { observer } from 'mobx-react'
 import FilterLine from './FilterLine'
+import FilterTags from './FilterTags'
 import './styles.css'
 
 import { Major, Province, School, Title, Type } from './data'
 
-@inject('searchStore')
 @observer
 export default class TalentFilterBox extends React.Component {
   state = {
@@ -16,10 +15,6 @@ export default class TalentFilterBox extends React.Component {
   constructor() {
     super()
     this.onProvinceChange = this.onProvinceChange.bind(this)
-  }
-
-  handleTagClose = (condition) => {
-    this.props.searchStore.removeCondition(condition)
   }
 
   onProvinceChange({ label }) {
@@ -33,7 +28,6 @@ export default class TalentFilterBox extends React.Component {
   }
 
   render() {
-    const searchStore = this.props.searchStore
     const ProvinceSchool = {
       category: '大学',
       field: 'school',
@@ -56,11 +50,7 @@ export default class TalentFilterBox extends React.Component {
           <FilterLine conditions={ProvinceSchool} hasMore />}
         <FilterLine conditions={Title} />
         <FilterLine conditions={Type} />
-        <div styleName="conditions">
-          {searchStore.conditions.map(({ category, field, value, label }) => {
-            return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, {field, value})}>{category}: {label}</Tag>
-          })}
-        </div>
+        <FilterTags />
       </div>
     )
   }
