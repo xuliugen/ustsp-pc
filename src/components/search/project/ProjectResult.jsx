@@ -16,8 +16,8 @@ export default class ProjectResult extends React.Component {
   }
 
   handlePagiChange = (page, pageSize) => {
-    console.log(page)
-    console.log(pageSize)
+    this.props.searchStore.setCurrentPage(page)
+    this.props.searchStore.dispatchSearch()
     this.setState((prevState) => ({
       pagination: {
         total: prevState.pagination.total,
@@ -27,16 +27,20 @@ export default class ProjectResult extends React.Component {
     }))
   }
 
+  componentWillMount() {
+    this.props.searchStore.dispatchSearch()
+  }
+
   render() {
-    const { total } = this.state.pagination
-    const { currentPage, pageSize, result } = this.props.searchStore
+    const { currentPage, result, pageSize } = this.props.searchStore
+    const total = result.totalNum
     return (
       <div styleName="project-items">
         <div styleName="title">共为您找到
           <span styleName="projects-number">56</span>
         个项目</div>
-        {result.data.map((talent, idx) => {
-          return <ProjectItem key={idx} talent={talent} />
+        {result.data.map((project, idx) => {
+          return <ProjectItem key={idx} project={project} />
         })}
         <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
       </div>
