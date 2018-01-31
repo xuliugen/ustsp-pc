@@ -41,6 +41,9 @@ class SearchStore {
             req[field] = value
           }
         })
+        runInAction(() => {
+          this.req = req
+        })
         this.dispatchSearch()
       }
     )
@@ -107,10 +110,10 @@ class SearchStore {
 
   async dispatchSearch() {
     const req = {
+      ...this.req,
       condition: this.content,
       pageSize: this.pageSize,
-      currentPage: this.currentPage,
-      ...this.req
+      currentPage: this.currentPage
     }
     try {
       let res = {
