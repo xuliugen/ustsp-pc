@@ -1,5 +1,5 @@
 import React from 'react'
-import './publishedDemand.css'
+import './undertakenDemand.css'
 import { Badge, Pagination } from 'antd'
 import { observer, inject } from 'mobx-react'
 import DemandItem from './demand-item/DemandItem'
@@ -7,7 +7,7 @@ import { DemandApi } from 'src/ajax'
 
 @inject('userStore')
 @observer
-export default class PublishedDemand extends React.Component {
+export default class UndertakenDemand extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,7 +24,8 @@ export default class PublishedDemand extends React.Component {
 
   setDemand = async (current, pageSize, status) => {
     let res = null
-    res = await DemandApi.getPublishedDemand(this.props.userStore.user.id, current, pageSize, status)
+    status = 1
+    res = await DemandApi.getUndertakenDemand(this.props.userStore.user.id, current, pageSize, status)
     const { data } = res
     this.setState((prevState) => ({
       demands: data.data,
@@ -95,7 +96,7 @@ export default class PublishedDemand extends React.Component {
         <div styleName="demand-items">
           {this.state.demands.length !== 0 ? this.state.demands.map((item, idx) => {
             return (
-              <DemandItem key={idx} demand={item.projectResearchInfo} />
+              <DemandItem key={idx} demand={item} />
             )
           }) : (
             <div styleName="demand-blank">
