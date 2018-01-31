@@ -31,8 +31,8 @@
 .photo {
   width: 120px;
   height: 120px;
-  margin-left: 100px;
   margin-top: 40px;
+  align-self: center;
 }
 
 .name {
