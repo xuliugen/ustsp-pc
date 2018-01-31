@@ -32,9 +32,7 @@ export default class SearchBar extends React.Component {
   }
 
   handleSearch = (val) => {
-    if (val) {
-      this.props.searchStore.dispatchSearch()
-    }
+    this.props.searchStore.dispatchSearch()
   }
 
   render() {
