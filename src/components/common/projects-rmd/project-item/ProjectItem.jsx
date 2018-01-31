@@ -10,14 +10,14 @@ type Props = {
 
 export default class projectItem extends React.Component<Props> {
   render() {
-    const { similar } = this.props
+    const { project } = this.props
     return (
       <div styleName="project-item">
         <div styleName="project-info">
-          <span styleName="project-name">{similar.name}</span>
-          <span styleName="major">{similar.major})</span>
+          <span styleName="project-name">{project.projectName}</span>
+          <span styleName="major">{project.subject}</span>
         </div>
-        <span styleName="money">¥ {similar.money}</span>
+        <span styleName="money">¥ {project.money}</span>
       </div>
     )
   }

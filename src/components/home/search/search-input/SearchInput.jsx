@@ -1,7 +1,9 @@
 // @flow
 import React from 'react'
+import { withRouter, Link } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
 import './searchInput.css'
-// import icoTriangle from './ico_triangle.png'
+
 import icoSearch from './ico_search.png'
 
 type State = {
@@ -10,14 +12,43 @@ type State = {
   optionsArr: Array<string>
 }
 
+const optionList = [
+  {
+    label: '人才',
+    value: 'talent'
+  },
+  {
+    label: '项目',
+    value: 'project'
+  },
+  {
+    label: '成果',
+    value: 'achievement'
+  }
+]
+
+@withRouter
+@inject('searchStore')
+@observer
 export default class SearchInput extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
       showMenu: false,
       curOption: '人才',
-      optionsArr: ['人才', '项目', '专利', '成果']
+      optionsArr: optionList.map(option => option.label)
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      curOption: optionList.find(option => option.value === this.props.searchStore.type).label
+    })
+    window.document.addEventListener('click', this.changeMenuState)
+  }
+
+  componentWillUnmount() {
+    window.document.removeEventListener('click', this.changeMenuState)
   }
 
   changeMenuState = (e: SyntheticEvent<HTMLElement>) => {
@@ -35,6 +66,17 @@ export default class SearchInput extends React.Component<{}, State> {
         curOption: innerHTML,
         showMenu: false
       })
+      switch (innerHTML) {
+        case '人才':
+          this.props.searchStore.setType('talent')
+          break
+        case '项目':
+          this.props.searchStore.setType('project')
+          break
+        case '成果':
+          this.props.searchStore.setType('achievement')
+          break
+      }
     } else {
       this.setState({
         showMenu: false
@@ -42,12 +84,14 @@ export default class SearchInput extends React.Component<{}, State> {
     }
   }
 
-  componentDidMount() {
-    window.document.addEventListener('click', this.changeMenuState)
+  onIptKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      this.props.history.push('/search')
+    }
   }
 
-  componentWillUnmount() {
-    window.document.removeEventListener('click', this.changeMenuState)
+  onIptChange = (e) => {
+    this.props.searchStore.setContent(e.target.value)
   }
 
   render() {
@@ -67,8 +111,12 @@ export default class SearchInput extends React.Component<{}, State> {
           }
         </div>
         <div styleName="search-input-container">
-          <input styleName="search-input" placeholder="人才、项目、成果、专利" />
-          <img styleName="search-ico" src={icoSearch} />
+          <input
+            styleName="search-input"
+            placeholder="人才、项目、成果、专利"
+            onChange={this.onIptChange}
+            onKeyDown={this.onIptKeyDown} />
+          <Link to="/search"><img styleName="search-ico" src={icoSearch} /></Link>
         </div>
       </form>
     )

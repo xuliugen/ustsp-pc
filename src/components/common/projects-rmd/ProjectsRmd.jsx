@@ -3,6 +3,7 @@
 import React from 'react'
 import Header from 'components/detail/common/header/Header'
 import ProjectItem from './project-item/ProjectItem'
+import { ProjectApi } from 'src/ajax'
 import './projectsRmd.css'
 
 type SimilarObj = {
@@ -19,22 +20,31 @@ export default class TalentsRmd extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
-      similars: [
-        { name: '项目标题', major: 'IT(计算机专业)', money: '12000' },
-        { name: '项目标题', major: 'IT(计算机专业)', money: '12000' },
-        { name: '项目标题', major: 'IT(计算机专业)', money: '12000' },
-        { name: '项目标题', major: 'IT(计算机专业)', money: '12000' }
-      ]
+      projects: []
     }
   }
+
+  async componentWillMount() {
+    try {
+      const { data } = await ProjectApi.fetchRmdProjects()
+      if (Array.isArray(data)) {
+        this.setState({
+          projects: data.slice(0, 4)
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   render() {
-    const similarItem = this.state.similars.map((item, idx) => {
-      return <ProjectItem similar={item} key={idx} />
+    const projectItem = this.state.projects.map((item, idx) => {
+      return <ProjectItem project={item} key={idx} />
     })
     return (
       <div styleName="similar">
         <Header title="优秀项目推荐" />
-        {similarItem}
+        {projectItem}
       </div>
     )
   }

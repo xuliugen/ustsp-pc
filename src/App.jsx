@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react'
-import DevTools from 'mobx-react-devtools'
+// import DevTools from 'mobx-react-devtools'
 
 // import PrivateRoute from 'src/common/PrivateRoute'
 
@@ -30,7 +30,7 @@ export default class App extends React.Component {
           <Route path="/search" component={Search} />
           <Redirect from="/" to="/" />
         </Switch>
-        <DevTools />
+        {/* <DevTools /> */}
       </div>
     )
   }

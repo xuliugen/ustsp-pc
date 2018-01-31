@@ -8,7 +8,7 @@ import './adminHeader.css'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
 @withRouter
-@inject('userStore', 'authStore')
+  @inject('userStore', 'authStore', 'searchStore')
 @observer
 export default class Sidebar extends React.Component {
   handleLogoutClick = () => {
@@ -17,7 +17,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
-    const { userStore } = this.props
+    const { userStore, searchStore } = this.props
     const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
@@ -33,10 +33,8 @@ export default class Sidebar extends React.Component {
             <Link to="/" styleName="nav-home-wrapper">
               <Icon styleName="nav-home" type="home" />
             </Link>
-            <Link styleName="navbar-li" to="/">找需求</Link>
-            <Link styleName="navbar-li" to="/">找老师</Link>
-            <Link styleName="navbar-li" to="/">找学生</Link>
-            <Link styleName="navbar-li" to="/">找团队</Link>
+            <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('talent') }}>找人才</Link>
+            <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('project') }}>找项目</Link>
           </ul>
           <div styleName="header-right">
             <div styleName="header-profile">

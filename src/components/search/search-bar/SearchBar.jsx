@@ -54,6 +54,7 @@ export default class SearchBar extends React.Component {
                 styleName="search"
                 enterButton="搜索"
                 size="large"
+                value={this.props.searchStore.content}
                 onChange={this.handleSearchIptChange}
                 onSearch={this.handleSearch} />
             </div>

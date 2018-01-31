@@ -11,8 +11,8 @@ export default {
     return ajax.post('/search/user/detail', req)
   },
 
-  // 类似人才推荐
-  fetchSimilarTalents() {
-    return ajax.get('/user/introduce')
+  // 获取推荐人才
+  fetchRmdTalents(id) {
+    return ajax.get(`/user/introduce?id=${id}`)
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import './search.css'
 
-import { Header, Footer } from 'components/common/'
+import { Header, Footer, ProjectsRmd, TalentsRmd } from 'components/common/'
 import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResult } from 'components/search'
 
 @inject('searchStore')
@@ -10,6 +10,7 @@ import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResu
 export default class Search extends React.Component {
   render() {
     let searchPanel = null
+    let rmd = null
     switch (this.props.searchStore.type) {
       case 'project':
         searchPanel = (
@@ -18,12 +19,22 @@ export default class Search extends React.Component {
             <ProjectResult />
           </div>
         )
+        rmd = (
+          <div>
+            <ProjectsRmd />
+          </div>
+        )
         break
       case 'talent':
         searchPanel = (
           <div>
             <TalentFilterBox />
             <TalentResult />
+          </div>
+        )
+        rmd = (
+          <div>
+            <TalentsRmd />
           </div>
         )
         break
@@ -39,7 +50,7 @@ export default class Search extends React.Component {
             {searchPanel}
           </div>
           <div styleName="right-container">
-            23
+            {rmd}
           </div>
         </div>
         <div styleName="footer-wrapper">

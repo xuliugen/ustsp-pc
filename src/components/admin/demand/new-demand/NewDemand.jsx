@@ -73,6 +73,7 @@ class NewDemand extends React.Component {
         try {
           await DemandApi.pubishDemand(regData)
           message.success('发布需求成功')
+          this.props.history.push('/admin/demand/published-demand')
         } catch (err) {
           console.log(err)
         }

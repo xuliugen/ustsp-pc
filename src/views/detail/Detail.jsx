@@ -1,9 +1,9 @@
 import React from 'react'
 import './detail.css'
 
-import { Header, Footer } from 'components/common'
+import { Header, Footer, ProjectsRmd, TalentsRmd } from 'components/common'
 import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
-import { ProjectsRmd, TalentsRmd, CommonFriends, Others, News } from 'components/detail/common'
+import { Others, News } from 'components/detail/common'
 
 export default class Detail extends React.Component {
   render() {
@@ -22,7 +22,7 @@ export default class Detail extends React.Component {
         RmdContent = (
           <div>
             <TalentsRmd />
-            <CommonFriends />
+            {/* <CommonFriends /> */}
             <Others />
           </div>
         )
@@ -33,7 +33,7 @@ export default class Detail extends React.Component {
           <div>
             <News />
             <TalentsRmd />
-            <CommonFriends />
+            {/* <CommonFriends /> */}
           </div>
         )
         break
