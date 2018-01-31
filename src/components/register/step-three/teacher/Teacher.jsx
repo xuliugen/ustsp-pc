@@ -72,7 +72,7 @@ class StepThreeTeacher extends React.Component<{}> {
           wechat: values.wechat,
           qq: Number(values.qq),
           certificate: this.state.tchCertificate,
-          school: values.school,
+          school: values.school[values.school.length - 1],
           college: values.college,
           major: values.major,
           title: values.title,
@@ -85,6 +85,7 @@ class StepThreeTeacher extends React.Component<{}> {
           photo: this.state.tchPhoto,
           isRealName: this.props.registerStore.isClaimDataAccept
         }
+        console.log(tchInfo)
         try {
           await TchInfoApi.completeTchInfo(tchInfo)
           message.success('完善信息成功')

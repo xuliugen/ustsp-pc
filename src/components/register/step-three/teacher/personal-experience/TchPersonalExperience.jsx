@@ -1,17 +1,31 @@
 import React from 'react'
-import { Form, Input, Row, Col } from 'antd'
+import { Form, Input, Row, Col, Cascader, Select } from 'antd'
 import { FormTitle } from '../../common'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import './tchPersonalExperience.css'
+import { province, school, major, title } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const { TextArea } = Input
+const Option = Select.Option
+const [...options] = province.map(item => ({
+  value: item,
+  label: item,
+  children: [...school[item].map(university => ({
+    value: university,
+    label: university
+  }))]
+}))
 
 @withRouter
 @inject('registerStore')
 @observer
 export default class PersonalExperience extends React.Component {
+  displayRender(label) {
+    return label[label.length - 1]
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -22,12 +36,15 @@ export default class PersonalExperience extends React.Component {
             <Col span={12} >
               <FormItem label="就职学校" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('school', {
-                  validateTrigger: 'onBlur',
+                  validateTrigger: 'onChange',
                   rules: [
                     { required: true, message: '请输入学校' }
                   ]
                 })(
-                  <Input placeholder="就职学校" />
+                  <Cascader placeholder="就职学校" options={options}
+                    expandTrigger="hover"
+                    displayRender={this.displayRender}
+                  />
                 )}
               </FormItem>
               <FormItem label="专业" style={{ flexFlow: '1' }}>
@@ -37,7 +54,9 @@ export default class PersonalExperience extends React.Component {
                     { required: true, message: '请输入专业' }
                   ]
                 })(
-                  <Input placeholder="专业" />
+                  <Select placeholder="专业" >
+                    {major.map(name => <Option key={name}>{name}</Option>)}
+                  </Select>
                 )}
               </FormItem>
             </Col>
@@ -59,7 +78,9 @@ export default class PersonalExperience extends React.Component {
                     { required: true, message: '请输入职称' }
                   ]
                 })(
-                  <Input placeholder="职称" />
+                  <Select placeholder="职称" >
+                    {title.map(name => <Option key={name}>{name}</Option>)}
+                  </Select>
                 )}
               </FormItem>
             </Col>
