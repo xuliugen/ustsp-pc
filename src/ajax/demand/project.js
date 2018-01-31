@@ -13,6 +13,10 @@ export default {
     return ajax.post('/project/docking', body)
   },
 
+  followInfo(body) {
+    return ajax.post('/project/follow', body)
+  },
+
   // 搜索项目
   searchProjects(req) {
     return ajax.post('/search/project/detail', req)

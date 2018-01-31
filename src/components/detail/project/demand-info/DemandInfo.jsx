@@ -109,9 +109,9 @@ export default class DemandInfo extends React.Component {
         status: 1,
         partyAvatar: user.avatar,
         partyName: user.realName,
-        partySex: 1,
+        partySex: user.sex,
         partyType: user.userType,
-        partyLocation: '成都',
+        partyLocation: user.location,
         partyContact: user.email || user.phone || user.wechat || user.qq || '',
         date: new Date().getTime()
       }
@@ -122,6 +122,35 @@ export default class DemandInfo extends React.Component {
       message.success('报名成功')
       this.setState({
         signUpBtn: { msg: '已报名', loading: false, disable: true }
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  handleFollow = async () => {
+    if (this.props.userStore.user.id === this.state.ownerInfo.ownerId) {
+      message.warning('发布者不可以关注')
+      return
+    }
+    try {
+      const user = this.props.userStore.user
+      const follow = {
+        projectId: this.props.match.params.id,
+        followerId: user.id,
+        followerName: user.realName,
+        followerAvatar: user.avatar,
+        followerSex: user.sex,
+        followerType: user.userType,
+        followerLocation: user.location
+      }
+      this.setState((prevState) => ({
+        followBtn: { ...prevState.followBtn, loading: true }
+      }))
+      await ProjectApi.followInfo(follow)
+      message.success('关注成功')
+      this.setState({
+        followBtn: { msg: '已关注', loading: false, disable: true }
       })
     } catch (e) {
       console.log(e)
@@ -151,7 +180,7 @@ export default class DemandInfo extends React.Component {
                 </div>
                 <div style={{ display: 'inline-block' }}>
                   <Spin spinning={this.state.followBtn.loading}>
-                    <button styleName="follow">{this.state.followBtn.msg}</button>
+                    <button styleName="follow" onClick={this.handleFollow} disabled={this.state.followBtn.disable} >{this.state.followBtn.msg}</button>
                   </Spin>
                 </div>
               </div>) : null}

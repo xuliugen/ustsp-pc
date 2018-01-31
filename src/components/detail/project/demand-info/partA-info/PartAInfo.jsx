@@ -1,25 +1,14 @@
 import React from 'react'
 import './partAInfo.css'
-import defaultAvatar from 'src/assets/defaultAvatar.svg'
+// import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
 export default class PartAInfo extends React.Component {
-  state = {
-    avatar: this.props.ownerInfo.avatar
-  }
-
-  onLoadAvatarError = () => {
-    this.setState({
-      avatar: defaultAvatar
-    })
-  }
-
   render() {
     const { ownerInfo } = this.props
-
     return (
       <div styleName="PartA">
         <div>
-          <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError} /></div>
+          <div styleName="avatar"><img src={ownerInfo.avatar} /></div>
           <div styleName="identity">
             <div styleName="name">{ownerInfo.name}</div>
             <div>{ownerInfo.location} / {getOwnerType(ownerInfo.type)}</div>
