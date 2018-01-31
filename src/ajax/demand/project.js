@@ -16,5 +16,10 @@ export default {
   // 搜索项目
   searchProjects(req) {
     return ajax.post('/search/project/detail', req)
+  },
+
+  // 获取推荐项目
+  fetchRmdProjects() {
+    return ajax.get('/project/query/home-page/projects')
   }
 }

@@ -9,5 +9,10 @@ export default {
   // 搜索人才
   searchTalents(req) {
     return ajax.post('/search/user/detail', req)
+  },
+
+  // 获取推荐人才
+  fetchRmdTalents(id) {
+    return ajax.get(`/user/introduce?id=${id}`)
   }
 }
