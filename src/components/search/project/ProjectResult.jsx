@@ -37,7 +37,7 @@ export default class ProjectResult extends React.Component {
     return (
       <div styleName="project-items">
         <div styleName="title">共为您找到
-          <span styleName="projects-number">56</span>
+          <span styleName="projects-number">{total}</span>
         个项目</div>
         {result.data.map((project, idx) => {
           return <ProjectItem key={idx} project={project} />
