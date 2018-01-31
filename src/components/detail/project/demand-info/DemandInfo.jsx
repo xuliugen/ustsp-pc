@@ -39,7 +39,7 @@ export default class DemandInfo extends React.Component {
 
   getApplicationDetail = async () => {
     try {
-      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id, this.props.userStore.user.id)
+      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id, this.props.userStore.user ? this.props.userStore.user.id : false)
       const projectInfo = data.projectInfoVo.projectResearchInfo
       const projectSkill = data.projectInfoVo.projectSkillList
 

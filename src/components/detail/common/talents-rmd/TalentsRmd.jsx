@@ -2,8 +2,9 @@
 import React from 'react'
 import Header from 'components/detail/common/header/Header'
 import TalentItem from './talent-item/TalentItem'
-import avatar1 from 'src/assets/avatar1.png'
+// import avatar1 from 'src/assets/avatar1.png'
 import './talentsRmd.css'
+import { TalentApi } from 'src/ajax'
 
 type SimilarObj = {
   name: string,
@@ -20,14 +21,24 @@ export default class TalentsRmd extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
-      similars: [
-        { name: '陈独秀', university: '西南石油大学', title: '教授', avatar: avatar1 },
-        { name: '陈二秀', university: '成都大学', title: '讲师', avatar: avatar1 },
-        { name: '陈三秀', university: '成都大学', title: '副教授', avatar: avatar1 },
-        { name: '陈四秀', university: '西南名族大学', title: '教授', avatar: avatar1 }
-      ]
+      similars: []
     }
   }
+
+  async componentDidMount() {
+    try {
+      const { data } = await TalentApi.fetchSimilarTalents()
+      console.log(data)
+      if (Array.isArray(data)) {
+        this.setState({
+          similars: data.slice(0, 5)
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   render() {
     const similarItem = this.state.similars.map((item, idx) => {
       return <TalentItem similar={item} key={idx} />

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import './talentItem.css'
+import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
 type Props = {
   name: string,
@@ -10,13 +11,23 @@ type Props = {
 }
 
 export default class TalentItem extends React.Component<Props> {
+  state = {
+    avatar: this.props.similar.photo
+  }
+
+  onLoadAvatarError(a) {
+    this.setState({
+      avatar: defaultAvatar
+    })
+  }
+
   render() {
     const { similar } = this.props
     return (
       <div styleName="similar-item">
-        <img styleName="avatar" src={similar.avatar} />
-        <span styleName="name">{similar.name}</span>
-        <span styleName="university-item">{similar.university} / {similar.title}</span>
+        <img styleName="avatar" src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} />
+        <span styleName="name">{similar.realName}</span>
+        <span styleName="university-item">{similar.school} / {similar.title}</span>
       </div>
     )
   }
