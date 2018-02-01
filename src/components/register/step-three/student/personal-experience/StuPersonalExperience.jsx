@@ -1,11 +1,20 @@
 import React from 'react'
-import { Form, Input, Select, Row, Col } from 'antd'
+import { Form, Input, Select, Row, Col, Cascader } from 'antd'
 import { FormTitle } from '../../common'
 import './stuPersonalExperience.css'
-
+import { province, school, major } from 'src/common/dataset'
 const FormItem = Form.Item
 const Option = Select.Option
 const { TextArea } = Input
+
+const [...options] = province.map(item => ({
+  value: item,
+  label: item,
+  children: [...school[item].map(university => ({
+    value: university,
+    label: university
+  }))]
+}))
 
 export default class PersonalExperience extends React.Component {
   render() {
@@ -18,27 +27,26 @@ export default class PersonalExperience extends React.Component {
             <Col span={12} >
               <FormItem label="现读学校" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('school', {
-                  initialValue: '电子科技大学',
-                  validateTrigger: 'onBlur',
-                  rules: [{ required: true, message: '请输入就读学校' }]
+                  validateTrigger: 'onChange',
+                  rules: [
+                    { required: true, message: '请输入学校' }
+                  ]
                 })(
-                  <Select style={{ width: '100%' }} >
-                    <Option value="电子科技大学">电子科技大学</Option>
-                    <Option value="四川大学">电子科技大学</Option>
-                    <Option value="西南财经大学">电子科技大学</Option>
-                  </Select>
+                  <Cascader placeholder="就职学校" options={options}
+                    expandTrigger="hover"
+                    displayRender={this.displayRender}
+                  />
                 )}
               </FormItem>
               <FormItem label="专业" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('major', {
-                  initialValue: '软件工程',
                   validateTrigger: 'onBlur',
-                  rules: [{ required: true, message: '请输入就读专业' }]
+                  rules: [
+                    { required: true, message: '请选择专业' }
+                  ]
                 })(
-                  <Select style={{ width: '100%' }} >
-                    <Option value="建筑">建筑</Option>
-                    <Option value="软件工程">软件工程</Option>
-                    <Option value="药学">药学</Option>
+                  <Select placeholder="专业" >
+                    {major.map(name => <Option key={name}>{name}</Option>)}
                   </Select>
                 )}
               </FormItem>
@@ -46,24 +54,26 @@ export default class PersonalExperience extends React.Component {
             <Col span={12}>
               <FormItem label="学院">
                 {getFieldDecorator('college', {
-                  initialValue: '信软学院',
                   validateTrigger: 'onBlur',
-                  rules: [{ required: true, message: '请输入就读学院' }]
+                  rules: [
+                    { required: true, message: '请输入学院' }
+                  ]
                 })(
-                  <Select style={{ width: '100%' }} >
-                    <Option value="信软学院">信软学院</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
+                  <Input placeholder="学院" />
                 )}
               </FormItem>
               <FormItem label="年级">
                 {getFieldDecorator('stuLevel', {
-                  initialValue: '研一'
+                  initialValue: '大一'
                 })(
                   <Select style={{ width: '100%' }} >
+                    <Option value="大一">大一</Option>
+                    <Option value="大二">大二</Option>
+                    <Option value="大三">大三</Option>
+                    <Option value="大四">大四</Option>
                     <Option value="研一">研一</Option>
                     <Option value="研二">研二</Option>
+                    <Option value="研三">研三</Option>
                   </Select>
                 )}
               </FormItem>
