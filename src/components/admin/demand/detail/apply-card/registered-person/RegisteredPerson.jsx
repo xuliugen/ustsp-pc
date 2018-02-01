@@ -45,7 +45,7 @@ export default class RegisteredPerson extends React.Component {
           <Avatar icon={this.showRender().icon} size="small" styleName={this.showRender().styleName} />
         </div>
         <span styleName="person-info">{ this.showUserType() } / { this.props.registeredPerson.partyLocation } / {this.props.registeredPerson.partyContact}</span>
-        <span styleName="register-time">报名时间：{moment(this.props.registeredPerson.date).format('YYYY-MM-DD h:mm:ss')}</span>
+        <span styleName="register-time">报名时间：{moment(this.props.registeredPerson.date).format('YYYY-MM-DD HH:mm:ss')}</span>
       </div>
     )
   }
