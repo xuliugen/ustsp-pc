@@ -1,20 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './projectItem.css'
-import { Avatar, Icon } from 'antd'
+import { Icon } from 'antd'
 import moment from 'moment'
+
 export default class ProjectItem extends React.Component {
   render() {
     const project = this.props.project
     return (
       <div styleName="project-item">
         <div styleName="project-info">
-          <Avatar shape="square"
+          {/* <Avatar shape="square"
             style={{width: '55px', height: '55px'}}
-          // src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          />
+          /> */}
           <div styleName="info-text">
             <div style={{ display: 'flex' }}>
-              <span styleName="project-name">{project.projectName}</span>
+              <Link to={`/project/${project.id}`}>
+                <span styleName="project-name">{project.projectName}</span>
+              </Link>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Icon type="eye" styleName="visible-icon" />
                 <span styleName="visible-person-number">{project.projectView}</span>

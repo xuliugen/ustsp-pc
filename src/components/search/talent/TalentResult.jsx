@@ -38,7 +38,7 @@ export default class TalentResult extends React.Component {
       <div styleName="talent-items">
         <div styleName="title">共为您找到
           <span styleName="talents-number">{total}</span>
-          个项目</div>
+          个人才</div>
         {result.data.map((talent, idx) => {
           return <TalentItem key={idx} talent={talent} />
         })}

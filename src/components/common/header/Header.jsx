@@ -12,7 +12,7 @@ import defaultAvatar from 'src/assets/defaultAvatar.svg'
 class Header extends React.Component<{}> {
   render() {
     const { userStore, authStore, searchStore } = this.props
-    const avatar = (userStore.user && userStore.user.photo) ? userStore.user.photo : defaultAvatar
+    const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
         <div styleName="header-inner">
