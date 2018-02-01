@@ -4,7 +4,15 @@ import moment from 'moment'
 
 export default class OrderBasicInfo extends React.Component {
   render() {
-    console.log(this.props.demand)
+    const PartyBContactInfo = this.props.demand.PartyBContactInfo.length !== 0
+      ? this.props.demand.PartyBContactInfo.map((item, idx) => {
+        return (
+          <div styleName="item-detail">{item}<br /> </div>
+        )
+      })
+      : (
+        <div styleName="item-detail">暂无</div>
+      )
     return (
       <div styleName="order-basic-info">
         <div styleName="basic-info-title">
@@ -35,7 +43,7 @@ export default class OrderBasicInfo extends React.Component {
             </li>
             <li>
               <div styleName="item-title">乙方联系方式</div>
-              <div styleName="item-detail">{this.props.demand.PartyBContactInfo}</div>
+              {PartyBContactInfo}
             </li>
           </ul>
         </div>
