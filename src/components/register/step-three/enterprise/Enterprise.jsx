@@ -2,12 +2,13 @@ import React from 'react'
 import './enterprise.css'
 import { Form, message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 
 import EnterBaseInfo from './base-info/EnterBaseInfo'
 import EnterOtherInfo from './other-info/EnterOtherInfo'
 
+@withRouter
 @inject('registerStore')
 @observer
 class StepThreeEnterprise extends React.Component {

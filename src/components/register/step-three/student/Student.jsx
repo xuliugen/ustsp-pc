@@ -41,7 +41,7 @@ class StepThreeStudent extends React.Component<{}> {
           stuLevel: value.stuLevel,
           wechat: value.wechat,
           qq: value.qq,
-          school: value.school,
+          school: value.school[value.school.length - 1],
           college: value.college,
           major: value.major,
           grade: 1,

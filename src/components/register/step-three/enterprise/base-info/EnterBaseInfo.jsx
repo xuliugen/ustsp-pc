@@ -3,6 +3,7 @@ import { Form, Row, Col, Input, DatePicker, Select } from 'antd'
 import { FormTitle, UploadAvatar } from '../../common'
 import './enterBaseInfo.css'
 import UploadLicensePic from '../upload-license-picture/UploadLicensePic'
+import { major } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -30,13 +31,12 @@ export default class EnterBaseInfo extends React.Component {
                 {getFieldDecorator('industry', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入企业行业' }
+                    { required: true, message: '请选择企业行业' }
                   ]
                 })(
-                  // <Select style={{ width: '100%' }} >
-                  //   <Option value="计算机网络/大金融">计算机网络/大金融</Option>
-                  // </Select>
-                  <Input placeholder="行业" />
+                  <Select placeholder="行业" >
+                    {major.map(name => <Option key={name}>{name}</Option>)}
+                  </Select>
                 )}
               </FormItem>
               <FormItem label="成立时间">
