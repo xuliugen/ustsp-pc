@@ -29,7 +29,7 @@ export default class TalentsRmd extends React.Component<{}, State> {
       const { data } = await ProjectApi.fetchRmdProjects()
       if (Array.isArray(data)) {
         this.setState({
-          projects: data.slice(0, 4)
+          projects: data.map(i => i.projectResearchInfo).slice(0, 4)
         })
       }
     } catch (e) {

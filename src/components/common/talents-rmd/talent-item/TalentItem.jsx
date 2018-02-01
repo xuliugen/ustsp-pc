@@ -26,7 +26,7 @@ export default class TalentItem extends React.Component<Props> {
       <div styleName="talent-item">
         <Link to={url}>
           <img styleName="avatar" src={talent.photo} />
-          <span styleName="name">{talent.realName}</span>
+          <span styleName="name">{talent.name}</span>
         </Link>
         <span styleName="university-item">{talent.school} / {talent.title}</span>
       </div>
