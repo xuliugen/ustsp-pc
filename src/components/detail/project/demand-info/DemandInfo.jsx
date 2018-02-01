@@ -109,6 +109,10 @@ export default class DemandInfo extends React.Component {
       message.warning('发布者不可以报名')
       return
     }
+    if (this.props.userStore.user.userType === 3) {
+      message.warning('企业暂时不可以报名')
+      return
+    }
     try {
       const user = this.props.userStore.user
       const projectJoin = {
@@ -133,6 +137,9 @@ export default class DemandInfo extends React.Component {
         signUpBtn: { msg: '已报名', loading: false, disable: true }
       })
     } catch (e) {
+      this.setState((prevState) => ({
+        signUpBtn: { ...prevState.signUpBtn, loading: false }
+      }))
       console.log(e)
     }
   }
