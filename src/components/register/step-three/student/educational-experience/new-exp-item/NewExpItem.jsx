@@ -85,7 +85,9 @@ class NewExpItem extends React.Component<{}> {
                   )}
                 </FormItem>
                 <FormItem label="入学时间">
-                  {getFieldDecorator('date')(
+                  {getFieldDecorator('date', {
+                    rules: [{ required: true, message: '请选择入学时间' }]
+                  })(
                     <MonthPicker style={{ width: '100%' }} />
                   )}
                 </FormItem>
@@ -108,7 +110,9 @@ class NewExpItem extends React.Component<{}> {
                   )}
                 </FormItem>
                 <FormItem label="毕业时间">
-                  {getFieldDecorator('finishTime')(
+                  {getFieldDecorator('finishTime', {
+                    rules: [{ required: true, message: '请选择毕业时间' }]
+                  })(
                     <MonthPicker style={{ width: '100%' }} />
                   )}
                 </FormItem>

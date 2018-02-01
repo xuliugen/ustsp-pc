@@ -12,6 +12,10 @@ export default {
     return ajax.get(`/project/query/status?userId=${userId}&status=${status}&page=${page}&rows=${row}`)
   },
 
+  getUndertakenDemand(userId, page, row, status) {
+    return ajax.get(`/project/query/applicated?status=${status}&userId=${userId}&page=${page}&rows=${row}`)
+  },
+
   getDemandApplicants(userId, projectId) {
     return ajax.get(`/project/query/applicants?userId=${userId}&projectId=${projectId}`)
   },

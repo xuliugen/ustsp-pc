@@ -17,6 +17,7 @@ export default class DemandInfo extends React.Component {
   constructor() {
     super()
     this.state = {
+      id: '',
       demandDetail: {},
       skills: [],
       ownerInfo: {},
@@ -33,13 +34,18 @@ export default class DemandInfo extends React.Component {
       }
     }
   }
-  componentDidMount() {
-    this.getApplicationDetail()
+
+  componentWillReceiveProps(nextProps) {
+    this.getApplicationDetail(nextProps.match.params.id)
   }
 
-  getApplicationDetail = async () => {
+  componentWillMount() {
+    this.getApplicationDetail(this.props.match.params.id)
+  }
+
+  getApplicationDetail = async (pid) => {
     try {
-      const { data } = await ProjectApi.getApplicationDetail(this.props.match.params.id, this.props.userStore.user ? this.props.userStore.user.id : '')
+      const { data } = await ProjectApi.getApplicationDetail(pid, this.props.userStore.user ? this.props.userStore.user.id : '')
       const projectInfo = data.projectInfoVo.projectResearchInfo
       const projectSkill = data.projectInfoVo.projectSkillList
 

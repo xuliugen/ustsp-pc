@@ -11,9 +11,9 @@ import Introduction from './introduction/Introduction'
 import { TchInfoApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
 
+@withRouter
 @inject('userStore')
 @observer
-@withRouter
 export default class TeacherContent extends React.Component {
   constructor() {
     super()
@@ -40,25 +40,36 @@ export default class TeacherContent extends React.Component {
       researchInfos: []
     }
   }
-  async componentDidMount() {
-    const { data } = await TchInfoApi.getTeacherInfo(this.props.match.params.id)
-    const res = await TchInfoApi.getOtherAddInfo(this.props.match.params.id)
-    console.log(res)
-    data.teacherInfoDTO.email = data.userInfoDTO.email
-    data.teacherInfoDTO.pageView = data.userInfoDTO.pageView
-    this.setState({
-      intro: {
-        introduction: data.teacherInfoDTO.introduction,
-        academicExperience: data.teacherInfoDTO.academicExperience,
-        scienceIntroduction: data.teacherInfoDTO.scienceIntroduction,
-        publishPaper: data.teacherInfoDTO.publishPaper
-      },
-      infoTeacher: data.teacherInfoDTO,
-      userAwardInfos: res.data.userAwardInfoDTO,
-      userEducationInfos: res.data.userEducationInfoDTO,
-      researchInfos: res.data.researchInfoDTO
-    })
-    console.log()
+
+  componentWillReceiveProps(nextProps) {
+    this.getTeacherDetail(nextProps.match.params.id)
+  }
+
+  componentDidMount() {
+    this.getTeacherDetail(this.props.match.params.id)
+  }
+
+  async getTeacherDetail(tid) {
+    try {
+      const { data } = await TchInfoApi.getTeacherInfo(tid)
+      const res = await TchInfoApi.getOtherAddInfo(tid)
+      data.teacherInfoDTO.email = data.userInfoDTO.email
+      data.teacherInfoDTO.pageView = data.userInfoDTO.pageView
+      this.setState({
+        intro: {
+          introduction: data.teacherInfoDTO.introduction,
+          academicExperience: data.teacherInfoDTO.academicExperience,
+          scienceIntroduction: data.teacherInfoDTO.scienceIntroduction,
+          publishPaper: data.teacherInfoDTO.publishPaper
+        },
+        infoTeacher: data.teacherInfoDTO,
+        userAwardInfos: res.data.userAwardInfoDTO,
+        userEducationInfos: res.data.userEducationInfoDTO,
+        researchInfos: res.data.researchInfoDTO
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {

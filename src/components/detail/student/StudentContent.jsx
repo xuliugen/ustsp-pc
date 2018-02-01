@@ -53,17 +53,29 @@ export default class StudentContent extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    const res = await StuInfoApi.getInfo(this.props.match.params.id)
-    const eduRes = await StuInfoApi.getEduInfo(this.props.match.params.id)
+  componentWillReceiveProps(nextProps) {
+    this.getStuDetail(nextProps.match.params.id)
+  }
 
-    res.data.studentInfoDTO.email = res.data.userInfoDTO.email
-    res.data.studentInfoDTO.pageView = res.data.userInfoDTO.pageView
-    this.setState({
-      stuInfo: res.data.studentInfoDTO,
-      introduction: res.data.studentInfoDTO.introduction,
-      educations: eduRes.data
-    })
+  componentDidMount() {
+    this.getStuDetail(this.props.match.params.id)
+  }
+
+  async getStuDetail(sid) {
+    try {
+      const res = await StuInfoApi.getInfo(sid)
+      const eduRes = await StuInfoApi.getEduInfo(sid)
+
+      res.data.studentInfoDTO.email = res.data.userInfoDTO.email
+      res.data.studentInfoDTO.pageView = res.data.userInfoDTO.pageView
+      this.setState({
+        stuInfo: res.data.studentInfoDTO,
+        introduction: res.data.studentInfoDTO.introduction,
+        educations: eduRes.data
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {

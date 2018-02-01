@@ -24,8 +24,8 @@ class NewExpItem extends React.Component<{}> {
           college: values.college,
           major: values.major,
           level: values.level,
-          startTime: values.startTime.valueOf(), // get timestamp
-          endTime: values.endTime.valueOf()
+          startTime: values.startTime ? values.startTime.valueOf() : null, // get timestamp
+          endTime: values.endTime ? values.endTime.valueOf() : null
         }
         this.setState({ loading: true })
         try {

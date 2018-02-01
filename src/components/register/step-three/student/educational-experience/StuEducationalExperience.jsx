@@ -35,7 +35,7 @@ export default class StuEdicationalExperience extends React.Component<{}> {
   render() {
     const expItems = this.state.expItems.map((item, idx) => {
       return (
-        <ExpItem exp={item} />
+        <ExpItem key={idx} exp={item} />
       )
     })
     return (
