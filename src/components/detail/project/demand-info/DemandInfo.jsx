@@ -96,6 +96,9 @@ export default class DemandInfo extends React.Component {
 
       // 报名状态
       if (data.dockingStatus !== 0) this.setState({ signUpBtn: { msg: '已报名', loading: false, disable: true } })
+
+      // 关注状态
+      if (data.followStatus !== 0) this.setState({ followBtn: { msg: '已关注', loading: false, disable: true } })
     } catch (e) {
       console.log(e)
     }
