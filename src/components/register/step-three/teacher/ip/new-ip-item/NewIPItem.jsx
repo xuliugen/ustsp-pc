@@ -26,7 +26,7 @@ class NewIPItem extends React.Component<{}> {
           name: values.name,
           status: Number(values.status),
           registrationNumber: values.registrationNumber,
-          applyDate: values.applyDate.valueOf(),
+          applyDate: values.applyDate ? values.applyDate.valueOf() : null,
           applyUnit: values.applyUnit,
           inventor: values.inventor,
           rank: Number(values.rank)

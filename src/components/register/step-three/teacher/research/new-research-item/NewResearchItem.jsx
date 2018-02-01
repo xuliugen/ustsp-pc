@@ -23,8 +23,8 @@ class NewResearchItem extends React.Component<{}> {
           projectName: values.projectName,
           projectLevel: values.projectLevel,
           funding: values.funding,
-          startTime: values.startTime.valueOf(),
-          endTime: values.endTime.valueOf() // get timestamp
+          startTime: values.startTime ? values.startTime.valueOf() : null,
+          endTime: values.endTime ? values.endTime.valueOf() : null
         }
         this.setState({ loading: true })
         try {

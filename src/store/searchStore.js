@@ -20,7 +20,7 @@ class SearchStore {
   @observable content = ''
   @observable conditions = []
   @observable req = {}
-  @observable pageSize = 5
+  @observable pageSize = 10
   @observable currentPage = 1
   @observable result = {
     data: []

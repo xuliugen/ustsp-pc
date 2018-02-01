@@ -24,7 +24,7 @@ class NewAwardItem extends React.Component<{}> {
           userId: this.props.registerStore.initial.uid,
           name: values.name,
           introduction: values.introduction,
-          time: values.time.valueOf(),
+          time: values.time ? values.time.valueOf() : null,
           level: values.level,
           rank: values.rank,
           isResearch: this.props.isResearch

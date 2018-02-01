@@ -1,15 +1,20 @@
 import React from 'react'
 import './NewDemand.css'
-import { Form, Input, Row, Col, Select, DatePicker, Radio, message } from 'antd'
+import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader } from 'antd'
 import SkillsRequirement from './SkillsRequirement'
 import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
 import { DemandApi } from 'src/ajax'
+import { major } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const Option = Select.Option
 const RadioGroup = Radio.Group
 const { TextArea } = Input
+const [...options] = major.map(item => ({
+  value: item,
+  label: item
+}))
 
 @inject('registerStore')
 @inject('userStore')
@@ -24,6 +29,10 @@ class NewDemand extends React.Component {
       },
       skills: []
     }
+  }
+
+  displayRender(label) {
+    return label[label.length - 1]
   }
 
   setSkills = (skills) => {
@@ -53,10 +62,10 @@ class NewDemand extends React.Component {
           projectResearchInfo: {
             projectName: values.projectName,
             type: values.type,
-            subject: values.subject,
-            major: values.major,
-            startTime: values.startTime ? values.startTime.valueOf() : null,
-            endTime: values.endTime ? values.endTime.valueOf() : null,
+            subject: values.subject[values.subject.length - 1],
+            major: null,
+            startTime: values.startTime.valueOf(),
+            endTime: values.endTime.valueOf(),
             deadline: values.deadLine.valueOf(),
             contactWay: values.contactWay,
             province: values.province,
@@ -105,7 +114,7 @@ class NewDemand extends React.Component {
         <div style={{ borderBottom: '1px solid #f0f0f0' }}>
           <span styleName="title">填写需求(*为必填)</span>
         </div>
-        <Form layout="vertical" styleName="demand-info" onSubmit={this.handleSubmit}>
+        <Form layout="vertical" style={{padding: '41px 135px 0 135px'}} onSubmit={this.handleSubmit}>
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="项目名称">
@@ -144,13 +153,19 @@ class NewDemand extends React.Component {
             <Col span={12}>
               <FormItem label="项目学科">
                 {getFieldDecorator('subject', {
-                  validateTrigger: 'onBlur'
+                  validateTrigger: 'onChange',
+                  rules: [
+                    { required: true, message: '请选择项目学科' }
+                  ]
                 })(
-                  <Input placeholder="项目学科" />
+                  <Cascader placeholder="项目学科" options={options}
+                    expandTrigger="hover"
+                    displayRender={this.displayRender}
+                  />
                 )}
               </FormItem>
             </Col>
-            <Col span={12}>
+            {/* <Col span={12}>
               <FormItem label="项目专业">
                 {getFieldDecorator('major', {
                   validateTrigger: 'onBlur'
@@ -158,13 +173,16 @@ class NewDemand extends React.Component {
                   <Input placeholder="项目专业" />
                 )}
               </FormItem>
-            </Col>
+            </Col> */}
           </Row >
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="项目开始时间">
                 {getFieldDecorator('startTime', {
-                  validateTrigger: 'onBlur'
+                  validateTrigger: 'onchange',
+                  rules: [
+                    { required: true, message: '请选择项目开始时间' }
+                  ]
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}
@@ -173,7 +191,10 @@ class NewDemand extends React.Component {
             <Col span={12}>
               <FormItem label="项目结束时间">
                 {getFieldDecorator('endTime', {
-                  validateTrigger: 'onBlur'
+                  validateTrigger: 'onchange',
+                  rules: [
+                    { required: true, message: '请选择项目结束时间' }
+                  ]
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}

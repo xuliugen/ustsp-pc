@@ -8,7 +8,8 @@ export default class NewExpItem extends React.Component<{}> {
       <div styleName="stu-edu-experience">
         <div styleName="row">
           <span styleName="school-name">{this.props.exp.school}</span>
-          <span styleName="time-text">{moment(this.props.exp.startTime).format('YYYY-MM-DD')} - {moment(this.props.exp.endTime).format('YYYY-MM-DD')}</span>
+          {(this.props.exp.startTime && this.props.exp.endTime) &&
+            <span styleName="time-text">{moment(this.props.exp.startTime).format('YYYY-MM-DD')} - {moment(this.props.exp.endTime).format('YYYY-MM-DD')}</span>}
         </div>
         <div styleName="degree-text row">{this.props.exp.level}</div>
         <div styleName="row">

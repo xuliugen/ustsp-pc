@@ -17,7 +17,7 @@ export default class AwardItem extends React.Component<{}> {
           <span styleName="award-info-text">级别: {this.props.RAward.level}</span>
           <span styleName="award-info-text">排名: {this.props.RAward.rank}</span>
         </div>
-        <div styleName="award-description">获奖描述: {this.props.RAward.introduction}
+        <div styleName="award-description">获奖描述: {this.props.RAward.introduction ? this.props.RAward.introduction : '暂无'}
         </div>
       </div>
     )

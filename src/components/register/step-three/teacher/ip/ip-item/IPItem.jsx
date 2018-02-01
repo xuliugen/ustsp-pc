@@ -43,7 +43,8 @@ export default class IPItem extends React.Component<{}> {
       <div styleName="ip">
         <div styleName="ip-name-container">
           <span styleName="ip-name">{this.props.ip.name}</span>
-          <span styleName="ip-type"> {this.transfrmType(this.props.ip.type)} / {this.props.ip.country}</span>
+          {(!this.props.ip.country) && <span styleName="ip-type"> {this.transfrmType(this.props.ip.type)}</span>}
+          {(this.props.ip.country && this.props.ip.type) && <span styleName="ip-type"> {this.transfrmType(this.props.ip.type)} / {this.props.ip.country}</span>}
         </div>
         <div styleName="ip-info">
           <span styleName="ip-info-text">登记编号: {this.props.ip.registrationNumber}</span>
@@ -51,7 +52,8 @@ export default class IPItem extends React.Component<{}> {
         </div>
         <div styleName="ul-container">
           <ul style={{ paddingLeft: '18px' }}>
-            <li styleName="li-text">申请于 {moment(this.props.ip.applyDate).format('YYYY-MM-DD')} / {this.props.ip.applyUnit}</li>
+            {(this.props.ip.applyDate) &&
+              <li styleName="li-text">申请于 {moment(this.props.ip.applyDate).format('YYYY-MM-DD')} / {this.props.ip.applyUnit}</li>}
             <li styleName="li-text">发明人：{this.props.ip.inventor}</li>
           </ul>
         </div>
