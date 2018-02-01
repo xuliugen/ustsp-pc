@@ -11,13 +11,14 @@ export default class OrderDetail extends React.Component {
   constructor() {
     super()
     this.state = {
-      demand: { type: '学术研究', money: '100000', startTime: '2016-12-23', endTime: '2016-12-23', PartyAContactInfo: 'zhanjy@uestc.edu.cn', PartyBContactInfo: '暂无' },
+      demand: { type: '学术研究', money: '100000', startTime: '2016-12-23', endTime: '2016-12-23', PartyAContactInfo: 'zhanjy@uestc.edu.cn', PartyBContactInfo: [] },
       currentStatus: 0
     }
   }
 
   async componentDidMount() {
-    const { data } = await DemandApi.geteDemanOrderDetail(this.props.match.params.id)
+    const res = await DemandApi.geteDemanOrderDetail(this.props.match.params.id)
+    let data = res.data.projectResearchInfo
     this.setState({
       demand: {
         projectName: data.projectName,
@@ -26,7 +27,7 @@ export default class OrderDetail extends React.Component {
         startTime: data.startTime ? moment(data.startTime.valueOf()).format('YYYY-MM-DD') : '无',
         endTime: data.endTime ? moment(data.endTime.valueOf()).format('YYYY-MM-DD') : '无',
         PartyAContactInfo: data.contactWay,
-        PartyBContactInfo: data.partyContactWay ? data.partyContactWay : '暂无'
+        PartyBContactInfo: res.data.partyContactWay ? res.data.partyContactWay : []
       },
       currentStatus: data.status
     })
