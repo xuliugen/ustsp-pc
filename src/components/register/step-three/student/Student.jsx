@@ -2,14 +2,14 @@ import React from 'react'
 import './student.css'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
-import { Link } from 'react-router-dom'
 import { StuInfoApi } from 'src/ajax'
-
+import { withRouter, Link } from 'react-router-dom'
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
 import StuEducationalExperience from './educational-experience/StuEducationalExperience'
 import SideNav from '../common/side-nav/SideNav'
 
+@withRouter
 @inject('registerStore')
 @observer
 class StepThreeStudent extends React.Component<{}> {
@@ -53,6 +53,7 @@ class StepThreeStudent extends React.Component<{}> {
         try {
           await StuInfoApi.completeStuInfo(stuInfo)
           message.success('注册成功，进入下一步')
+          this.props.history.push('/')
         } catch (e) {
           console.log(e)
         }
