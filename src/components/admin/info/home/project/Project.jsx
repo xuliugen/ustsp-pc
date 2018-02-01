@@ -3,6 +3,7 @@ import React from 'react'
 import './project.css'
 import ProjectItem from '../../../../common/project-item/ProjectItem'
 import CardHeader from '../common/header/CardHeader'
+import { ProjectApi } from 'src/ajax'
 
 type ProjectObj = {
   title: string,
@@ -18,16 +19,20 @@ export default class Project extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
-      projects: [
-        { title: '项目标题', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#8f9ba7' },
-        { title: '长一点的项目标题', school: '西南财经大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 300, bgColor: '#8f9ba7' },
-        { title: '项目标题', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#8f9ba7' },
-        { title: '更加长一点点的项目标题', school: '四川大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 11000, bgColor: '#8f9ba7' },
-        { title: '普通项目标题', school: '成都大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 9000, bgColor: '#8f9ba7' },
-        { title: '项目标题', school: '西南石油大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 5000, bgColor: '#8f9ba7' },
-        { title: '一个非常啰嗦复杂的项目标题', school: '西南民族大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 900000, bgColor: '#8f9ba7' },
-        { title: '项目标题', school: '电子科技大学', startTime: '2017-11-30', endTime: '2017-12-30', visitNum: 1346, price: 12000, bgColor: '#8f9ba7' }
-      ]
+      projects: []
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const { data } = await ProjectApi.fetchProjects()
+      if (Array.isArray(data)) {
+        this.setState({
+          projects: data.slice(0, 8)
+        })
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
