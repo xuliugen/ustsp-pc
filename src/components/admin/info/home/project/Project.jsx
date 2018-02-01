@@ -40,7 +40,7 @@ export default class Project extends React.Component<{}, State> {
     const projectItem = this.state.projects.map((item, idx) => {
       return (
         <div styleName="project-item-wrapper" key={idx}>
-          <ProjectItem project={item} />
+          <ProjectItem project={item.projectResearchInfo} />
         </div>
       )
     })

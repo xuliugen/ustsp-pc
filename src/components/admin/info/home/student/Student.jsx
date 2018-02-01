@@ -3,6 +3,8 @@ import React from 'react'
 import './student.css'
 import CardHeader from '../common/header/CardHeader'
 import Card from '../common/card/Card'
+import { TalentApi } from 'src/ajax'
+import { inject, observer } from 'mobx-react'
 
 type PersonObj = {
   name: string,
@@ -14,16 +16,26 @@ type State = {
   person: Array<PersonObj>
 }
 
+@inject('userStore')
+@observer
 export default class Student extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = {
-      person: [
-        { name: '张翰', school: '电子科技大学', field: 'IT（计算机相关）' },
-        { name: '李长山', school: '四川大学', field: '哲学/文学' },
-        { name: '郭采洁', school: '西南财经大学', field: '金融会计' },
-        { name: '胡一天', school: '四川大学', field: '哲学/文学' }
-      ]
+      person: []
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const { data } = await TalentApi.fetchInterestedStudent(this.props.userStore.user.id)
+      if (Array.isArray(data)) {
+        this.setState({
+          person: data.slice(0, 4)
+        })
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
@@ -34,13 +46,13 @@ export default class Student extends React.Component<{}, State> {
           <CardHeader title="可能感兴趣的学生" />
         </div>
         <div styleName="student-cards">
-          {this.state.person.map((item, idx) => {
+          {this.state.person.length !== 0 ? this.state.person.map((item, idx) => {
             return (
               <div styleName="student-card-wrapper" key={idx}>
                 <Card person={item} />
               </div>
             )
-          })}
+          }) : '暂无相关用户'}
         </div>
       </div>
     )

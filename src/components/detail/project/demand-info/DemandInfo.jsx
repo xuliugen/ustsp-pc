@@ -195,11 +195,11 @@ export default class DemandInfo extends React.Component {
             <ul styleName="left">
               <li><span styleName="list-title">需求类型</span>{demandDetail.type}</li>
               <li><span styleName="list-title">需求学科</span>{demandDetail.subject}</li>
-              <li><span styleName="list-title">需求专业</span>{demandDetail.major}</li>
+              {/* <li><span styleName="list-title">需求专业</span>{demandDetail.major}</li> */}
               <li><span styleName="list-title">预设金额</span>¥{demandDetail.money}</li>
+              <li><span styleName="list-title">对接倾向</span>{demandDetail.toOriented}</li>
             </ul>
             <ul styleName="right">
-              <li><span styleName="list-title">对接倾向</span>{demandDetail.toOriented}</li>
               <li><span styleName="list-title">开始时间</span>{demandDetail.startTime ? moment(demandDetail.startTime).format('YYYY-MM-DD') : '暂无'}</li>
               <li><span styleName="list-title">结束时间</span>{demandDetail.endTime ? moment(demandDetail.endTime).format('YYYY-MM-DD') : '暂无'}</li>
               <li><span styleName="list-title">报名截止</span>{demandDetail.deadline ? moment(demandDetail.deadline).format('YYYY-MM-DD') : '暂无'}</li>
