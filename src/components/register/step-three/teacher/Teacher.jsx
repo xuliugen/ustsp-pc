@@ -34,7 +34,7 @@ class StepThreeTeacher extends React.Component<{}> {
       form.setFieldsValue({
         realName: claimData.name,
         render: claimData.gender === '男' ? '0' : '1',
-        school: claimData.university,
+        // school: claimData.university,
         college: claimData.school,
         title: claimData.title,
         introduction: claimData.introduction,

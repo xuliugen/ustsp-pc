@@ -20,7 +20,7 @@ export default class DemandItem extends React.Component<{}> {
             <span styleName="demand-status" style={{ backgroundColor: styleList.backgroundColor, color: styleList.color, border: styleList.border }}>{styleList.status}</span>
           </div>
           <div styleName="demand-base">
-            <span>{this.props.demand.major}</span>
+            <span>{this.props.demand.subject}</span>
             <span styleName="recieve-type">接包类型：{this.props.demand.toOriented}</span>
             <span>金额 ¥{this.props.demand.money}</span>
           </div>
