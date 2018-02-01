@@ -103,43 +103,43 @@ export default class PersonalExperience extends React.Component {
             {getFieldDecorator('introduction', {
               validateTrigger: 'onBlur',
               rules: [
-                { max: 400, message: '字数不能超过400' }
+                { max: 2000, message: '字数不能超过2000' }
               ]
             })(
-              <TextArea rows={8} maxLength={400} />
+              <TextArea rows={8} maxLength={2000} />
             )}
           </FormItem>
           <FormItem label="学术经历">
             {getFieldDecorator('academicExperience', {
               validateTrigger: 'onBlur',
               rules: [
-                { max: 400, message: '字数不能超过400' }
+                { max: 2000, message: '字数不能超过2000' }
               ]
             })(
-              <TextArea rows={8} maxLength={400} />
+              <TextArea rows={8} maxLength={2000} />
             )}
           </FormItem>
           <FormItem label="科研简介">
             {getFieldDecorator('scienceIntroduction', {
               validateTrigger: 'onBlur',
               rules: [
-                { max: 400, message: '字数不能超过400' }
+                { max: 2000, message: '字数不能超过2000' }
               ]
             })(
-              <TextArea rows={8} maxLength={400} />
+              <TextArea rows={8} maxLength={2000} />
             )}
           </FormItem>
           <FormItem label="发表文章">
             {getFieldDecorator('publishPaper', {
               validateTrigger: 'onBlur',
               rules: [
-                { max: 400, message: '字数不能超过400' }
+                { max: 2000, message: '字数不能超过2000' }
               ]
             })(
-              <TextArea rows={8} maxLength={400} />
+              <TextArea rows={8} maxLength={2000} />
               // <div styleName="intro-container">
               //   <TextArea rows={8} />
-              //   <span styleName="word-limit">字数限制: 0/400</span>
+              //   <span styleName="word-limit">字数限制: 0/2000</span>
               // </div>
             )}
           </FormItem>

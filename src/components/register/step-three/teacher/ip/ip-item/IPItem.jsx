@@ -39,12 +39,26 @@ export default class IPItem extends React.Component<{}> {
   }
 
   render() {
+    let typeStr
+    switch (this.props.ip.type) {
+      case 0:
+        typeStr = '发明'
+        break
+      case 1:
+        typeStr = '实用新型'
+        break
+      case 2:
+        typeStr = '外观设计'
+        break
+    }
     return (
       <div styleName="ip">
         <div styleName="ip-name-container">
           <span styleName="ip-name">{this.props.ip.name}</span>
-          {(!this.props.ip.country) && <span styleName="ip-type"> {this.transfrmType(this.props.ip.type)}</span>}
-          {(this.props.ip.country && this.props.ip.type) && <span styleName="ip-type"> {this.transfrmType(this.props.ip.type)} / {this.props.ip.country}</span>}
+          {!this.props.ip.country
+            ? <span styleName="ip-type"> {typeStr}</span>
+            : <span styleName="ip-type"> {typeStr} / {this.props.ip.country}</span>
+          }
         </div>
         <div styleName="ip-info">
           <span styleName="ip-info-text">登记编号: {this.props.ip.registrationNumber}</span>
