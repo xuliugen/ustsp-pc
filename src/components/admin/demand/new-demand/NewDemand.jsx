@@ -6,10 +6,12 @@ import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
 import { DemandApi } from 'src/ajax'
 import { major } from 'src/common/dataset'
+import moment from 'moment'
 
 const FormItem = Form.Item
 const Option = Select.Option
 const RadioGroup = Radio.Group
+const RangePicker = DatePicker.RangePicker
 const { TextArea } = Input
 const [...options] = major.map(item => ({
   value: item,
@@ -27,12 +29,33 @@ class NewDemand extends React.Component {
         fileName: null,
         fileUrl: null
       },
-      skills: []
+      skills: [],
+      startTime: null
     }
   }
 
   displayRender(label) {
     return label[label.length - 1]
+  }
+
+  setStartTime = (date) => {
+    this.setState({
+      startTime: date[0]
+    })
+  }
+
+  disabledStartDate = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day')
+  }
+
+  disabledDeadline = (current) => {
+    // Can not select days before today and today
+    if (this.state.startTime) {
+      return current <= moment().endOf('day') || current >= this.state.startTime.valueOf()
+    } else {
+      return current && current < moment().endOf('day')
+    }
   }
 
   setSkills = (skills) => {
@@ -64,8 +87,8 @@ class NewDemand extends React.Component {
             type: values.type,
             subject: values.subject[values.subject.length - 1],
             major: null,
-            startTime: values.startTime.valueOf(),
-            endTime: values.endTime.valueOf(),
+            startTime: values.timeInterval[0].valueOf(),
+            endTime: values.timeInterval[1].valueOf(),
             deadline: values.deadLine.valueOf(),
             contactWay: values.contactWay,
             province: values.province,
@@ -114,7 +137,7 @@ class NewDemand extends React.Component {
         <div style={{ borderBottom: '1px solid #f0f0f0' }}>
           <span styleName="title">填写需求(*为必填)</span>
         </div>
-        <Form layout="vertical" style={{padding: '41px 135px 0 135px'}} onSubmit={this.handleSubmit}>
+        <Form layout="vertical" style={{ padding: '41px 135px 0 135px' }} onSubmit={this.handleSubmit}>
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="项目名称">
@@ -177,26 +200,18 @@ class NewDemand extends React.Component {
           </Row >
           <Row gutter={20}>
             <Col span={12}>
-              <FormItem label="项目开始时间">
-                {getFieldDecorator('startTime', {
+              <FormItem label="项目起止时间">
+                {getFieldDecorator('timeInterval', {
                   validateTrigger: 'onchange',
                   rules: [
-                    { required: true, message: '请选择项目开始时间' }
+                    { required: true, message: '请选择项目起止时间' }
                   ]
                 })(
-                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
-                )}
-              </FormItem>
-            </Col>
-            <Col span={12}>
-              <FormItem label="项目结束时间">
-                {getFieldDecorator('endTime', {
-                  validateTrigger: 'onchange',
-                  rules: [
-                    { required: true, message: '请选择项目结束时间' }
-                  ]
-                })(
-                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                  <RangePicker
+                    disabledDate={this.disabledStartDate}
+                    showTime
+                    onChange={this.setStartTime}
+                    style={{ width: '100%', marginTop: '10px' }} />
                 )}
               </FormItem>
             </Col>
@@ -209,7 +224,11 @@ class NewDemand extends React.Component {
                     { required: true, message: '请选择报名截止时间' }
                   ]
                 })(
-                  <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                  <DatePicker
+                    disabledDate={this.disabledDeadline}
+                    showTime
+                    placeholder="请选择"
+                    style={{ width: '100%', marginTop: '10px' }} />
                 )}
               </FormItem>
             </Col>
