@@ -31,9 +31,9 @@
 }
 
 .sign-up, .follow {
-  width: 100px;
   padding: 14px 18px;
   font-size: 16px;
+  border: 1px solid #3091e6;
   border-radius: 4px;
 }
 
@@ -45,7 +45,6 @@
 .follow {
   margin-left: 10px;
   color: #3091e6;
-  border: 1px solid #3091e6;
   background-color: transparent;
 }
 
