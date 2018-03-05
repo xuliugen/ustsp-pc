@@ -1,6 +1,6 @@
 import React from 'react'
 import './NewDemand.css'
-import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader } from 'antd'
+import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader, Modal } from 'antd'
 import SkillsRequirement from './SkillsRequirement'
 import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
@@ -31,7 +31,8 @@ class NewDemand extends React.Component {
       },
       skills: [],
       startTime: null,
-      cities: city[province[0]]
+      cities: city[province[0]],
+      visible: false
     }
   }
 
@@ -70,17 +71,21 @@ class NewDemand extends React.Component {
       uploadFile: file
     })
   }
-  handleSubmit = (e) => {
-    e.preventDefault()
+
+  submitForm = () => {
     let projectSkillList = []
     for (let i = 0; i < this.state.skills.length; i++) {
       projectSkillList.push({
         skill: this.state.skills[i]
       })
     }
-
     this.props.form.validateFields(async (err, values) => {
-      if (!err) {
+      if (err) {
+        this.setState({
+          visible: false
+        })
+        message.error('请完善需求信息')
+      } else {
         const regData = {
           projectSkillList: projectSkillList,
           projectResearchInfo: {
@@ -113,6 +118,7 @@ class NewDemand extends React.Component {
       }
     })
   }
+
   showContactWay = () => {
     const { email = null, phone = null, qq = null, weChat = null } = this.props.userStore.user || {}
 
@@ -141,6 +147,12 @@ class NewDemand extends React.Component {
     })
   }
 
+  changeModal = (status) => {
+    this.setState({
+      visible: status
+    })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -148,7 +160,7 @@ class NewDemand extends React.Component {
         <div style={{ borderBottom: '1px solid #f0f0f0' }}>
           <span styleName="title">填写需求(*为必填)</span>
         </div>
-        <Form layout="vertical" style={{ padding: '41px 135px 0 135px' }} onSubmit={this.handleSubmit}>
+        <Form layout="vertical" style={{ padding: '41px 135px 0 135px' }}>
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="项目名称">
@@ -335,7 +347,17 @@ class NewDemand extends React.Component {
             </FormItem>
           </div>
           <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
-            <button type="submit" styleName="release-button">立即发布</button>
+            <button styleName="release-button" onClick={this.changeModal.bind(this, true)}>立即发布</button>
+            <Modal
+              title=""
+              visible={this.state.visible}
+              onOk={this.submitForm}
+              onCancel={this.changeModal.bind(this, false)}
+              okText="确认"
+              cancelText="取消"
+            >
+              确认需求已经填写完整并立即发布吗?
+            </Modal>
           </div>
         </Form>
       </div>
