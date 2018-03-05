@@ -24,6 +24,10 @@ const optionList = [
   {
     label: '成果',
     value: 'achievement'
+  },
+  {
+    label: '信息',
+    value: 'info'
   }
 ]
 
