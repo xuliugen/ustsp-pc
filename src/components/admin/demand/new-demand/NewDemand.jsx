@@ -5,7 +5,7 @@ import SkillsRequirement from './SkillsRequirement'
 import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
 import { DemandApi } from 'src/ajax'
-import { major } from 'src/common/dataset'
+import { province, city, major } from 'src/common/dataset'
 import moment from 'moment'
 
 const FormItem = Form.Item
@@ -30,7 +30,8 @@ class NewDemand extends React.Component {
         fileUrl: null
       },
       skills: [],
-      startTime: null
+      startTime: null,
+      cities: city[province[0]]
     }
   }
 
@@ -130,6 +131,16 @@ class NewDemand extends React.Component {
     }
     return contactWay
   }
+
+  handleProvinceChange = (value) => {
+    this.setState({
+      cities: city[value]
+    })
+    this.props.form.setFieldsValue({
+      city: city[value][0]
+    })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -255,10 +266,12 @@ class NewDemand extends React.Component {
                 {getFieldDecorator('province', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入所在省份' }
+                    { required: true, message: '请选择所在省份' }
                   ]
                 })(
-                  <Input placeholder="所在省份" />
+                  <Select style={{ width: '100%' }} onChange={this.handleProvinceChange}>
+                    {province.map(prov => <Option key={prov}>{prov}</Option>)}
+                  </Select>
                 )}
               </FormItem>
             </Col>
@@ -267,10 +280,12 @@ class NewDemand extends React.Component {
                 {getFieldDecorator('city', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入所在城市' }
+                    { required: true, message: '请选择所在城市' }
                   ]
                 })(
-                  <Input placeholder="所在城市" />
+                  <Select style={{ width: '100%' }}>
+                    {this.state.cities.map(item => <Option key={item}>{item}</Option>)}
+                  </Select>
                 )}
               </FormItem>
             </Col>
