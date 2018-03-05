@@ -2,6 +2,9 @@ import React from 'react'
 import './registeredPerson.css'
 import { Avatar } from 'antd'
 import moment from 'moment'
+import { withRouter } from 'react-router-dom'
+
+@withRouter
 export default class RegisteredPerson extends React.Component {
   showRender = () => {
     let renderStyle = null
@@ -23,7 +26,6 @@ export default class RegisteredPerson extends React.Component {
 
   showUserType = () => {
     let user = null
-    console.log(this.props.registeredPerson)
     if (this.props.registeredPerson.partyType === 1) {
       user = '学生'
     } else if (this.props.registeredPerson.partyType === 2) {
@@ -34,6 +36,18 @@ export default class RegisteredPerson extends React.Component {
     return user
   }
 
+  handleSeeDetailClick = (person) => {
+    let type = ''
+    if (person.partyType === 1) {
+      type = 'student'
+    } else if (person.partyType === 2) {
+      type = 'teacher'
+    } else if (person.partyType === 3) {
+      type = 'company'
+    }
+    this.props.history.push(`/${type}/${person.partyId}`)
+  }
+
   render() {
     return (
       <div styleName="person-item">
@@ -41,7 +55,7 @@ export default class RegisteredPerson extends React.Component {
           <Avatar
             src={this.props.registeredPerson.partyAvatar}
             icon="user" />
-          <span styleName="name">{this.props.registeredPerson.partyName}</span>
+          <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, this.props.registeredPerson)}>{this.props.registeredPerson.partyName}</span>
           <Avatar icon={this.showRender().icon} size="small" styleName={this.showRender().styleName} />
         </div>
         <span styleName="person-info">{ this.showUserType() } / { this.props.registeredPerson.partyLocation } / {this.props.registeredPerson.partyContact}</span>

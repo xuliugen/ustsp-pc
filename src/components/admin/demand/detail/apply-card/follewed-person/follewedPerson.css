@@ -12,6 +12,11 @@
   color: #666;
 }
 
+.name:hover{
+  cursor: pointer;
+  color: #3091e6;
+}
+
 .render{
   margin-left: 2px;
   color: #f56a00;
