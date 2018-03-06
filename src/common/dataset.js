@@ -89,10 +89,19 @@ const city = {
 
 const province = Object.keys(school)
 
+const skill = [
+  '前端开发', '后端开发', '测试', '运维', '大数据', '人工智能',
+  '产品',
+  '设计',
+  '运营',
+  '金融'
+]
+
 export {
   major,
   title,
   school,
   city,
-  province
+  province,
+  skill
 }

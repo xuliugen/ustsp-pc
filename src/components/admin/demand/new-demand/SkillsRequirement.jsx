@@ -1,6 +1,14 @@
-import { Tag, Input, Tooltip, Icon } from 'antd'
+import { Tag, Input, Tooltip, Icon, Select } from 'antd'
 import React from 'react'
 import './skillsRequirement.css'
+import { skill } from 'src/common/dataset'
+
+const Option = Select.Option
+
+const children = []
+for (let i = 0; i < skill.length; i++) {
+  children.push(<Option key={i.toString(36) + i}>{skill[i]}</Option>)
+}
 
 export default class EditableTagGroup extends React.Component {
   state = {
@@ -80,6 +88,14 @@ export default class EditableTagGroup extends React.Component {
             <Icon type="plus" /> 增加要求
           </Tag>
         )}
+        <Select
+          mode="tags"
+          size="small"
+          placeholder="Please select"
+          style={{ width: '100%' }}
+        >
+          {children}
+        </Select>
       </div>
     )
   }
