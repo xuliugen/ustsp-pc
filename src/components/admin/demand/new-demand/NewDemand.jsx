@@ -1,11 +1,11 @@
 import React from 'react'
 import './NewDemand.css'
 import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader, Modal } from 'antd'
-import SkillsRequirement from './SkillsRequirement'
+// import SkillsRequirement from './SkillsRequirement'
 import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
 import { DemandApi } from 'src/ajax'
-import { province, city, major } from 'src/common/dataset'
+import { province, city, major, skill } from 'src/common/dataset'
 import moment from 'moment'
 
 const FormItem = Form.Item
@@ -17,6 +17,11 @@ const [...options] = major.map(item => ({
   value: item,
   label: item
 }))
+
+const skillOptions = []
+for (let i = 0; i < skill.length; i++) {
+  skillOptions.push(<Option key={i} value={skill[i]}>{skill[i]}</Option>)
+}
 
 @inject('registerStore')
 @inject('userStore')
@@ -87,7 +92,7 @@ class NewDemand extends React.Component {
         message.error('请完善需求信息')
       } else {
         const regData = {
-          projectSkillList: projectSkillList,
+          projectSkillList: values.skills.map(i => ({skill: i})),
           projectResearchInfo: {
             projectName: values.projectName,
             type: values.type,
@@ -316,13 +321,21 @@ class NewDemand extends React.Component {
               </FormItem>
             </Col>
           </Row >
+          <Row gutter={20}>
+            <Col span={24}>
+              <FormItem label="技能要求">
+                {getFieldDecorator('skills')(
+                  <Select
+                    mode="tags"
+                    style={{ width: '100%' }}
+                  >
+                    {skillOptions}
+                  </Select>
+                )}
+              </FormItem>
+            </Col>
+          </Row >
           <div>
-            <div>
-              <span>技能要求</span>
-            </div>
-            <div styleName="skills-require-info">
-              <SkillsRequirement skills={this.state.skills} setSkills={this.setSkills} />
-            </div>
             <FormItem label="对接倾向">
               {getFieldDecorator('oriented', {
                 validateTrigger: 'onBlur',
