@@ -78,9 +78,9 @@ class StepThreeStudent extends React.Component<{}> {
               form={this.props.form}
               stuPhoto={this.state.stuPhoto}
               setStuPhoto={this.setStuPhoto} />
+            <StuEducationalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
             <StuPersonalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} form={this.props.form} />
           </Form>
-          <StuEducationalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
           <button styleName="confirm-button" onClick={this.handleClickConfirm} >确认</button>
           <SideNav navItems={navItems} pos={this.pos} />
         </div>
