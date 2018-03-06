@@ -45,7 +45,7 @@ class StepThreeStudent extends React.Component<{}> {
           college: value.college,
           major: value.major,
           grade: 1,
-          skill: value.skill,
+          skill: value.skills.map(i => ({skill: i})),
           introduction: value.skill,
           isRealName: 'false',
           photo: this.state.stuPhoto
@@ -64,7 +64,7 @@ class StepThreeStudent extends React.Component<{}> {
   }
 
   render() {
-    const navItems = ['基本信息', '个人履历', '教育经历']
+    const navItems = ['基本信息', '教育经历', '个人履历']
     return (
       <div styleName="container" className="element-container">
         <div styleName="title-wrapper">

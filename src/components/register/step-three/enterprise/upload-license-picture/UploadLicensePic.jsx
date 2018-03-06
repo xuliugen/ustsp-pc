@@ -1,10 +1,14 @@
 import React from 'react'
 import './uploadLicensePic.css'
-import { Upload, Icon } from 'antd'
+import { Upload, Icon, message } from 'antd'
+import { observer, inject } from 'mobx-react'
 
+@inject('registerStore')
+@observer
 export default class uploadLicensePic extends React.Component {
   state = {
-    loading: false
+    loading: false,
+    imageUrl: ''
   }
 
   handleChange = (info) => {
@@ -14,6 +18,10 @@ export default class uploadLicensePic extends React.Component {
     }
     if (info.file.status === 'done') {
       // Get this url from response in real world.
+      message.success('上传照片成功')
+      let license = info.file.response
+      let pics = JSON.parse(license[0].result)
+      this.props.setLicense(pics.data.access_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false
@@ -32,11 +40,12 @@ export default class uploadLicensePic extends React.Component {
 
     return (
       <Upload
-        name="license-picture"
+        name="files"
         listType="picture"
         styleName="license-uploader"
         showUploadList={false}
-        action="//jsonplaceholder.typicode.com/posts/"
+        data={{ id: this.props.registerStore.initial.uid }}
+        action={`${window.config.API_ORIGIN}/upload/business`}
         onChange={this.handleChange}
       >
         {imageUrl ? <img src={imageUrl} alt="营业执照" height="85" /> : uploadButton}

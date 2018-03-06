@@ -4,7 +4,7 @@ import { FormTitle } from '../../common'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import './tchPersonalExperience.css'
-import { province, school, major, title } from 'src/common/dataset'
+import { province, school, subject, title } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const { TextArea } = Input
@@ -15,6 +15,14 @@ const [...options] = province.map(item => ({
   children: [...school[item].map(university => ({
     value: university,
     label: university
+  }))]
+}))
+const [...subjects] = Object.keys(subject).map(item => ({
+  value: item,
+  label: item,
+  children: [...subject[item].map(majors => ({
+    value: majors,
+    label: majors
   }))]
 }))
 
@@ -54,9 +62,10 @@ export default class PersonalExperience extends React.Component {
                     { required: true, message: '请输入专业' }
                   ]
                 })(
-                  <Select placeholder="专业" >
-                    {major.map(name => <Option key={name}>{name}</Option>)}
-                  </Select>
+                  <Cascader placeholder="就读专业" options={subjects}
+                    expandTrigger="hover"
+                    displayRender={this.displayRender}
+                  />
                 )}
               </FormItem>
             </Col>

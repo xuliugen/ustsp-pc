@@ -3,7 +3,7 @@ import './newExpItem.css'
 import { Form, Input, Row, Col, DatePicker, Modal, Button, message, Select, Cascader } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { StuInfoApi } from 'src/ajax'
-import { province, school, major } from 'src/common/dataset'
+import { province, school, subject } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const MonthPicker = DatePicker.MonthPicker
@@ -14,6 +14,14 @@ const [...options] = province.map(item => ({
   children: [...school[item].map(university => ({
     value: university,
     label: university
+  }))]
+}))
+const [...subjects] = Object.keys(subject).map(item => ({
+  value: item,
+  label: item,
+  children: [...subject[item].map(majors => ({
+    value: majors,
+    label: majors
   }))]
 }))
 
@@ -128,9 +136,10 @@ class NewExpItem extends React.Component<{}> {
                     validateTrigger: 'onChange',
                     rules: [{ required: true, message: '请输入就读专业' }]
                   })(
-                    <Select>
-                      {major.map(name => <Option key={name}>{name}</Option>)}
-                    </Select>
+                    <Cascader placeholder="就读专业" options={subjects}
+                      expandTrigger="hover"
+                      displayRender={this.displayRender}
+                    />
                   )}
                 </FormItem>
                 <FormItem label="毕业时间">

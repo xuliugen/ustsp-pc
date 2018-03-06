@@ -1,9 +1,14 @@
 import React from 'react'
-import { Form, Input } from 'antd'
+import { Form, Input, Select } from 'antd'
 import { FormTitle } from '../../common'
 import './stuPersonalExperience.css'
+import { skill } from 'src/common/dataset'
 const FormItem = Form.Item
 const { TextArea } = Input
+const Option = Select.Option
+const skillsOption = skill.map((item) => {
+  return <Option key={item}>{item}</Option>
+})
 
 export default class PersonalExperience extends React.Component {
   render() {
@@ -13,10 +18,13 @@ export default class PersonalExperience extends React.Component {
         <FormTitle title={'个人履历'} />
         <div styleName="content">
           <FormItem label="擅长技能">
-            {getFieldDecorator('skill', {
-              validateTrigger: 'onBlur'
-            })(
-              <Input size="large" />
+            {getFieldDecorator('skills')(
+              <Select
+                mode="tags"
+                style={{ width: '100%' }}
+              >
+                {skillsOption}
+              </Select>
             )}
           </FormItem>
           <FormItem label="个人简介">

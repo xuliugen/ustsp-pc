@@ -13,7 +13,8 @@ import EnterOtherInfo from './other-info/EnterOtherInfo'
 @observer
 class StepThreeEnterprise extends React.Component {
   state = {
-    photo: ''
+    photo: '',
+    license: ''
   }
 
   constructor() {
@@ -27,6 +28,12 @@ class StepThreeEnterprise extends React.Component {
     })
   }
 
+  setLicense(url) {
+    this.setState({
+      license: url
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
@@ -35,7 +42,7 @@ class StepThreeEnterprise extends React.Component {
         await EtpInfoApi.completeInfo({
           id: this.props.registerStore.initial.uid,
           photo: this.state.photo,
-          businessPhoto: '',
+          businessPhoto: this.state.license,
           ...values,
           birth: values.birth ? values.birth.valueOf() : null
         })
@@ -59,7 +66,9 @@ class StepThreeEnterprise extends React.Component {
             <EnterBaseInfo
               form={this.props.form}
               photo={this.state.photo}
-              setPhoto={this.setPhoto} />
+              setPhoto={this.setPhoto}
+              license={this.state.license}
+              setLicense={this.setLicense} />
             <EnterOtherInfo form={this.props.form} />
             <div styleName="confirm-btn">
               <button type="submit">确认</button>

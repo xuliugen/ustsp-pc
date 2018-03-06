@@ -111,7 +111,7 @@ export default class EnterBaseInfo extends React.Component {
             </Col>
           </Row>
           <FormItem label="企业营业执照照片">
-            <UploadLicensePic />
+            <UploadLicensePic license={this.props.license} setLicense={this.props.setLicense} />
           </FormItem>
         </div>
       </div>
