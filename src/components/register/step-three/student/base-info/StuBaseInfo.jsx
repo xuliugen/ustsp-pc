@@ -47,7 +47,7 @@ export default class StudentBaseInfo extends React.Component {
               </FormItem>
             </Col>
             <Col span={12}>
-              <UploadAvatar tchPhoto={this.props.stuPhoto} setTchPhoto={this.props.setStuPhoto} />
+              <UploadAvatar photo={this.props.stuPhoto} setPhoto={this.props.setStuPhoto} />
               <FormItem styleName="qq" label="QQ">
                 {getFieldDecorator('qq')(
                   <Input placeholder="QQ" />

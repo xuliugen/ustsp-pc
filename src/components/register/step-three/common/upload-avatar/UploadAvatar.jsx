@@ -6,8 +6,8 @@ import './uploadAvatar.css'
 import imgDefaultAvatar from './defaultAvatar.svg'
 
 type Props = {
-  tchPhoto: string,
-  setTchPhoto: (param: string) => mixed
+  photo: string,
+  setPhoto: (param: string) => mixed
 }
 
 type State = {
@@ -34,11 +34,16 @@ export default class UploadAvatar extends React.Component<Props, State> {
       let tchPhotos = info.file.response
       // console.log(tchPhotos[0].file_url)
       let pics = JSON.parse(tchPhotos[0].result)
-      this.props.setTchPhoto(pics.data.access_url)
+      this.props.setPhoto(pics.data.access_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false
       }))
+    } else if (info.file.status === 'error') {
+      message.error('上传照片失败')
+      this.setState({
+        loading: false
+      })
     }
   }
 

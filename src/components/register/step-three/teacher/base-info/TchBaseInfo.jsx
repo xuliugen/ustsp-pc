@@ -61,8 +61,8 @@ export default class TchBaseInfo extends React.Component {
             </Col>
             <Col span={12}>
               <UploadAvatar
-                tchPhoto={this.props.tchPhoto}
-                setTchPhoto={this.props.setTchPhoto}
+                photo={this.props.tchPhoto}
+                setPhoto={this.props.setTchPhoto}
               />
               <FormItem styleName="qq" label="QQ">
                 {getFieldDecorator('qq', {

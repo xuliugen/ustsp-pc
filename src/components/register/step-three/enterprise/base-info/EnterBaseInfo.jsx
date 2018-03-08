@@ -75,7 +75,7 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
             </Col>
             <Col span={12}>
-              <UploadAvatar tchPhoto={this.props.photo} setTchPhoto={this.props.setPhoto} />
+              <UploadAvatar photo={this.props.photo} setPhoto={this.props.setPhoto} />
               <FormItem label="地点" style={{ marginTop: '12px' }}>
                 {getFieldDecorator('place', {
                   validateTrigger: 'onBlur'

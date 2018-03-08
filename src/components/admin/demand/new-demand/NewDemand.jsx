@@ -202,14 +202,14 @@ class NewDemand extends React.Component {
           </Row >
           <Row gutter={20}>
             <Col span={12}>
-              <FormItem label="项目学科">
+              <FormItem label="项目行业">
                 {getFieldDecorator('subject', {
                   validateTrigger: 'onChange',
                   rules: [
-                    { required: true, message: '请选择项目学科' }
+                    { required: true, message: '请选择项目行业' }
                   ]
                 })(
-                  <Cascader placeholder="项目学科" options={options}
+                  <Cascader placeholder="项目行业" options={options}
                     expandTrigger="hover"
                     displayRender={this.displayRender}
                   />
