@@ -12,10 +12,7 @@ $ yarn
 
 # 开发
 $ yarn run start
-
-# 打包
-$ yarn run build
-
-# 测试
-$ yarn run test
 ```
+
+## 开发文档
+[链接](/doc/dev.md)
