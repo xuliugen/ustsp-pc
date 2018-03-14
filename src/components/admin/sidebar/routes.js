@@ -41,5 +41,22 @@ export const routes = [
         text: '已报名/已承接的需求'
       }
     ]
+  }, {
+    key: 'news',
+    title: {
+      icon: 'check-square-o',
+      text: '动态'
+    },
+    children: [
+      {
+        key: 'pub-news',
+        to: '/admin/news/pub-news',
+        text: '发布动态'
+      }, {
+        key: 'news-mgnt',
+        to: '/admin/news/news-mgnt',
+        text: '动态管理'
+      }
+    ]
   }
 ]
