@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import './admin.css'
 
-import { Header, Sidebar, Home, Demand, Mgnt } from 'components/admin'
+import { Header, Sidebar, Home, Demand, Mgnt, News } from 'components/admin'
 
 export default class Admin extends React.Component {
   state = {
@@ -24,6 +24,7 @@ export default class Admin extends React.Component {
             <Route exact path={`${match.url}/`} component={Home} />
             <Route path={`${match.url}/demand`} component={Demand} />
             <Route path={`${match.url}/mgnt`} component={Mgnt} />
+            <Route path={`${match.url}/news`} component={News} />
             <Redirect from={`${match.url}/`} to={`${match.url}/`} />
           </Switch>
         </div>
