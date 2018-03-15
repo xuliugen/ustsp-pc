@@ -1,22 +1,38 @@
 import React from 'react'
 import PubNewsContent from './PubNewsContent'
-import { Input, Button } from 'antd'
+import { Input, Button, Message } from 'antd'
+import { NewsApi } from 'src/ajax'
+import { observer, inject } from 'mobx-react'
 
 import './pubNews.css'
 
+@inject('userStore')
+@observer
 export default class PubNews extends React.Component {
   state = {
     title: '',
+    abstract: '',
     content: '<p>Hello World!</p>'
   }
 
   constructor() {
     super()
-    this.setContent = this.setContent.bind(this)
+    this.setTitle = this.setTitle.bind(this)
   }
 
-  setContent(content) {
-    this.setState({ content })
+  setTitle(e) {
+    this.setState({ title: e.target.value })
+  }
+
+  handleNewsPublish = async () => {
+    try {
+      let content = this.editorElement.getContent()
+      let abstract = this.editorElement.getContent('raw').blocks[0].text
+      await NewsApi.publishNews(this.props.userStore.user.id, this.state.title, abstract, content)
+      Message.success('动态发布成功')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render() {
@@ -27,16 +43,16 @@ export default class PubNews extends React.Component {
         </div>
         <div styleName="pub-inner">
           <label styleName="label label-required">动态标题</label>
-          <Input style={{ 'marginBottom': '12px' }} />
+          <Input style={{ 'marginBottom': '12px' }} onChange={this.setTitle} />
           <label styleName="label label-required">动态内容</label>
           <div styleName="content-wrapper">
             <PubNewsContent
+              editorRef={el => { this.editorElement = el }}
               htmlContent={this.state.content}
-              setContent={this.setContent}
             />
           </div>
           <div styleName="pubBtn-wrapper">
-            <Button type="primary" size="large">发布</Button>
+            <Button type="primary" size="large" onClick={this.handleNewsPublish}>发布</Button>
           </div>
         </div>
       </div>

@@ -5,20 +5,26 @@ import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/braft.css'
 
 export default class PubNewsContent extends React.Component {
+  state = {
+    htmlContent: this.props.htmlContent
+  }
+
   handleHTMLChange = (htmlContent) => {
-    this.props.setContent({ htmlContent })
-    console.log(htmlContent)
+    // console.log(htmlContent)
+    this.setState({
+      htmlContent
+    })
   }
 
   handleRawChange = (rawContent) => {
-    console.log(rawContent)
+    // console.log(rawContent, rawContent.blocks[0].text)
   }
 
   render() {
     const editorProps = {
       height: 500,
       contentFormat: 'html',
-      initialContent: this.props.htmlContent,
+      initialContent: this.state.htmlContent,
       onHTMLChange: this.handleHTMLChange,
       onRawChange: this.handleRawChange,
       extendControls: [
@@ -27,7 +33,8 @@ export default class PubNewsContent extends React.Component {
           text: '预览',
           className: 'preview-button',
           onClick: () => {
-            window.open().document.write(this.props.htmlContent)
+            console.log(this.props.editorRef)
+            window.open().document.write(this.state.htmlContent)
           }
         }
       ]
@@ -35,7 +42,9 @@ export default class PubNewsContent extends React.Component {
 
     return (
       <div className="demo">
-        <BraftEditor {...editorProps} />
+        <BraftEditor
+          ref={this.props.editorRef}
+          {...editorProps} />
       </div>
     )
   }
