@@ -28,6 +28,7 @@ class App extends React.Component {
           <Route path="/teacher/:id" component={Detail} />
           <Route path="/student/:id" component={Detail} />
           <Route path="/project/:id" component={Detail} />
+          <Route path="/news-list" component={Detail} />
           <Route path="/search" component={Search} />
           <Redirect from="/" to="/" />
         </Switch>
