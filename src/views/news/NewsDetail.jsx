@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewsApi } from 'src/ajax'
+import { NewsApi, TalentApi } from 'src/ajax'
 import { NewsContent, HeaderWrapper } from 'components/news'
 
 export default class News extends React.Component {
@@ -8,7 +8,9 @@ export default class News extends React.Component {
     title: '',
     abstract: '',
     dynamics: '',
-    date: ''
+    date: '',
+    userId: '',
+    publisher: {}
   }
 
   componentWillMount() {
@@ -26,7 +28,12 @@ export default class News extends React.Component {
         title: data.title,
         abstract: data.abstract,
         dynamics: data.dynamics,
-        date: data.date
+        date: data.date,
+        userId: data.userId
+      })
+      const { data: pubData } = await TalentApi.fetchUserInfo(data.userId)
+      this.setState({
+        publisher: pubData
       })
     } catch (e) {
       console.log(e)
@@ -36,7 +43,7 @@ export default class News extends React.Component {
   render() {
     return (
       <div>
-        <HeaderWrapper title={this.state.title} />
+        <HeaderWrapper {...this.state} />
         <NewsContent dynamics={this.state.dynamics} />
       </div>
     )
