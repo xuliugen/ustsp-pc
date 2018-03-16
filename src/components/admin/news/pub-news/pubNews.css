@@ -1,0 +1,45 @@
+.pub-container {
+  width: 900px;
+  background-color: #fff;
+}
+
+.title-wrapper {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.title{
+  font-size: 16px;
+  display: inline-block;
+  padding-left: 24px;
+  /* padding-top: 24px; */
+  margin: 22px 0;
+  border-left: #3091e6 6px solid;
+}
+
+.pub-inner {
+  padding: 40px 60px;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.label-required::before {
+  display: inline-block;
+  margin-right: 4px;
+  content: "*";
+  font-family: SimSun;
+  line-height: 1;
+  font-size: 14px;
+  color: #f5222d;
+}
+
+.content-wrapper {
+  border: 1px solid rgb(217, 217, 217);
+}
+
+.pubBtn-wrapper {
+  margin-top: 20px;
+}

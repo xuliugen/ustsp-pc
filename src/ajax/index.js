@@ -9,6 +9,8 @@ import TalentApi from './user/talent'
 // project module
 import DemandApi from './demand/demand'
 import ProjectApi from './demand/project'
+// news module
+import NewsApi from './news/news'
 
 export default axios
 export {
@@ -19,5 +21,6 @@ export {
   StuInfoApi,
   DemandApi,
   TalentApi,
-  ProjectApi
+  ProjectApi,
+  NewsApi
 }
