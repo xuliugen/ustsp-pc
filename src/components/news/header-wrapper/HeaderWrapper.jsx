@@ -12,7 +12,7 @@ export default class NewsHeaderWrapper extends React.Component {
           <div styleName="info">
             <div styleName="publisher">
               <div>
-                <img styleName="avatar" src={this.props.publisher.userInfo.avatar} />
+                <img styleName="avatar" src={this.props.publisher.avatar} />
               </div>
               <div styleName="pub-wrapper">
                 <div>发布人</div>
