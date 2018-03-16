@@ -1,24 +1,20 @@
 import React from 'react'
-import './detail.css'
+import './allNews.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
-import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
+import { NewsContent } from 'components/news'
 import { Others } from 'components/detail/common'
 
-export default class Detail extends React.Component {
+export default class AllNews extends React.Component {
   render() {
-    let Nav = null
-    let MainContent = null
     let RmdContent = null
 
     const pathname = this.props.location.pathname
     switch (pathname.split('/')[1]) {
       case 'project':
-        MainContent = <ProjectContent />
         RmdContent = <ProjectsRmd />
         break
       case 'teacher':
-        MainContent = <TeacherContent />
         RmdContent = (
           <div>
             <TalentsRmd />
@@ -28,7 +24,6 @@ export default class Detail extends React.Component {
         )
         break
       case 'student':
-        MainContent = <StudentContent />
         RmdContent = (
           <div>
             <News />
@@ -45,11 +40,8 @@ export default class Detail extends React.Component {
           <Header />
         </div>
         <div styleName="mid-container" className="clearfix">
-          <div styleName="nav-container">
-            {Nav}
-          </div>
           <main styleName="left-container">
-            {MainContent}
+            <NewsContent />
           </main>
           <div styleName="right-container">
             {RmdContent}

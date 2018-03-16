@@ -8,7 +8,7 @@ export default class NewsHeader extends React.Component<{}> {
     return (
       <div styleName="title">
         <span>最新动态</span>
-        <Link to="/news-list" styleName="more">更多</Link>
+        <Link to="/news" styleName="more">更多</Link>
       </div>
     )
   }
