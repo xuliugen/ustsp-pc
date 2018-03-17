@@ -24,5 +24,9 @@ export default {
   // 获取感兴趣的学生
   fetchInterestedStudent(id) {
     return ajax.get(`/user/introduce/student?id=${id}`)
+  },
+
+  fetchUserInfo(id) {
+    return ajax.get(`/user/show-user?userId=${id}`)
   }
 }

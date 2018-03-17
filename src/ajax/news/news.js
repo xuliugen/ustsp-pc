@@ -12,5 +12,9 @@ export default {
 
   deleteNews(userId, dynamicsId) {
     return ajax.post(`/dynamics/delete?userId=${userId}&dynamicsId=${dynamicsId}`)
+  },
+
+  fetchNewsDetail(dynamicsId) {
+    return ajax.get(`/dynamics/query/one?dynamicsId=${dynamicsId}`)
   }
 }

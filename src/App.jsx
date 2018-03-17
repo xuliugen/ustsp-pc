@@ -12,7 +12,7 @@ import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
 import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
-import AllNews from '@/all-news/AllNews'
+import NewsDetail from '@/news/NewsDetail'
 
 @withRouter
 @observer
@@ -29,6 +29,7 @@ class App extends React.Component {
           <Route path="/teacher/:id" component={Detail} />
           <Route path="/student/:id" component={Detail} />
           <Route path="/project/:id" component={Detail} />
+          <Route path="/news/:id" component={NewsDetail} />
           <Route path="/search" component={Search} />
           <Route path="/news" component={AllNews} />
           <Redirect from="/" to="/" />
