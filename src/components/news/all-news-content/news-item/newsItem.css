@@ -1,0 +1,43 @@
+.item-wrapper {
+  padding: 29px 18px 32px 30px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center
+}
+
+.cover img {
+  width: 120px;
+  height: 80px;
+}
+
+.detail {
+  margin-left: 30px;
+}
+
+.title {
+  font-size: 22px;
+  color: #333333;
+}
+
+.abstract {
+  max-width: 600px;
+  font-size: 16px;
+  color: #aaaaaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  margin: 13px 0;
+}
+
+.author {
+  color: #3091e6;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.time {
+  font-size: 12px;
+  color: #8f9ba7;
+  font-style: italic;
+}
