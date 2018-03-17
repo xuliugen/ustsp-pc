@@ -2,7 +2,7 @@ import React from 'react'
 import './allNews.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
-import { NewsContent } from 'components/news'
+import { AllNewsContent } from 'components/news'
 import { Others } from 'components/detail/common'
 
 export default class AllNews extends React.Component {
@@ -41,7 +41,7 @@ export default class AllNews extends React.Component {
         </div>
         <div styleName="mid-container" className="clearfix">
           <main styleName="left-container">
-            <NewsContent />
+            <AllNewsContent />
           </main>
           <div styleName="right-container">
             {RmdContent}

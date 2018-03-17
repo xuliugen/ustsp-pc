@@ -13,6 +13,7 @@ import Admin from '@/admin/Admin'
 import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
 import NewsDetail from '@/news/NewsDetail'
+import AllNews from '@/news/all-news/AllNews'
 
 @withRouter
 @observer
