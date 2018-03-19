@@ -4,7 +4,7 @@ import moment from 'moment'
 
 export default class OrderBasicInfo extends React.Component {
   render() {
-    const PartyBContactInfo = this.props.demand.PartyBContactInfo.length !== 0
+    const PartyBContactInfo = (this.props.demand.PartyBContactInfo && this.props.demand.PartyBContactInfo.length !== 0)
       ? this.props.demand.PartyBContactInfo.map((item, idx) => {
         return (
           <div styleName="item-detail">{item}<br /> </div>
