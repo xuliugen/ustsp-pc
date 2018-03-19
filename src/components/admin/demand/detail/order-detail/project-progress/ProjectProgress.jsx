@@ -15,10 +15,11 @@ export default class ProjectProgress extends React.Component {
           <Steps progressDot current={this.props.currentStatus}>
             <Step title="待审核" />
             <Step title="待报名" />
-            <Step title="已签单" />
+            <Step title="签单" />
+            <Step title="正在进行" />
             <Step title="待验收" />
-            <Step title="已评价" />
-            <Step title="已中断" />
+            <Step title="评价" />
+            <Step title="完成" />
           </Steps>
         </div>
       </div>
