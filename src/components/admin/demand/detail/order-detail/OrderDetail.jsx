@@ -13,8 +13,8 @@ export default class OrderDetail extends React.Component {
           <span>订单详情</span>
         </div>
         <div styleName="order-content">
-          <OrderBasicInfo demand={this.props.demand} />
-          <ProjectProgress currentStatus={this.props.currentStatus} />
+          <OrderBasicInfo />
+          <ProjectProgress />
         </div>
       </div>
     )

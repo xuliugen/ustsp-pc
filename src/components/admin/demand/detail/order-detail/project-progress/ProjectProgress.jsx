@@ -1,9 +1,12 @@
 import React from 'react'
 import './projectProgress.css'
 import { Steps } from 'antd'
+import { observer, inject } from 'mobx-react'
 
 const Step = Steps.Step
 
+@inject('demandStore')
+@observer
 export default class ProjectProgress extends React.Component {
   render() {
     return (
@@ -12,7 +15,7 @@ export default class ProjectProgress extends React.Component {
           <span>项目进度</span>
         </div>
         <div styleName="progress">
-          <Steps progressDot current={this.props.currentStatus}>
+          <Steps progressDot current={this.props.demandStore.currentStatus}>
             <Step title="待审核" />
             <Step title="待报名" />
             <Step title="签单" />
