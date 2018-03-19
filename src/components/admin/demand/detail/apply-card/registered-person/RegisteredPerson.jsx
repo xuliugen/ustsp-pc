@@ -1,6 +1,6 @@
 import React from 'react'
 import './registeredPerson.css'
-import { Avatar } from 'antd'
+import { Avatar, Button } from 'antd'
 import moment from 'moment'
 import { withRouter } from 'react-router-dom'
 
@@ -60,6 +60,7 @@ export default class RegisteredPerson extends React.Component {
         </div>
         <span styleName="person-info">{ this.showUserType() } / { this.props.registeredPerson.partyLocation } / {this.props.registeredPerson.partyContact}</span>
         <span styleName="register-time">报名时间：{moment(this.props.registeredPerson.date).format('YYYY-MM-DD HH:mm:ss')}</span>
+        <Button size="small" type="primary">签单</Button>
       </div>
     )
   }
