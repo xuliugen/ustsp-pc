@@ -1,12 +1,14 @@
 import ajax from 'src/ajax'
 
 export default {
-  publishNews(userId, title, abstracts, dynamics) {
+  publishNews(userId, title, abstracts, dynamics, username, userType) {
     return ajax.post('/dynamics/publish', {
       userId,
       title,
       abstracts,
-      dynamics
+      dynamics,
+      username,
+      userType
     })
   },
 

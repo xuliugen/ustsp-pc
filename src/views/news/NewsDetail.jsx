@@ -2,6 +2,7 @@ import React from 'react'
 import { NewsApi, TalentApi } from 'src/ajax'
 import { NewsContent, HeaderWrapper } from 'components/news'
 import { Header, Footer } from 'components/common'
+import './newsDetail.css'
 
 export default class News extends React.Component {
   state = {
@@ -14,7 +15,7 @@ export default class News extends React.Component {
     publisher: {}
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getNewsDetail(this.state.dynamicsId)
   }
 
@@ -47,11 +48,13 @@ export default class News extends React.Component {
 
   render() {
     return (
-      <div>
+      <div styleName="page">
         <Header />
         <HeaderWrapper {...this.state} />
         <NewsContent dynamics={this.state.dynamics} />
-        <Footer />
+        <div styleName="footer-wrapper">
+          <Footer />
+        </div>
       </div>
     )
   }

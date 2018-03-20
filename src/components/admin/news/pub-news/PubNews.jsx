@@ -3,16 +3,18 @@ import PubNewsContent from './PubNewsContent'
 import { Input, Button, Message } from 'antd'
 import { NewsApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 import './pubNews.css'
 
+@withRouter
 @inject('userStore')
 @observer
 export default class PubNews extends React.Component {
   state = {
     title: '',
     abstract: '',
-    content: '<p>Hello World!</p>'
+    content: ''
   }
 
   constructor() {
@@ -25,11 +27,13 @@ export default class PubNews extends React.Component {
   }
 
   handleNewsPublish = async () => {
+    const {user} = this.props.userStore
     try {
       let content = this.editorElement.getContent()
       let abstract = this.editorElement.getContent('raw').blocks[0].text
-      await NewsApi.publishNews(this.props.userStore.user.id, this.state.title, abstract, content)
+      await NewsApi.publishNews(user.id, this.state.title, abstract, content, user.realName, user.userType)
       Message.success('动态发布成功')
+      this.props.history.push('/admin/news/news-mgnt')
     } catch (err) {
       console.log(err)
     }
