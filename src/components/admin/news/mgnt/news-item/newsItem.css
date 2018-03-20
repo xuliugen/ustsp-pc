@@ -1,0 +1,41 @@
+.item-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item-picture {}
+
+.item-picture img {
+  width: 120px;
+  height: 86px;
+}
+
+.item-detail {
+  margin-left: 26px;
+}
+
+.news-title {
+  font-size: 22px;
+  color: #333;
+}
+
+.news-abstract, .news-date {
+  font-size: 14px;
+  margin-top: 13px;
+}
+
+.news-abstract {
+  color: #cdcdcd;
+  width: 513px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.news-date {
+  font-style: italic;
+  color: #949494;
+}

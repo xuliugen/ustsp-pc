@@ -10,8 +10,19 @@ export default {
     })
   },
 
-  deleteNews(userId, dynamicsId) {
-    return ajax.post(`/dynamics/delete?userId=${userId}&dynamicsId=${dynamicsId}`)
+  deleteOneNews(userId, dynamicsId) {
+    return ajax.delete(`/dynamics/delete?userId=${userId}&dynamicsId=${dynamicsId}`)
+  },
+
+  deleteSomeNews(body) {
+    return ajax.post(`/dynamics/delete/all`, body)
+  },
+
+  getOwnNews(userId, page, row, time) {
+    if (time) {
+      return ajax.get(`/dynamics/query/all?userId=${userId}&time=${time}&page=${page}&rows=${row}`)
+    }
+    return ajax.get(`/dynamics/query/all?userId=${userId}&page=${page}&rows=${row}`)
   },
 
   fetchNewsDetail(dynamicsId) {
