@@ -1,0 +1,28 @@
+.news-list-wrapper {
+  width: 100%;
+}
+
+.types {
+  padding: 17px 0 14px 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.type-status {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 14px;
+  font-size: 14px;
+  color: #8f9ba7;
+  padding: 8px 16px;
+}
+
+.type-status-selected {
+  background-color: #3091e6;
+  color: white;
+  border-radius: 16px;
+}
+
+.item-wrapper {
+  padding: 29px 18px 32px 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
