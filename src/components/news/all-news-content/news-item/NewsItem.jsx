@@ -14,7 +14,6 @@ export default class AllNewsContent extends React.Component {
     let i = ''
     dynamics.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/i, (match, capture) => {
       i = capture
-      console.log(capture)
     })
     return i === '' ? ImgCover : i
   }

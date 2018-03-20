@@ -14,8 +14,8 @@ export default class AllNewsContent extends React.Component {
     }
   }
 
-  componentDidMount = () => {
-    this.getMoreNews(1, this.state.pagination.current)
+  componentDidMount() {
+    this.getMoreNews('1', this.state.pagination.current)
   }
 
   getMoreNews = async (type, current) => {
@@ -49,11 +49,11 @@ export default class AllNewsContent extends React.Component {
 
   setType = (item) => {
     if (item === '项目动态') {
-      return 1
+      return '1'
     } else if (item === '老师动态') {
-      return 2
+      return '2'
     } else if (item === '企业动态') {
-      return 3
+      return '3'
     } else {
       message.error('Error')
     }
