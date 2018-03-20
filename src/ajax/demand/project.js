@@ -8,7 +8,7 @@ export default {
   getApplicationDetail(projectId, userId) {
     return ajax.get(`/project/query/application-detail?projectId=${projectId}&userId=${userId}`)
   },
-
+  // 乙方项目报名
   signUpInfo(body) {
     return ajax.post('/project/docking', body)
   },

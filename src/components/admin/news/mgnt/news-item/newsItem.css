@@ -2,11 +2,10 @@
   height: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
-.item-picture {
-
-}
+.item-picture {}
 
 .item-picture img {
   width: 120px;
