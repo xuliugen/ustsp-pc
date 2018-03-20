@@ -21,3 +21,8 @@
   color: white;
   border-radius: 16px;
 }
+
+.item-wrapper {
+  padding: 29px 18px 32px 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
