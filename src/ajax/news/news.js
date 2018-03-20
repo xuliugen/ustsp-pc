@@ -29,5 +29,9 @@ export default {
 
   fetchNewsDetail(dynamicsId) {
     return ajax.get(`/dynamics/query/one?dynamicsId=${dynamicsId}`)
+  },
+
+  getMoreNews(queryType, page, row) {
+    return ajax.get(`dynamics/query/type?queryType=${queryType}&page=${page}&rows=${row}`)
   }
 }

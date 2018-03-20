@@ -13,6 +13,7 @@ import Admin from '@/admin/Admin'
 import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
 import NewsDetail from '@/news/NewsDetail'
+import AllNews from '@/news/all-news/AllNews'
 
 @withRouter
 @observer
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route path="/project/:id" component={Detail} />
           <Route path="/news/:id" component={NewsDetail} />
           <Route path="/search" component={Search} />
+          <Route path="/news" component={AllNews} />
           <Redirect from="/" to="/" />
         </Switch>
         {/* <DevTools /> */}

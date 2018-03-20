@@ -22,7 +22,7 @@ export default class NewsMgnt extends React.Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.getNews(this.state.pagination.current, this.state.pagination.pageSize)
   }
 
