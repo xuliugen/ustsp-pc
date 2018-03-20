@@ -1,0 +1,43 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+.desc {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.applyer {
+  margin-bottom: 25px;
+}
+
+.applyer-title {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+}
+
+.applyer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.applyer-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.cancel {
+  text-align: center;
+}

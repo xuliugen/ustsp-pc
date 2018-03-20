@@ -7,8 +7,12 @@ class DemandStore {
   @observable projectId = ''
   @observable demand = {}
   @observable currentStatus = 0
+  // 报名时报名人
   @observable registeredPersons = []
+  // 报名时关注人
   @observable follewedPersons = []
+  // 乙方
+  @observable partyB = {}
 
   async dispatchGetDemandInfo() {
     this.clearData()
@@ -25,14 +29,26 @@ class DemandStore {
         PartyBContactInfo: res.data.projectDetail.partyContactWay ? res.data.projectDetail.partyContactWay : []
       }
       this.currentStatus = projectInfo.status
+      if (res.data.projectDetail.applyData) {
+        Object.assign(this.demand, {
+          applyDate: res.data.projectDetail.applyData
+        })
+      }
     })
-    if (projectInfo.status === 1) {
-      runInAction(() => {
-        const applicants = res.data.applicants
-        const followers = res.data.followers
-        this.registeredPersons = applicants.data
-        this.follewedPersons = followers.data
-      })
+    switch (projectInfo.status) {
+      case 1:
+        runInAction(() => {
+          const applicants = res.data.applicants
+          const followers = res.data.followers
+          this.registeredPersons = applicants.data
+          this.follewedPersons = followers.data
+        })
+        break
+      case 2:
+        runInAction(() => {
+          const partyB = res.data.projectDetail.projectJointDTO
+          this.partyB = partyB
+        })
     }
   }
 
@@ -41,6 +57,7 @@ class DemandStore {
     this.demand = {}
     this.registeredPersons = []
     this.follewedPersons = []
+    this.partyB = {}
   }
 
   @action
