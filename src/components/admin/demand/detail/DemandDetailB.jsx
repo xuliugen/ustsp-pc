@@ -2,12 +2,21 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import OrderDetail from './order-detail/OrderDetail'
 import './demandDetail.css'
+import SignCardB from './sign-card-b/SignCardB'
 
 @inject('demandStore')
 @observer
 export default class DemandDetailB extends React.Component {
   componentWillMount() {
     this.props.demandStore.setProjectId(this.props.match.params.id)
+  }
+
+  componentDidMount() {
+    this.props.demandStore.dispatchGetDemandInfo()
+  }
+
+  componentWillUnmount() {
+    this.props.demandStore.setProjectId('')
   }
 
   getCard() {
@@ -19,8 +28,8 @@ export default class DemandDetailB extends React.Component {
     toEvaluate(5, "评价"),
     finished(6, "完成"), */
     switch (this.props.demandStore.currentStatus) {
-      // case 2:
-      //   return
+      case 2:
+        return <SignCardB />
       // case 3:
       //   return
       // case 4:

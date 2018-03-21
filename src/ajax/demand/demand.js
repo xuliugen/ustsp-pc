@@ -2,8 +2,8 @@ import ajax from 'src/ajax'
 
 export default {
   // 获取项目详情
-  getDemanOrderDetail(projectId, userId) {
-    return ajax.get(`/project/query/project-detail?projectId=${projectId}&userId=${userId}`)
+  getDemanOrderDetail(projectId) {
+    return ajax.get(`/project/query/project-detail?projectId=${projectId}`)
   },
   // 甲方获取已发布项目
   getPublishedDemand(userId, page, row, status) {

@@ -1,7 +1,6 @@
 import { observable, action, runInAction } from 'mobx'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
-import { userStore } from 'src/store'
 
 class DemandStore {
   @observable projectId = ''
@@ -13,13 +12,16 @@ class DemandStore {
   @observable follewedPersons = []
   // 乙方
   @observable partyB = {}
+  // 甲方
+  @observable partyA = {}
 
   async dispatchGetDemandInfo() {
     this.clearData()
-    const res = await DemandApi.getDemanOrderDetail(this.projectId, userStore.user.id)
+    const res = await DemandApi.getDemanOrderDetail(this.projectId)
     let projectInfo = res.data.projectDetail.projectResearchInfo
     runInAction(() => {
       this.demand = {
+        ownerId: projectInfo.ownerId,
         projectName: projectInfo.projectName,
         type: projectInfo.type,
         money: projectInfo.money,
@@ -49,6 +51,12 @@ class DemandStore {
           const partyB = res.data.projectDetail.projectJointDTO
           this.partyB = partyB
         })
+        if (res.data.projectDetail.owner) {
+          runInAction(() => {
+            const partyA = res.data.projectDetail.owner
+            this.partyA = partyA
+          })
+        }
     }
   }
 
@@ -58,6 +66,7 @@ class DemandStore {
     this.registeredPersons = []
     this.follewedPersons = []
     this.partyB = {}
+    this.partyA = {}
   }
 
   @action

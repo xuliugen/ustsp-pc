@@ -61,12 +61,13 @@ export default class UndertakenDemand extends React.Component {
   render() {
     const statusTags = [
       { name: '全部', status: '' },
-      { name: '待审核', status: 1 },
+      { name: '待审核', status: 0 },
+      { name: '报名', status: 1 },
       { name: '待签单', status: 2 },
-      { name: '待验收', status: 3 },
-      { name: '待评价', status: 4 },
-      { name: '已互评', status: 5 },
-      { name: '已中断', status: 6 }
+      { name: '进行中', status: 3 },
+      { name: '待验收', status: 4 },
+      { name: '评价', status: 5 },
+      { name: '完成', status: 6 }
     ]
     const current = this.state.pagination.current
     const currentPageSize = this.state.pagination.currentPageSize
