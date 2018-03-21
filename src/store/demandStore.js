@@ -13,6 +13,8 @@ class DemandStore {
   @observable follewedPersons = []
   // 乙方
   @observable partyB = {}
+  // 甲方
+  @observable partyA = {}
 
   async dispatchGetDemandInfo() {
     this.clearData()
@@ -50,6 +52,12 @@ class DemandStore {
           const partyB = res.data.projectDetail.projectJointDTO
           this.partyB = partyB
         })
+        if (res.data.projectDetail.owner) {
+          runInAction(() => {
+            const partyA = res.data.projectDetail.owner
+            this.partyA = partyA
+          })
+        }
     }
   }
 
@@ -59,6 +67,7 @@ class DemandStore {
     this.registeredPersons = []
     this.follewedPersons = []
     this.partyB = {}
+    this.partyA = {}
   }
 
   @action

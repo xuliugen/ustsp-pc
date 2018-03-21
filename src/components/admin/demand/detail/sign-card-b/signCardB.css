@@ -1,0 +1,59 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+.owner {
+  margin-bottom: 25px;
+}
+
+.ownerTitle {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+}
+
+.ownerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 200px;
+}
+
+.ownerAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.time {
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+
+.timeItem {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.confirm {
+  text-align: center;
+}
+
+.confirmMsg {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.confirmHint {
+  padding-top: 15px;
+  color: grey;
+}

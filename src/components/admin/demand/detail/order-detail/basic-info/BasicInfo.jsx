@@ -11,7 +11,7 @@ export default class OrderBasicInfo extends React.Component {
     const PartyBContactInfo = (demand.PartyBContactInfo && demand.PartyBContactInfo.length !== 0)
       ? demand.PartyBContactInfo.map((item, idx) => {
         return (
-          <div styleName="item-detail">{item}<br /> </div>
+          <div styleName="item-detail" key={idx}>{item}<br /> </div>
         )
       })
       : (
