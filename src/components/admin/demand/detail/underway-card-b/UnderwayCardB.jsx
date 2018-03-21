@@ -40,20 +40,23 @@ export default class UnderwayCardB extends React.Component {
   }
 
   async handleToCheck(partyId, ownerId) {
-    await DemandApi.changeDemandStatus({
-      partyId,
-      ownerId,
-      projectId: this.props.match.params.id,
-      status: 'toCheck'
-    })
-    message.success('发起验收成功，等待甲方确认')
-    // 刷新项目信息
-    this.props.demandStore.dispatchGetDemandInfo()
+    try {
+      await DemandApi.changeDemandStatus({
+        partyId,
+        ownerId,
+        projectId: this.props.match.params.id,
+        status: 'toCheck'
+      })
+      message.success('发起验收成功')
+      // 刷新项目信息
+      this.props.demandStore.dispatchGetDemandInfo()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {
-    const partyB = this.props.demandStore.partyB
-    const demand = this.props.demandStore.demand
+    const { partyB, demand } = this.props.demandStore
     return (
       <div>
         <div styleName="title">正在进行</div>
