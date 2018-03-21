@@ -20,6 +20,7 @@ class DemandStore {
     let projectInfo = res.data.projectDetail.projectResearchInfo
     runInAction(() => {
       this.demand = {
+        ownerId: projectInfo.ownerId,
         projectName: projectInfo.projectName,
         type: projectInfo.type,
         money: projectInfo.money,
