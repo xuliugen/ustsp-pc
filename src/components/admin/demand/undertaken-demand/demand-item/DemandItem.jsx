@@ -20,7 +20,7 @@ export default class DemandItem extends React.Component<{}> {
             <span styleName="demand-status" style={{ backgroundColor: styleList.backgroundColor, color: styleList.color, border: styleList.border }}>{styleList.status}</span>
           </div>
           <div styleName="demand-base">
-            <span>{this.props.demand.major}</span>
+            <span>{this.props.demand.subject}</span>
             <span styleName="recieve-type">接包类型：{this.props.demand.toOriented}</span>
             <span>金额 ¥{this.props.demand.money}</span>
           </div>
@@ -47,38 +47,38 @@ function setStyleList(item) {
     border: ''
   }
   switch (item.status) {
-    case 1:
+    case 0:
       styleList.status = '待审核'
       styleList.backgroundColor = '#ccc'
       styleList.color = '#fff'
       styleList.message = '查看进展'
       return styleList
-    case 2:
-      styleList.status = '待签单'
+    case 1:
+      styleList.status = '报名'
       styleList.backgroundColor = '#1dbbae'
       styleList.color = '#fff'
-      styleList.message = '人已报名'
+      styleList.message = '查看详细'
+      return styleList
+    case 2:
+      styleList.status = '待签单'
+      styleList.backgroundColor = '#3091e6'
+      styleList.color = '#fff'
+      styleList.message = '查看详细'
       return styleList
     case 3:
-      styleList.status = '待验收'
+      styleList.status = '进行中'
       styleList.backgroundColor = '#3091e6'
       styleList.color = '#fff'
       styleList.message = '查看详细'
       return styleList
     case 4:
-      styleList.status = '待评价'
-      styleList.backgroundColor = '#3091e6'
-      styleList.color = '#fff'
-      styleList.message = '查看详细'
-      return styleList
-    case 5:
-      styleList.status = '已互评'
+      styleList.status = '待验收'
       styleList.backgroundColor = '#8f9ba7'
       styleList.color = '#fff'
       styleList.message = '查看详细'
       return styleList
-    case 6:
-      styleList.status = '已中断'
+    case 5:
+      styleList.status = '完成'
       styleList.backgroundColor = '#fff'
       styleList.color = '#ccc'
       styleList.border = '1px solid #ccc'
