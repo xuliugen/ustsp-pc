@@ -81,7 +81,7 @@ export default class UnderwayCardB extends React.Component {
             </div>
           </div>
           <div styleName="btns">
-            <button onClick={this.handleToCheck.bind(this, partyB.id, demand.ownerId)}>发起验收</button>
+            <button onClick={this.handleToCheck.bind(this, partyB.partyId, demand.ownerId)}>发起验收</button>
             <button>中断项目</button>
           </div>
         </div>
