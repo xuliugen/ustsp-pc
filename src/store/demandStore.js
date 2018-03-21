@@ -1,7 +1,6 @@
 import { observable, action, runInAction } from 'mobx'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
-import { userStore } from 'src/store'
 
 class DemandStore {
   @observable projectId = ''
@@ -18,7 +17,7 @@ class DemandStore {
 
   async dispatchGetDemandInfo() {
     this.clearData()
-    const res = await DemandApi.getDemanOrderDetail(this.projectId, userStore.user.id)
+    const res = await DemandApi.getDemanOrderDetail(this.projectId)
     let projectInfo = res.data.projectDetail.projectResearchInfo
     runInAction(() => {
       this.demand = {
