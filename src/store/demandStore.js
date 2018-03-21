@@ -57,6 +57,13 @@ class DemandStore {
             this.partyA = partyA
           })
         }
+        break
+      case 3:
+        runInAction(() => {
+          const partyB = res.data.projectDetail.projectJointDTO
+          this.partyB = partyB
+        })
+        break
     }
   }
 
