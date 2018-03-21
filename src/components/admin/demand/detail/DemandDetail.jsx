@@ -1,9 +1,11 @@
 import React from 'react'
 import './demandDetail.css'
+import { observer, inject } from 'mobx-react'
+
+import OrderDetail from './order-detail/OrderDetail'
 import ApplyCard from './apply-card/ApplyCard'
 import SignCardA from './sign-card-a/SignCardA'
-import OrderDetail from './order-detail/OrderDetail'
-import { observer, inject } from 'mobx-react'
+import UnderwayCardA from './underway-card-a/UnderwayCardA'
 
 @inject('demandStore')
 @observer
@@ -33,7 +35,8 @@ export default class DemandDetail extends React.Component {
         return <ApplyCard />
       case 2:
         return <SignCardA />
-      // case 3:
+      case 3:
+        return <UnderwayCardA />
       // case 4:
       // case 5:
       // case 6:

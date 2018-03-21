@@ -1,0 +1,49 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+.applyer {
+  margin-bottom: 25px;
+}
+
+.applyerTitle {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+}
+
+.applyerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 200px;
+}
+
+.applyerAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.time {
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+
+.timeItem {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.operation {
+  text-align: center;
+}
