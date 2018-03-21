@@ -64,12 +64,6 @@ class DemandStore {
       case 4:
         partyB = res.data.projectDetail.projectJointDTO
         this.setPartyB(partyB)
-        if (res.data.projectDetail.owner) {
-          runInAction(() => {
-            const partyA = res.data.projectDetail.owner
-            this.partyA = partyA
-          })
-        }
         break
     }
   }
