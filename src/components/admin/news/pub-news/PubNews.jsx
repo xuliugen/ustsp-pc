@@ -31,7 +31,16 @@ export default class PubNews extends React.Component {
     try {
       let content = this.editorElement.getContent()
       let abstract = this.editorElement.getContent('raw').blocks[0].text
-      await NewsApi.publishNews(user.id, this.state.title, abstract, content, user.realName, user.userType)
+      await NewsApi.publishNews({
+        userId: user.id,
+        title: this.state.title,
+        abstracts: abstract,
+        dynamics: content,
+        username: user.realName,
+        userType: user.userType,
+        avatar: user.avatar,
+        location: user.location
+      })
       Message.success('动态发布成功')
       this.props.history.push('/admin/news/news-mgnt')
     } catch (err) {
