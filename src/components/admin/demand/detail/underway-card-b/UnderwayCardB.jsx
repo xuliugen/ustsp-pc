@@ -10,7 +10,7 @@ import moment from 'moment'
 @inject('demandStore')
 @observer
 export default class UnderwayCardB extends React.Component {
-  showUserType() {
+  showUserType = () => {
     const partyB = this.props.demandStore.partyB
     let user = null
     if (partyB.partyType === 1) {
@@ -71,11 +71,11 @@ export default class UnderwayCardB extends React.Component {
             </div>
             <div styleName="time">
               <Row>
-                <Col span={10}><div>报名时间：{moment(partyB.date).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
-                <Col span={10}><div>项目开始时间：{moment(demand.startTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+                <Col span={10}><div>报名时间：{moment(demand.applyDate).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+                <Col span={10}><div>签单发起时间：{moment(partyB.date).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
               </Row>
               <Row style={{ marginTop: '48px' }}>
-                <Col span={10}><div>签单发起时间：{moment(demand.applyDate).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+                <Col span={10}><div>项目开始时间：{moment(demand.startTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
                 <Col span={10}><div>预计结束时间：{moment(demand.endTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
               </Row>
             </div>
