@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react'
 import OrderDetail from './order-detail/OrderDetail'
 import './demandDetail.css'
 import SignCardB from './sign-card-b/SignCardB'
+import UnderwayCardB from './underway-card-b/UnderwayCardB'
 
 @inject('demandStore')
 @observer
@@ -30,8 +31,8 @@ export default class DemandDetailB extends React.Component {
     switch (this.props.demandStore.currentStatus) {
       case 2:
         return <SignCardB />
-      // case 3:
-      //   return
+      case 3:
+        return <UnderwayCardB />
       // case 4:
       //   return
       // case 5:
