@@ -37,6 +37,7 @@ class DemandStore {
         })
       }
     })
+    let partyB = {}
     switch (projectInfo.status) {
       case 1:
         runInAction(() => {
@@ -47,10 +48,8 @@ class DemandStore {
         })
         break
       case 2:
-        runInAction(() => {
-          const partyB = res.data.projectDetail.projectJointDTO
-          this.partyB = partyB
-        })
+        partyB = res.data.projectDetail.projectJointDTO
+        this.setPartyB(partyB)
         if (res.data.projectDetail.owner) {
           runInAction(() => {
             const partyA = res.data.projectDetail.owner
@@ -59,10 +58,8 @@ class DemandStore {
         }
         break
       case 3:
-        runInAction(() => {
-          const partyB = res.data.projectDetail.projectJointDTO
-          this.partyB = partyB
-        })
+        partyB = res.data.projectDetail.projectJointDTO
+        this.setPartyB(partyB)
         break
     }
   }
@@ -79,6 +76,11 @@ class DemandStore {
   @action
   setProjectId(projectId) {
     this.projectId = projectId
+  }
+
+  @action
+  setPartyB(partyB) {
+    this.partyB = partyB
   }
 }
 

@@ -60,7 +60,7 @@ export default class SignCardB extends React.Component {
         <div styleName="content">
           <div styleName="owner">
             <div styleName="ownerTitle">
-              发起对象
+              甲方信息
             </div>
             <div styleName="ownerInfo">
               <div styleName="ownerAvatar" onClick={this.handleSeeDetail.bind(this, partyA)}>
