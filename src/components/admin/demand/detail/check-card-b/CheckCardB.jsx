@@ -4,6 +4,7 @@ import { Icon, Row, Col } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
+import { PartyAInfo } from '../common'
 
 @withRouter
 @inject('demandStore')
@@ -44,27 +45,16 @@ export default class CheckCardB extends React.Component {
       <div>
         <div styleName="title">验收</div>
         <div styleName="partyB-info" >
-          <div styleName="info-title">
-            <span>乙方信息</span>
-          </div>
-          <div styleName="content">
-            <div styleName="base-info">
-              <img src={partyB.partyAvatar} />
-              <span styleName="name">{partyB.partyName}</span>
-              <span><Icon type={this.setSex().icon} styleName={this.setSex().styleName} /></span>
-              <span styleName="info" >{this.showUserType()}/{partyB.partyLocation}</span>
-              <span styleName="email">{partyB.partyContact}</span>
-            </div>
-            <div styleName="time">
-              <Row>
-                <Col span={10}><div>报名时间：{moment(demand.applyDate).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
-                <Col span={10}><div>签单发起时间：{moment(partyB.date).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
-              </Row>
-              <Row style={{ marginTop: '48px' }}>
-                <Col span={10}><div>项目开始时间：{moment(demand.startTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
-                <Col span={10}><div>预计结束时间：{moment(demand.endTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
-              </Row>
-            </div>
+          <PartyAInfo />
+          <div styleName="time">
+            <Row>
+              <Col span={10}><div>报名时间：{moment(demand.applyDate).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+              <Col span={10}><div>签单发起时间：{moment(partyB.date).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+            </Row>
+            <Row style={{ marginTop: '48px' }}>
+              <Col span={10}><div>项目开始时间：{moment(demand.startTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+              <Col span={10}><div>预计结束时间：{moment(demand.endTime).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
+            </Row>
           </div>
           <div styleName="message">
             <Icon type="check-circle" style={{color: '#62f326', fontSize: '30px'}} />

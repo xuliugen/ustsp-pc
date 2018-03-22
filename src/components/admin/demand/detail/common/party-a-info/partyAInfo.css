@@ -1,0 +1,23 @@
+.owner {
+  margin-bottom: 25px;
+}
+
+.ownerTitle {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+}
+
+.ownerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 200px;
+}
+
+.ownerAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}

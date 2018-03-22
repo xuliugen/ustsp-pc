@@ -2,38 +2,15 @@ import React from 'react'
 import './signCardB.css'
 import { DemandApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
-import { message, Avatar, Row, Col, Button } from 'antd'
+import { message, Row, Col, Button } from 'antd'
 import moment from 'moment'
 import { withRouter } from 'react-router-dom'
+import { PartyAInfo } from '../common'
 
 @withRouter
 @inject('demandStore', 'userStore')
 @observer
 export default class SignCardB extends React.Component {
-  handleSeeDetail(person) {
-    let type = ''
-    if (person.partyType === 1) {
-      type = 'student'
-    } else if (person.partyType === 2) {
-      type = 'teacher'
-    } else if (person.partyType === 3) {
-      type = 'company'
-    }
-    this.props.history.push(`/${type}/${person.partyId}`)
-  }
-
-  showUserType(partyB) {
-    let user = null
-    if (partyB.partyType === 1) {
-      user = '学生'
-    } else if (partyB.partyType === 2) {
-      user = '教师'
-    } else if (partyB.partyType === 3) {
-      user = '企业'
-    }
-    return user
-  }
-
   handleConfirmSign = async () => {
     try {
       await DemandApi.changeDemandStatus({
@@ -53,24 +30,12 @@ export default class SignCardB extends React.Component {
   }
 
   render() {
-    const { demand, partyB, partyA } = this.props.demandStore
+    const { demand, partyB } = this.props.demandStore
     return (
       <div>
         <div styleName="title">待签单</div>
         <div styleName="content">
-          <div styleName="owner">
-            <div styleName="ownerTitle">
-              甲方信息
-            </div>
-            <div styleName="ownerInfo">
-              <div styleName="ownerAvatar" onClick={this.handleSeeDetail.bind(this, partyA)}>
-                <Avatar src={partyA.partyAvatar} icon="user" />
-                <span>&nbsp;&nbsp;{partyA.partyName}</span>
-              </div>
-              <span>{this.showUserType(partyA)} / {partyA.partyLocation}</span>
-              <span>{partyA.partyContact}</span>
-            </div>
-          </div>
+          <PartyAInfo />
           <div styleName="time">
             <Row>
               <Col span={12}>
