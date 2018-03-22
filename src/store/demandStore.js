@@ -39,6 +39,11 @@ class DemandStore {
           applyDate: res.data.projectDetail.applyData
         })
       }
+      if (res.data.projectDetail.checkedData) {
+        Object.assign(this.demand, {
+          checkedData: res.data.projectDetail.checkedData
+        })
+      }
     })
     // set party a data
     if (res.data.projectDetail.owner) {
