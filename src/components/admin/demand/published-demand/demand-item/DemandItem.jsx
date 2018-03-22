@@ -95,7 +95,9 @@ function setStyleList(item) {
       styleList.backgroundColor = '#fff'
       styleList.color = '#ccc'
       styleList.border = '1px solid #ccc'
-      styleList.message = '查看详细'
+      styleList.message = '查看进展'
+      return styleList
+    default:
       return styleList
   }
 }

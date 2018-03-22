@@ -17,8 +17,11 @@ class DemandStore {
 
   async dispatchGetDemandInfo() {
     this.clearData()
+
     const res = await DemandApi.getDemanOrderDetail(this.projectId)
+
     let projectInfo = res.data.projectDetail.projectResearchInfo
+    // set demand data
     runInAction(() => {
       this.demand = {
         ownerId: projectInfo.ownerId,
@@ -37,37 +40,25 @@ class DemandStore {
         })
       }
     })
-    let partyB = {}
+    // set party a data
+    if (res.data.projectDetail.owner) {
+      let partyA = res.data.projectDetail.owner
+      this.setPartyA(partyA)
+    }
+    // set party b data
+    if (res.data.projectDetail.projectJointDTO) {
+      let partyB = res.data.projectDetail.projectJointDTO
+      this.setPartyB(partyB)
+    }
     switch (projectInfo.status) {
       case 1:
+        // set applicants and followers data
         runInAction(() => {
           const applicants = res.data.applicants
           const followers = res.data.followers
           this.registeredPersons = applicants.data
           this.follewedPersons = followers.data
         })
-        break
-      case 2:
-        partyB = res.data.projectDetail.projectJointDTO
-        this.setPartyB(partyB)
-        if (res.data.projectDetail.owner) {
-          runInAction(() => {
-            const partyA = res.data.projectDetail.owner
-            this.partyA = partyA
-          })
-        }
-        break
-      case 3:
-        partyB = res.data.projectDetail.projectJointDTO
-        this.setPartyB(partyB)
-        break
-      case 4:
-        partyB = res.data.projectDetail.projectJointDTO
-        this.setPartyB(partyB)
-        break
-      case 5:
-        partyB = res.data.projectDetail.projectJointDTO
-        this.setPartyB(partyB)
         break
     }
   }
@@ -89,6 +80,11 @@ class DemandStore {
   @action
   setPartyB(partyB) {
     this.partyB = partyB
+  }
+
+  @action
+  setPartyA(partyA) {
+    this.partyA = partyA
   }
 }
 
