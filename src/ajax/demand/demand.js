@@ -35,5 +35,10 @@ export default {
    */
   changeDemandStatus(body) {
     return ajax.post(`project/status`, body)
+  },
+
+  // 提交评价
+  submitEvaluation(body) {
+    return ajax.post(`project/evaluate`, body)
   }
 }
