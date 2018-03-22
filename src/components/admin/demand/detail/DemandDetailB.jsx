@@ -39,7 +39,6 @@ export default class DemandDetailB extends React.Component {
       // case 5:
       //   return
       // case 6:
-      //   return
       default:
         return null
     }
