@@ -78,11 +78,20 @@ function setStyleList(item) {
       styleList.message = '查看详细'
       return styleList
     case 5:
+      styleList.status = '评价'
+      styleList.backgroundColor = '#fff'
+      styleList.color = '#ccc'
+      styleList.border = '1px solid #ccc'
+      styleList.message = '查看进展'
+      return styleList
+    case 6:
       styleList.status = '完成'
       styleList.backgroundColor = '#fff'
       styleList.color = '#ccc'
       styleList.border = '1px solid #ccc'
       styleList.message = '查看进展'
+      return styleList
+    default:
       return styleList
   }
 }
