@@ -1,0 +1,23 @@
+.applyer {
+  margin-bottom: 25px;
+}
+
+.applyerTitle {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+}
+
+.applyerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 200px;
+}
+
+.applyerAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
