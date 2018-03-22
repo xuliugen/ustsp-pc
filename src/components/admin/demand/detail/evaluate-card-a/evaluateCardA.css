@@ -1,0 +1,69 @@
+.title {
+  font-size: 14px;
+  color: #aaa;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+  padding: 13px 0 13px 30px;
+}
+
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+.info-title {
+  font-size: 14px;
+}
+
+.info-title span {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+}
+
+.partyB-info {
+  margin: 32px;
+  font-size: 16px;
+  color: #666666;
+}
+
+.base-info img {
+  height: 50px;
+  width: 50px;
+}
+
+.name {
+  margin-left: 30px;
+}
+
+.info, .email {
+  font-size: 14px;
+  color: #8f9ba7;
+  margin-left: 28px;
+}
+
+.render-man {
+  margin-left: 10px;
+  color: #3091e6;
+  background-color: transparent;
+}
+
+.render-woman {
+  margin-left: 10px;
+  color: rgb(238, 122, 161);
+  background-color: transparent;
+}
+
+.time {
+  margin-top: 30px;
+  margin-left: 80px;
+}
+
+.evaluate {
+  margin: 32px;
+  color: #666666;
+}
+
+.submitBtn{
+  text-align: center;
+  width: 80%;
+}

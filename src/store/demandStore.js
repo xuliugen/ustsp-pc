@@ -65,6 +65,10 @@ class DemandStore {
         partyB = res.data.projectDetail.projectJointDTO
         this.setPartyB(partyB)
         break
+      case 5:
+        partyB = res.data.projectDetail.projectJointDTO
+        this.setPartyB(partyB)
+        break
     }
   }
 
