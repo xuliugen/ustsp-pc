@@ -39,12 +39,11 @@ class NewExpItem extends React.Component<{}> {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log(values)
         const expItem = {
           userId: this.props.registerStore.initial.uid,
-          school: values.school,
+          school: values.school[values.school.length - 1],
           college: values.college,
-          major: values.major,
+          major: values.major[values.major.length - 1],
           level: values.level,
           startTime: values.date ? values.date.valueOf() : null,
           endTime: values.finishTime ? values.finishTime.valueOf() : null
@@ -56,6 +55,7 @@ class NewExpItem extends React.Component<{}> {
           this.setState({ loading: false })
           this.props.confirmAdd(expItem)
         } catch (e) {
+          this.setState({ loading: false })
           console.log(e)
         }
       } else {
