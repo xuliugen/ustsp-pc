@@ -41,9 +41,9 @@ class NewExpItem extends React.Component<{}> {
       if (!err) {
         const expItem = {
           userId: this.props.registerStore.initial.uid,
-          school: values.school[values.school.length - 1],
+          school: values.school ? values.school[1] : null,
           college: values.college,
-          major: values.major[values.major.length - 1],
+          major: values.major ? values.major[1] : null,
           level: values.level,
           startTime: values.date ? values.date.valueOf() : null,
           endTime: values.finishTime ? values.finishTime.valueOf() : null
@@ -57,6 +57,7 @@ class NewExpItem extends React.Component<{}> {
         } catch (e) {
           this.setState({ loading: false })
           console.log(e)
+          this.setState({ loading: false })
         }
       } else {
         message.error('请先完善必填信息')
