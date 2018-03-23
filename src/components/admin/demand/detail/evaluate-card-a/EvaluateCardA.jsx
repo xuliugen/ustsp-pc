@@ -1,12 +1,11 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import { Form, Row, Col, Rate, Button, message } from 'antd'
+import { Form, Row, Col, Button, message } from 'antd'
 import './evaluateCardA.css'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
 import { PartyBInfo, Evaluation } from '../common'
 
-const FormItem = Form.Item
 // const { TextArea } = Input
 
 @inject('demandStore')
@@ -21,9 +20,9 @@ class EvaluateCardA extends React.Component {
           ownerId: this.props.demandStore.demand.ownerId,
           projectId: this.props.demandStore.projectId,
           num1: values.skill,
-          num2: values.effectiveness,
-          num3: values.communication,
-          num4: values.maintenance,
+          num2: values.ppe,
+          num3: values.cs,
+          num4: values.service_packages,
           type: 'A'
         }
         try {
@@ -39,21 +38,15 @@ class EvaluateCardA extends React.Component {
     })
   }
 
-  computeType(idx, value) {
-    let standards = this.props.form.getFieldsValue(['skill', 'effectiveness', 'communication', 'maintenance'])
-    let overall = Object.values(standards)
-    overall[idx] = value
-    this.props.form.setFieldsValue({'type': Math.floor(overall.reduce((prev, cur) => prev + cur) / 4)})
-  }
-
   render() {
-    // const standards = ['专业技能', '项目进度效率', '沟通顺畅度', '运维服务']
+    // 评价的维度：名字 + 字段名
+    const standards = [
+      { name: '专业技能', field: 'skill' },
+      { name: '项目进度效率', field: 'ppe' },
+      { name: '沟通顺畅度', field: 'cs' },
+      { name: '运维服务', field: 'service_packages' }
+    ]
     const { partyB, demand, evaluationB } = this.props.demandStore
-    const { getFieldDecorator } = this.props.form
-    const formItemLayout = {
-      labelCol: { span: 3 },
-      wrapperCol: { span: 4, offset: 1 }
-    }
     return (
       <div>
         <div styleName="blockTitle">正在进行</div>
@@ -74,67 +67,14 @@ class EvaluateCardA extends React.Component {
           {evaluationB ? (
             <Evaluation type="a" />
           ) : (
-            <div styleName="evaluate">
-              <div styleName="evaluateTitle">
-                <span>请对您的合作方进行评价</span>
-              </div>
-              <div styleName="evaluateForm">
-                <Form onSubmit={this.submitForm.bind(this)}>
-                  <FormItem label="专业技能" {...formItemLayout}>
-                    {getFieldDecorator('skill', {
-                      initialValue: 0,
-                      rules: [{ required: true }]
-                    })(
-                      <Rate allowClear={false} onChange={this.computeType.bind(this, 0)} />
-                    )}
-                  </FormItem>
-                  <FormItem label="项目进度效率" {...formItemLayout}>
-                    {getFieldDecorator('effectiveness', {
-                      initialValue: 0,
-                      rules: [{ required: true }]
-                    })(
-                      <Rate allowClear={false} onChange={this.computeType.bind(this, 1)} />
-                    )}
-                  </FormItem>
-                  <FormItem label="沟通顺畅度" {...formItemLayout}>
-                    {getFieldDecorator('communication', {
-                      initialValue: 0,
-                      rules: [
-                        { required: true }
-                      ]
-                    })(
-                      <Rate allowClear={false} onChange={this.computeType.bind(this, 2)} />
-                    )}
-                  </FormItem>
-                  <FormItem label="运维服务" {...formItemLayout}>
-                    {getFieldDecorator('maintenance', {
-                      initialValue: 0,
-                      rules: [
-                        { required: true }
-                      ]
-                    })(
-                      <Rate allowClear={false} onChange={this.computeType.bind(this, 3)} />
-                    )}
-                  </FormItem>
-                  <FormItem label="总体评价" {...formItemLayout}>
-                    {getFieldDecorator('type', {
-                      initialValue: 0
-                    })(
-                      <Rate allowClear={false} disabled />
-                    )}
-                  </FormItem>
-                  {/* <FormItem style={{width: '80%'}} >
-                {getFieldDecorator('detail', {
-                })(
-                  <TextArea rows={4} />
-                )}
-              </FormItem> */}
-                  <div styleName="submitBtn">
-                    <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
-                  </div>
-                </Form>
-              </div>
+          <div styleName="evaluate">
+            <Form onSubmit={this.submitForm.bind(this)}>
+              <Evaluate form={this.props.form} standards={standards} />
+            </Form>
+            <div styleName="submitBtn">
+              <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
             </div>
+          </div>
           )}
         </div>
       </div>
