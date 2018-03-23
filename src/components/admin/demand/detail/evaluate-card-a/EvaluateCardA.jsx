@@ -4,7 +4,7 @@ import { Form, Row, Col, Rate, Button, message } from 'antd'
 import './evaluateCardA.css'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
-import { PartyBInfo } from '../common'
+import { PartyBInfo, Evaluation } from '../common'
 
 const FormItem = Form.Item
 // const { TextArea } = Input
@@ -29,6 +29,7 @@ class EvaluateCardA extends React.Component {
         try {
           await DemandApi.submitEvaluation(evaluate)
           message.success('评分提交成功')
+          this.props.demandStore.dispatchGetDemandInfo()
         } catch (error) {
           console.log(error)
         }
@@ -47,7 +48,7 @@ class EvaluateCardA extends React.Component {
 
   render() {
     // const standards = ['专业技能', '项目进度效率', '沟通顺畅度', '运维服务']
-    const { partyB, demand } = this.props.demandStore
+    const { partyB, demand, evaluationB } = this.props.demandStore
     const { getFieldDecorator } = this.props.form
     const formItemLayout = {
       labelCol: { span: 3 },
@@ -70,67 +71,71 @@ class EvaluateCardA extends React.Component {
               </Row>
             </div>
           </div>
-          <div styleName="evaluate">
-            <div styleName="evaluateTitle">
-              <span>请对您的合作方进行评价</span>
+          {evaluationB ? (
+            <Evaluation type="a" />
+          ) : (
+            <div styleName="evaluate">
+              <div styleName="evaluateTitle">
+                <span>请对您的合作方进行评价</span>
+              </div>
+              <div styleName="evaluateForm">
+                <Form onSubmit={this.submitForm.bind(this)}>
+                  <FormItem label="专业技能" {...formItemLayout}>
+                    {getFieldDecorator('skill', {
+                      initialValue: 0,
+                      rules: [{ required: true }]
+                    })(
+                      <Rate allowClear={false} onChange={this.computeType.bind(this, 0)} />
+                    )}
+                  </FormItem>
+                  <FormItem label="项目进度效率" {...formItemLayout}>
+                    {getFieldDecorator('effectiveness', {
+                      initialValue: 0,
+                      rules: [{ required: true }]
+                    })(
+                      <Rate allowClear={false} onChange={this.computeType.bind(this, 1)} />
+                    )}
+                  </FormItem>
+                  <FormItem label="沟通顺畅度" {...formItemLayout}>
+                    {getFieldDecorator('communication', {
+                      initialValue: 0,
+                      rules: [
+                        { required: true }
+                      ]
+                    })(
+                      <Rate allowClear={false} onChange={this.computeType.bind(this, 2)} />
+                    )}
+                  </FormItem>
+                  <FormItem label="运维服务" {...formItemLayout}>
+                    {getFieldDecorator('maintenance', {
+                      initialValue: 0,
+                      rules: [
+                        { required: true }
+                      ]
+                    })(
+                      <Rate allowClear={false} onChange={this.computeType.bind(this, 3)} />
+                    )}
+                  </FormItem>
+                  <FormItem label="总体评价" {...formItemLayout}>
+                    {getFieldDecorator('type', {
+                      initialValue: 0
+                    })(
+                      <Rate allowClear={false} disabled />
+                    )}
+                  </FormItem>
+                  {/* <FormItem style={{width: '80%'}} >
+                {getFieldDecorator('detail', {
+                })(
+                  <TextArea rows={4} />
+                )}
+              </FormItem> */}
+                  <div styleName="submitBtn">
+                    <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
+                  </div>
+                </Form>
+              </div>
             </div>
-            <div styleName="evaluateForm">
-              <Form onSubmit={this.submitForm.bind(this)}>
-                <FormItem label="专业技能" {...formItemLayout}>
-                  {getFieldDecorator('skill', {
-                    initialValue: 0,
-                    rules: [{ required: true }]
-                  })(
-                    <Rate allowClear={false} onChange={this.computeType.bind(this, 0)} />
-                  )}
-                </FormItem>
-                <FormItem label="项目进度效率" {...formItemLayout}>
-                  {getFieldDecorator('effectiveness', {
-                    initialValue: 0,
-                    rules: [{ required: true }]
-                  })(
-                    <Rate allowClear={false} onChange={this.computeType.bind(this, 1)} />
-                  )}
-                </FormItem>
-                <FormItem label="沟通顺畅度" {...formItemLayout}>
-                  {getFieldDecorator('communication', {
-                    initialValue: 0,
-                    rules: [
-                      { required: true }
-                    ]
-                  })(
-                    <Rate allowClear={false} onChange={this.computeType.bind(this, 2)} />
-                  )}
-                </FormItem>
-                <FormItem label="运维服务" {...formItemLayout}>
-                  {getFieldDecorator('maintenance', {
-                    initialValue: 0,
-                    rules: [
-                      { required: true }
-                    ]
-                  })(
-                    <Rate allowClear={false} onChange={this.computeType.bind(this, 3)} />
-                  )}
-                </FormItem>
-                <FormItem label="总体评价" {...formItemLayout}>
-                  {getFieldDecorator('type', {
-                    initialValue: 0
-                  })(
-                    <Rate allowClear={false} disabled />
-                  )}
-                </FormItem>
-                {/* <FormItem style={{width: '80%'}} >
-                  {getFieldDecorator('detail', {
-                  })(
-                    <TextArea rows={4} />
-                  )}
-                </FormItem> */}
-                <div styleName="submitBtn">
-                  <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
-                </div>
-              </Form>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     )

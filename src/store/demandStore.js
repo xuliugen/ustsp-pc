@@ -14,6 +14,10 @@ class DemandStore {
   @observable partyB = {}
   // 甲方
   @observable partyA = {}
+  // 对甲方的评价
+  @observable evaluationA = null
+  // 对乙方的评价
+  @observable evaluationB = null
 
   async dispatchGetDemandInfo() {
     this.clearData()
@@ -65,6 +69,14 @@ class DemandStore {
           this.follewedPersons = followers.data
         })
         break
+      case 5: case 6:
+        runInAction(() => {
+          const evaluationA = res.data.projectDetail.projectOwnerEvaluateDTO
+          const evaluationB = res.data.projectDetail.projectPartyEvaluateDTO
+          this.evaluationA = evaluationA
+          this.evaluationB = evaluationB
+        })
+        break
     }
   }
 
@@ -75,6 +87,8 @@ class DemandStore {
     this.follewedPersons = []
     this.partyB = {}
     this.partyA = {}
+    this.evaluationA = null
+    this.evaluationB = null
   }
 
   @action
