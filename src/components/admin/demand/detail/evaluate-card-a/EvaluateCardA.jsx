@@ -24,18 +24,11 @@ class EvaluateCardA extends React.Component {
           num2: values.effectiveness,
           num3: values.communication,
           num4: values.maintenance,
-          type: values.type
+          type: 'A'
         }
         try {
           await DemandApi.submitEvaluation(evaluate)
           message.success('评分提交成功')
-          await DemandApi.changeDemandStatus({
-            projectId: this.props.demandStore.projectId,
-            ownerId: this.props.demandStore.demand.ownerId,
-            partyId: this.props.demandStore.partyB.partyId,
-            status: 'finished'
-          })
-          this.props.demandStore.dispatchGetDemandInfo()
         } catch (error) {
           console.log(error)
         }
@@ -85,7 +78,7 @@ class EvaluateCardA extends React.Component {
               <Form onSubmit={this.submitForm.bind(this)}>
                 <FormItem label="专业技能" {...formItemLayout}>
                   {getFieldDecorator('skill', {
-                    initialValue: 1,
+                    initialValue: 0,
                     rules: [{ required: true }]
                   })(
                     <Rate allowClear={false} onChange={this.computeType.bind(this, 0)} />
@@ -93,7 +86,7 @@ class EvaluateCardA extends React.Component {
                 </FormItem>
                 <FormItem label="项目进度效率" {...formItemLayout}>
                   {getFieldDecorator('effectiveness', {
-                    initialValue: 1,
+                    initialValue: 0,
                     rules: [{ required: true }]
                   })(
                     <Rate allowClear={false} onChange={this.computeType.bind(this, 1)} />
@@ -101,7 +94,7 @@ class EvaluateCardA extends React.Component {
                 </FormItem>
                 <FormItem label="沟通顺畅度" {...formItemLayout}>
                   {getFieldDecorator('communication', {
-                    initialValue: 1,
+                    initialValue: 0,
                     rules: [
                       { required: true }
                     ]
@@ -111,7 +104,7 @@ class EvaluateCardA extends React.Component {
                 </FormItem>
                 <FormItem label="运维服务" {...formItemLayout}>
                   {getFieldDecorator('maintenance', {
-                    initialValue: 1,
+                    initialValue: 0,
                     rules: [
                       { required: true }
                     ]
@@ -121,7 +114,7 @@ class EvaluateCardA extends React.Component {
                 </FormItem>
                 <FormItem label="总体评价" {...formItemLayout}>
                   {getFieldDecorator('type', {
-                    initialValue: 1
+                    initialValue: 0
                   })(
                     <Rate allowClear={false} disabled />
                   )}
