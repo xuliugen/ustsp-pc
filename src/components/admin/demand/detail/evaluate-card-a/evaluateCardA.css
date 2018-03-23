@@ -1,9 +1,7 @@
-.title {
-  font-size: 14px;
-  color: #aaa;
+.blockTitle {
+  padding: 13px 30px 13px 30px;
   background-color: #fdfcfc;
   border-bottom:1px solid #ddd;
-  padding: 13px 0 13px 30px;
 }
 
 .content {
@@ -21,7 +19,6 @@
 }
 
 .partyB-info {
-  margin: 32px;
   font-size: 16px;
   color: #666666;
 }
@@ -59,8 +56,18 @@
 }
 
 .evaluate {
-  margin: 32px;
-  color: #666666;
+  margin-top: 32px;
+  color: #666;
+}
+
+.evaluateTitle {
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.evaluateForm {
 }
 
 .submitBtn{
