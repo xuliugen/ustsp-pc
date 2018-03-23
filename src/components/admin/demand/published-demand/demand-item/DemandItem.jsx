@@ -37,7 +37,13 @@ export default class DemandItem extends React.Component<{}> {
     )
   }
 }
-
+/* toAudit(0, "审核"),
+    applying(1, "报名中"),
+    toSign(2, "待签单"),
+    underway(3, "进行中"),
+    toCheck(4, "待验收"),
+    toEvaluate(5, "评价"),
+    finished(6, "完成"), */
 function setStyleList(item) {
   let styleList = {
     status: '',
@@ -48,13 +54,13 @@ function setStyleList(item) {
   }
   switch (item.status) {
     case 0:
-      styleList.status = '待审核'
+      styleList.status = '审核'
       styleList.backgroundColor = '#ccc'
       styleList.color = '#fff'
       styleList.message = '查看进展'
       return styleList
     case 1:
-      styleList.status = '报名'
+      styleList.status = '报名中'
       styleList.backgroundColor = '#1dbbae'
       styleList.color = '#fff'
       styleList.message = '查看详细'

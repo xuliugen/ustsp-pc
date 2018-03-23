@@ -7,6 +7,7 @@ import ApplyCard from './apply-card/ApplyCard'
 import SignCardA from './sign-card-a/SignCardA'
 import UnderwayCardA from './underway-card-a/UnderwayCardA'
 import CheckCardA from './check-card-a/CheckCardA'
+import EvaluateCardA from './evaluate-card-a/EvaluateCardA'
 
 @inject('demandStore')
 @observer
@@ -40,7 +41,8 @@ export default class DemandDetail extends React.Component {
         return <UnderwayCardA />
       case 4:
         return <CheckCardA />
-      // case 5:
+      case 5:
+        return <EvaluateCardA />
       // case 6:
       default:
         return null
