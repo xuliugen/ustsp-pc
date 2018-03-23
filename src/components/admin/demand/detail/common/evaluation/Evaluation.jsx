@@ -21,6 +21,10 @@ export default class Evaluation extends React.Component {
     let total = 0
     if (this.props.type === 'a') {
       title = '对乙方的评价'
+      desc1 = '专业技能'
+      desc2 = '项目进度效果'
+      desc3 = '沟通顺畅度'
+      desc4 = '运维服务'
       if (this.props.demandStore.evaluationB) {
         let { skill, projectProgressefficiency, communicationsmoothness, servicePackages } = this.props.demandStore.evaluationB
         num1 = skill
@@ -47,10 +51,14 @@ export default class Evaluation extends React.Component {
         desc4 = '需求合理性'
       }
       title = '对甲方的评价'
+      desc1 = '项目难度'
+      desc2 = '经费合理性'
+      desc3 = '沟通顺畅度'
+      desc4 = '需求合理性'
     }
     const formItemLayout = {
-      labelCol: { span: 3 },
-      wrapperCol: { span: 4, offset: 1 }
+      labelCol: { span: 5 },
+      wrapperCol: { span: 7 }
     }
     return (
       <div>
