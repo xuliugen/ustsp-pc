@@ -72,7 +72,11 @@ class EvaluateCardA extends React.Component {
             </div>
           </div>
           {evaluationB ? (
-            <Evaluation type="a" />
+            <Row>
+              <Col span={12}>
+                <Evaluation type="a" />
+              </Col>
+            </Row>
           ) : (
             <div styleName="evaluate">
               <div styleName="evaluateTitle">
