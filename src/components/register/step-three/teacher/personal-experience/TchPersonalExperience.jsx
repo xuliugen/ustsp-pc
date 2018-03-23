@@ -42,14 +42,14 @@ export default class PersonalExperience extends React.Component {
         <div styleName="personal-experience-item" layout="vertical" >
           <Row gutter={20}>
             <Col span={12} >
-              <FormItem label="就职学校" style={{ flexFlow: '1' }}>
+              <FormItem label="学校" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('school', {
                   validateTrigger: 'onChange',
                   rules: [
                     { required: true, message: '请输入学校' }
                   ]
                 })(
-                  <Cascader placeholder="就职学校" options={options}
+                  <Cascader placeholder="学校" options={options}
                     expandTrigger="hover"
                     displayRender={this.displayRender}
                   />
@@ -57,12 +57,12 @@ export default class PersonalExperience extends React.Component {
               </FormItem>
               <FormItem label="专业" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('major', {
-                  validateTrigger: 'onBlur',
+                  validateTrigger: 'onChange',
                   rules: [
                     { required: true, message: '请输入专业' }
                   ]
                 })(
-                  <Cascader placeholder="就读专业" options={subjects}
+                  <Cascader placeholder="专业" options={subjects}
                     expandTrigger="hover"
                     displayRender={this.displayRender}
                   />
