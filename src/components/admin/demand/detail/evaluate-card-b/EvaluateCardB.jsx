@@ -19,10 +19,10 @@ class EvaluateCardB extends React.Component {
           partyId: this.props.demandStore.partyB.partyId,
           ownerId: this.props.demandStore.demand.ownerId,
           projectId: this.props.demandStore.projectId,
-          num1: values.skill,
-          num2: values.ppe,
+          num1: values.project_difficulty,
+          num2: values.money_reasonable,
           num3: values.cs,
-          num4: values.service_packages,
+          num4: values.demand_change_rate,
           type: 'B'
         }
         try {
@@ -41,10 +41,10 @@ class EvaluateCardB extends React.Component {
   render() {
     // 评价的维度：名字 + 字段名
     const standards = [
-      { name: '专业技能', field: 'skill' },
-      { name: '项目进度效率', field: 'ppe' },
+      { name: '项目难度', field: 'project_difficulty' },
+      { name: '经费合理性', field: 'money_reasonable' },
       { name: '沟通顺畅度', field: 'cs' },
-      { name: '运维服务', field: 'service_packages' }
+      { name: '经费及时性', field: 'demand_change_rate' }
     ]
     const { partyB, demand, evaluationA } = this.props.demandStore
     return (
