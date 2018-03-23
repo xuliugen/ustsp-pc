@@ -4,7 +4,7 @@ import { Form, Row, Col, Button, message } from 'antd'
 import './evaluateCardA.css'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
-import { PartyBInfo, Evaluation } from '../common'
+import { PartyBInfo, Evaluation, EvaluateForm } from '../common'
 
 // const { TextArea } = Input
 
@@ -67,14 +67,14 @@ class EvaluateCardA extends React.Component {
           {evaluationB ? (
             <Evaluation type="a" />
           ) : (
-          <div styleName="evaluate">
-            <Form onSubmit={this.submitForm.bind(this)}>
-              <Evaluate form={this.props.form} standards={standards} />
-            </Form>
-            <div styleName="submitBtn">
-              <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
+            <div styleName="evaluate">
+              <Form onSubmit={this.submitForm.bind(this)}>
+                <EvaluateForm form={this.props.form} standards={standards} />
+              </Form>
+              <div styleName="submitBtn">
+                <Button htmlType="submit" size="large" style={{ paddingLeft: '50px', paddingRight: '50px' }}>完成</Button>
+              </div>
             </div>
-          </div>
           )}
         </div>
       </div>
