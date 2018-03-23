@@ -10,6 +10,10 @@ const FormItem = Form.Item
 export default class Evaluation extends React.Component {
   render() {
     let title = ''
+    let desc1 = ''
+    let desc2 = ''
+    let desc3 = ''
+    let desc4 = ''
     let num1 = 0
     let num2 = 0
     let num3 = 0
@@ -24,6 +28,10 @@ export default class Evaluation extends React.Component {
         num3 = communicationsmoothness
         num4 = servicePackages
         total = (num1 + num2 + num3 + num4) / 4
+        desc1 = '专业技能'
+        desc2 = '项目进度效果'
+        desc3 = '沟通顺畅度'
+        desc4 = '运维服务'
       }
     } else if (this.props.type === 'b') {
       if (this.props.demandStore.evaluationA) {
@@ -33,6 +41,10 @@ export default class Evaluation extends React.Component {
         num3 = communicationsmoothness
         num4 = demandChangeRate
         total = (num1 + num2 + num3 + num4) / 4
+        desc1 = '项目难度'
+        desc2 = '经费合理性'
+        desc3 = '沟通顺畅度'
+        desc4 = '需求合理性'
       }
       title = '对甲方的评价'
     }
@@ -46,16 +58,16 @@ export default class Evaluation extends React.Component {
           <span>{title}</span>
         </div>
         <Form>
-          <FormItem label="专业技能" {...formItemLayout}>
+          <FormItem label={desc1} {...formItemLayout}>
             <Rate allowClear={false} disabled value={num1} />
           </FormItem>
-          <FormItem label="项目进度效果" {...formItemLayout}>
+          <FormItem label={desc2} {...formItemLayout}>
             <Rate allowClear={false} disabled value={num2} />
           </FormItem>
-          <FormItem label="沟通顺畅度" {...formItemLayout}>
+          <FormItem label={desc3} {...formItemLayout}>
             <Rate allowClear={false} disabled value={num3} />
           </FormItem>
-          <FormItem label="运维服务" {...formItemLayout}>
+          <FormItem label={desc4} {...formItemLayout}>
             <Rate allowClear={false} disabled value={num4} />
           </FormItem>
           <FormItem label="总体评价" {...formItemLayout}>
