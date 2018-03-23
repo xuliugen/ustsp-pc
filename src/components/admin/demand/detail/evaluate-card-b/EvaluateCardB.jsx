@@ -1,16 +1,16 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { Form, Row, Col, Button, message } from 'antd'
-import './evaluateCardA.css'
+import './evaluateCardB.css'
 import moment from 'moment'
 import { DemandApi } from 'src/ajax'
-import { PartyBInfo, Evaluation, EvaluateForm } from '../common'
+import { PartyAInfo, Evaluation, EvaluateForm } from '../common'
 
 // const { TextArea } = Input
 
 @inject('demandStore')
 @observer
-class EvaluateCardA extends React.Component {
+class EvaluateCardB extends React.Component {
   submitForm(e) {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
@@ -23,7 +23,7 @@ class EvaluateCardA extends React.Component {
           num2: values.ppe,
           num3: values.cs,
           num4: values.service_packages,
-          type: 'A'
+          type: 'B'
         }
         try {
           await DemandApi.submitEvaluation(evaluate)
@@ -46,13 +46,13 @@ class EvaluateCardA extends React.Component {
       { name: '沟通顺畅度', field: 'cs' },
       { name: '运维服务', field: 'service_packages' }
     ]
-    const { partyB, demand, evaluationB } = this.props.demandStore
+    const { partyB, demand, evaluationA } = this.props.demandStore
     return (
       <div>
         <div styleName="blockTitle">正在进行</div>
         <div styleName="content">
           <div styleName="partyB-info">
-            <PartyBInfo />
+            <PartyAInfo />
             <div styleName="time">
               <Row>
                 <Col span={10}><div>签单发起时间：{moment(partyB.date).format('YYYY-MM-DD HH:mm:ss')}</div></Col>
@@ -64,8 +64,8 @@ class EvaluateCardA extends React.Component {
               </Row>
             </div>
           </div>
-          {evaluationB ? (
-            <Evaluation type="a" />
+          {evaluationA ? (
+            <Evaluation type="b" />
           ) : (
             <div styleName="evaluate">
               <Form onSubmit={this.submitForm.bind(this)}>
@@ -82,4 +82,4 @@ class EvaluateCardA extends React.Component {
   }
 }
 
-export default Form.create()(EvaluateCardA)
+export default Form.create()(EvaluateCardB)

@@ -25,12 +25,12 @@ export default class EvaluateForm extends React.Component {
         </div>
         {this.props.standards.map((item, idx) => {
           return (
-            <FormItem label={item.name} {...formItemLayout}>
+            <FormItem key={idx} label={item.name} {...formItemLayout}>
               {getFieldDecorator(item.field, {
                 initialValue: 0,
                 rules: [{ required: true }]
               })(
-                <Rate allowClear={false} onChange={this.computeType.bind(this, item.idx)} />
+                <Rate allowClear={false} onChange={this.computeType.bind(this, idx)} />
               )}
             </FormItem>
           )
