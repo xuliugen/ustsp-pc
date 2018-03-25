@@ -45,7 +45,7 @@ class StepThreeStudent extends React.Component<{}> {
           college: null,
           major: null,
           grade: null,
-          skill: value.skills.map(i => ({skill: i})),
+          skill: value.skill ? value.skills.map(i => ({skill: i})) : [],
           introduction: value.introduction,
           isRealName: 'false',
           photo: this.state.stuPhoto
@@ -55,7 +55,9 @@ class StepThreeStudent extends React.Component<{}> {
           message.success('注册成功，进入下一步')
           this.props.history.push('/')
         } catch (e) {
-          console.log(e)
+          if (e.response) {
+            message.error(e.response.data.message)
+          }
         }
       } else {
         message.error('请先完善必填信息')
