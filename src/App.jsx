@@ -4,8 +4,7 @@ import { observer } from 'mobx-react'
 import { hot } from 'react-hot-loader'
 // import DevTools from 'mobx-react-devtools'
 
-// import PrivateRoute from 'src/common/PrivateRoute'
-
+import PrivateRoute from 'src/common/PrivateRoute'
 import Home from '@/home/Home'
 import Login from '@/login/Login'
 import Register from '@/register/Register'
@@ -25,8 +24,8 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {/* <PrivateRoute path="/admin" component={Admin} /> */}
-          <Route path="/admin" component={Admin} />
+          <PrivateRoute path="/admin" component={Admin} />
+          {/* <Route path="/admin" component={Admin} /> */}
           <Route path="/teacher/:id" component={Detail} />
           <Route path="/student/:id" component={Detail} />
           <Route path="/project/:id" component={Detail} />

@@ -131,8 +131,8 @@ class RegForm extends React.Component {
         }
       }))
       RegisterApi.checkVerifyCode(code, tel, 'phone')
-        .then(res => {
-          if (res) {
+        .then(({ data }) => {
+          if (data) {
             this.terminate()
             callback()
           } else {

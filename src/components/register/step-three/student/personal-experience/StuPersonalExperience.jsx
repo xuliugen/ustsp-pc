@@ -33,7 +33,7 @@ export default class PersonalExperience extends React.Component {
             })(
               <div styleName="intro-container">
                 <TextArea rows={8} />
-                <span styleName="word-limit">字数限制: 0/400</span>
+                {/* <span styleName="word-limit">字数限制: 0/400</span> */}
               </div>
             )}
           </FormItem>

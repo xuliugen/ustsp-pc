@@ -36,7 +36,7 @@ export default class PubNews extends React.Component {
         title: this.state.title,
         abstracts: abstract,
         dynamics: content,
-        username: user.realName,
+        username: user.realName ? user.realName : user.phone,
         userType: user.userType,
         avatar: user.avatar,
         location: user.location
