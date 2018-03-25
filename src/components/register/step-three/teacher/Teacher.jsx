@@ -37,10 +37,10 @@ class StepThreeTeacher extends React.Component<{}> {
         // school: claimData.university,
         college: claimData.school,
         title: claimData.title,
-        introduction: claimData.introduction,
-        academicExperience: claimData.experience,
-        scienceIntroduction: claimData.project,
-        publishPaper: claimData.paper
+        introduction: claimData.introduction ? claimData.introduction.substr(0, 3000) : '',
+        academicExperience: claimData.experience ? claimData.experience.substr(0, 3000) : '',
+        scienceIntroduction: claimData.project ? claimData.project.substr(0, 3000) : '',
+        publishPaper: claimData.paper ? claimData.paper.substr(0, 3000) : ''
       })
       this.setState({
         tchPhoto: claimData.icon
