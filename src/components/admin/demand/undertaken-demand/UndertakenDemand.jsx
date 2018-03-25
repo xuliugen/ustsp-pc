@@ -24,7 +24,6 @@ export default class UndertakenDemand extends React.Component {
 
   setDemand = async (current, pageSize, status) => {
     let res = null
-    status = 1
     res = await DemandApi.getUndertakenDemand(this.props.userStore.user.id, current, pageSize, status)
     const { data } = res
     this.setState((prevState) => ({

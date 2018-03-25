@@ -22,6 +22,9 @@ export default {
   },
   // 乙方获取已报名项目
   getUndertakenDemand(userId, page, row, status) {
+    if (status === undefined) {
+      return ajax.get(`/project/query/applicated?userId=${userId}&page=${page}&rows=${row}`)
+    }
     return ajax.get(`/project/query/applicated?status=${status}&userId=${userId}&page=${page}&rows=${row}`)
   },
   // 甲方发项目
