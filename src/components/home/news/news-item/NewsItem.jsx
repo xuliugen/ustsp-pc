@@ -22,7 +22,7 @@ export default class NewsItem extends React.Component<Props> {
           <span styleName="time">{moment(news.date).format('MM-DD HH:MM')}</span>
         </div>
         <div styleName="content">
-          <span styleName="text">{news.abstracts}</span>
+          <span styleName="text">{news.title}</span>
         </div>
       </div>
     )
