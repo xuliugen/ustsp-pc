@@ -54,7 +54,7 @@ export default class TeacherContent extends React.Component {
       const { data } = await TchInfoApi.getTeacherInfo(tid)
       const res = await TchInfoApi.getOtherAddInfo(tid)
       data.teacherInfoDTO.email = data.userInfoDTO.email
-      data.teacherInfoDTO.pageView = data.userInfoDTO.pageView
+      data.teacherInfoDTO.pageView = (data.userInfoDTO.pageView || data.teacherInfoDTO.pageView) || 0
       this.setState({
         intro: {
           introduction: data.teacherInfoDTO.introduction,

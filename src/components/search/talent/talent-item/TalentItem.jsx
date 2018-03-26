@@ -25,7 +25,8 @@ export default class talentItem extends React.Component {
           <div styleName="info-text">
             <div style={{display: 'flex', alignItems: 'center'}}>
               <Link to={url}><span styleName="talent-name">{talent.realName}</span></Link>
-              <img size="small" src={authorityPic} style={{marginLeft: '9px'}} />
+              {/* 0、直接注册；1已经认领、2未认领 */}
+              {talent.isClaim === 1 && <img size="small" src={authorityPic} style={{ marginLeft: '9px' }} />}
             </div>
             <div style={{ marginTop: '10px' }}>
               <span styleName="school-info">{talent.school} / {talent.title}</span>
