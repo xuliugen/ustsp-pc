@@ -31,6 +31,9 @@ export default class PubNews extends React.Component {
     try {
       let content = this.editorElement.getContent()
       let abstract = this.editorElement.getContent('raw').blocks[0].text
+      if (abstract.length > 50) {
+        abstract = abstract.substr(0, 50)
+      }
       await NewsApi.publishNews({
         userId: user.id,
         title: this.state.title,
