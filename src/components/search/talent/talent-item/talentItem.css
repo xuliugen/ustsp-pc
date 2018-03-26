@@ -9,6 +9,10 @@
   border-right:1px #ddd solid;
 }
 
+:global(.ant-avatar) > img {
+  object-fit: cover;
+}
+
 .talent-info{
   display: flex;
   align-items: center;
