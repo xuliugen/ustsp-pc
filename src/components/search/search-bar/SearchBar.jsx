@@ -32,6 +32,7 @@ export default class SearchBar extends React.Component {
   }
 
   handleSearch = (val) => {
+    this.props.searchStore.setCurrentPage(1)
     this.props.searchStore.dispatchSearch()
   }
 
