@@ -35,6 +35,7 @@ class SearchStore {
       () => JSON.stringify(this.conditions),
       conditionsStr => {
         const conditions = JSON.parse(conditionsStr)
+        if (conditions[0] && conditions[0].field === 'province') { return }
         const req = {}
         conditions.forEach(({ field, value, notCondition }) => {
           if (!notCondition) {
@@ -102,7 +103,7 @@ class SearchStore {
   }
 
   @action
-  removeCondition({field, value}) {
+  removeCondition({ field, value }) {
     this.conditions = this.conditions.filter(condition => {
       return !(condition.field === field && condition.value === value)
     })
