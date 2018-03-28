@@ -1,21 +1,13 @@
-// @flow
 import React from 'react'
 import './card.css'
-type IPObj = {
-  title: string,
-  type: string,
-  productID: string,
-  patentNum: string,
-  name: string,
-  time: string
-}
+import { withRouter } from 'react-router-dom'
 
-type Props = {
-  ip: IPObj,
-  avatar: string
-}
+@withRouter
+export default class IpCard extends React.Component {
+  handleClick = () => {
+    this.props.history.push(`/ip/${this.props.ip.productID}`)
+  }
 
-export default class IpCard extends React.Component<Props> {
   render() {
     const { ip, avatar } = this.props
     return (
@@ -35,7 +27,7 @@ export default class IpCard extends React.Component<Props> {
             <br />
             <span styleName="ip-card-time">发布于 {ip.time}</span>
           </div>
-          <button styleName="ip-card-checked">查看</button>
+          <button styleName="ip-card-checked" onClick={this.handleClick}>查看</button>
         </div>
       </div>
     )

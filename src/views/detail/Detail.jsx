@@ -2,7 +2,7 @@ import React from 'react'
 import './detail.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
-import { ProjectContent, TeacherContent, StudentContent } from 'components/detail'
+import { ProjectContent, TeacherContent, StudentContent, IPContent } from 'components/detail'
 import { Others } from 'components/detail/common'
 
 export default class Detail extends React.Component {
@@ -36,6 +36,10 @@ export default class Detail extends React.Component {
             {/* <CommonFriends /> */}
           </div>
         )
+        break
+      default:
+        MainContent = <IPContent />
+        RmdContent = null
         break
     }
 

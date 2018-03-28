@@ -30,6 +30,7 @@ class App extends React.Component {
           <Route path="/student/:id" component={Detail} />
           <Route path="/project/:id" component={Detail} />
           <Route path="/news/:id" component={NewsDetail} />
+          <Route path="/ip/:id" component={Detail} />
           <Route path="/search" component={Search} />
           <Route path="/news" component={AllNews} />
           <Redirect from="/" to="/" />
