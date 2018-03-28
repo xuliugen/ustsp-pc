@@ -5,6 +5,7 @@ import Sidebar from './sidebar/Sidebar'
 import Demand from './demand'
 import Mgnt from './mgnt'
 import News from './news'
+import IP from './ip'
 
 export {
   Demand,
@@ -12,5 +13,6 @@ export {
   Mgnt,
   Header,
   Sidebar,
-  News
+  News,
+  IP
 }

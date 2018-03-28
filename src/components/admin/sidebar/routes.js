@@ -44,7 +44,7 @@ export const routes = [
   }, {
     key: 'news',
     title: {
-      icon: 'check-square-o',
+      icon: 'file-text',
       text: '动态'
     },
     children: [
@@ -56,6 +56,19 @@ export const routes = [
         key: 'news-mgnt',
         to: '/admin/news/news-mgnt',
         text: '动态管理'
+      }
+    ]
+  }, {
+    key: 'ip',
+    title: {
+      icon: 'info-circle-o',
+      text: '知识产权'
+    },
+    children: [
+      {
+        key: 'new-ip',
+        to: '/admin/ip/new-ip',
+        text: '发布专利'
       }
     ]
   }
