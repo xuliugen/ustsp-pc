@@ -69,6 +69,14 @@ export const routes = [
         key: 'new-ip',
         to: '/admin/ip/new-ip',
         text: '发布专利'
+      }, {
+        key: 'transfer-ip',
+        to: '/admin/ip/transfer-ip',
+        text: '转让专利'
+      }, {
+        key: 'buy-ip',
+        to: '/admin/ip/buy-ip',
+        text: '购买专利'
       }
     ]
   }

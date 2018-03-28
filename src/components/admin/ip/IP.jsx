@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { NewIP } from '.'
+import { NewIP, TransferIP, BuyIP, IPDetailA, IPDetailB } from '.'
 
 export default class IP extends React.Component {
   render() {
@@ -9,6 +9,10 @@ export default class IP extends React.Component {
     return (
       <Switch>
         <Route path={`${match.url}/new-ip`} component={NewIP} />
+        <Route path={`${match.url}/transfer-ip`} exact component={TransferIP} />
+        <Route path={`${match.url}/transfer-ip/:id`} component={IPDetailA} />
+        <Route path={`${match.url}/buy-ip`} exact component={BuyIP} />
+        <Route path={`${match.url}/buy-ip/:id`} component={IPDetailB} />
       </Switch>
     )
   }
