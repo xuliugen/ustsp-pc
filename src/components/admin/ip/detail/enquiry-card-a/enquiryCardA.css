@@ -1,0 +1,32 @@
+.root {
+  background-color: #fff;
+}
+
+.title {
+  padding: 13px 30px 13px 30px;
+  border-bottom:1px solid #ddd;
+  background-color: #fdfcfc;
+}
+
+.content {
+  display: flex;
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+.enquiry {
+  padding-right: 30px;
+  border-right: #ddd 1px solid;
+  width: 63%;
+}
+
+.send {
+  padding-left: 30px;
+  width: 37%;
+}
+
+.persons-title {
+  margin-bottom: 20px;
+  padding-left: 23px;
+  border-left: #3091e6 6px solid;
+}
