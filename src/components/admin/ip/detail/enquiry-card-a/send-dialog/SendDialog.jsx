@@ -16,7 +16,7 @@ export default class SendDialog extends React.Component {
     let fileList = info.fileList
 
     // 1. Limit the number of uploaded files
-    //    Only to show two recent uploaded files, and old ones will be replaced by the new
+    //    Only to  the lastest uploaded files, and old ones will be replaced by the new
     fileList = fileList.slice(-1)
 
     // 2. read from response and show file link
