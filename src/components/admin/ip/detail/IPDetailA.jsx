@@ -12,6 +12,7 @@ export default class IPDetailA extends React.Component {
         <DetailInfo />
         <div styleName="card-wrapper">
           <EnquiryCardA />
+          {/* <SignCardA /> */}
         </div>
       </div>
     )
