@@ -72,8 +72,7 @@ export default class Carousel extends React.Component<{}, State> {
       <div
         styleName="carousel"
         onMouseOver={this.state.pause ? this.pausePlay : null}
-        onMouseOut={this.state.pause ? this.goPlay : null}
-      >
+        onMouseOut={this.state.pause ? this.goPlay : null}>
         <ul
           styleName="list"
           style={{

@@ -1,0 +1,31 @@
+.content-wrapper{
+  background-color: white;
+}
+.title{
+  font-weight: 600;
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+.title-text{
+  font-size: 14px;
+  color: #aaa;
+}
+.text-head{
+  text-align: center;
+  font-weight: 600;
+  padding: 20px 0px;
+}
+.explanation{
+  text-indent: 30px;
+  font-weight: 600;
+  padding: 0px 40px 20px 40px;
+}
+.transfer-info{
+  padding-bottom: 50px;
+  font-weight: 600;
+}
+li{
+  list-style-type:none;
+  padding: 4px 0px 4px 0px;
+}
