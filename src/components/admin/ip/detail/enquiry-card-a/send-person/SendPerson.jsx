@@ -18,7 +18,9 @@ export default class SendPerson extends React.Component {
     this.props.history.push(`/${type}/${person.partyId}`)
   }
 
-  handleSign = () => {}
+  handleSign = () => {
+    this.props.changeSignDialogStatus(true)
+  }
 
   render() {
     return (
