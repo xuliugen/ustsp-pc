@@ -28,6 +28,10 @@ export default class DetailInfo extends React.Component {
                   <div styleName="item-detail">¥10,000</div>
                 </Col>
                 <Col span={4}>
+                  <div styleName="item-title">申请日</div>
+                  <div styleName="item-detail">2008-10-15</div>
+                </Col>
+                <Col span={4}>
                   <div styleName="item-title">公开日</div>
                   <div styleName="item-detail">2008-10-15</div>
                 </Col>
@@ -36,12 +40,34 @@ export default class DetailInfo extends React.Component {
                   <div styleName="item-detail">2016-10-23</div>
                 </Col>
                 <Col span={4}>
-                  <div styleName="item-title">代理人联系方式</div>
-                  <div styleName="item-detail">zhanjy@uestc.edu.cn</div>
-                </Col>
-                <Col span={4}>
                   <div styleName="item-title">法律状态</div>
                   <div styleName="item-detail">专利权维持</div>
+                </Col>
+              </Row>
+              <Row style={{marginTop: '20px'}}>
+                <Col span={4}>
+                  <div styleName="item-title">发明人</div>
+                  <div styleName="item-detail">zero</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">专利权人</div>
+                  <div styleName="item-detail">公司</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">主分类号</div>
+                  <div styleName="item-detail">H0312DF</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">分类号</div>
+                  <div styleName="item-detail">H0312DF</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">国省代码</div>
+                  <div styleName="item-detail">H0312DF</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">代理人联系方式</div>
+                  <div styleName="item-detail">zhanjy@uestc.edu.cn</div>
                 </Col>
               </Row>
             </div>
