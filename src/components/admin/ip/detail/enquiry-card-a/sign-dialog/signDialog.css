@@ -1,0 +1,14 @@
+.content {
+  text-align: center;
+}
+
+.confirm-text {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.hint {
+  margin-bottom: 0;
+  color: #aaa;
+}

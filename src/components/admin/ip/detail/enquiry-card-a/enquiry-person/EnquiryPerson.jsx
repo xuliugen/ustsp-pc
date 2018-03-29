@@ -31,7 +31,9 @@ export default class EmquiryPerson extends React.Component {
     return null
   }
 
-  handleSend = () => {}
+  handleSend = () => {
+    this.props.changeSendDialogStatus(true)
+  }
 
   render() {
     return (
