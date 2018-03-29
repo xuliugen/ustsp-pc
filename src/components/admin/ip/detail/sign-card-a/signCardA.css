@@ -1,3 +1,10 @@
+.title {
+  color: #aaa;
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
 .content {
   padding: 60px 30px;
   background-color: #fff;
@@ -12,7 +19,7 @@
   margin-top: 60px;
 }
 
-.title {
+.info-title {
   padding-left: 23px;
   border-left: 6px solid #3091e6;
   margin-bottom: 30px;
