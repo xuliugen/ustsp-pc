@@ -1,6 +1,7 @@
 import React from 'react'
 import './enquiryCardA.css'
 import EnquiryPerson from './enquiry-person/EnquiryPerson'
+import SendPerson from './send-person/SendPerson'
 
 export default class EnquiryCardA extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export default class EnquiryCardA extends React.Component {
           </div>
           <div styleName="send">
             <div styleName="persons-title">已发送文件(10)</div>
+            <SendPerson />
           </div>
         </div>
       </div>
