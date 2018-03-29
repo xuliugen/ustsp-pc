@@ -1,0 +1,64 @@
+import React from 'react'
+import './detailInfo.css'
+import { Row, Col, Steps } from 'antd'
+
+const Step = Steps.Step
+
+export default class DetailInfo extends React.Component {
+  render() {
+    return (
+      <div>
+        <div styleName="detail-title">
+          <span>专利详情</span>
+        </div>
+        <div styleName="content">
+          <div styleName="title">
+            <span>著录项信息</span>
+          </div>
+          <div styleName="basic-info-content">
+            <div styleName="ip-title">基于移动视窗平台的多卡手机网络连接选择方法及装置</div>
+            <div styleName="ip-content-items">
+              <Row>
+                <Col span={4}>
+                  <div styleName="item-title">申请号</div>
+                  <div styleName="item-detail">CN200810113789.6</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">预设金额</div>
+                  <div styleName="item-detail">¥10,000</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">公开日</div>
+                  <div styleName="item-detail">2008-10-15</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">发布时间</div>
+                  <div styleName="item-detail">2016-10-23</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">代理人联系方式</div>
+                  <div styleName="item-detail">zhanjy@uestc.edu.cn</div>
+                </Col>
+                <Col span={4}>
+                  <div styleName="item-title">法律状态</div>
+                  <div styleName="item-detail">专利权维持</div>
+                </Col>
+              </Row>
+            </div>
+          </div>
+          <div styleName="title">
+            <span>转让进度</span>
+          </div>
+          <div styleName="progress">
+            <Steps progressDot>
+              <Step title="审核" />
+              <Step title="询价中" />
+              <Step title="签订合同" />
+              <Step title="完成公示" />
+            </Steps>
+          </div>
+        </div>
+      </div >
+    )
+  }
+}
