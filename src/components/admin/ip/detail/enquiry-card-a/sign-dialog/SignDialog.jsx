@@ -1,5 +1,6 @@
 import React from 'react'
-import { Modal } from 'antd'
+import { Modal, Avatar } from 'antd'
+import './signDialog.css'
 
 export default class SignDialog extends React.Component {
   handleOk = () => {
@@ -18,9 +19,13 @@ export default class SignDialog extends React.Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div styleName="content">
+          <Avatar size="large" />
+          <div>
+            <p styleName="confirm-text">确认与此人签订专业转让合同?</p>
+            <p styleName="hint">请在与购买者沟通后且手续齐全的情况下确认</p>
+          </div>
+        </div>
       </Modal>
     )
   }
