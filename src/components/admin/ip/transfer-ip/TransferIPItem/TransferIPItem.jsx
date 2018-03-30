@@ -2,11 +2,17 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import './TransferIPItem.css'
+import { Button } from 'antd'
 
 @withRouter
 export default class TransferIPItem extends React.Component {
   handleSeeDetailClick(id) {
     this.props.history.push(`${this.props.match.url}/${id}`)
+  }
+
+  setStatusStyle(status) {
+    const statusStyleGroup = ['inquire-price']
+    return statusStyleGroup[status]
   }
 
   render() {
@@ -22,7 +28,7 @@ export default class TransferIPItem extends React.Component {
     const transferStatusGroup = ['询价中'] // 目前不知道专利转让状态集合，后面修改
     const legalStatusGroup = ['专利权维持'] // 同上
     const bntTextGroup = ['查看详细'] // 同上
-    const statusStyle = setStatusStyle(transferIP.transferStatus)
+    const statusStyle = this.setStatusStyle(transferIP.transferStatus)
 
     return (
       <div styleName="wrapper">
@@ -42,18 +48,13 @@ export default class TransferIPItem extends React.Component {
           <div styleName="release-date">
             <span>发布于 {moment(transferIP.releaseDate).format('YYYY-MM-DD')}</span>
           </div>
-          <div styleName="see-detail-btn">
-            <button onClick={this.handleSeeDetailClick.bind(this, transferIP.ipID)}>
+          <div>
+            <Button type="ghost" size="large" onClick={this.handleSeeDetailClick.bind(this, transferIP.ipID)}>
               {bntTextGroup[transferIP.transferStatus]}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
     )
   }
-}
-
-function setStatusStyle(status) {
-  const statusStyleGroup = ['inquire-price']
-  return statusStyleGroup[status]
 }
