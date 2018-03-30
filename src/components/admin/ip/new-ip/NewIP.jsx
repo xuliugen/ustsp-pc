@@ -1,37 +1,57 @@
 import React from 'react'
 import './newIP.css'
 import { Form, Row, Col, Input, Select, DatePicker, Upload, Icon, message, Button } from 'antd'
+import { IpApi } from 'src/ajax'
+import { observer, inject } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 const FormItem = Form.Item
 const Option = Select.Option
 const { TextArea } = Input
 const Dragger = Upload.Dragger
 
+@withRouter
+@inject('userStore')
+@observer
 @Form.create()
 export default class NewIP extends React.Component {
+  state = {
+    document: null,
+    appraisalDocument: null
+  }
   submitForm = () => {
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (err) {
         message.error('请完善信息')
       } else {
-        console.log(values)
+        values.applicationDate = values.applicationDate && values.applicationDate.valueOf()
+        values.publicationDate = values.publicationDate && values.publicationDate.valueOf()
+        values.ownerId = this.props.userStore.user.id
+        try {
+          await IpApi.publishPatent(values)
+          message.success('发布成功')
+          this.props.history.push('/admin/ip/transfer-ip')
+        } catch (err) {
+          console.log(err)
+        }
       }
     })
   }
 
   normFile = (e) => {
-    console.log('Upload event:', e)
-    if (Array.isArray(e)) {
-      return e
+    if (e.file.status === 'uploading') {
+      return null
+    } else if (e.file.status === 'done') {
+      let files = e.file.response
+      let result = JSON.parse(files[0].result)
+      return result.data.access_url
     }
-    return e && e.fileList
   }
 
   render() {
     const uploadProps = {
-      name: 'file',
-      multiple: true,
-      action: '//jsonplaceholder.typicode.com/posts/',
+      name: 'files',
+      multiple: false,
       onChange(info) {
         const status = info.file.status
         if (status !== 'uploading') {
@@ -278,13 +298,13 @@ export default class NewIP extends React.Component {
               <Col span={24}>
                 <FormItem label="PDF全文">
                   {getFieldDecorator('document', {
-                    valuePropName: 'fileList',
+                    // valuePropName: 'fileList',
                     getValueFromEvent: this.normFile,
                     rules: [
                       { required: true, message: '请上传' }
                     ]
                   })(
-                    <Dragger {...uploadProps}>
+                    <Dragger {...uploadProps} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentOriginal`}>
                       <p className="ant-upload-drag-icon">
                         <Icon type="inbox" />
                       </p>
@@ -299,10 +319,10 @@ export default class NewIP extends React.Component {
               <Col span={24}>
                 <FormItem label="评估文件">
                   {getFieldDecorator('appraisalDocument', {
-                    valuePropName: 'fileList',
+                    // valuePropName: 'fileList',
                     getValueFromEvent: this.normFile
                   })(
-                    <Dragger {...uploadProps}>
+                    <Dragger {...uploadProps} action={`${window.config.API_ORIGIN}/upload/patent?fileType=evalute`}>
                       <p className="ant-upload-drag-icon">
                         <Icon type="inbox" />
                       </p>
