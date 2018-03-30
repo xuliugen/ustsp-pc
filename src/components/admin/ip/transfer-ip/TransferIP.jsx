@@ -4,9 +4,7 @@ import TransferIPItem from './TransferIPItem/TransferIPItem'
 export default class TransferIP extends React.Component {
   render() {
     return (
-      <div>
-        <TransferIPItem />
-      </div>
+      <div></div>
     )
   }
 }
