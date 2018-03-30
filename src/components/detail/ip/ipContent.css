@@ -1,0 +1,50 @@
+.name-card {
+  padding: 30px 30px 20px 30px;
+  background-color: #f0f0f0;
+}
+
+.card-title {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #8f9ba7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 22px;
+  color: #333;
+}
+
+.other {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 13px;
+}
+
+.info-content {
+  width: 100%;
+  display: table;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+.info-item {
+  margin-bottom: 20px;
+}
+
+.info-item span {
+  color: #8f9ba7;
+  display: inline-block;
+  width: 80px;
+}
+
+.divider {
+  color: #8f9ba7;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.content{
+  padding: 0 30px;
+}
