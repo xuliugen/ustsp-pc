@@ -9,12 +9,16 @@ import SignDialog from './sign-dialog/SignDialog'
 export default class EnquiryCardA extends React.Component {
   state = {
     sendDialogVisible: false,
-    signDialogVisible: false
+    signDialogVisible: false,
+    currentApplyPerson: {},
+    currentWonderPerson: {}
   }
 
   constructor() {
     super()
     this.changeDialogStatus = this.changeDialogStatus.bind(this)
+    this.setCurrentApplyPerson = this.setCurrentApplyPerson.bind(this)
+    this.setCurrentWonderPerson = this.setCurrentWonderPerson.bind(this)
   }
 
   changeDialogStatus(type, visible) {
@@ -29,6 +33,18 @@ export default class EnquiryCardA extends React.Component {
           signDialogVisible: visible
         })
     }
+  }
+
+  setCurrentApplyPerson(person) {
+    this.setState({
+      currentApplyPerson: person
+    })
+  }
+
+  setCurrentWonderPerson(person) {
+    this.setState({
+      currentWonderPerson: person
+    })
   }
 
   render() {
@@ -59,7 +75,11 @@ export default class EnquiryCardA extends React.Component {
             <div styleName="persons-title">询价({applyPersons.length})</div>
             {applyPersons.map((person, idx) => {
               return (
-                <EnquiryPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')} info={person} />
+                <EnquiryPerson
+                  key={idx}
+                  changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')}
+                  info={person}
+                  setPerson={this.setCurrentApplyPerson} />
               )
             })}
           </div>
@@ -77,7 +97,11 @@ export default class EnquiryCardA extends React.Component {
             })}
           </div>
         </div>
-        <SendDialog visible={this.state.sendDialogVisible} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')} />
+        <SendDialog
+          visible={this.state.sendDialogVisible}
+          changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')}
+          ip={this.props.ip}
+          person={this.state.currentApplyPerson} />
         <SignDialog visible={this.state.signDialogVisible} changeSignDialogStatus={this.changeDialogStatus.bind(this, 'sign')} />
       </div>
     )

@@ -36,7 +36,7 @@ export default class IPDetailA extends React.Component {
       <div>
         <DetailInfo info={this.state.detail} />
         <div styleName="card-wrapper">
-          <EnquiryCardA partyB={this.state.partyB} />
+          <EnquiryCardA partyB={this.state.partyB} ip={this.state.detail} />
           {/* <SignCardA /> */}
           {/* <IPTransferInfoA /> */}
         </div>
