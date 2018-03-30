@@ -1,0 +1,24 @@
+.root {
+  width: 900px;
+  background-color: #fff;
+}
+
+.title {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.titleName {
+  display: inline-block;
+  padding-left: 24px;
+  margin: 22px 0;
+  border-left: #3091e6 6px solid;
+  font-size: 16px;
+}
+
+.form-wrapper {
+  padding: 41px 135px 41px 135px;
+}
+
+.pubBtn-wrapper {
+  text-align: center;
+}
