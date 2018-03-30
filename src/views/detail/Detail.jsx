@@ -37,8 +37,12 @@ export default class Detail extends React.Component {
           </div>
         )
         break
-      default:
+      case 'ip':
         MainContent = <IPContent />
+        RmdContent = <ProjectsRmd />
+        break
+      default:
+        MainContent = null
         RmdContent = null
         break
     }
