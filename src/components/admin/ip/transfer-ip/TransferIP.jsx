@@ -1,9 +1,10 @@
 import React from 'react'
+// import TransferIPItem from './TransferIPItem/TransferIPItem'
 
 export default class TransferIP extends React.Component {
   render() {
     return (
-      <div>transfer</div>
+      <div>12</div>
     )
   }
 }

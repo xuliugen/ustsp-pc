@@ -1,0 +1,47 @@
+.wrapper{
+  padding: 30px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+}
+.left{}
+.ip-title{
+  font-size: 22px;
+  color: #333;
+}
+.ip-info{
+  padding-top: 27px;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+.info-margin{
+  margin: 0 27px;
+}
+.info-margin-last{
+  margin-right: 27px;
+}
+.right{}
+.release-date{
+  font-size: 14px;
+  color: #8f9ba7;
+  margin-bottom: 20px;
+}
+.see-detail-btn button{
+  float: right;
+  width: 120px;
+  font-size: 16px;
+  color: #666666;
+  padding: 13px 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.inquire-price{
+  font-size: 14px;
+  background-color: #2299d1;
+  padding: 5px 10px 5px 8px;
+  border-radius: 4px;
+  color: #fff;
+  margin-left: 20px;
+}
