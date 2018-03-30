@@ -23,7 +23,6 @@
 
 .info-content {
   width: 100%;
-  display: table;
   margin-top: 40px;
   font-size: 14px;
   color: #666;
@@ -33,7 +32,7 @@
   margin-bottom: 20px;
 }
 
-.info-item span {
+.info-item-title {
   color: #8f9ba7;
   display: inline-block;
   width: 80px;

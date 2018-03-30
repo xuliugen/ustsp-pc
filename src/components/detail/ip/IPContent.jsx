@@ -45,18 +45,18 @@ export default class IPContent extends React.Component {
           <div styleName="info-content">
             <Row>
               <Col span={14}>
-                <div styleName="info-item"><span>申请号</span>CN200810113789.6</div>
-                <div styleName="info-item"><span>公开号</span>IT（计算机相关）</div>
-                <div styleName="info-item"><span>专利权人</span>德信智能手机公司</div>
-                <div styleName="info-item"><span>主分类号</span>H04Q7/32</div>
-                <div styleName="info-item"><span>地址</span>北京市朝阳区酒仙桥北路甲10号D区2楼4-6层</div>
+                <div styleName="info-item"><span styleName="info-item-title">申请号</span>CN200810113789.6</div>
+                <div styleName="info-item"><span styleName="info-item-title">公开号</span>IT（计算机相关）</div>
+                <div styleName="info-item"><span styleName="info-item-title">专利权人</span>德信智能手机公司</div>
+                <div styleName="info-item"><span styleName="info-item-title">主分类号</span>H04Q7/32</div>
+                <div styleName="info-item"><span styleName="info-item-title">地址</span>北京市朝阳区酒仙桥北路甲10号D区2楼4-6层</div>
               </Col>
               <Col span={10}>
-                <div styleName="info-item"><span>申请日</span>2018-03-08</div>
-                <div styleName="info-item"><span>公开日</span>2018-03-16</div>
-                <div styleName="info-item"><span>发明人</span>吴彦祖</div>
-                <div styleName="info-item"><span>分类号</span>H04Q7/32</div>
-                <div styleName="info-item"><span>国省代码</span>中国，CN，北京</div>
+                <div styleName="info-item"><span styleName="info-item-title">申请日</span>2018-03-08</div>
+                <div styleName="info-item"><span styleName="info-item-title">公开日</span>2018-03-16</div>
+                <div styleName="info-item"><span styleName="info-item-title">发明人</span>吴彦祖</div>
+                <div styleName="info-item"><span styleName="info-item-title">分类号</span>H04Q7/32</div>
+                <div styleName="info-item"><span styleName="info-item-title">国省代码</span>中国，CN，北京</div>
               </Col>
             </Row>
           </div>
