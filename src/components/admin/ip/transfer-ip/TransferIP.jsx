@@ -1,5 +1,5 @@
 import React from 'react'
-import TransferIPItem from './TransferIPItem/TransferIPItem'
+// import TransferIPItem from './TransferIPItem/TransferIPItem'
 
 export default class TransferIP extends React.Component {
   render() {
