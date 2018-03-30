@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Upload, Button, Icon, Avatar } from 'antd'
+import { Modal, Upload, Button, Icon, Avatar, Input } from 'antd'
 import './sendDialog.css'
 
 export default class SendDialog extends React.Component {
@@ -62,8 +62,9 @@ export default class SendDialog extends React.Component {
         onCancel={this.handleCancel}
       >
         <div styleName="content">
-          <Avatar size="large" />
-          <p styleName="confirm-text">确认对此人发送评估文件？</p>
+          <Avatar size="large" style={{ marginBottom: '1em' }} />
+          <label styleName="money">预定出售金额: <Input size="small" style={{ width: '100px' }} /></label>
+          <div styleName="confirm-text">确认对此人发送评估文件？</div>
           <div styleName="upload-wrapper">
             <Upload {...props} fileList={this.state.fileList}>
               {this.state.fileList.length === 0 && <Button>

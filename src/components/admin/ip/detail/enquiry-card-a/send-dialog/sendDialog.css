@@ -11,3 +11,8 @@
   width: 200px;
   margin: 0 auto;
 }
+
+.money {
+  display: block;
+  margin-bottom: 12px;
+}
