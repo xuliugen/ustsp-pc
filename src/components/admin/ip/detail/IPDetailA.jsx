@@ -14,7 +14,8 @@ export default class IPDetailA extends React.Component {
   constructor() {
     super()
     this.state = {
-      detail: {}
+      detail: {},
+      partyB: []
     }
   }
 
@@ -22,9 +23,9 @@ export default class IPDetailA extends React.Component {
     try {
       const {data} = await IpApi.fetchPatentDetail(this.props.match.params.id)
       this.setState({
-        detail: data.patentDTO
+        detail: data.patentDTO,
+        partyB: data.patentJointCommands
       })
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
@@ -35,7 +36,7 @@ export default class IPDetailA extends React.Component {
       <div>
         <DetailInfo info={this.state.detail} />
         <div styleName="card-wrapper">
-          <EnquiryCardA />
+          <EnquiryCardA partyB={this.state.partyB} />
           {/* <SignCardA /> */}
           {/* <IPTransferInfoA /> */}
         </div>

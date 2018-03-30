@@ -25,7 +25,7 @@ export default class IPContent extends React.Component {
   handleEnquiry = async () => {
     const userId = this.props.userStore.user.id
     try {
-      await IpApi.applyEnquiry(this.props.match.params.id, userId, 'enquiry')
+      await IpApi.applyEnquiry(this.props.match.params.id, userId, 'apply')
       message.success('询价成功')
       this.setState(({
         enquiryBtn: {

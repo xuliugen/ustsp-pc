@@ -25,10 +25,6 @@ export default class DetailInfo extends React.Component {
                   <div styleName="item-title">申请号</div>
                   <div styleName="item-detail">{info.applicationNumber}</div>
                 </Col>
-                {/* <Col span={4}>
-                  <div styleName="item-title">预设金额</div>
-                  <div styleName="item-detail">¥10,000</div>
-                </Col> */}
                 <Col span={4}>
                   <div styleName="item-title">申请日</div>
                   <div styleName="item-detail">{moment(info.applicationDate).format('YYYY-MM-DD')}</div>
@@ -45,6 +41,10 @@ export default class DetailInfo extends React.Component {
                   <div styleName="item-title">法律状态</div>
                   <div styleName="item-detail">{info.legalStatus}</div>
                 </Col>
+                {/* <Col span={4}>
+                  <div styleName="item-title">预设金额</div>
+                  <div styleName="item-detail">¥10,000</div>
+                </Col> */}
               </Row>
               <Row style={{marginTop: '20px'}}>
                 <Col span={4}>

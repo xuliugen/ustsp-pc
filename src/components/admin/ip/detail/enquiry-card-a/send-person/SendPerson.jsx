@@ -23,14 +23,17 @@ export default class SendPerson extends React.Component {
   }
 
   render() {
+    const { info } = this.props
     return (
       <div styleName="root">
         <div styleName="base">
-          <Avatar src={this.props.registeredPerson} icon="user" />
-          <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, this.props.registeredPerson)}>{this.props.registeredPerson}</span>
+          <Avatar src={info.partyPhoto} icon="user" />
+          <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, info)}>{info.partyName}</span>
         </div>
-        <span styleName="send-time">发送时间：{moment(this.props.registeredPerson).format('YYYY-MM-DD HH:mm:ss')}</span>
-        <Button size="small" type="primary" onClick={this.handleSign}>签订合同</Button>
+        {info.status === 'wonder'
+          ? <Button size="small" type="primary" onClick={this.handleSign}>签订合同</Button>
+          : <span styleName="send-time">发送时间：{moment(info.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
+        }
       </div>
     )
   }

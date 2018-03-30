@@ -32,6 +32,23 @@ export default class EnquiryCardA extends React.Component {
   }
 
   render() {
+    const { partyB } = this.props
+    const applyPersons = []
+    const sendedPersons = []
+    const wonderPerson = []
+    partyB.forEach(person => {
+      switch (person.status) {
+        case 'apply':
+          applyPersons.push(person)
+          break
+        case 'sended':
+          sendedPersons.push(person)
+          break
+        case 'wonder':
+          wonderPerson.push(person)
+          break
+      }
+    })
     return (
       <div styleName="root">
         <div styleName="title">
@@ -39,12 +56,25 @@ export default class EnquiryCardA extends React.Component {
         </div>
         <div styleName="content">
           <div styleName="enquiry">
-            <div styleName="persons-title">询价(10)</div>
-            <EnquiryPerson changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')} />
+            <div styleName="persons-title">询价({applyPersons.length})</div>
+            {applyPersons.map((person, idx) => {
+              return (
+                <EnquiryPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')} info={person} />
+              )
+            })}
           </div>
           <div styleName="send">
-            <div styleName="persons-title">已发送文件(10)</div>
-            <SendPerson changeSignDialogStatus={this.changeDialogStatus.bind(this, 'sign')} />
+            <div styleName="persons-title">已发送文件({wonderPerson.length + sendedPersons.length})</div>
+            {wonderPerson.map((person, idx) => {
+              return (
+                <SendPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'sign')} info={person} />
+              )
+            })}
+            {sendedPersons.map((person, idx) => {
+              return (
+                <SendPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'sign')} info={person} />
+              )
+            })}
           </div>
         </div>
         <SendDialog visible={this.state.sendDialogVisible} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')} />
