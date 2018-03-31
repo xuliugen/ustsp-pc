@@ -35,6 +35,17 @@
   margin-bottom: 20px;
 }
 
+.ip-transfer-detail-btn {
+  float: right;
+  width: 120px;
+  font-size: 16px;
+  color: #666666;
+  padding: 13px 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
 .inquire-price {
   font-size: 14px;
   background-color: #2299d1;

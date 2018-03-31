@@ -2,7 +2,6 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import './TransferIPItem.css'
-import { Button } from 'antd'
 
 @withRouter
 export default class TransferIPItem extends React.Component {
@@ -49,9 +48,9 @@ export default class TransferIPItem extends React.Component {
             <span>发布于 {moment(transferIP.releaseDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
-            <Button type="ghost" size="large" onClick={this.handleSeeDetailClick.bind(this, transferIP.ipID)}>
+            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, transferIP.ipID)}>
               {bntTextGroup[transferIP.transferStatus]}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
