@@ -11,6 +11,8 @@ import DemandApi from './demand/demand'
 import ProjectApi from './demand/project'
 // news module
 import NewsApi from './news/news'
+// ip module
+import IpApi from './ip/ip'
 
 export default axios
 export {
@@ -22,5 +24,6 @@ export {
   DemandApi,
   TalentApi,
   ProjectApi,
-  NewsApi
+  NewsApi,
+  IpApi
 }
