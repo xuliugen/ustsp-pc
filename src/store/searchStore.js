@@ -14,6 +14,12 @@ const proTemplate = {
   type: ''
 }
 
+const patentTemplate = {
+  industryCategory: '',
+  patentType: '',
+  legalStatus: ''
+}
+
 class SearchStore {
   // talent, project, ip
   @observable type = 'talent'
@@ -134,6 +140,13 @@ class SearchStore {
             ...req
           }
           res = await ProjectApi.searchProjects(this.req)
+          break
+        case 'ip':
+          this.req = {
+            ...patentTemplate,
+            ...req
+          }
+          console.log(this.req)
           break
         default:
           break
