@@ -15,7 +15,7 @@ export default class SendDialog extends React.Component {
       this.state = {
         fileList: [{
           uid: -1,
-          name: 'xxx.png',
+          name: '评估文件',
           status: 'done',
           url: this.props.ip.appraisalDocument
         }]

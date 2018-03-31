@@ -6,7 +6,7 @@ import moment from 'moment'
 const Step = Steps.Step
 
 export default class DetailInfo extends React.Component {
-  setstatus(status) {
+  setStatus(status) {
     switch (status) {
       case 'enquiry':
         return 1
