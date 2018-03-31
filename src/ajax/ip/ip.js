@@ -14,5 +14,15 @@ export default {
   // 获取购买专利
   fetchBuyPatents(partyId, page, rows) {
     return ajax.get(`/patent/query/buy/list?partyId=${partyId}&page=${page}&rows=${rows}`)
+  },
+
+  // 搜索
+  searchPatents(body) {
+    return ajax.post('/search/patent/detail', body)
+  },
+
+  // 主页获取专利数据
+  fetchHomePageData() {
+    return ajax.get('/patent/home-page/patent')
   }
 }
