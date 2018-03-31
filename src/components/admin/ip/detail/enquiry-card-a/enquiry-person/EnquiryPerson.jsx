@@ -6,45 +6,46 @@ import moment from 'moment'
 
 @withRouter
 export default class EmquiryPerson extends React.Component {
-  handleSeeDetailClick = (person) => {
+  handleSeeDetailClick = (info) => {
     let type = ''
-    if (person.partyType === 1) {
+    if (info.partyType === 1) {
       type = 'student'
-    } else if (person.partyType === 2) {
+    } else if (info.partyType === 2) {
       type = 'teacher'
-    } else if (person.partyType === 3) {
+    } else if (info.partyType === 3) {
       type = 'company'
     }
-    this.props.history.push(`/${type}/${person.partyId}`)
+    this.props.history.push(`/${type}/${info.partyId}`)
   }
 
-  showUserType() {
-    // let user = null
-    // if (this.props.registeredPerson.partyType === 1) {
-    //   user = '学生'
-    // } else if (this.props.registeredPerson.partyType === 2) {
-    //   user = '教师'
-    // } else if (this.props.registeredPerson.partyType === 3) {
-    //   user = '企业'
-    // }
-    // return user
-    return null
+  showUserType(info) {
+    let type = null
+    if (info.partyType === 1) {
+      type = '学生'
+    } else if (info.partyType === 2) {
+      type = '教师'
+    } else if (info.partyType === 3) {
+      type = '企业'
+    }
+    return type
   }
 
-  handleSend = () => {
+  handleSend = (info) => {
     this.props.changeSendDialogStatus(true)
+    this.props.setPerson(info)
   }
 
   render() {
+    const { info } = this.props
     return (
       <div styleName="root">
         <div styleName="base">
-          <Avatar src={this.props.registeredPerson} icon="user" />
-          <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, this.props.registeredPerson)}>{this.props.registeredPerson}</span>
+          <Avatar src={info.partyPhoto} icon="user" />
+          <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, info)}>{info.partyName}</span>
         </div>
-        <span styleName="title">{this.showUserType()} / {this.props.registeredPerson} / {this.props.registeredPerson}</span>
-        <span styleName="enquiry-time">询价时间：{moment(this.props.registeredPerson).format('YYYY-MM-DD HH:mm:ss')}</span>
-        <Button size="small" type="primary" onClick={this.handleSend.bind(this, this.props.registeredPerson, this.props.registeredPerson)}>发送评估文件</Button>
+        <span styleName="title">{info.partyEducation} / {info.assigneeContactway}</span>
+        <span styleName="enquiry-time">询价时间：{moment(info.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
+        <Button size="small" type="primary" onClick={this.handleSend.bind(this, info)}>发送评估文件</Button>
       </div>
     )
   }

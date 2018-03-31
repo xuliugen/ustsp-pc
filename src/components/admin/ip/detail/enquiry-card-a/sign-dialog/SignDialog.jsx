@@ -1,10 +1,23 @@
 import React from 'react'
-import { Modal, Avatar } from 'antd'
+import { Modal, Avatar, message } from 'antd'
 import './signDialog.css'
+import {IpApi} from 'src/ajax'
+import { withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
 
+@withRouter
+@inject('userStore')
+@observer
 export default class SignDialog extends React.Component {
-  handleOk = () => {
-    this.props.changeSignDialogStatus(false)
+  handleOk = async () => {
+    try {
+      await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'sign')
+      message.success('签订成功')
+      this.props.dispatch()
+      this.props.changeSignDialogStatus(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   handleCancel = () => {

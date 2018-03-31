@@ -1,11 +1,15 @@
 import React from 'react'
-import { Button, Row, Col, Divider } from 'antd'
+import { Button, Row, Col, Divider, message } from 'antd'
 import { withRouter } from 'react-router-dom'
 import PartyInfo from './party-info/PartyInfo'
 import IPTransferInfo from './IPTransferInfo/IPTransferInfo'
 import './ipContent.css'
+import { IpApi } from 'src/ajax'
+import { inject, observer } from 'mobx-react'
 
 @withRouter
+@inject('userStore')
+@observer
 export default class IPContent extends React.Component {
   constructor() {
     super()
@@ -18,13 +22,20 @@ export default class IPContent extends React.Component {
     }
   }
 
-  handleEnquiry = () => {
-    this.setState(({
-      enquiryBtn: {
-        disable: false,
-        msg: '询价结束'
-      }
-    }))
+  handleEnquiry = async () => {
+    const userId = this.props.userStore.user.id
+    try {
+      await IpApi.changePatentStatus(this.props.match.params.id, userId, 'apply')
+      message.success('询价成功')
+      this.setState(({
+        enquiryBtn: {
+          disable: false,
+          msg: '已询价'
+        }
+      }))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {

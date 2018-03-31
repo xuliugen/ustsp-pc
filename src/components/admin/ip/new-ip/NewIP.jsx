@@ -322,7 +322,7 @@ export default class NewIP extends React.Component {
                     // valuePropName: 'fileList',
                     getValueFromEvent: this.normFile
                   })(
-                    <Dragger {...uploadProps} action={`${window.config.API_ORIGIN}/upload/patent?fileType=evalute`}>
+                    <Dragger {...uploadProps} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
                       <p className="ant-upload-drag-icon">
                         <Icon type="inbox" />
                       </p>
