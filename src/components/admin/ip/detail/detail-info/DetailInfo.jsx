@@ -7,7 +7,7 @@ const Step = Steps.Step
 
 export default class DetailInfo extends React.Component {
   render() {
-    const { info } = this.props
+    const { info = {} } = this.props
     return (
       <div>
         <div styleName="detail-title">
