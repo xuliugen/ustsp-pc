@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
-import './TransferIPItem.css'
+import './IPItem.css'
 
 @withRouter
-export default class TransferIPItem extends React.Component {
+export default class IPItem extends React.Component {
   handleSeeDetailClick(id) {
     this.props.history.push(`${this.props.match.url}/${id}`)
   }
