@@ -1,5 +1,6 @@
 import React from 'react'
 import './ipDetail.css'
+// import IPTransferInfoA from './IPTransferInfo/IPTransferInfoCardA'
 
 import DetailInfo from './detail-info/DetailInfo'
 import EnquiryCardA from './enquiry-card-a/EnquiryCardA'
