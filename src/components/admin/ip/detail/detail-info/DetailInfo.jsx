@@ -6,6 +6,19 @@ import moment from 'moment'
 const Step = Steps.Step
 
 export default class DetailInfo extends React.Component {
+  setstatus(status) {
+    switch (status) {
+      case 'enquiry':
+        return 1
+      case 'sign':
+        return 2
+      case 'publicity':
+        return 3
+      default:
+        return null
+    }
+  }
+
   render() {
     const { info = {} } = this.props
     return (
@@ -78,7 +91,7 @@ export default class DetailInfo extends React.Component {
             <span>转让进度</span>
           </div>
           <div styleName="progress">
-            <Steps progressDot current={info.status}>
+            <Steps progressDot current={this.setstatus(this.props.status)}>
               <Step title="审核" />
               <Step title="询价中" />
               <Step title="签订合同" />

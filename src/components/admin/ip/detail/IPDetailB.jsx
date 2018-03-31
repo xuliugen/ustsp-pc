@@ -14,7 +14,8 @@ export default class IPDetailB extends React.Component {
     super()
     this.state = {
       detail: {},
-      partyB: {}
+      partyB: {},
+      status: null
     }
   }
 
@@ -26,7 +27,8 @@ export default class IPDetailB extends React.Component {
       })[0]
       this.setState({
         detail: data.patentDTO,
-        partyB: partyB || {}
+        partyB: partyB || {},
+        status: data.status
       })
     } catch (error) {
       console.log(error)
@@ -51,7 +53,7 @@ export default class IPDetailB extends React.Component {
   render() {
     return (
       <div>
-        <DetailInfo info={this.state.detail} />
+        <DetailInfo info={this.state.detail} status={this.state.status} />
         <div styleName="card-wrapper">
           {this.getCard()}
         </div>

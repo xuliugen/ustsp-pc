@@ -87,12 +87,12 @@ export default class EnquiryCardA extends React.Component {
             <div styleName="persons-title">已发送文件({wonderPerson.length + sendedPersons.length})</div>
             {wonderPerson.map((person, idx) => {
               return (
-                <SendPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'sign')} info={person} />
+                <SendPerson key={idx} changeSignDialogStatus={this.changeDialogStatus.bind(this, 'sign')} info={person} />
               )
             })}
             {sendedPersons.map((person, idx) => {
               return (
-                <SendPerson key={idx} changeSendDialogStatus={this.changeDialogStatus.bind(this, 'sign')} info={person} />
+                <SendPerson key={idx} info={person} />
               )
             })}
           </div>
@@ -101,8 +101,12 @@ export default class EnquiryCardA extends React.Component {
           visible={this.state.sendDialogVisible}
           changeSendDialogStatus={this.changeDialogStatus.bind(this, 'send')}
           ip={this.props.ip}
-          person={this.state.currentApplyPerson} />
-        <SignDialog visible={this.state.signDialogVisible} changeSignDialogStatus={this.changeDialogStatus.bind(this, 'sign')} />
+          person={this.state.currentApplyPerson}
+          dispatch={this.props.dispatch} />
+        <SignDialog
+          visible={this.state.signDialogVisible}
+          changeSignDialogStatus={this.changeDialogStatus.bind(this, 'sign')}
+          dispatch={this.props.dispatch} />
       </div>
     )
   }

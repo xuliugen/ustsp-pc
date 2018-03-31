@@ -1,10 +1,12 @@
 import React from 'react'
 import { Modal, Upload, Button, Icon, Avatar, Input, Form, message } from 'antd'
 import './sendDialog.css'
+import { withRouter } from 'react-router-dom'
 import { IpApi } from 'src/ajax'
 
 const FormItem = Form.Item
 
+@withRouter
 @Form.create()
 export default class SendDialog extends React.Component {
   constructor(props) {
@@ -60,15 +62,16 @@ export default class SendDialog extends React.Component {
       if (err) {
         message.error('请填写或上传')
       } else {
-        await IpApi.sendEvaluateDoc({
-          patentId: this.props.ip.id,
-          partyId: this.props.person.partyId,
-          money: values.money,
-          docUrl: values.docUrl
-        })
+        try {
+          await IpApi.sendEvaluateDoc(values.docUrl, values.money, this.props.person.partyId, this.props.ip.id)
+          message.success('发送评估文件成功')
+          this.props.dispatch()
+          this.props.changeSendDialogStatus(false)
+        } catch (error) {
+          console.log(error)
+        }
       }
     })
-    // this.props.changeSendDialogStatus(false)
   }
 
   handleCancel = () => {
@@ -108,6 +111,7 @@ export default class SendDialog extends React.Component {
         visible={this.props.visible}
         onOk={this.handleOk}
         onCancel={this.handleCancel}
+        destroyOnClose="true"
       >
         <div styleName="content">
           <Avatar size="large" style={{ marginBottom: '1em' }} src={avatarUrl} />
@@ -126,8 +130,8 @@ export default class SendDialog extends React.Component {
               {getFieldDecorator('docUrl', {
                 // valuePropName: 'fileList',
                 getValueFromEvent: this.normFile,
-                rules: [{ required: true, message: '请上传' }]
-                // initialValue: this.state.file
+                rules: [{ required: true, message: '请上传' }],
+                initialValue: this.state.fileList[0] ? this.state.fileList[0].url : null
               })(
                 <Upload {...props} >
                   {this.state.fileList.length < 1 && <Button><Icon type="upload" /> upload</Button>}
