@@ -5,51 +5,48 @@ import './IPItem.css'
 
 @withRouter
 export default class IPItem extends React.Component {
-  handleSeeDetailClick(id) {
-    this.props.history.push(`${this.props.match.url}/${id}`)
+  handleSeeDetailClick() {
+    this.props.history.push(`${this.props.match.url}/${this.props.patent.id}`)
   }
 
-  setStatusStyle(status) {
-    const statusStyleGroup = ['inquire-price']
-    return statusStyleGroup[status]
+  getStatusName(status) {
+    switch (status) {
+      case 0:
+        return '审核'
+      case 1:
+        return '询价'
+      case 2:
+        return '签订合同'
+      case 3:
+        return '公示'
+      default:
+        return ''
+    }
   }
 
   render() {
-    const transferIP = {
-      ipName: '基于移动视窗平台的多卡手机网络连接选择方法及装置',
-      ipID: 'CN200810113789.6',
-      ipClassID: 'H04Q7/32',
-      applyDate: (new Date()).toLocaleDateString(),
-      legalStatus: 0,
-      transferStatus: 0,
-      releaseDate: (new Date()).toLocaleDateString()
-    } // 暂时代替props
-    const transferStatusGroup = ['询价中'] // 目前不知道专利转让状态集合，后面修改
-    const legalStatusGroup = ['专利权维持'] // 同上
-    const bntTextGroup = ['查看详细'] // 同上
-    const statusStyle = this.setStatusStyle(transferIP.transferStatus)
-
+    const { patent } = this.props
     return (
       <div styleName="wrapper">
         <div styleName="left">
           <div styleName="ip-title">
-            {transferIP.ipName}
-            <span styleName={`${statusStyle}`}>{transferStatusGroup[transferIP.transferStatus]}</span>
+            {patent.patentName}
+            <span styleName="inquire-price">{this.getStatusName(patent.status)}</span>
           </div>
           <div styleName="ip-info">
-            <span>申请号：{transferIP.ipID}</span>
-            <span styleName="info-margin">主分类号：{transferIP.ipClassID}</span>
-            <span styleName="info-margin-last">申请日：{moment(transferIP.applyDate).format('YYYY-MM-DD')}</span>
-            <span>法律状态：{legalStatusGroup[transferIP.legalStatus]}</span>
+            <span>申请号：{patent.applicationNumber}</span>
+            <span styleName="info-margin">主分类号：{patent.classificationNumber}</span>
+            <span styleName="info-margin-last">申请日：{moment(patent.applicationDate).format('YYYY-MM-DD')}</span>
+            <span>法律状态：{patent.legalStatus}</span>
           </div>
         </div>
         <div styleName="right">
           <div styleName="release-date">
-            <span>发布于 {moment(transferIP.releaseDate).format('YYYY-MM-DD')}</span>
+            <span>发布于 {moment(patent.pulicationDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
-            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, transferIP.ipID)}>
-              {bntTextGroup[transferIP.transferStatus]}
+            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this)}>
+              查看详情
             </button>
           </div>
         </div>
