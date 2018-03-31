@@ -3,7 +3,8 @@ import { observer, inject } from 'mobx-react'
 import './search.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd } from 'components/common/'
-import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResult } from 'components/search'
+import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResult,
+  IPResult, PatentFilterBox } from 'components/search'
 
 @inject('searchStore')
 @observer
@@ -35,6 +36,14 @@ export default class Search extends React.Component {
         rmd = (
           <div>
             <TalentsRmd />
+          </div>
+        )
+        break
+      case 'ip':
+        searchPanel = (
+          <div>
+            <PatentFilterBox />
+            <IPResult />
           </div>
         )
         break
