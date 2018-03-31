@@ -15,7 +15,7 @@ const proTemplate = {
 }
 
 class SearchStore {
-  // talent, project
+  // talent, project, ip
   @observable type = 'talent'
   @observable content = ''
   @observable conditions = []
