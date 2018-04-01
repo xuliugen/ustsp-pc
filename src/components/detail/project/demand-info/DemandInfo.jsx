@@ -95,7 +95,13 @@ export default class DemandInfo extends React.Component {
       })
 
       // 报名状态
-      if (data.dockingStatus !== 0) this.setState({ signUpBtn: { msg: '已报名', loading: false, disable: true } })
+      if (projectInfo.status >= 2) {
+        this.setState({ signUpBtn: { msg: '报名结束', loading: false, disable: true } })
+      } else if (this.props.userStore.user.id === projectInfo.ownerId) {
+        this.setState({ signUpBtn: { msg: '报名中', loading: false, disable: true } })
+      } else if (data.dockingStatus !== 0) {
+        this.setState({ signUpBtn: { msg: '已报名', loading: false, disable: true } })
+      }
 
       // 关注状态
       if (data.followStatus !== 0) this.setState({ followBtn: { msg: '已关注', loading: false, disable: true } })
@@ -105,10 +111,6 @@ export default class DemandInfo extends React.Component {
   }
 
   handleSighUp = async () => {
-    if (this.props.userStore.user.id === this.state.ownerInfo.ownerId) {
-      message.warning('发布者不可以报名')
-      return
-    }
     if (this.props.userStore.user.userType === 3) {
       message.warning('企业暂时不可以报名')
       return
@@ -145,10 +147,10 @@ export default class DemandInfo extends React.Component {
   }
 
   handleFollow = async () => {
-    if (this.props.userStore.user.id === this.state.ownerInfo.ownerId) {
-      message.warning('发布者不可以关注')
-      return
-    }
+    // if (this.props.userStore.user.id === this.state.ownerInfo.ownerId) {
+    //   message.warning('发布者不可以关注')
+    //   return
+    // }
     try {
       const user = this.props.userStore.user
       const follow = {
