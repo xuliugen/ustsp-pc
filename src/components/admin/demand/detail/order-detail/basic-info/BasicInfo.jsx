@@ -2,12 +2,13 @@ import React from 'react'
 import './basicInfo.css'
 import moment from 'moment'
 import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
 
 @inject('demandStore')
 @observer
 export default class OrderBasicInfo extends React.Component {
   render() {
-    const demand = this.props.demandStore.demand
+    const { demand, projectId } = this.props.demandStore
     const PartyBContactInfo = (demand.PartyBContactInfo && demand.PartyBContactInfo.length !== 0)
       ? demand.PartyBContactInfo.map((item, idx) => {
         return (
@@ -23,7 +24,9 @@ export default class OrderBasicInfo extends React.Component {
           <span>项目名</span>
         </div>
         <div styleName="basic-info-content">
-          <div styleName="demand-title">{demand.projectName}</div>
+          <Link to={`/project/${projectId}`}>
+            <div styleName="demand-title">{demand.projectName}</div>
+          </Link>
           <ul styleName="demand-content-items">
             <li>
               <div styleName="item-title">项目类型</div>

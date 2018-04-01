@@ -12,7 +12,7 @@ export default class PublishedDemand extends React.Component {
     super(props)
     this.state = {
       demands: [],
-      showDot: [false, true, false, false, true, false, false],
+      showDot: [false, false, false, false, false, false, false],
       pagination: { total: 8, current: 1, currentPageSize: 8 },
       status: ''
     }

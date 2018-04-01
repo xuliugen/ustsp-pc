@@ -11,7 +11,6 @@ import { inject, observer } from 'mobx-react'
 export default class SignDialog extends React.Component {
   handleOk = async () => {
     try {
-      await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'sign')
       await IpApi.changePatentStatus(this.props.match.params.id, this.props.person.partyId, 'sign')
       message.success('签订成功')
       this.props.dispatch()
