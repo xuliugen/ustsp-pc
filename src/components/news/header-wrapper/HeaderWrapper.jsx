@@ -24,7 +24,7 @@ export default class NewsHeaderWrapper extends React.Component {
             </div>
             <div styleName="other">
               <span styleName="view">
-                <img src={iconEye} />
+                <img src={iconEye} style={{marginRight: '5px'}} />
                 {this.props.view}
               </span>
               <span>

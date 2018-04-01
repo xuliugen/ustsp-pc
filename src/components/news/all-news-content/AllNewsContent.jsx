@@ -9,7 +9,7 @@ export default class AllNewsContent extends React.Component {
     super()
     this.state = {
       news: [],
-      type: '项目动态',
+      type: '学生动态',
       pagination: { total: null, current: 1, pageSize: 12 }
     }
   }
@@ -48,7 +48,7 @@ export default class AllNewsContent extends React.Component {
   }
 
   setType = (item) => {
-    if (item === '项目动态') {
+    if (item === '学生动态') {
       return '1'
     } else if (item === '老师动态') {
       return '2'
@@ -60,7 +60,7 @@ export default class AllNewsContent extends React.Component {
   }
 
   render() {
-    const types = ['项目动态', '老师动态', '企业动态']
+    const types = ['学生动态', '老师动态', '企业动态']
     return (
       <div styleName="news-list-wrapper">
         <div styleName="types">
