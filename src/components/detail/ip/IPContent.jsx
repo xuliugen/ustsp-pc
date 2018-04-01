@@ -59,6 +59,12 @@ export default class IPContent extends React.Component {
         this.setStates(data, true, '询价中')
       } else if (data.surrendereeStatus >= 2) {
         this.setStates(data, true, '已询价')
+      } else {
+        this.setState({
+          patent: data.patent,
+          assignor: data.assignor,
+          surrenderee: data.surrenderee
+        })
       }
     } catch (err) {
       console.error(err)
@@ -66,7 +72,7 @@ export default class IPContent extends React.Component {
   }
 
   setStates = (data, disable, msg) => {
-    this.setState(({
+    this.setState({
       enquiryBtn: {
         disable: disable,
         msg: msg
@@ -74,7 +80,7 @@ export default class IPContent extends React.Component {
       patent: data.patent,
       assignor: data.assignor,
       surrenderee: data.surrenderee
-    }))
+    })
   }
 
   render() {
