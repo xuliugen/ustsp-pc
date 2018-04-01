@@ -33,22 +33,16 @@ export default class TransferInfo extends React.Component {
       .replace(/(零.)+/g, '零')
       .replace(/^整$/, '零元整')
   }
+
   render() {
     const info = this.props.info
     return (
       <div>
         <ul>
-          <li styleName="info-item">专利名称：{info.ipName}</li>
-          <li styleName="info-item">专利号：{info.ipID}</li>
-          <li styleName="info-item">发明人：{info.owners.map((item, idx) => {
-            return (
-              idx === info.owners.length - 1 ? <span key={idx}>{item}</span> : <span key={idx}>{item}，</span>
-            )
-          })}</li>
-          <li styleName="info-item">交易方式：{info.transferMethod}</li>
-          <li styleName="info-item">协议定价：{info.price}万元 (大写：{this.priceDigitUpper(info.price)})</li>
-          <li styleName="info-item">评估机构：{info.evaluateCompany}</li>
-          <li styleName="info-item">评估价格：{info.evaluatePrice}万元 (大写：{this.priceDigitUpper(info.evaluatePrice)})</li>
+          <li styleName="info-item">专利名称：{info.patentName}</li>
+          <li styleName="info-item">专利号：{info.applicationNumber}</li>
+          <li styleName="info-item">发明人：{info.inventor}</li>
+          <li styleName="info-item">协议定价：{info.money}万元 (大写：{this.priceDigitUpper(info.money)})</li>
         </ul>
       </div>
     )
