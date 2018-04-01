@@ -32,7 +32,7 @@ export default class IPContent extends React.Component {
       message.success('询价成功')
       this.setState(({
         enquiryBtn: {
-          disable: false,
+          disable: true,
           msg: '已询价'
         }
       }))
@@ -51,11 +51,30 @@ export default class IPContent extends React.Component {
 
   async getPatentDetail(id) {
     try {
-      const { data } = await IpApi.fetchPatentAllDetail(this.props.match.params.id)
-      this.setState(data)
+      const { data } = await IpApi.fetchPatentAllDetail(this.props.match.params.id, this.props.userStore.user.id)
+      const status = data.patent.status
+      if (status >= 5) {
+        this.setStates(data, true, '询价结束')
+      } else if (this.props.userStore.user.id === data.patent.ownerId) {
+        this.setStates(data, true, '询价中')
+      } else if (data.surrendereeStatus >= 2) {
+        this.setStates(data, true, '已询价')
+      }
     } catch (err) {
       console.error(err)
     }
+  }
+
+  setStates = (data, disable, msg) => {
+    this.setState(({
+      enquiryBtn: {
+        disable: disable,
+        msg: msg
+      },
+      patent: data.patent,
+      assignor: data.assignor,
+      surrenderee: data.surrenderee
+    }))
   }
 
   render() {
@@ -118,7 +137,7 @@ export default class IPContent extends React.Component {
           {(surrenderee && surrenderee.userInfo) ? (
             <IPTransferInfo patent={patent} />
           ) : (
-            <div style={{fontWeight: '600'}}>转让尚未完成</div>
+            <div style={{ fontWeight: '600' }}>转让尚未完成</div>
           )}
         </div>
         <Divider><span styleName="divider">受让方信息</span></Divider>
@@ -126,7 +145,7 @@ export default class IPContent extends React.Component {
           {(surrenderee && surrenderee.userInfo) ? (
             <PartyInfo info={surrenderee} />
           ) : (
-            <div style={{fontWeight: '600'}}>转让尚未完成</div>
+            <div style={{ fontWeight: '600' }}>转让尚未完成</div>
           )}
         </div>
       </div >
