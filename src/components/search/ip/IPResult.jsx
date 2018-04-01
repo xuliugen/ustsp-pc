@@ -7,6 +7,22 @@ import IPItem from './ip-item/IPItem'
 @inject('searchStore')
 @observer
 export default class IPResult extends React.Component {
+  componentDidMount() {
+    this.props.searchStore.dispatchSearch()
+  }
+
+  handlePagiChange = (page, pageSize) => {
+    this.props.searchStore.setCurrentPage(page)
+    this.props.searchStore.dispatchSearch()
+    this.setState((prevState) => ({
+      pagination: {
+        total: prevState.pagination.total,
+        current: page,
+        currentPageSize: pageSize
+      }
+    }))
+  }
+
   render() {
     const { currentPage, result, pageSize } = this.props.searchStore
     const total = result.totalNum
@@ -18,7 +34,6 @@ export default class IPResult extends React.Component {
         {result.data.map((patent, idx) => {
           return <IPItem key={idx} patent={patent} />
         })}
-        <IPItem />
         <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
       </div>
     )

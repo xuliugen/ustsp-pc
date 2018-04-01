@@ -27,7 +27,7 @@ export default class ProjectResult extends React.Component {
     }))
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.searchStore.dispatchSearch()
   }
 
