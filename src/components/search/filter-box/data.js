@@ -111,6 +111,96 @@ const Publisher = {
   ]
 }
 
+const IndustryCategory = {
+  category: '行业分类',
+  field: 'industryCategory',
+  items: [
+    {
+      label: '不限',
+      value: ''
+    }, {
+      label: 'A：人类生活需要',
+      value: 'A：人类生活需要'
+    }, {
+      label: 'B：作业运输',
+      value: 'B：作业运输'
+    }, {
+      label: 'C：化学，冶金',
+      value: 'C：化学，冶金'
+    }, {
+      label: 'D：纺织和造纸',
+      value: 'D：纺织和造纸'
+    }, {
+      label: 'E：固定构造',
+      value: 'E：固定构造'
+    }, {
+      label: 'F：机械工程，照明，加热，武器，爆破',
+      value: 'F：机械工程，照明，加热，武器，爆破'
+    }, {
+      label: 'G：物理',
+      value: 'G：物理'
+    }, {
+      label: 'H：电学',
+      value: 'H：电学'
+    }, {
+      label: '其他',
+      value: '其他'
+    }
+  ]
+}
+
+const PatentType = {
+  category: '专利类型',
+  field: 'patentType',
+  items: [
+    {
+      label: '不限',
+      value: ''
+    }, {
+      label: '发明',
+      value: '发明'
+    }, {
+      label: '实用新型',
+      value: '实用新型'
+    }, {
+      label: '外观设计',
+      value: '外观设计'
+    }, {
+      label: '其他',
+      value: '其他'
+    }
+  ]
+}
+
+const LegalStatus = {
+  category: '法律状态',
+  field: 'legalStatus',
+  items: [
+    {
+      label: '不限',
+      value: ''
+    }, {
+      label: '等年登印费',
+      value: '等年登印费'
+    }, {
+      label: '等待恢复',
+      value: '等待恢复'
+    }, {
+      label: '专利权维持',
+      value: '专利权维持'
+    }, {
+      label: '权利终止等恢复',
+      value: '权利终止等恢复'
+    }, {
+      label: '权利失效',
+      value: '权利失效'
+    }, {
+      label: '其他',
+      value: '其他'
+    }
+  ]
+}
+
 export {
   Major,
   Title,
@@ -119,5 +209,8 @@ export {
   Type,
   Subject,
   Oriented,
-  Publisher
+  Publisher,
+  IndustryCategory,
+  PatentType,
+  LegalStatus
 }

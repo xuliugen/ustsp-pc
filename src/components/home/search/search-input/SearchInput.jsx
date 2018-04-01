@@ -78,7 +78,7 @@ export default class SearchInput extends React.Component<{}, State> {
           this.props.searchStore.setType('project')
           break
         case '成果':
-          this.props.searchStore.setType('achievement')
+          this.props.searchStore.setType('ip')
           break
       }
     } else {

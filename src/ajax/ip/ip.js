@@ -35,5 +35,15 @@ export default {
   // 专利详情界面获取详情
   fetchPatentAllDetail(patentId) {
     return ajax.get(`patent/query/enquiry?patentId=${patentId}`)
+  },
+
+  // 搜索
+  searchPatents(body) {
+    return ajax.post('/search/patent/detail', body)
+  },
+
+  // 主页获取专利数据
+  fetchHomePageData() {
+    return ajax.get('/patent/home-page/patent')
   }
 }

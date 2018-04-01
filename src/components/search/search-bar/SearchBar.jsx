@@ -13,8 +13,8 @@ const types = [{
   type: 'project',
   text: '项目对接'
 }, {
-  type: 'achievement',
-  text: '成果转化'
+  type: 'ip',
+  text: '知识产权'
 }, {
   type: 'info',
   text: '信息搜索'

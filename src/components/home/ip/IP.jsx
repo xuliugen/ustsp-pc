@@ -3,10 +3,7 @@ import React from 'react'
 import './ip.css'
 import IpHeader from './header/IpHeader'
 import IpCard from './card/Card'
-import avatar1 from 'src/assets/avatar1.png'
-import avatar2 from 'src/assets/avatar2.png'
-import avatar3 from 'src/assets/avatar3.png'
-import avatar4 from 'src/assets/avatar4.png'
+import { IpApi } from 'src/ajax'
 
 type IPObj = {
   title: string,
@@ -21,8 +18,6 @@ type STATE = {
   ip: Array<IPObj>
 }
 
-const avatars = [avatar1, avatar2, avatar3, avatar4]
-
 export default class IP extends React.Component<{}, STATE> {
   constructor() {
     super()
@@ -36,6 +31,17 @@ export default class IP extends React.Component<{}, STATE> {
     }
   }
 
+  async componentDidMount() {
+    try {
+      const { data } = await IpApi.fetchHomePageData()
+      this.setState({
+        ip: data
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   render() {
     return (
       <div styleName="ip">
@@ -45,7 +51,7 @@ export default class IP extends React.Component<{}, STATE> {
         <div styleName="ip-card-wrapper">
           {this.state.ip.map((item, idx) => {
             return (
-              <IpCard ip={item} key={idx} avatar={avatars[idx]} />
+              <IpCard ip={item} key={idx} />
             )
           })}
         </div>

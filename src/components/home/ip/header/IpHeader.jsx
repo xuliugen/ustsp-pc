@@ -11,7 +11,7 @@ export default class IpHeader extends React.Component<{}> {
     return (
       <div styleName="ip-title">
         <span>知识产权库</span>
-        <Link to="/search" styleName="more" onClick={() => { this.props.searchStore.setType('achievement') }}>更多</Link>
+        <Link to="/search" styleName="more" onClick={() => { this.props.searchStore.setType('ip') }}>更多</Link>
       </div>
     )
   }
