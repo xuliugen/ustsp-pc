@@ -27,6 +27,12 @@ export default class PubNewsContent extends React.Component {
       initialContent: this.state.htmlContent,
       onHTMLChange: this.handleHTMLChange,
       onRawChange: this.handleRawChange,
+      controls: [
+        'undo', 'redo', 'split', 'font-size', 'font-family', 'line-height', 'letter-spacing',
+        'indent', 'text-color', 'bold', 'italic', 'underline', 'strike-through',
+        'superscript', 'subscript', 'remove-styles', 'text-align', 'split', 'headings', 'list_ul',
+        'list_ol', 'blockquote', 'code', 'split', 'link', 'split', 'hr', 'split', 'media', 'clear'
+      ],
       extendControls: [
         {
           type: 'button',
