@@ -16,7 +16,7 @@ export default class DemandItem extends React.Component<{}> {
       <div styleName="demand-item">
         <div styleName="left">
           <div styleName="demand-title">
-            {this.props.demand.projectName}
+            <span style={{ cursor: 'pointer' }} onClick={this.handleSeeDetailClick.bind(this, this.props.demand.id)}>{this.props.demand.projectName}</span>
             <span styleName="demand-status" style={{ backgroundColor: styleList.backgroundColor, color: styleList.color, border: styleList.border }}>{styleList.status}</span>
           </div>
           <div styleName="demand-base">
