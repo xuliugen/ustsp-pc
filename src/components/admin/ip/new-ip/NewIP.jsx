@@ -168,7 +168,7 @@ export default class NewIP extends React.Component {
                       <Option value="等待恢复">等待恢复</Option>
                       <Option value="专利权维持">专利权维持</Option>
                       <Option value="等年费滞纳金">等年费滞纳金</Option>
-                      <Option value="权利终止，等恢复">权利终止，等恢复</Option>
+                      <Option value="权利终止，等恢复">权利终止等恢复</Option>
                       <Option value="权利失效">权利失效</Option>
                     </Select>
                   )}

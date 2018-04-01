@@ -22,8 +22,8 @@ const optionList = [
     value: 'project'
   },
   {
-    label: '成果',
-    value: 'achievement'
+    label: '专利',
+    value: 'ip'
   },
   {
     label: '信息',
