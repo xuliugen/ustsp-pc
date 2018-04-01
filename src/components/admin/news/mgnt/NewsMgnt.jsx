@@ -87,7 +87,7 @@ export default class NewsMgnt extends React.Component {
             const res = await NewsApi.deleteOneNews(this.props.userStore.user.id, ids[0])
             if (res.data === 1) {
               message.success('删除成功')
-              this.setAfterDelete(idxs, num)
+              this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
             } else {
               message.error('删除失败')
             }
@@ -103,7 +103,7 @@ export default class NewsMgnt extends React.Component {
             const res = await NewsApi.deleteSomeNews(dynamics)
             if (res.data === num) {
               message.success('删除成功')
-              this.setAfterDelete(idxs, num)
+              this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
             } else {
               message.error('删除失败')
             }
@@ -149,20 +149,6 @@ export default class NewsMgnt extends React.Component {
     } else {
       message.error('Error')
     }
-  }
-
-  setAfterDelete = (idxs, num) => {
-    idxs.forEach((item, idx) => {
-      this.state.news.splice(item - idx, 1)
-      this.state.checkedList.splice(item - idx, 1)
-    })
-    let changedNews = this.state.news
-    let changedList = this.state.checkedList
-    this.setState(prev => ({
-      news: changedNews,
-      checkedList: changedList,
-      pagination: {...prev.pagination, current: 1, total: prev.pagination.total - num}
-    }))
   }
 
   render() {
