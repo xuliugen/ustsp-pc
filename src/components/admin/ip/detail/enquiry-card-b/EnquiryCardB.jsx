@@ -7,14 +7,14 @@ import { withRouter } from 'react-router-dom'
 
 export default class EnquiryCardB extends React.Component {
   render() {
-    const { partyB, patent } = this.props
+    const { partyB, patent, dispatch } = this.props
     let content = null
     switch (partyB.status) {
       case 'apply':
         content = <Enquiry />
         break
       case 'sended':
-        content = <Purchase partyB={partyB} patent={patent} />
+        content = <Purchase partyB={partyB} patent={patent} dispatch={dispatch} />
         break
       case 'wonder':
         content = <div>甲方已收到购买意愿</div>
@@ -44,6 +44,7 @@ class Purchase extends React.Component {
     try {
       await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'wonder')
       message.success('已发起购买请求')
+      this.props.dispatch()
     } catch (err) {
       console.log(err)
       message.error('出了点问题')

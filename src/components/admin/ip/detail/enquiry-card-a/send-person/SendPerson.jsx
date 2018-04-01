@@ -18,8 +18,9 @@ export default class SendPerson extends React.Component {
     this.props.history.push(`/${type}/${person.partyId}`)
   }
 
-  handleSign = () => {
+  handleSign = (info) => {
     this.props.changeSignDialogStatus(true)
+    this.props.setPerson(info)
   }
 
   render() {
@@ -31,7 +32,7 @@ export default class SendPerson extends React.Component {
           <span styleName="name" onClick={this.handleSeeDetailClick.bind(this, info)}>{info.partyName}</span>
         </div>
         {info.status === 'wonder'
-          ? <Button size="small" type="primary" onClick={this.handleSign}>签订合同</Button>
+          ? <Button size="small" type="primary" onClick={this.handleSign.bind(this, info)}>签订合同</Button>
           : <span styleName="send-time">发送时间：{moment(info.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
         }
       </div>

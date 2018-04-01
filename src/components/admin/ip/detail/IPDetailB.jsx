@@ -6,6 +6,7 @@ import { observer, inject } from 'mobx-react'
 import DetailInfo from './detail-info/DetailInfo'
 import EnquiryCardB from './enquiry-card-b/EnquiryCardB'
 import SignCardB from './sign-card-b/SignCardB'
+import TransferInfo from './IPTransferInfo/IPTransferInfoCardA'
 
 @inject('userStore')
 @observer
@@ -17,17 +18,21 @@ export default class IPDetailB extends React.Component {
       partyB: {},
       status: null
     }
+    this.dispatchPatentDetail = this.dispatchPatentDetail.bind(this)
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.dispatchPatentDetail()
+  }
+
+  async dispatchPatentDetail() {
     try {
       const { data } = await IpApi.fetchPatentDetail(this.props.match.params.id)
-      const partyB = data.patentJointCommands.filter(person => {
-        return person.partyId === this.props.userStore.user.id
-      })[0]
       this.setState({
         detail: data.patentDTO,
-        partyB: partyB || {},
+        partyB: data.patentJointCommands.filter((item) => {
+          return item.partyId === this.props.userStore.user.id
+        })[0] || {},
         status: data.status
       })
     } catch (error) {
@@ -36,15 +41,15 @@ export default class IPDetailB extends React.Component {
   }
 
   getCard() {
-    switch (this.state.detail.status) {
+    switch (this.state.status) {
       case 0:
         return null
-      case 1:
-        return <EnquiryCardB patent={this.state.detail} partyB={this.state.partyB} />
-      case 2:
-        return <SignCardB />
-      case 3:
-        return null
+      case 'enquiry':
+        return <EnquiryCardB patent={this.state.detail} partyB={this.state.partyB} dispatch={this.dispatchPatentDetail} />
+      case 'sign':
+        return <SignCardB patent={this.state.detail} dispatch={this.dispatchPatentDetail} />
+      case 'publicity':
+        return <TransferInfo patent={this.state.detail} />
       default:
         return null
     }

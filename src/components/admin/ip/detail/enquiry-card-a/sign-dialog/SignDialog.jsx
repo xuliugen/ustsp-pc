@@ -12,6 +12,7 @@ export default class SignDialog extends React.Component {
   handleOk = async () => {
     try {
       await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'sign')
+      await IpApi.changePatentStatus(this.props.match.params.id, this.props.person.partyId, 'sign')
       message.success('签订成功')
       this.props.dispatch()
       this.props.changeSignDialogStatus(false)
@@ -33,7 +34,7 @@ export default class SignDialog extends React.Component {
         onCancel={this.handleCancel}
       >
         <div styleName="content">
-          <Avatar size="large" />
+          <Avatar src={this.props.person.partyPhoto} size="large" />
           <div>
             <p styleName="confirm-text">确认与此人签订专业转让合同?</p>
             <p styleName="hint">请在与购买者沟通后且手续齐全的情况下确认</p>
