@@ -1,6 +1,6 @@
 import React from 'react'
 import PubNewsContent from './PubNewsContent'
-import { Input, Button, Message } from 'antd'
+import { Input, Button, message } from 'antd'
 import { NewsApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
@@ -23,11 +23,19 @@ export default class PubNews extends React.Component {
   }
 
   setTitle(e) {
-    this.setState({ title: e.target.value })
+    this.setState({ title: e.target.value.trim() })
   }
 
   handleNewsPublish = async () => {
     const {user} = this.props.userStore
+    if (!this.state.title) {
+      message.error('请填写标题')
+      return
+    }
+    if (!this.editorElement.getContent('raw').blocks[0].text.trim()) {
+      message.error('请填写内容')
+      return
+    }
     try {
       let content = this.editorElement.getContent()
       let abstract = this.editorElement.getContent('raw').blocks[0].text
@@ -44,7 +52,7 @@ export default class PubNews extends React.Component {
         avatar: user.avatar,
         location: user.location
       })
-      Message.success('动态发布成功')
+      message.success('动态发布成功')
       this.props.history.push('/admin/news/news-mgnt')
     } catch (err) {
       console.log(err)

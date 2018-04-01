@@ -1,11 +1,12 @@
 import React from 'react'
 import './NewDemand.css'
-import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader, Modal } from 'antd'
+import { Form, Input, Row, Col, Select, DatePicker, Radio, message, Cascader, Modal, Upload, Icon } from 'antd'
 // import SkillsRequirement from './SkillsRequirement'
-import UploadFile from './upload-file/UploadFile'
+// import UploadFile from './upload-file/UploadFile'
 import { observer, inject } from 'mobx-react'
 import { DemandApi } from 'src/ajax'
 import { province, city, major, skill } from 'src/common/dataset'
+
 import moment from 'moment'
 
 const FormItem = Form.Item
@@ -13,6 +14,7 @@ const Option = Select.Option
 const RadioGroup = Radio.Group
 const RangePicker = DatePicker.RangePicker
 const { TextArea } = Input
+const Dragger = Upload.Dragger
 const [...options] = major.map(item => ({
   value: item,
   label: item
@@ -104,8 +106,10 @@ class NewDemand extends React.Component {
             contactWay: values.contactWay,
             province: values.province,
             city: values.city,
-            uploadfileUrl: this.state.uploadFile ? this.state.uploadFile.fileUrl : null,
-            uploadfileName: this.state.uploadFile ? this.state.uploadFile.fileName : null,
+            // uploadfileUrl: this.state.uploadFile ? this.state.uploadFile.fileUrl : null,
+            // uploadfileName: this.state.uploadFile ? this.state.uploadFile.fileName : null,
+            uploadfileUrl: values.uploadfileUrl,
+            uploadfileName: '需求文件',
             money: Number(values.money),
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
@@ -158,8 +162,33 @@ class NewDemand extends React.Component {
     })
   }
 
+  normFile = (e) => {
+    if (e.file.status === 'uploading') {
+      return null
+    } else if (e.file.status === 'done') {
+      let files = e.file.response
+      let result = JSON.parse(files[0].result)
+      return result.data.access_url
+    }
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
+    const uploadProps = {
+      name: 'files',
+      multiple: false,
+      onChange(info) {
+        const status = info.file.status
+        if (status !== 'uploading') {
+          console.log(info.file, info.fileList)
+        }
+        if (status === 'done') {
+          message.success(`${info.file.name} file uploaded successfully.`)
+        } else if (status === 'error') {
+          message.error(`${info.file.name} file upload failed.`)
+        }
+      }
+    }
     return (
       <div styleName="container">
         <div style={{ borderBottom: '1px solid #f0f0f0' }}>
@@ -355,8 +384,25 @@ class NewDemand extends React.Component {
                 <TextArea rows={8} />
               )}
             </FormItem>
-            <FormItem label="上传文件:">
+            {/* <FormItem label="上传文件:">
               <UploadFile uploadFile={this.state.uploadFile} setUploadFile={this.setUploadFile} />
+            </FormItem> */}
+            <FormItem label="上传文件">
+              {getFieldDecorator('uploadfileUrl', {
+                // valuePropName: 'fileList',
+                getValueFromEvent: this.normFile
+              })(
+                <Dragger
+                  {...uploadProps}
+                  action={`${window.config.API_ORIGIN}/upload/project/file`}
+                  data={{ id: this.props.userStore.user.id }} >
+                  <p className="ant-upload-drag-icon">
+                    <Icon type="inbox" />
+                  </p>
+                  <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                  <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
+                </Dragger>
+              )}
             </FormItem>
           </div>
           <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
