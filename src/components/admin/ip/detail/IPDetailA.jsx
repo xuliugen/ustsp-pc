@@ -23,7 +23,7 @@ export default class IPDetailA extends React.Component {
   }
 
   componentDidMount() {
-    this.dispatchPatentDetail(this.props.match.params.id)
+    this.dispatchPatentDetail()
   }
 
   async dispatchPatentDetail() {
@@ -49,9 +49,11 @@ export default class IPDetailA extends React.Component {
       case 'enquiry':
         return <EnquiryCardA partyB={this.state.partyB} ip={this.state.detail} dispatch={this.dispatchPatentDetail} />
       case 'sign':
-        return <SignCardA />
+        return <SignCardA ip={this.state.detail} partyB={this.state.partyB.filter((item) => {
+          return item.status === 'sign'
+        })[0]} />
       case 'publicity':
-        return <IPTransferInfoA />
+        return <IPTransferInfoA patent={this.state.detail} />
       default:
         return null
     }

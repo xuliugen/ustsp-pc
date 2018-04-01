@@ -91,7 +91,7 @@ export default class DetailInfo extends React.Component {
             <span>转让进度</span>
           </div>
           <div styleName="progress">
-            <Steps progressDot current={this.setstatus(this.props.status)}>
+            <Steps progressDot current={this.setStatus(this.props.status)}>
               <Step title="审核" />
               <Step title="询价中" />
               <Step title="签订合同" />
