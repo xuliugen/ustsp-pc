@@ -12,8 +12,8 @@ import moment from 'moment'
 @inject('userStore')
 @observer
 export default class IPContent extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       enquiryBtn: {
         disable: false,
@@ -22,6 +22,9 @@ export default class IPContent extends React.Component {
       patent: {},
       assignor: {},
       surrenderee: {}
+    }
+    if (!(this.props.userStore.user && this.props.userStore.user.id)) {
+      message.warning('登录后才能查看专利详情')
     }
   }
 
