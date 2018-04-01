@@ -13,11 +13,11 @@ export default class IPItem extends React.Component {
     switch (status) {
       case 0:
         return '审核'
-      case 1:
+      case 1: case 2: case 3: case 4:
         return '询价'
-      case 2:
+      case 5:
         return '签订合同'
-      case 3:
+      case 6:
         return '公示'
       default:
         return ''
