@@ -12,8 +12,8 @@ export default {
   },
 
   // 获取购买专利
-  fetchBuyPatents(partyId, page, rows) {
-    return ajax.get(`/patent/query/buy/list?partyId=${partyId}&page=${page}&rows=${rows}`)
+  fetchBuyPatents(partyId, type, page, rows) {
+    return ajax.get(`/patent/query/buy/list?partyId=${partyId}&type=${type}&page=${page}&rows=${rows}`)
   },
 
   // 获取详情
@@ -23,7 +23,6 @@ export default {
 
   // 改变状态
   // 传入乙方id status的状态是乙方的状态，apply 询价了；sended 发了文件；wonder 想购买专利
-  // 传入甲方id 即改变专利的状态
   changePatentStatus(patentId, userId, status) {
     return ajax.post(`/patent/status?patentId=${patentId}&userId=${userId}&status=${status}`)
   },

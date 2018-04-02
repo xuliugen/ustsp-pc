@@ -19,3 +19,31 @@
   text-indent: 30px;
   padding: 0px 40px 20px 40px;
 }
+
+.partyb {
+  margin-left: 30px;
+  padding-bottom: 30px;
+}
+
+.info-title {
+  margin-bottom: 30px;
+  padding-left: 23px;
+  border-left: 6px solid #3091e6;
+}
+
+.partyb-info {
+  display: flex;
+  align-items: center;
+}
+
+.partyb-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.education {
+  margin-left: 30px;
+}
+
