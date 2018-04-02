@@ -12,8 +12,8 @@ export default {
   },
 
   // 获取购买专利
-  fetchBuyPatents(partyId, page, rows) {
-    return ajax.get(`/patent/query/buy/list?partyId=${partyId}&page=${page}&rows=${rows}`)
+  fetchBuyPatents(partyId, type, page, rows) {
+    return ajax.get(`/patent/query/buy/list?partyId=${partyId}&type=${type}&page=${page}&rows=${rows}`)
   },
 
   // 获取详情

@@ -53,13 +53,16 @@ export default class IPDetailA extends React.Component {
           return item.status === 'sign'
         })[0]} />
       case 'publicity':
-        return <IPTransferInfoA patent={this.state.detail} />
+        return <IPTransferInfoA patent={this.state.detail} partyB={this.state.partyB.filter((item) => {
+          return item.status === 'sign'
+        })[0]} />
       default:
         return null
     }
   }
 
   render() {
+    console.log(this.state.partyB)
     return (
       <div>
         <DetailInfo info={this.state.detail} status={this.state.status} />
