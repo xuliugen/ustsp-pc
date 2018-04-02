@@ -111,7 +111,6 @@ export default class SendDialog extends React.Component {
         visible={this.props.visible}
         onOk={this.handleOk}
         onCancel={this.handleCancel}
-        destroyOnClose="true"
       >
         <div styleName="content">
           <Avatar size="large" style={{ marginBottom: '1em' }} src={avatarUrl} />

@@ -4,12 +4,15 @@ import TransferInfo from '../common/transfer-info/TransferInfo'
 import './signCardB.css'
 import { IpApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
+import {inject, observer} from 'mobx-react'
 
 @withRouter
+@inject('userStore')
+@observer
 export default class SignCardB extends React.Component {
   handelSign = async () => {
     try {
-      await IpApi.changePatentStatus(this.props.match.params.id, this.props.patent.ownerId, 'publicity')
+      await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'publicity')
       message.success('签订成功')
       this.props.dispatch()
     } catch (error) {

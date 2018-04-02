@@ -39,19 +39,18 @@ export default class IPDetailB extends React.Component {
   }
 
   getCard() {
+    const partyOwn = this.state.partyB.filter((item) => item.partyId === this.props.userStore.user.id)[0] || {}
+    const partyPub = this.state.partyB.filter((item) => item.status === 'publicity')[0]
+
     switch (this.state.status) {
       case 0:
         return null
       case 'enquiry':
-        return <EnquiryCardB patent={this.state.detail} partyB={this.state.partyB.filter((item) => {
-          return item.partyId === this.props.userStore.user.id
-        })[0] || {}} dispatch={this.dispatchPatentDetail} />
+        return <EnquiryCardB patent={this.state.detail} partyB={partyOwn} dispatch={this.dispatchPatentDetail} />
       case 'sign':
         return <SignCardB patent={this.state.detail} dispatch={this.dispatchPatentDetail} />
       case 'publicity':
-        return <TransferInfo patent={this.state.detail} partyB={this.state.partyB.filter((item) => {
-          return item.status === 'sign'
-        })[0]} />
+        return <TransferInfo patent={this.state.detail} partyB={partyPub} />
       default:
         return null
     }

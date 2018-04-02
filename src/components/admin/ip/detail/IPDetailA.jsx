@@ -45,24 +45,22 @@ export default class IPDetailA extends React.Component {
     // enquiry 询价
     // sign 签订
     // publicity 公示
+    const partySign = this.state.partyB.filter((item) => item.status === 'sign')[0]
+    const partyPub = this.state.partyB.filter((item) => item.status === 'publicity')[0]
+
     switch (this.state.status) {
       case 'enquiry':
         return <EnquiryCardA partyB={this.state.partyB} ip={this.state.detail} dispatch={this.dispatchPatentDetail} />
       case 'sign':
-        return <SignCardA ip={this.state.detail} partyB={this.state.partyB.filter((item) => {
-          return item.status === 'sign'
-        })[0]} />
+        return <SignCardA ip={this.state.detail} partyB={partySign} />
       case 'publicity':
-        return <IPTransferInfoA patent={this.state.detail} partyB={this.state.partyB.filter((item) => {
-          return item.status === 'sign'
-        })[0]} />
+        return <IPTransferInfoA patent={this.state.detail} partyB={partyPub} />
       default:
         return null
     }
   }
 
   render() {
-    console.log(this.state.partyB)
     return (
       <div>
         <DetailInfo info={this.state.detail} status={this.state.status} />
