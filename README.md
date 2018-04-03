@@ -14,5 +14,9 @@ $ yarn
 $ yarn run start
 ```
 
-## 开发文档
-[链接](/doc/dev.md)
+## 文档
+[开发文档](/doc/dev.md)
+[规范](/doc/standard.md)
+
+## 项目结构
+`/src/views/` 中的组件为大的页面组件，`/src/components/` 中的组件为页面组件中拆分出来的小组件。
