@@ -1,0 +1,23 @@
+.ipitems{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0 20px;
+  padding: 20px 0 20px 0;
+}
+
+.ip-name{
+  overflow: hidden;
+  max-width:300px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+}
+
+.ip-category{
+  margin-top: 10px;
+  font-size: 14px;
+  color: #8f9ba7;
+}
