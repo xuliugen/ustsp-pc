@@ -16,8 +16,8 @@ const types = [{
   type: 'ip',
   text: '知识产权'
 }, {
-  type: 'info',
-  text: '信息搜索'
+  type: 'news',
+  text: '动态搜索'
 }]
 
 @inject('searchStore')

@@ -26,8 +26,8 @@ const optionList = [
     value: 'ip'
   },
   {
-    label: '信息',
-    value: 'info'
+    label: '动态',
+    value: 'news'
   }
 ]
 
@@ -77,8 +77,11 @@ export default class SearchInput extends React.Component<{}, State> {
         case '项目':
           this.props.searchStore.setType('project')
           break
-        case '成果':
+        case '专利':
           this.props.searchStore.setType('ip')
+          break
+        case '动态':
+          this.props.searchStore.setType('news')
           break
       }
     } else {
@@ -117,7 +120,7 @@ export default class SearchInput extends React.Component<{}, State> {
         <div styleName="search-input-container">
           <input
             styleName="search-input"
-            placeholder="人才、项目、成果、专利"
+            placeholder="人才、项目、专利、动态"
             onChange={this.onIptChange}
             onKeyDown={this.onIptKeyDown} />
           <Link to="/search"><img styleName="search-ico" src={icoSearch} /></Link>
