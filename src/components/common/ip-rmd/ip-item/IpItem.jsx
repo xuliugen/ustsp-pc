@@ -7,10 +7,10 @@ export default class ipitems extends React.Component {
     const ips = this.props.item
     return (
       <div styleName="ipitems">
-        <Link to={''}>
-          <div styleName="ip-name">{ips.ipname}</div>
+        <Link to={`/ip/${ips.id}`}>
+          <div styleName="ip-name">{ips.patentName}</div>
         </Link>
-        <div styleName="ip-category">{ips.category}</div>
+        <div styleName="ip-category">{ips.industryCategory}</div>
       </div>
     )
   }
