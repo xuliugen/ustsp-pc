@@ -14,10 +14,10 @@ export default class Sidebar extends React.Component {
     selectedKeys: []
   }
 
-  constructor() {
-    super()
-    this.handleItemSelect = this.handleItemSelect.bind(this)
-  }
+  // constructor() {
+  //   super()
+  //   this.handleItemSelect = this.handleItemSelect.bind(this)
+  // }
 
   componentWillMount() {
     const { pathname } = this.props.history.location
@@ -43,16 +43,16 @@ export default class Sidebar extends React.Component {
     })
   }
 
-  handleItemSelect({ key }) {
-    const { history } = this.props
-    switch (key) {
-      case 'demand-new':
-        history.push('/admin/demand/new-demand')
-        break
-      default:
-        break
-    }
-  }
+  // handleItemSelect({ key }) {
+  //   const { history } = this.props
+  //   switch (key) {
+  //     case 'demand-new':
+  //       history.push('/admin/demand/new-demand')
+  //       break
+  //     default:
+  //       break
+  //   }
+  // }
 
   render() {
     return (

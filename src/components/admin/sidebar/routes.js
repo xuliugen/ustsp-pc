@@ -1,3 +1,4 @@
+// key 和 to 必须要有对应关系：key 须和 to 的最后域相同
 export const routes = [
   {
     key: 'info',
@@ -7,16 +8,16 @@ export const routes = [
     },
     children: [
       {
-        key: 'info-detail',
-        to: '',
+        key: 'detail',
+        to: '/admin/info/detail',
         text: '信息查看'
       }, {
-        key: 'info-mod',
-        to: '',
+        key: 'modify',
+        to: '/admin/info/modify',
         text: '修改信息'
       }, {
-        key: 'info-security',
-        to: '',
+        key: 'change-pwd',
+        to: '/admin/info/change-pwd',
         text: '修改密码'
       }
     ]
