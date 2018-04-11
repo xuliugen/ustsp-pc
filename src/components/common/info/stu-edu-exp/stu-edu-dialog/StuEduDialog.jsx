@@ -3,6 +3,7 @@ import './stuEduDialog.css'
 
 import { Form, Input, Row, Col, DatePicker, Modal, Button, message, Select, Cascader } from 'antd'
 import { province, school, subject } from 'src/common/dataset'
+import moment from 'moment'
 
 const FormItem = Form.Item
 const MonthPicker = DatePicker.MonthPicker
@@ -60,12 +61,29 @@ export default class StuEduDialog extends React.Component<{}> {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { exp } = this.props
+    let provinceOfSchool, categoryOfMajor
+    if (exp) {
+      for (let len = options.length, i = 0; i < len; i++) {
+        if (options[i].children.some(({ value }) => value === exp.school)) {
+          provinceOfSchool = options[i].value
+          break
+        }
+      }
+      for (let len = subjects.length, i = 0; i < len; i++) {
+        if (subjects[i].children.some(({ value }) => value === exp.major)) {
+          categoryOfMajor = subjects[i].value
+          break
+        }
+      }
+    }
     return (
       <div>
         <Modal
           visible={this.props.visible}
           title="教育经历"
-          destroyOnClose="true"
+          destroyOnClose
+          maskClosable={false}
           onOK={this.handleOK}
           onCancel={this.handleCancel}
           footer={[
@@ -79,6 +97,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 <FormItem label="学历级别">
                   {getFieldDecorator('level', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && exp.level,
                     rules: [{ required: true, message: '请输入学历级别' }]
                   })(
                     <Select>
@@ -92,6 +111,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 <FormItem label="学院">
                   {getFieldDecorator('college', {
                     validateTrigger: 'onBlur',
+                    initialValue: exp && exp.college,
                     rules: [{ required: true, message: '请输入学院' }]
                   })(
                     <Input />
@@ -99,6 +119,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 </FormItem>
                 <FormItem label="入学时间">
                   {getFieldDecorator('date', {
+                    initialValue: exp && moment(exp.date),
                     rules: [{ required: true, message: '请选择入学时间' }]
                   })(
                     <MonthPicker style={{ width: '100%' }} />
@@ -109,6 +130,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 <FormItem label="学校">
                   {getFieldDecorator('school', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && [provinceOfSchool, exp.school],
                     rules: [{ required: true, message: '请输入就读学校' }]
                   })(
                     <Cascader placeholder="就读学校" options={options}
@@ -120,6 +142,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 <FormItem label="专业">
                   {getFieldDecorator('major', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && [categoryOfMajor, exp.major],
                     rules: [{ required: true, message: '请输入就读专业' }]
                   })(
                     <Cascader placeholder="就读专业" options={subjects}
@@ -130,6 +153,7 @@ export default class StuEduDialog extends React.Component<{}> {
                 </FormItem>
                 <FormItem label="毕业时间">
                   {getFieldDecorator('finishTime', {
+                    initialValue: exp && moment(exp.finishTime),
                     rules: [{ required: true, message: '请选择毕业时间' }]
                   })(
                     <MonthPicker style={{ width: '100%' }} />
