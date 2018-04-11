@@ -25,7 +25,6 @@ const [...subjects] = Object.keys(subject).map(item => ({
   }))]
 }))
 
-@Form.create()
 export default class StuEduDialog extends React.Component<{}> {
   state = {
     loading: false

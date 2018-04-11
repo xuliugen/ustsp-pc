@@ -1,9 +1,12 @@
 import React from 'react'
+import { Form } from 'antd'
+
 import StuEduDialog from '../stu-edu-dialog/StuEduDialog'
 import createDecorator from './createDecorator'
 
 @createDecorator
-export default class NewStuEduDialog extends React.Component {
+@Form.create()
+export default class CreateStuEduDialog extends React.Component {
   render() {
     return (
       <StuEduDialog {...this.props} />

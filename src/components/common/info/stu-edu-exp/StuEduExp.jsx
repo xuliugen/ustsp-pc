@@ -3,29 +3,31 @@ import './stuEduExp.css'
 
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
-import NewStuEduDialog from './new-stu-edu-dialog/NewStuEduDialog'
+import CreateStuEduDialog from './create-stu-edu-dialog/CreateStuEduDialog'
+import UpdateStuEduDialog from './update-stu-edu-dialog/UpdateStuEduDialog'
 
 export default class StuEduExp extends React.Component {
   state = {
-    visible: false,
+    createDialogVisible: false,
+    updateDialogVisible: false,
     expItems: []
   }
 
   showModal = () => {
     this.setState({
-      visible: true
+      createDialogVisible: true
     })
   }
 
   closeModel = () => {
     this.setState({
-      visible: false
+      createDialogVisible: false
     })
   }
 
   confirmAdd = (expItem) => {
     this.setState((prev) => ({
-      visible: false,
+      createDialogVisible: false,
       expItems: prev.expItems.concat(expItem)
     }))
   }
@@ -38,7 +40,8 @@ export default class StuEduExp extends React.Component {
         <div styleName="content">
           {this.state.expItems.map((item, idx) => <EduExpItem key={idx} exp={item} />)}
         </div>
-        {editable && <NewStuEduDialog visible={this.state.visible} closeModel={this.closeModel} confirmAdd={this.confirmAdd} />}
+        { editable && <CreateStuEduDialog visible={this.state.createDialogVisible} closeModel={this.closeModel} confirmAdd={this.confirmAdd} /> }
+        { editable && <UpdateStuEduDialog visible={this.state.updateDialogVisible} closeModel={this.closeModel} confirmAdd={this.confirmAdd} /> }
       </div>
     )
   }
