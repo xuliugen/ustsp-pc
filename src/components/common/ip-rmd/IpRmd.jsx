@@ -21,7 +21,6 @@ export default class IpsRmd extends React.Component {
           list: data.data.slice(0, 4)
         })
       }
-      console.log(this.state.list)
     } catch (e) {
       console.log(e)
     }
