@@ -1,13 +1,13 @@
 import React from 'react'
-import './newExpItem.css'
+import './stuEduDialog.css'
+
 import { Form, Input, Row, Col, DatePicker, Modal, Button, message, Select, Cascader } from 'antd'
-import { observer, inject } from 'mobx-react'
-import { StuInfoApi } from 'src/ajax'
 import { province, school, subject } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const MonthPicker = DatePicker.MonthPicker
 const Option = Select.Option
+
 const [...options] = province.map(item => ({
   value: item,
   label: item,
@@ -25,14 +25,10 @@ const [...subjects] = Object.keys(subject).map(item => ({
   }))]
 }))
 
-@inject('registerStore')
-@observer
-class NewExpItem extends React.Component<{}> {
-  constructor() {
-    super()
-    this.state = {
-      loading: false
-    }
+@Form.create()
+export default class StuEduDialog extends React.Component<{}> {
+  state = {
+    loading: false
   }
 
   handleOk = (e) => {
@@ -40,7 +36,7 @@ class NewExpItem extends React.Component<{}> {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const expItem = {
-          userId: this.props.registerStore.initial.uid,
+          // userId: this.props.registerStore.initial.uid,
           school: values.school ? values.school[1] : null,
           college: values.college,
           major: values.major ? values.major[1] : null,
@@ -48,17 +44,7 @@ class NewExpItem extends React.Component<{}> {
           startTime: values.date ? values.date.valueOf() : null,
           endTime: values.finishTime ? values.finishTime.valueOf() : null
         }
-        this.setState({ loading: true })
-        try {
-          await StuInfoApi.completeStuEducation(expItem)
-          message.success('教育经历添加成功')
-          this.setState({ loading: false })
-          this.props.confirmAdd(expItem)
-        } catch (e) {
-          this.setState({ loading: false })
-          console.log(e)
-          this.setState({ loading: false })
-        }
+        this.props.dispatchOperate(expItem)
       } else {
         message.error('请先完善必填信息')
       }
@@ -158,5 +144,3 @@ class NewExpItem extends React.Component<{}> {
     )
   }
 }
-
-export default Form.create()(NewExpItem)

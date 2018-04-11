@@ -1,0 +1,42 @@
+.title-container {
+  position: relative;
+  height: 42px;
+}
+
+.title-wrapper {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+  width: 100%;
+  height: 1px;
+  line-height: 42px;
+}
+
+.title {
+  display: inline-block;
+  padding: 0 8px;
+  color: #8f9ba7;
+  font-size: 16px;
+}
+
+.title-wrapper::before, .title-wrapper::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top: 1px solid #e2e2e2;
+  transform: translateY(50%);
+}
+
+.add-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px 18px;
+  border: 1px #e2e2e2 solid;
+  border-radius: 20px;
+  color: #3091e6;
+  font-size: 14px;
+}

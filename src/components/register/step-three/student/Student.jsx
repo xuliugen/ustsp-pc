@@ -4,9 +4,11 @@ import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { StuInfoApi } from 'src/ajax'
 import { withRouter, Link } from 'react-router-dom'
+
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
-import StuEducationalExperience from './educational-experience/StuEducationalExperience'
+// import StuEducationalExperience from './educational-experience/StuEducationalExperience'
+import {StuEduExp} from 'components/common'
 import SideNav from '../common/side-nav/SideNav'
 
 @withRouter
@@ -80,7 +82,7 @@ class StepThreeStudent extends React.Component<{}> {
               form={this.props.form}
               stuPhoto={this.state.stuPhoto}
               setStuPhoto={this.setStuPhoto} />
-            <StuEducationalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
+            <StuEduExp editable containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
             <StuPersonalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} form={this.props.form} />
           </Form>
           <button styleName="confirm-button" onClick={this.handleClickConfirm} >确认</button>
