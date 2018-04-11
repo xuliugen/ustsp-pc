@@ -2,7 +2,6 @@ import React from 'react'
 import './stuEduDialog.css'
 
 import { Form, Input, Row, Col, DatePicker, Modal, Button, message, Select, Cascader } from 'antd'
-import { observer, inject } from 'mobx-react'
 import { province, school, subject } from 'src/common/dataset'
 
 const FormItem = Form.Item
@@ -27,8 +26,6 @@ const [...subjects] = Object.keys(subject).map(item => ({
 }))
 
 @Form.create()
-@inject('registerStore')
-@observer
 export default class StuEduDialog extends React.Component<{}> {
   state = {
     loading: false
@@ -39,7 +36,7 @@ export default class StuEduDialog extends React.Component<{}> {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const expItem = {
-          userId: this.props.registerStore.initial.uid,
+          // userId: this.props.registerStore.initial.uid,
           school: values.school ? values.school[1] : null,
           college: values.college,
           major: values.major ? values.major[1] : null,
