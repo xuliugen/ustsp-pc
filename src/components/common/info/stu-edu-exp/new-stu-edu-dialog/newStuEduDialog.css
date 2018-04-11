@@ -1,0 +1,22 @@
+.newEdu-form {
+  width: 400px;
+}
+
+.form-item{
+  /* width: 400px; */
+}
+
+.store-button{
+  width: 120px;
+  padding:  13px 16px 13px 16px;
+  border-radius: 4px;
+  border: 1px solid;
+  color: #fff;
+  background-color: #8f9ba7;
+}
+
+.cancel-button{
+  font-size: 14px;
+  margin-left: 20px;
+  color: #aaa;
+}
