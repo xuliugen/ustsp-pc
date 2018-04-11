@@ -45,5 +45,9 @@ export default {
   // 主页获取专利数据
   fetchHomePageData() {
     return ajax.get('/patent/home-page/patent')
+  },
+
+  fetchRmdPatent() {
+    return ajax.get('patent/query/recommend/list?recommendNum=4')
   }
 }
