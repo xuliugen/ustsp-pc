@@ -80,5 +80,26 @@ export const routes = [
         text: '购买专利'
       }
     ]
+  }, {
+    key: 'contacts',
+    title: {
+      icon: 'contacts',
+      text: '人脉管理'
+    },
+    children: [
+      {
+        key: 'friends',
+        to: '/admin/contacts/my-friends',
+        text: '我的好友'
+      }, {
+        key: 'second-degree-contacts',
+        to: '/admin/contacts/second-degree-contacts',
+        text: '二度人脉'
+      }, {
+        key: 'friends-news',
+        to: '/admin/contacts/friends-news',
+        text: '好友动态'
+      }
+    ]
   }
 ]
