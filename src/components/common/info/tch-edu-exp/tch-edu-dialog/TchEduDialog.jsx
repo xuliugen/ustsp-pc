@@ -42,7 +42,8 @@ export default class TchEduDialog extends React.Component {
           startTime: values.startTime ? values.startTime.valueOf() : null, // get timestamp
           endTime: values.endTime ? values.endTime.valueOf() : null
         }
-        this.props.dispatchOperate(expItem)
+        const id = this.props.exp && this.props.exp.id
+        this.props.dispatchOperate(expItem, id)
       }
     })
   }

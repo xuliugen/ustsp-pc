@@ -1,7 +1,8 @@
 import React from 'react'
 import './stuEduExp.css'
-import { StuInfoApi } from 'src/ajax'
+import { UserInfoApi } from 'src/ajax'
 import { inject } from 'mobx-react'
+import { message } from 'antd'
 
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
@@ -19,7 +20,7 @@ export default class StuEduExp extends React.Component {
 
   async componentDidMount() {
     try {
-      const { data } = await StuInfoApi.getEduInfo(this.props.userStore.user.id)
+      const { data } = await UserInfoApi.fetchEdu(this.props.userStore.user.id)
       this.setState({
         expItems: data
       })
@@ -80,6 +81,22 @@ export default class StuEduExp extends React.Component {
     }
   }
 
+  async handleDeleteExp({ id }) {
+    try {
+      await UserInfoApi.deleteEdu(id)
+      message.success('删除成功')
+      const expIdx = this.state.expItems.findIndex(exp => exp.id === id)
+      let newExpItems = this.state.expItems
+      newExpItems.splice(expIdx, 1)
+      this.setState({
+        expItems: newExpItems
+      })
+    } catch (err) {
+      message.error('删除失败')
+      console.log(err)
+    }
+  }
+
   render() {
     const { editable } = this.props
     return (
@@ -87,7 +104,12 @@ export default class StuEduExp extends React.Component {
         <FormTitle title={'教育经历'} hasAddBtn={editable} handleAddClick={this.showModal.bind(this, 'create')} />
         <div styleName="content">
           {this.state.expItems.map((item) =>
-            <EduExpItem key={item.id} exp={item} showModal={this.showModal.bind(this, 'update')} />)}
+            <EduExpItem
+              key={item.id}
+              exp={item}
+              showModal={this.showModal.bind(this, 'update')}
+              deleteExp={this.handleDeleteExp.bind(this)}
+            />)}
         </div>
         {editable && <CreateStuEduDialog
           visible={this.state.createDialogVisible}

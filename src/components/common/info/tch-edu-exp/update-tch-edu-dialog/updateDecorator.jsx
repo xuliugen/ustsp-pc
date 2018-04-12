@@ -1,5 +1,5 @@
 import React from 'react'
-import { TchInfoApi } from 'src/ajax'
+import { UserInfoApi } from 'src/ajax'
 import { message } from 'antd'
 import { observer, inject } from 'mobx-react'
 
@@ -20,7 +20,7 @@ const updateDecorator = WrappedComponent => {
           expItem.userId = this.props.userStore.user.id
         }
         // todo: change api
-        await TchInfoApi.completeEducation(expItem)
+        await UserInfoApi.updateEdu(expItem)
         message.success('教育经历更新成功')
         this.props.confirmUpdate(expItem)
       } catch (e) {

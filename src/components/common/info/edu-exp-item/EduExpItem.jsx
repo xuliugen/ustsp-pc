@@ -9,6 +9,7 @@ export default class EduExpItem extends React.Component {
   }
 
   handleDelete(exp) {
+    this.props.deleteExp(exp)
   }
 
   render() {
