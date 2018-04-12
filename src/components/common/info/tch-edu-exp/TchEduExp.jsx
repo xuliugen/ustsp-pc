@@ -3,6 +3,7 @@ import './tchEduExp.css'
 
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
+import CreateTchEduDialog from './create-tch-edu-dialog/CreateTchEduDialog'
 
 export default class TchEduExp extends React.Component {
   state = {
@@ -73,12 +74,12 @@ export default class TchEduExp extends React.Component {
           {this.state.expItems.map((item) =>
             <EduExpItem key={item.id} exp={item} showModal={this.showModal.bind(this, 'update')} />)}
         </div>
-        {/* {editable && <CreateTchEduDialog
+        {editable && <CreateTchEduDialog
           visible={this.state.createDialogVisible}
           closeModel={this.closeModel.bind(this, 'create')}
           confirmAdd={this.handleConfirm.bind(this, 'create')}
         />}
-        {editable && <UpdateTchEduDialog
+        {/* {editable && <UpdateTchEduDialog
           exp={this.state.selectedExp}
           visible={this.state.updateDialogVisible}
           closeModel={this.closeModel.bind(this, 'update')}
