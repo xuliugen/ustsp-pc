@@ -2,10 +2,12 @@ import React from 'react'
 import './signCardB.css'
 import { DemandApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
-import { message, Row, Col, Button } from 'antd'
+import { message, Row, Col, Button, Modal } from 'antd'
 import moment from 'moment'
 import { withRouter } from 'react-router-dom'
 import { PartyAInfo } from '../common'
+
+const confirm = Modal.confirm
 
 @withRouter
 @inject('demandStore', 'userStore')
@@ -26,11 +28,33 @@ export default class SignCardB extends React.Component {
     }
   }
 
-  handleRejectSign() {
+  handleRejectSign(partyA) {
+    confirm({
+      title: '确定要拒绝签单请求吗？',
+      content: '点击cancel即可刷新状态',
+      onOk: async () => {
+        try {
+          await DemandApi.changeDemandStatus({
+            partyId: this.props.userStore.user.id,
+            ownerId: partyA.ownerId,
+            projectId: this.props.match.params.id,
+            status: 'applying'
+          })
+          message.success('拒绝签单成功')
+          // 刷新项目信息
+          this.props.demandStore.dispatchGetDemandInfo()
+        } catch (error) {
+          console.log(error)
+        }
+      },
+      onCancel: () => {
+        this.props.demandStore.dispatchGetDemandInfo()
+      }
+    })
   }
 
   render() {
-    const { demand, partyB } = this.props.demandStore
+    const { demand, partyB, partyA } = this.props.demandStore
     return (
       <div>
         <div styleName="title">待签单</div>
@@ -56,8 +80,8 @@ export default class SignCardB extends React.Component {
           </div>
           <div styleName="confirm">
             <p styleName="confirmMsg">甲方发起签单请求，请确认签单。</p>
-            <Button type="primary" onClick={this.handleConfirmSign} style={{marginRight: '10px'}}>确认签单</Button>
-            <Button onClick={this.handleRejectSign}>拒绝签单</Button>
+            <Button type="primary" onClick={this.handleConfirmSign} style={{ marginRight: '10px' }}>确认签单</Button>
+            <Button onClick={this.handleRejectSign.bind(this, partyA)}>拒绝签单</Button>
             <p styleName="confirmHint">若长时间未确认，甲方将撤回签单请求，项目将回到报名状态</p>
           </div>
         </div>
