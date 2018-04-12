@@ -34,7 +34,7 @@ export default class TchEduDialog extends React.Component {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const expItem = {
-          userId: '',
+          // userId: '',
           school: values.school ? values.school[1] : null,
           college: values.college,
           major: values.major ? values.major[1] : null,
