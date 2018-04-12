@@ -39,7 +39,7 @@ export default class SignCardA extends React.Component {
   handleCancel(partyB) {
     confirm({
       title: '确定要撤销签单请求吗？',
-      content: '可以尝试刷新页面以获取最新状态',
+      content: '点击cancel即可刷新状态',
       onOk: async () => {
         try {
           await DemandApi.changeDemandStatus({
@@ -54,6 +54,9 @@ export default class SignCardA extends React.Component {
         } catch (error) {
           console.log(error)
         }
+      },
+      onCancel: () => {
+        this.props.demandStore.dispatchGetDemandInfo()
       }
     })
   }
