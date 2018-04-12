@@ -1,36 +1,39 @@
 import React from 'react'
-import { StuInfoApi } from 'src/ajax'
+import { TchInfoApi } from 'src/ajax'
 import { message } from 'antd'
 import { observer, inject } from 'mobx-react'
 
-const updateDecorator = WrappedComponent => {
+const createDecorator = WrappedComponent => {
   @inject('registerStore', 'userStore')
   @observer
   class _class extends React.Component {
     constructor(props) {
       super(props)
-      this.dispatchUpdate = this.dispatchUpdate.bind(this)
+      this.dispatchCreate = this.dispatchCreate.bind(this)
     }
 
-    async dispatchUpdate(expItem) {
+    async dispatchCreate(expItem) {
       try {
         if (this.props.registerStore.initial && this.props.registerStore.initial.uid) {
           expItem.userId = this.props.registerStore.initial.uid
         } else if (this.props.userStore.user && this.props.userStore.user.id) {
           expItem.userId = this.props.userStore.user.id
         }
-        await StuInfoApi.updateStuEdu(expItem)
-        message.success('教育经历更新成功')
-        this.props.confirmUpdate(expItem)
+        const { data } = await TchInfoApi.completeEducation(expItem)
+        message.success('教育经历添加成功')
+        // this.setState({ loading: false })
+        expItem.id = data
+        this.props.confirmAdd(expItem)
       } catch (e) {
-        message.error('更新失败')
+        message.error('添加失败')
         console.log(e)
+        // this.setState({ loading: false })
       }
     }
 
     render() {
       return (
-        <WrappedComponent dispatchOperate={this.dispatchUpdate} {...this.props} />
+        <WrappedComponent dispatchOperate={this.dispatchCreate} {...this.props} />
       )
     }
   }
@@ -38,4 +41,4 @@ const updateDecorator = WrappedComponent => {
   return _class
 }
 
-export default updateDecorator
+export default createDecorator

@@ -3,13 +3,15 @@ import './teacher.css'
 import { withRouter, Link } from 'react-router-dom'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
+import { TchInfoApi } from 'src/ajax'
+
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
-import TchEdicationalExperience from './educational-experience/TchEduExp'
+// import TchEdicationalExperience from './educational-experience/TchEduExp'
+import {TchEduExp} from 'components/common'
 import Research from './research/Research'
 import IP from './ip/IP'
 import Award from './r-award/Award'
-import { TchInfoApi } from 'src/ajax'
 
 @withRouter
 @inject('registerStore')
@@ -116,7 +118,8 @@ class StepThreeTeacher extends React.Component<{}> {
             />
             <PersonalExperience form={this.props.form} />
           </Form>
-          <TchEdicationalExperience />
+          {/* <TchEdicationalExperience /> */}
+          <TchEduExp editable />
           <Research />
           <IP />
           <Award title={'科研获奖'} isResearch={1} />

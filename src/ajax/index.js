@@ -6,6 +6,7 @@ import TchInfoApi from './user/tchInfo'
 import EtpInfoApi from './user/etpInfo'
 import StuInfoApi from './user/stuInfo'
 import TalentApi from './user/talent'
+import UserInfoApi from './user/userInfo'
 // project module
 import DemandApi from './demand/demand'
 import ProjectApi from './demand/project'
@@ -21,6 +22,7 @@ export {
   TchInfoApi,
   EtpInfoApi,
   StuInfoApi,
+  UserInfoApi,
   DemandApi,
   TalentApi,
   ProjectApi,
