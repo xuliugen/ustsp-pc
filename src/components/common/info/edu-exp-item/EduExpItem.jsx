@@ -8,6 +8,9 @@ export default class EduExpItem extends React.Component {
     this.props.showModal(exp)
   }
 
+  handleDelete(exp) {
+  }
+
   render() {
     const { exp } = this.props
     return (
@@ -24,6 +27,7 @@ export default class EduExpItem extends React.Component {
           <div styleName="edit-container">
             <Icon type="edit" />
             <button styleName="edit-text" onClick={this.handleEdit.bind(this, exp)}>编辑</button>
+            <button onClick={this.handleDelete.bind(this, exp)}>删除</button>
           </div>
         </div>
       </div>

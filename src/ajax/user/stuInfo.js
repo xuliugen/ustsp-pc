@@ -6,7 +6,11 @@ export default {
   },
 
   completeStuEducation(body) {
-    return ajax.post('./student/completeEducation', body)
+    return ajax.post('/student/completeEducation', body)
+  },
+
+  updateStuEdu(body) {
+    return ajax.put('/user/changeEducation', body)
   },
 
   getInfo(userId) {

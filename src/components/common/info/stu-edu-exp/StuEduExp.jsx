@@ -1,17 +1,31 @@
 import React from 'react'
 import './stuEduExp.css'
+import { StuInfoApi } from 'src/ajax'
+import { inject } from 'mobx-react'
 
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
 import CreateStuEduDialog from './create-stu-edu-dialog/CreateStuEduDialog'
 import UpdateStuEduDialog from './update-stu-edu-dialog/UpdateStuEduDialog'
 
+@inject('userStore')
 export default class StuEduExp extends React.Component {
   state = {
     createDialogVisible: false,
     updateDialogVisible: false,
     expItems: [],
     selectedExp: null
+  }
+
+  async componentDidMount() {
+    try {
+      const { data } = await StuInfoApi.getEduInfo(this.props.userStore.user.id)
+      this.setState({
+        expItems: data
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   showModal(type, exp) {

@@ -36,6 +36,7 @@ export default class StuEduDialog extends React.Component<{}> {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const expItem = {
+          id: this.props.exp && this.props.exp.id,
           // userId: this.props.registerStore.initial.uid,
           school: values.school ? values.school[1] : null,
           college: values.college,

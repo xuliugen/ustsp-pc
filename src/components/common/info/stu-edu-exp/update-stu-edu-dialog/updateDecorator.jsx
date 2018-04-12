@@ -19,8 +19,7 @@ const updateDecorator = WrappedComponent => {
         } else if (this.props.userStore.user && this.props.userStore.user.id) {
           expItem.userId = this.props.userStore.user.id
         }
-        // todo: change api
-        await StuInfoApi.completeStuEducation(expItem)
+        await StuInfoApi.updateStuEdu(expItem)
         message.success('教育经历更新成功')
         this.props.confirmUpdate(expItem)
       } catch (e) {
