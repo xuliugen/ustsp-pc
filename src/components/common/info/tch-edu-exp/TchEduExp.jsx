@@ -4,6 +4,7 @@ import './tchEduExp.css'
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
 import CreateTchEduDialog from './create-tch-edu-dialog/CreateTchEduDialog'
+import UpdateTchEduDialog from './update-tch-edu-dialog/UpdateTchEduDialog'
 
 export default class TchEduExp extends React.Component {
   state = {
@@ -79,12 +80,12 @@ export default class TchEduExp extends React.Component {
           closeModel={this.closeModel.bind(this, 'create')}
           confirmAdd={this.handleConfirm.bind(this, 'create')}
         />}
-        {/* {editable && <UpdateTchEduDialog
+        {editable && <UpdateTchEduDialog
           exp={this.state.selectedExp}
           visible={this.state.updateDialogVisible}
           closeModel={this.closeModel.bind(this, 'update')}
           confirmUpdate={this.handleConfirm.bind(this, 'update')}
-        />} */}
+        />}
       </div>
     )
   }
