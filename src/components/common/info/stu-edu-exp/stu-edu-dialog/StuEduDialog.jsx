@@ -1,13 +1,14 @@
 import React from 'react'
-import './newExpItem.css'
+import './stuEduDialog.css'
+
 import { Form, Input, Row, Col, DatePicker, Modal, Button, message, Select, Cascader } from 'antd'
-import { observer, inject } from 'mobx-react'
-import { StuInfoApi } from 'src/ajax'
 import { province, school, subject } from 'src/common/dataset'
+import moment from 'moment'
 
 const FormItem = Form.Item
 const MonthPicker = DatePicker.MonthPicker
 const Option = Select.Option
+
 const [...options] = province.map(item => ({
   value: item,
   label: item,
@@ -25,14 +26,9 @@ const [...subjects] = Object.keys(subject).map(item => ({
   }))]
 }))
 
-@inject('registerStore')
-@observer
-class NewExpItem extends React.Component<{}> {
-  constructor() {
-    super()
-    this.state = {
-      loading: false
-    }
+export default class StuEduDialog extends React.Component<{}> {
+  state = {
+    loading: false
   }
 
   handleOk = (e) => {
@@ -40,7 +36,7 @@ class NewExpItem extends React.Component<{}> {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const expItem = {
-          userId: this.props.registerStore.initial.uid,
+          // userId: this.props.registerStore.initial.uid,
           school: values.school ? values.school[1] : null,
           college: values.college,
           major: values.major ? values.major[1] : null,
@@ -48,17 +44,7 @@ class NewExpItem extends React.Component<{}> {
           startTime: values.date ? values.date.valueOf() : null,
           endTime: values.finishTime ? values.finishTime.valueOf() : null
         }
-        this.setState({ loading: true })
-        try {
-          await StuInfoApi.completeStuEducation(expItem)
-          message.success('教育经历添加成功')
-          this.setState({ loading: false })
-          this.props.confirmAdd(expItem)
-        } catch (e) {
-          this.setState({ loading: false })
-          console.log(e)
-          this.setState({ loading: false })
-        }
+        this.props.dispatchOperate(expItem)
       } else {
         message.error('请先完善必填信息')
       }
@@ -75,12 +61,29 @@ class NewExpItem extends React.Component<{}> {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { exp } = this.props
+    let provinceOfSchool, categoryOfMajor
+    if (exp) {
+      for (let len = options.length, i = 0; i < len; i++) {
+        if (options[i].children.some(({ value }) => value === exp.school)) {
+          provinceOfSchool = options[i].value
+          break
+        }
+      }
+      for (let len = subjects.length, i = 0; i < len; i++) {
+        if (subjects[i].children.some(({ value }) => value === exp.major)) {
+          categoryOfMajor = subjects[i].value
+          break
+        }
+      }
+    }
     return (
       <div>
         <Modal
           visible={this.props.visible}
           title="教育经历"
-          destroyOnClose="true"
+          destroyOnClose
+          maskClosable={false}
           onOK={this.handleOK}
           onCancel={this.handleCancel}
           footer={[
@@ -94,6 +97,7 @@ class NewExpItem extends React.Component<{}> {
                 <FormItem label="学历级别">
                   {getFieldDecorator('level', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && exp.level,
                     rules: [{ required: true, message: '请输入学历级别' }]
                   })(
                     <Select>
@@ -107,6 +111,7 @@ class NewExpItem extends React.Component<{}> {
                 <FormItem label="学院">
                   {getFieldDecorator('college', {
                     validateTrigger: 'onBlur',
+                    initialValue: exp && exp.college,
                     rules: [{ required: true, message: '请输入学院' }]
                   })(
                     <Input />
@@ -114,6 +119,7 @@ class NewExpItem extends React.Component<{}> {
                 </FormItem>
                 <FormItem label="入学时间">
                   {getFieldDecorator('date', {
+                    initialValue: exp && moment(exp.date),
                     rules: [{ required: true, message: '请选择入学时间' }]
                   })(
                     <MonthPicker style={{ width: '100%' }} />
@@ -124,6 +130,7 @@ class NewExpItem extends React.Component<{}> {
                 <FormItem label="学校">
                   {getFieldDecorator('school', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && [provinceOfSchool, exp.school],
                     rules: [{ required: true, message: '请输入就读学校' }]
                   })(
                     <Cascader placeholder="就读学校" options={options}
@@ -135,6 +142,7 @@ class NewExpItem extends React.Component<{}> {
                 <FormItem label="专业">
                   {getFieldDecorator('major', {
                     validateTrigger: 'onChange',
+                    initialValue: exp && [categoryOfMajor, exp.major],
                     rules: [{ required: true, message: '请输入就读专业' }]
                   })(
                     <Cascader placeholder="就读专业" options={subjects}
@@ -145,6 +153,7 @@ class NewExpItem extends React.Component<{}> {
                 </FormItem>
                 <FormItem label="毕业时间">
                   {getFieldDecorator('finishTime', {
+                    initialValue: exp && moment(exp.finishTime),
                     rules: [{ required: true, message: '请选择毕业时间' }]
                   })(
                     <MonthPicker style={{ width: '100%' }} />
@@ -158,5 +167,3 @@ class NewExpItem extends React.Component<{}> {
     )
   }
 }
-
-export default Form.create()(NewExpItem)

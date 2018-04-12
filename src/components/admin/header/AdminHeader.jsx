@@ -35,6 +35,8 @@ export default class Sidebar extends React.Component {
             </Link>
             <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('talent') }}>找人才</Link>
             <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('project') }}>找项目</Link>
+            <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('ip') }}>找专利</Link>
+            <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('news') }}>找动态</Link>
           </ul>
           <div styleName="header-right">
             <div styleName="header-profile">

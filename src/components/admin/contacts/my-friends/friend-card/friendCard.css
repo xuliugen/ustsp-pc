@@ -1,0 +1,70 @@
+.card-wrapper {
+  position: relative;
+  display: flex;
+  padding: 20px 10px;
+  margin: 10px 0;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+.avatar-wrapper {
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid #f0f0f0;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.friend-detail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 16px;
+  color: #666;
+}
+
+.location {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.notes {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+}
+
+.edit {
+  margin-right: 5px;
+}
+
+.edit, .delete {
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.card-wrapper:hover {
+  box-shadow: 2px 2px 2px rgba(48, 145, 230, 0.4);
+}
+
+.card-wrapper:hover .icons {
+  display: block;
+}
