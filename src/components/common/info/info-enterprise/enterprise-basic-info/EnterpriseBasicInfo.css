@@ -9,14 +9,14 @@
   background-color: lightgrey;
 }
 
-.tch-certificate-wrapper {
+.entp-certificate-wrapper {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
   border: 1px solid lightgrey;
 }
 
-.tch-certificate {
+.entp-certificate {
   width: 200px;
   height: 200px;
 }

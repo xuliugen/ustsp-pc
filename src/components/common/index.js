@@ -6,6 +6,8 @@ import News from './news/StdNews'
 import IpRmd from './ip-rmd/IpRmd'
 import StuEduExp from './info/stu-edu-exp/StuEduExp'
 import TchEduExp from './info/tch-edu-exp/TchEduExp'
+import TeacherInfo from './info/info-teacher/TeacherInfo'
+import EnterpriseInfo from './info/info-enterprise/EnterpriseInfo'
 
 export {
   Header,
@@ -15,5 +17,7 @@ export {
   News,
   IpRmd,
   StuEduExp,
-  TchEduExp
+  TchEduExp,
+  TeacherInfo,
+  EnterpriseInfo
 }
