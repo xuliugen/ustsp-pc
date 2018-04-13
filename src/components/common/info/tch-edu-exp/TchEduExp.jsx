@@ -1,16 +1,16 @@
 import React from 'react'
-import './stuEduExp.css'
+import './tchEduExp.css'
 import { UserInfoApi } from 'src/ajax'
-import { inject } from 'mobx-react'
 import { message } from 'antd'
+import { inject } from 'mobx-react'
 
 import FormTitle from '../form-title/FormTitle'
 import EduExpItem from '../edu-exp-item/EduExpItem'
-import CreateStuEduDialog from './create-stu-edu-dialog/CreateStuEduDialog'
-import UpdateStuEduDialog from './update-stu-edu-dialog/UpdateStuEduDialog'
+import CreateTchEduDialog from './create-tch-edu-dialog/CreateTchEduDialog'
+import UpdateTchEduDialog from './update-tch-edu-dialog/UpdateTchEduDialog'
 
 @inject('userStore')
-export default class StuEduExp extends React.Component {
+export default class TchEduExp extends React.Component {
   state = {
     createDialogVisible: false,
     updateDialogVisible: false,
@@ -100,23 +100,18 @@ export default class StuEduExp extends React.Component {
   render() {
     const { editable } = this.props
     return (
-      <div styleName="educational-experience" ref={this.props.containerRef}>
+      <div styleName="root">
         <FormTitle title={'教育经历'} hasAddBtn={editable} handleAddClick={this.showModal.bind(this, 'create')} />
         <div styleName="content">
           {this.state.expItems.map((item) =>
-            <EduExpItem
-              key={item.id}
-              exp={item}
-              showModal={this.showModal.bind(this, 'update')}
-              deleteExp={this.handleDeleteExp.bind(this)}
-            />)}
+            <EduExpItem key={item.id} exp={item} showModal={this.showModal.bind(this, 'update')} deleteExp={this.handleDeleteExp.bind(this)} />)}
         </div>
-        {editable && <CreateStuEduDialog
+        {editable && <CreateTchEduDialog
           visible={this.state.createDialogVisible}
           closeModel={this.closeModel.bind(this, 'create')}
           confirmAdd={this.handleConfirm.bind(this, 'create')}
         />}
-        {editable && <UpdateStuEduDialog
+        {editable && <UpdateTchEduDialog
           exp={this.state.selectedExp}
           visible={this.state.updateDialogVisible}
           closeModel={this.closeModel.bind(this, 'update')}

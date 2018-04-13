@@ -1,11 +1,11 @@
 import React from 'react'
-import './newExpItem.css'
-import { Form, Row, Col, Input, DatePicker, Modal, Button, message, Cascader } from 'antd'
-import { observer, inject } from 'mobx-react'
-import { TchInfoApi } from 'src/ajax'
+import './tchEduDialog.css'
+import { Form, Row, Col, Input, DatePicker, Modal, Button, Cascader } from 'antd'
 import { province, school, subject } from 'src/common/dataset'
+import moment from 'moment'
 
 const FormItem = Form.Item
+const MonthPicker = DatePicker.MonthPicker
 
 const [...schoolOptions] = province.map(item => ({
   value: item,
@@ -24,20 +24,17 @@ const [...subjectsOptions] = Object.keys(subject).map(item => ({
   }))]
 }))
 
-@inject('registerStore')
-@observer
-class NewExpItem extends React.Component<{}> {
-  constructor() {
-    super()
-    this.state = {
-      loading: false
-    }
+@Form.create()
+export default class TchEduDialog extends React.Component {
+  state = {
+    loading: false
   }
+
   handleConfirm = () => {
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        const educationExperience = {
-          userId: this.props.registerStore.initial.uid,
+        const expItem = {
+          // userId: '',
           school: values.school ? values.school[1] : null,
           college: values.college,
           major: values.major ? values.major[1] : null,
@@ -45,22 +42,14 @@ class NewExpItem extends React.Component<{}> {
           startTime: values.startTime ? values.startTime.valueOf() : null, // get timestamp
           endTime: values.endTime ? values.endTime.valueOf() : null
         }
-        this.setState({ loading: true })
-        try {
-          await TchInfoApi.completeEducation(educationExperience)
-          message.success('添加成功')
-          this.setState({ loading: false })
-          this.props.confirmAdd(false, educationExperience)
-        } catch (e) {
-          console.log(e)
-          this.setState({ loading: false })
-        }
+        const id = this.props.exp && this.props.exp.id
+        this.props.dispatchOperate(expItem, id)
       }
     })
   }
 
   handleCancel = () => {
-    this.props.closeModal(false)
+    this.props.closeModel()
   }
 
   displayRender(label) {
@@ -69,12 +58,29 @@ class NewExpItem extends React.Component<{}> {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { exp } = this.props
+    let provinceOfSchool, categoryOfMajor
+    if (exp) {
+      for (let len = schoolOptions.length, i = 0; i < len; i++) {
+        if (schoolOptions[i].children.some(({ value }) => value === exp.school)) {
+          provinceOfSchool = schoolOptions[i].value
+          break
+        }
+      }
+      for (let len = subjectsOptions.length, i = 0; i < len; i++) {
+        if (subjectsOptions[i].children.some(({ value }) => value === exp.major)) {
+          categoryOfMajor = subjectsOptions[i].value
+          break
+        }
+      }
+    }
     return (
       <div>
         <Modal
           visible={this.props.visible}
           title="教育经历"
-          destroyOnClose="true"
+          maskClosable={false}
+          destroyOnClose
           onOk={this.handleConfirm}
           onCancel={this.handleCancel}
           footer={[
@@ -91,6 +97,7 @@ class NewExpItem extends React.Component<{}> {
                   <FormItem label="就职学校" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('school', {
                       validateTrigger: 'onChange',
+                      initialValue: exp && [provinceOfSchool, exp.school],
                       rules: [{ required: true, message: '请输入就读学校' }]
                     })(
                       <Cascader placeholder="就读学校" options={schoolOptions}
@@ -102,7 +109,8 @@ class NewExpItem extends React.Component<{}> {
                   <FormItem label="专业" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('major', {
                       validateTrigger: 'onChange',
-                      rules: [ { required: true, message: '请输入专业' } ]
+                      initialValue: exp && [categoryOfMajor, exp.major],
+                      rules: [{ required: true, message: '请输入专业' }]
                     })(
                       <Cascader placeholder="就读专业" options={subjectsOptions}
                         expandTrigger="hover"
@@ -112,9 +120,10 @@ class NewExpItem extends React.Component<{}> {
                   </FormItem>
                   <FormItem label="开始时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('startTime', {
+                      initialValue: exp && moment(exp.date),
                       rules: [{ required: true, message: '请选择开始时间' }]
                     })(
-                      <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                      <MonthPicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                     )}
                   </FormItem>
                 </Col>
@@ -122,6 +131,7 @@ class NewExpItem extends React.Component<{}> {
                   <FormItem label="学院">
                     {getFieldDecorator('college', {
                       validateTrigger: 'onBlur',
+                      initialValue: exp && exp.college,
                       rules: [
                         { required: true, message: '请输入学院' }
                       ]
@@ -132,6 +142,7 @@ class NewExpItem extends React.Component<{}> {
                   <FormItem label="学位">
                     {getFieldDecorator('level', {
                       validateTrigger: 'onBlur',
+                      initialValue: exp && exp.level,
                       rules: [
                         { required: true, message: '请输入学位' }
                       ]
@@ -141,9 +152,10 @@ class NewExpItem extends React.Component<{}> {
                   </FormItem>
                   <FormItem label="结束时间" style={{ flexFlow: '1' }}>
                     {getFieldDecorator('endTime', {
+                      initialValue: exp && moment(exp.endTime),
                       rules: [{ required: true, message: '请选择结束时间' }]
                     })(
-                      <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                      <MonthPicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                     )}
                   </FormItem>
                 </Col>
@@ -155,5 +167,3 @@ class NewExpItem extends React.Component<{}> {
     )
   }
 }
-
-export default Form.create()(NewExpItem)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StuInfoApi } from 'src/ajax'
+import { UserInfoApi } from 'src/ajax'
 import { message } from 'antd'
 import { observer, inject } from 'mobx-react'
 
@@ -19,7 +19,8 @@ const updateDecorator = WrappedComponent => {
         } else if (this.props.userStore.user && this.props.userStore.user.id) {
           expItem.userId = this.props.userStore.user.id
         }
-        await StuInfoApi.updateStuEdu(expItem)
+        // todo: change api
+        await UserInfoApi.updateEdu(expItem)
         message.success('教育经历更新成功')
         this.props.confirmUpdate(expItem)
       } catch (e) {
