@@ -1,8 +1,9 @@
 import React from 'react'
 import './publishedDemand.css'
-import { Badge, Pagination } from 'antd'
+import { Pagination } from 'antd'
 import { observer, inject } from 'mobx-react'
 import DemandItem from './demand-item/DemandItem'
+import StatusTags from '../common/status-tags/StatusTags'
 import { DemandApi } from 'src/ajax'
 
 @inject('userStore')
@@ -32,18 +33,19 @@ export default class PublishedDemand extends React.Component {
     }))
   }
 
-  handleClick = (status, idx, e) => {
+  handleClick(item) {
     // 改变tag样式
-    changeClass(e.currentTarget)
-    this.setState((prev) => ({
-      showDot: prev.showDot.map((item, i) => (i === idx ? false : item))
-    }))
+    // changeClass(e.currentTarget)
+    // this.setState((prev) => ({
+    //   showDot: prev.showDot.map((item, i) => (i === idx ? false : item))
+    // }))
 
     // 渲染数据
     this.setState((prevState) => ({
-      pagination: { ...prevState.pagination, current: 1 }
+      pagination: { ...prevState.pagination, current: 1 },
+      status: item.status
     }))
-    this.setDemand(this.state.pagination.current, this.state.pagination.currentPageSize, status)
+    this.setDemand(this.state.pagination.current, this.state.pagination.currentPageSize, item.status)
   }
 
   handlePagiChange = (page, pageSize) => {
@@ -73,26 +75,7 @@ export default class PublishedDemand extends React.Component {
 
     return (
       <div styleName="published-demand-container">
-        <div styleName="status-tags">
-          {statusTags.map((item, idx) => {
-            if (idx === 0) {
-              return (
-                <span key={idx} className="demand-status-selected" onClick={(e) => this.handleClick(item.status, idx, e)} >
-                  <Badge dot={this.state.showDot[idx]}>
-                    <span styleName="demand-status">{item.name}</span>
-                  </Badge>
-                </span>
-              )
-            }
-            return (
-              <span key={idx} onClick={(e) => this.handleClick(item.status, idx, e)} >
-                <Badge dot={this.state.showDot[idx]}>
-                  <span styleName="demand-status">{item.name}</span>
-                </Badge>
-              </span>
-            )
-          })}
-        </div>
+        <StatusTags statusTags={statusTags} currentStatus={this.state.status} handleClick={this.handleClick.bind(this)} />
         <div styleName="demand-items">
           {this.state.demands.length !== 0 ? this.state.demands.map((item, idx) => {
             return (
@@ -109,14 +92,5 @@ export default class PublishedDemand extends React.Component {
         </div>
       </div>
     )
-  }
-}
-
-function changeClass(element) {
-  let className = element.className
-  if (className !== 'demand-status-selected') {
-    let selectedEl = document.getElementsByClassName('demand-status-selected')[0]
-    selectedEl.className = ''
-    element.className = 'demand-status-selected'
   }
 }
