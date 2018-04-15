@@ -7,8 +7,7 @@ import { withRouter, Link } from 'react-router-dom'
 
 import StuBaseInfo from './base-info/StuBaseInfo'
 import StuPersonalExperience from './personal-experience/StuPersonalExperience'
-// import StuEducationalExperience from './educational-experience/StuEducationalExperience'
-import {StuEduExp} from 'components/common'
+import { StuEduExp } from 'components/common/info'
 import SideNav from '../common/side-nav/SideNav'
 
 @withRouter
