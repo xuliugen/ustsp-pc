@@ -9,7 +9,7 @@ export default class StuInfo extends React.Component {
     return (
       <div styleName="wrapper">
         <div styleName="form-wrapper">
-          <Form layout="verticle" >
+          <Form layout="vertical" >
             <StuBaseInfo />
             <StuProfile />
           </Form>
