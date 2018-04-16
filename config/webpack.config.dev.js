@@ -157,7 +157,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
                 [
                   'react-css-modules',
                   {
-                    'generateScopedName': '[local]-[hash:base64:5]'
+                    'generateScopedName': '[name]--[local]-[hash:base64:5]'
                   }
                 ],
                 'react-hot-loader/babel'
@@ -179,7 +179,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: '[local]-[hash:base64:5]'
+                  localIdentName: '[name]--[local]-[hash:base64:5]'
                 }
               },
               {
