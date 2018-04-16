@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Row, Col, Icon } from 'antd'
 import moment from 'moment'
-import FormTitle from '../../form-title/FormTitle'
+import FormTitle from 'src/components/common/info/form-title/FormTitle'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
-import './TeacherBasicInfo.css'
+import './teacherBasicInfo.css'
 
 const FormItem = Form.Item
 

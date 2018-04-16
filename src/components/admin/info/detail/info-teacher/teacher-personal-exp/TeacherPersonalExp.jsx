@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Row, Col } from 'antd'
-import FormTitle from '../../form-title/FormTitle'
-import './TeacherPersonalExp.css'
+import FormTitle from 'src/components/common/info/form-title/FormTitle'
+import './teacherPersonalExp.css'
 
 const FormItem = Form.Item
 

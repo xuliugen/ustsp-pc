@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'antd'
-import FormTitle from '../../form-title/FormTitle'
-import './EnterpriseOtherInfo.css'
+import FormTitle from 'src/components/common/info/form-title/FormTitle'
+import './enterpriseOtherInfo.css'
 
 const FormItem = Form.Item
 

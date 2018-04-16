@@ -1,6 +1,8 @@
 import React from 'react'
 import { inject } from 'mobx-react'
-import { StuEduExp, EnterpriseInfo, TeacherInfo } from 'components/common'
+import { StuEduExp } from 'components/common'
+import TeacherInfo from './info-teacher/TeacherInfo'
+import EnterpriseInfo from './info-enterprise/EnterpriseInfo'
 
 @inject('userStore')
 export default class InfoDetail extends React.Component {
