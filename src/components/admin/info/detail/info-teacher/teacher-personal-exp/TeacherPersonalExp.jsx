@@ -46,7 +46,7 @@ export default class TeacherPersonalExp extends React.Component {
           </FormItem>
           <FormItem label="发表文章">
             <span>
-              1. 《嵌入式系统原理及应用开发技术（第2版）》，2008年1月，高等教育出版社，承担比例：1/12；
+              1. 《嵌入式系统原理及应用开发技术（第2版）》，2008年1月，高等教育出版社，承担比例：1/12<br />
               2. 《汇编语言程序设计》，2009年10月，清华大学出版社，承担比例：1/3。
             </span>
           </FormItem>

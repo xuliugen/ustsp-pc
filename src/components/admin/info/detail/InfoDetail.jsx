@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject } from 'mobx-react'
-import { StuEduExp } from 'components/common'
+import StuInfo from './info-student/StuInfo'
 import TeacherInfo from './info-teacher/TeacherInfo'
 import EnterpriseInfo from './info-enterprise/EnterpriseInfo'
 
@@ -12,14 +12,13 @@ export default class InfoDetail extends React.Component {
     switch (user.userType) {
       case 1 : InfoModule = TeacherInfo
         break
-      case 2 : InfoModule = StuEduExp
+      case 2 : InfoModule = StuInfo
         break
       case 3 : InfoModule = EnterpriseInfo
     }
     return (
       <div>
         <InfoModule />
-        <StuEduExp editable />
       </div>
     )
   }

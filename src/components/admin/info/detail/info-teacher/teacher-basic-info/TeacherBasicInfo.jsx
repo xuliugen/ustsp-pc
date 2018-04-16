@@ -25,7 +25,7 @@ export default class TeacherBasicInfo extends React.Component {
                 </span>
               </FormItem>
               <FormItem label="出生日期">
-                <span>{moment().format('MMM Do YY')}</span>
+                <span>{moment().format('YYYY-MM-DD')}</span>
               </FormItem>
               <FormItem label="微信">
                 <span>
@@ -35,7 +35,7 @@ export default class TeacherBasicInfo extends React.Component {
             </Col>
             <Col span={12}>
               <img src={defaultAvatar} styleName="avatar" />
-              <FormItem label="QQ" styleName="qq">
+              <FormItem label="QQ">
                 <span>495243922</span>
               </FormItem>
             </Col>

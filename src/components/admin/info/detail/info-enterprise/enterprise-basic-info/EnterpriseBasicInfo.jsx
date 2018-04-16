@@ -22,7 +22,7 @@ export default class CmpyBasicInfo extends React.Component {
                 <span>通信与信息技术</span>
               </FormItem>
               <FormItem label="成立时间">
-                <span>{moment().format('MMM Do YY')}</span>
+                <span>{moment().format('YYYY-MM-DD')}</span>
               </FormItem>
               <FormItem label="规模">
                 <span>50人以上</span>
