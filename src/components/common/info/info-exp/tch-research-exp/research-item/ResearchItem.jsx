@@ -23,6 +23,8 @@ export default class ResearchItem extends React.Component<{}> {
 
   render() {
     const props = this.props
+    const { editable } = this.props
+
     return (
       <div styleName="root">
         <div>
@@ -35,13 +37,13 @@ export default class ResearchItem extends React.Component<{}> {
             {(props.projectLevel) && <li styleName="li-text">级别: {props.projectLevel}</li>}
             <li styleName="li-text">
               <span>经费:   {props.funding ? '¥' + props.funding : '暂无'}</span>
-              <div styleName="operate-container">
+              {editable && <div styleName="operate-container">
                 <button styleName="operate-text" onClick={this.handleDelete.bind(this, props)}>删除</button>
                 <div>
                   <Icon type="edit" />
                   <button styleName="operate-text" onClick={this.handleEdit.bind(this, props)}>编辑</button>
                 </div>
-              </div>
+              </div>}
             </li>
           </ul>
         </div>

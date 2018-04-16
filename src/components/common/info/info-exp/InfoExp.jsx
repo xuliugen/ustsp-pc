@@ -83,6 +83,7 @@ export default class InfoExp extends React.Component {
     const ItemListComp = this.state.items.map((item) =>
       <ItemComp
         key={item.id}
+        editable={editable}
         {...item}
         setVisible={this.setVisible.bind(this, 'update')}
         setSelectedItem={this.setSelectedItem}
