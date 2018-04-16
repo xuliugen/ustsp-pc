@@ -7,8 +7,7 @@ import { TchInfoApi } from 'src/ajax'
 
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
-import {TchEduExp} from 'components/common/info'
-import Research from './research/Research'
+import { TchEduExp, TchResearchExp } from 'components/common/info'
 import IP from './ip/IP'
 import Award from './r-award/Award'
 
@@ -118,7 +117,7 @@ class StepThreeTeacher extends React.Component<{}> {
             <PersonalExperience form={this.props.form} />
           </Form>
           <TchEduExp editable />
-          <Research />
+          <TchResearchExp editable />
           <IP />
           <Award title={'科研获奖'} isResearch={1} />
           <Award title={'非科研获奖'} isResearch={0} />
