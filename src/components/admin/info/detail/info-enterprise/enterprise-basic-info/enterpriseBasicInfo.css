@@ -10,10 +10,10 @@
 }
 
 .entp-certificate-wrapper {
-  text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
   border: 1px solid lightgrey;
+  text-align: center;
 }
 
 .entp-certificate {
