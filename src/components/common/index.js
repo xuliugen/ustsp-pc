@@ -4,8 +4,6 @@ import ProjectsRmd from './projects-rmd/ProjectsRmd'
 import TalentsRmd from './talents-rmd/TalentsRmd'
 import News from './news/StdNews'
 import IpRmd from './ip-rmd/IpRmd'
-import StuEduExp from './info/stu-edu-exp/StuEduExp'
-import TchEduExp from './info/tch-edu-exp/TchEduExp'
 
 export {
   Header,
@@ -13,7 +11,5 @@ export {
   ProjectsRmd,
   TalentsRmd,
   News,
-  IpRmd,
-  StuEduExp,
-  TchEduExp
+  IpRmd
 }
