@@ -8,7 +8,7 @@ import TchEduForm from './tch-edu-form/TchEduForm'
 import CreateDialog from './create-dialog/CreateDialog'
 import UpdateDialog from './update-dialog/UpdateDialog'
 
-@inject('userStore')
+@inject('userStore', 'registerStore')
 @observer
 export default class StuEduExp extends React.Component {
   state = {
@@ -21,7 +21,13 @@ export default class StuEduExp extends React.Component {
 
   async retrieveItems() {
     try {
-      const { data } = await UserInfoApi.fetchEdu(this.props.userStore.user.id)
+      let id
+      if (this.props.registerStore.initial && this.props.registerStore.initial.uid) {
+        id = this.props.registerStore.initial.uid
+      } else if (this.props.userStore.user && this.props.userStore.user.id) {
+        id = this.props.userStore.user.id
+      }
+      const { data } = await UserInfoApi.fetchEdu(id)
       this.setState({
         expItems: data
       })
