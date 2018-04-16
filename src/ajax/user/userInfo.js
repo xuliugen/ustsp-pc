@@ -11,5 +11,17 @@ export default {
 
   deleteEdu(id) {
     return ajax.delete(`/user/deleteEducation?id=${id}`)
+  },
+
+  fetchResearch(id) {
+    return ajax.get(`/user/getResearch?userId=${id}`)
+  },
+
+  updateResearch(body) {
+    return ajax.put('/user/changeResearch', body)
+  },
+
+  deleteResearch(id) {
+    return ajax.delete(`/user/deleteResearch?id=${id}`)
   }
 }
