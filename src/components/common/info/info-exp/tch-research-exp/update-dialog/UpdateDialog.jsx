@@ -14,6 +14,7 @@ export default class UpdateDialog extends React.Component {
       if (!err) {
         try {
           const item = {
+            id: this.props.item && this.props.item.id,
             projectName: values.projectName,
             projectLevel: values.projectLevel,
             funding: values.funding,
