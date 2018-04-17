@@ -11,7 +11,7 @@ export default class InfoDetail extends React.Component {
     const { user } = this.props.userStore
     let InfoModule
     switch (user.userType) {
-      case 1: InfoModule = StuInfo
+      case 1 : InfoModule = StuInfo
         break
       case 2: InfoModule = TeacherInfo
         break
