@@ -6,6 +6,8 @@ import { message } from 'antd'
 import { TchInfoApi } from 'src/ajax'
 import './teacherInfo.css'
 
+import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp } from 'components/common/info'
+
 @observer
 @inject('userStore')
 export default class TeacherInfo extends React.Component {
@@ -56,9 +58,14 @@ export default class TeacherInfo extends React.Component {
 
   render() {
     return (
-      <div styleName="content-wrapper">
+      <div styleName="root">
         <TeacherBasicInfo tchBasicInfo={this.state.tchBasicInfo} />
         <TeacherPersonalExp tchPersonalExp={this.state.tchPersonalExp} />
+        <TchEduExp />
+        <TchResearchExp />
+        <TchIpExp />
+        <TchAwardExp isResearch />
+        <TchAwardExp />
       </div>
     )
   }
