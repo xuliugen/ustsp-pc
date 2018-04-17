@@ -28,11 +28,17 @@ export default class TeacherBasicInfo extends React.Component {
               <FormItem label="微信">
                 <span>{tchBasicInfo.wechat}</span>
               </FormItem>
+              <FormItem label="手机">
+                <span>{tchBasicInfo.phone}</span>
+              </FormItem>
             </Col>
             <Col span={12}>
               <img src={tchBasicInfo.avatar == null ? defaultAvatar : tchBasicInfo.avatar} styleName="avatar" />
               <FormItem label="QQ">
                 <span>{tchBasicInfo.qq}</span>
+              </FormItem>
+              <FormItem label="邮箱">
+                <span>{tchBasicInfo.email}</span>
               </FormItem>
             </Col>
           </Row>

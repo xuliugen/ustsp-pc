@@ -22,15 +22,18 @@ export default class TeacherInfo extends React.Component {
     const sexArray = ['男', '女']
     try {
       const { data } = await TchInfoApi.getTeacherInfo(userId)
+      console.log(data)
       this.setState({
         tchBasicInfo: {
           name: data.teacherInfoDTO.realName,
           sex: sexArray[parseInt(data.teacherInfoDTO.sex)],
           birth: data.teacherInfoDTO.birth,
           wechat: data.teacherInfoDTO.wechat,
-          avatar: data.teacherInfoDTO.avatar,
+          avatar: data.teacherInfoDTO.photo,
           qq: data.teacherInfoDTO.qq,
-          certificate: data.teacherInfoDTO.certificate
+          certificate: data.teacherInfoDTO.certificate,
+          phone: data.teacherInfoDTO.phone,
+          email: data.teacherInfoDTO.email
         },
         tchPersonalExp: {
           university: data.teacherInfoDTO.school,
