@@ -32,5 +32,16 @@ export default {
   },
   deleteIp(id) {
     return ajax.delete(`/user/deleteIntellectualProperty?id=${id}`)
+  },
+
+  // award
+  fetchAward(id) {
+    return ajax.get(`/user/getAward?userId=${id}`)
+  },
+  updateAward(body) {
+    return ajax.put('/user/changeAward', body)
+  },
+  deleteAward(id) {
+    return ajax.delete(`/user/deleteAward?id=${id}`)
   }
 }

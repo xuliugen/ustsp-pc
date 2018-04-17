@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StuEduExp, TchEduExp, TchResearchExp, TchIpExp } from 'components/common/info'
+import { StuEduExp, TchEduExp, TchResearchExp, TchIpExp, TchAwardExp } from 'components/common/info'
 
 export default class InfoModify extends React.Component {
   render() {
@@ -9,7 +9,9 @@ export default class InfoModify extends React.Component {
         <StuEduExp editable />
         <TchEduExp editable />
         <TchResearchExp editable />
-        <TchIpExp editable />
+        <TchIpExp editable />,
+        <TchAwardExp editable isResearch />
+        <TchAwardExp editable />
       </div>
     )
   }
