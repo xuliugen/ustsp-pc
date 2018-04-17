@@ -9,6 +9,7 @@ const FormItem = Form.Item
 
 export default class CmpyBasicInfo extends React.Component {
   render() {
+    const etpBasicInfo = this.props.etpBasicInfo
     return (
       <div>
         <FormTitle title={'基本信息'} />
@@ -16,38 +17,38 @@ export default class CmpyBasicInfo extends React.Component {
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="企业名">
-                <span>电子科技大学科园股份有限公司</span>
+                <span>{etpBasicInfo.name}</span>
               </FormItem>
               <FormItem label="行业">
-                <span>通信与信息技术</span>
+                <span>{etpBasicInfo.industry}</span>
               </FormItem>
               <FormItem label="成立时间">
-                <span>{moment().format('YYYY-MM-DD')}</span>
+                <span>{moment(etpBasicInfo.birth).format('YYYY-MM-DD')}</span>
               </FormItem>
               <FormItem label="规模">
-                <span>50人以上</span>
+                <span>{etpBasicInfo.scale}</span>
               </FormItem>
               <FormItem label="性质">
-                <span>私营企业</span>
+                <span>{etpBasicInfo.nature}</span>
               </FormItem>
               <FormItem label="企业营业执照号">
-                <span>EPSA112908Q2</span>
+                <span>{etpBasicInfo.businessLicense}</span>
               </FormItem>
             </Col>
             <Col span={12}>
-              <img src={defaultAvatar} styleName="avatar" />
+              <img src={etpBasicInfo.avatar == null ? defaultAvatar : etpBasicInfo.avatar} styleName="avatar" />
               <FormItem label="地点">
-                <span>成都市成华区府青路</span>
+                <span>{etpBasicInfo.place}</span>
               </FormItem>
               <FormItem label="发展阶段">
-                <span>上市公司</span>
+                <span>{etpBasicInfo.stage}</span>
               </FormItem>
             </Col>
           </Row>
           <Row>
             <span>企业营业执照照片:</span>
             <div styleName="entp-certificate-wrapper">
-              <img src={defaultAvatar} styleName="entp-certificate" />
+              <img src={etpBasicInfo.photo == null ? defaultAvatar : etpBasicInfo.photo} styleName="entp-certificate" />
             </div>
           </Row>
         </div>
