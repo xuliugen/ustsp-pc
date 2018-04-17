@@ -43,5 +43,23 @@ export default {
   },
   deleteAward(id) {
     return ajax.delete(`/user/deleteAward?id=${id}`)
+  },
+
+  // pwd
+  modifyPwd(body) {
+    return ajax.put('/user/changePassword', body)
+  },
+
+  // forget pwd
+  fetchCode(phone) {
+    return ajax.get(`/user/changePasswordCode?phone=${phone}`)
+  },
+
+  checkCode(body) {
+    return ajax.post('/user/code/check', body)
+  },
+
+  modifyPwdByPhone(body) {
+    return ajax.put('/user/changePasswordByPhone', body)
   }
 }
