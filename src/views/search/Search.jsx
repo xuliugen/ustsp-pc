@@ -23,6 +23,8 @@ export default class Search extends React.Component {
         rmd = (
           <div>
             <ProjectsRmd />
+            <TalentsRmd />
+            <IpRmd />
           </div>
         )
         break
@@ -36,6 +38,8 @@ export default class Search extends React.Component {
         rmd = (
           <div>
             <TalentsRmd />
+            <ProjectsRmd />
+            <IpRmd />
           </div>
         )
         break
