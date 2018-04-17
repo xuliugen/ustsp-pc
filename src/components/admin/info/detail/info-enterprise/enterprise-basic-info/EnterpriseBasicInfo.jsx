@@ -16,8 +16,8 @@ export default class CmpyBasicInfo extends React.Component {
         <div styleName="content">
           <Row gutter={20}>
             <Col span={12}>
-              <FormItem label="企业名">
-                <span>{etpBasicInfo.name}</span>
+              <FormItem>
+                <span style={{fontSize: 20}}>{etpBasicInfo.name}</span>
               </FormItem>
               <FormItem label="行业">
                 <span>{etpBasicInfo.industry}</span>
