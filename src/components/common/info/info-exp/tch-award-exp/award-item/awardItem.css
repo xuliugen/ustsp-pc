@@ -1,4 +1,4 @@
-.award{
+.root {
   margin-bottom: 60px;
 }
 
@@ -15,21 +15,20 @@
   color: #333;
 }
 
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
 .edit-icon{
-  position: absolute;
   bottom: 2px;
   right: 53px;
 }
 .edit-text{
-  position: absolute;
-  bottom: 0;
-  right: 17px;
   padding-left: 0px;
   color: #8f9ba7;
   font-size: 14px;
   text-decoration: underline;
 }
-
 .award-info{
   margin-top: 19px;
 }
