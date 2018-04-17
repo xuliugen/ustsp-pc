@@ -1,0 +1,22 @@
+.wrapper {
+  padding: 30px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.tags {
+  font-size: 16px;
+  color: #8f9ba7;
+}
+
+.tags > span {
+  cursor: pointer;
+}
+
+.selected {
+  color: #3091e6;
+}
+
+.content {
+  margin: 40px 0;
+}
