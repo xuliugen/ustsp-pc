@@ -99,7 +99,7 @@ export default class InfoExp extends React.Component {
         </div>
         {editable &&
           <CreateDialog
-            title={title}
+            {...options}
             visible={this.state.createDialogVisible}
             setVisible={this.setVisible.bind(this, 'create')}
             createItem={this.createItem} >
