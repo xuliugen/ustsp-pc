@@ -4,6 +4,7 @@ import StuProfile from './stu-profile/StuProfile'
 import {Form} from 'antd'
 import { StuInfoApi } from 'src/ajax'
 import './stuInfo.css'
+import { StuEduExp } from 'components/common/info'
 
 export default class StuInfo extends React.Component {
   state = {
@@ -25,11 +26,12 @@ export default class StuInfo extends React.Component {
 
   render() {
     return (
-      <div styleName="wrapper">
+      <div styleName="root">
         <div styleName="form-wrapper">
           <Form layout="vertical" >
             <StuBaseInfo userInfo={this.state.userInfo} stuInfo={this.state.stuInfo} />
             <StuProfile stuInfo={this.state.stuInfo} />
+            <StuEduExp />
           </Form>
         </div>
       </div>
