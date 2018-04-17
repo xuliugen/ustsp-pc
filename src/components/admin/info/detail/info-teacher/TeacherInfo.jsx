@@ -8,8 +8,8 @@ import './teacherInfo.css'
 
 import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp } from 'components/common/info'
 
-@observer
 @inject('userStore')
+@observer
 export default class TeacherInfo extends React.Component {
   constructor() {
     super()
@@ -34,8 +34,8 @@ export default class TeacherInfo extends React.Component {
           avatar: data.teacherInfoDTO.photo,
           qq: data.teacherInfoDTO.qq,
           certificate: data.teacherInfoDTO.certificate,
-          phone: data.teacherInfoDTO.phone,
-          email: data.teacherInfoDTO.email
+          phone: data.userInfoDTO.phone,
+          email: data.userInfoDTO.email
         },
         tchPersonalExp: {
           university: data.teacherInfoDTO.school,
