@@ -30,8 +30,8 @@ export default class StudentBaseInfo extends React.Component {
                   rules: [{ required: true, message: '请选择性别' }]
                 })(
                   <RadioGroup styleName="gender" name="radiogroup">
-                    <Radio styleName="gender-radio" value={1}>男</Radio>
-                    <Radio styleName="gender-radio" value={2}>女</Radio>
+                    <Radio styleName="gender-radio" value={0}>男</Radio>
+                    <Radio styleName="gender-radio" value={1}>女</Radio>
                   </RadioGroup>
                 )}
               </FormItem>
