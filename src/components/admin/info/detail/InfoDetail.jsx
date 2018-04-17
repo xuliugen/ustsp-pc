@@ -4,8 +4,8 @@ import StuInfo from './info-student/StuInfo'
 import TeacherInfo from './info-teacher/TeacherInfo'
 import EnterpriseInfo from './info-enterprise/EnterpriseInfo'
 
-@observer
 @inject('userStore')
+@observer
 export default class InfoDetail extends React.Component {
   render() {
     const { user } = this.props.userStore
@@ -13,13 +13,13 @@ export default class InfoDetail extends React.Component {
     switch (user.userType) {
       case 1 : InfoModule = StuInfo
         break
-      case 2 : InfoModule = TeacherInfo
+      case 2: InfoModule = TeacherInfo
         break
-      case 3 : InfoModule = EnterpriseInfo
+      case 3: InfoModule = EnterpriseInfo
     }
     return (
       <div>
-        <InfoModule />
+        <InfoModule uid={this.props.userStore.user.id} />
       </div>
     )
   }
