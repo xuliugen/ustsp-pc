@@ -61,7 +61,7 @@ export default class ModifyDirectly extends React.Component {
       wrapperCol: { span: 4 }
     }
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <FormItem label="输入旧密码" {...formItemLayout} style={{ width: '100%' }} >
           {getFieldDecorator('oldPassword', {
             validateTrigger: 'onBlur',
