@@ -4,7 +4,6 @@ import TeacherPersonalExp from './teacher-personal-exp/TeacherPersonalExp'
 import { inject, observer } from 'mobx-react'
 import { message } from 'antd'
 import { TchInfoApi } from 'src/ajax'
-// import TchEduExp from 'src/components/common/info/info-exp/tch-edu-exp/TchEduExp'
 import './teacherInfo.css'
 
 @observer
