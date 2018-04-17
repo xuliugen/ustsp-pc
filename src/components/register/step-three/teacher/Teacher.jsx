@@ -7,8 +7,7 @@ import { TchInfoApi } from 'src/ajax'
 
 import TchBaseInfo from './base-info/TchBaseInfo'
 import PersonalExperience from './personal-experience/TchPersonalExperience'
-import { TchEduExp, TchResearchExp } from 'components/common/info'
-import IP from './ip/IP'
+import { TchEduExp, TchResearchExp, TchIpExp } from 'components/common/info'
 import Award from './r-award/Award'
 
 @withRouter
@@ -118,7 +117,7 @@ class StepThreeTeacher extends React.Component<{}> {
           </Form>
           <TchEduExp editable />
           <TchResearchExp editable />
-          <IP />
+          <TchIpExp editable />
           <Award title={'科研获奖'} isResearch={1} />
           <Award title={'非科研获奖'} isResearch={0} />
           <button onClick={this.handleOnClickConfirm} styleName="confirm-button">确认</button>
