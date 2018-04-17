@@ -1,6 +1,9 @@
 const config = {
-  API_ORIGIN: 'http://localhost:8080/api',
-  // API_ORIGIN: 'http://192.168.1.85:8080/api',
+  // API_ORIGIN: 'http://localhost:8080/api',
+  API_ORIGIN: 'http://xuliugen.vicp.io:8089/api/', // 415
+  // API_ORIGIN: 'http://192.168.1.85:8080/api', // zcx
+  // API_ORIGIN: 'http://192.168.1.190:8080/api', // hhb
+  // API_ORIGIN: 'http://192.168.1.180:8080/api', // ljn
   USA_ORIGIN: 'https://weixin.uppfind.com/university-assistant-server'
 }
 

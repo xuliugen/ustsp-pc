@@ -1,4 +1,4 @@
-.research-item{
+.root {
   margin-bottom: 60px;
   padding-right: 17px;
 }
@@ -7,42 +7,38 @@
   margin-bottom: 0;
 }
 
-.research-name{
+.research-name {
   font-size: 22px;
   color: #333;
 }
-.time-text{
+.time-text {
   float: right;
   font-size: 14px;
   color: #aaa;
   padding-right: 6px;
 }
 
-.ul-container{
+.ul-container {
   position: relative;
   margin-top:7px;
 }
 
-.li-text{
+.li-text {
   font-size: 14px;
   margin-top: 10px;
   color: #666;
 }
-.edit-container{
+
+.operate-container {
   position: relative;
+  top: -20px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.edit-incon{
-  position: absolute;
-  bottom: 1px;
-  right: 36px;
-}
-.edit-text{
-  position: absolute;
-  bottom: -1px;
-  right: 0;
+.operate-text {
+  padding-left: 2px;
   color: #8f9ba7;
   font-size: 14px;
-  padding-left: 2px;
   text-decoration: underline;
 }

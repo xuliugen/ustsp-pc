@@ -23,6 +23,7 @@ export default class EduExpItem extends React.Component {
 
   render() {
     const props = this.props
+    const { editable } = this.props
     return (
       <div styleName="exp-item">
         <div styleName="row">
@@ -34,11 +35,11 @@ export default class EduExpItem extends React.Component {
         </div>
         <div styleName="row">
           <span styleName="major-text">{props.college} / {props.major}</span>
-          <div styleName="edit-container">
+          {editable && <div styleName="edit-container">
             <Icon type="edit" />
             <button styleName="edit-text" onClick={this.handleEdit.bind(this, props)}>编辑</button>
             <button onClick={this.handleDelete.bind(this, props)}>删除</button>
-          </div>
+          </div>}
         </div>
       </div>
     )
