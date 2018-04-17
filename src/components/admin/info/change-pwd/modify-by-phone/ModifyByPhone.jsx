@@ -9,17 +9,22 @@ export default class ModifyByPhone extends React.Component {
   constructor() {
     super()
     this.state = {
-      step: 'verify'
+      step: 'verify',
+      phone: '',
+      code: ''
     }
-  }
-
-  handleClick(step) {
-    this.setStep(step)
   }
 
   setStep(type) {
     this.setState({
       step: type
+    })
+  }
+
+  setProp(phone, code) {
+    this.setState({
+      phone: phone,
+      code: code
     })
   }
 
@@ -36,12 +41,12 @@ export default class ModifyByPhone extends React.Component {
     return (
       <div styleName="phone-wrapper">
         <div styleName="progress-bar">
-          <span styleName={this.state.step === 'verify' ? 'selected' : ''} onClick={this.handleClick.bind(this, 'verify')}>手机验证</span>
+          <span styleName={this.state.step === 'verify' ? 'selected' : ''}>手机验证</span>
           &nbsp;&nbsp;>&nbsp;&nbsp;
           <span styleName={this.state.step === 'modify' ? 'selected' : ''}>修改密码</span>
         </div>
         <div styleName="content">
-          <Content form={this.props.form} setStep={this.setStep.bind(this)} />
+          <Content form={this.props.form} setStep={this.setStep.bind(this)} setProp={this.setProp.bind(this)} phone={this.state.phone} code={this.state.code} />
         </div>
       </div>
     )

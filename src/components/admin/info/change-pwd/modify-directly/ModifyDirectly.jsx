@@ -1,10 +1,14 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import './modifyDirectly.css'
+import { inject, observer } from 'mobx-react'
+import { UserInfoApi } from 'src/ajax'
 
 const FormItem = Form.Item
 
 @Form.create()
+@inject('userStore')
+@observer
 export default class ModifyDirectly extends React.Component {
   constructor() {
     super()
@@ -47,9 +51,26 @@ export default class ModifyDirectly extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
+        try {
+          const modification = {
+            phone: this.props.userStore.user.phone,
+            oldPassword: values.oldPassword,
+            newPassword: values.newPassword,
+            confirm: values.confirm
+          }
+          await UserInfoApi.modifyPwd(modification)
+          message.success('修改密码成功')
+          this.props.form.setFieldsValue({
+            oldPassword: '',
+            newPassword: '',
+            confirm: ''
+          })
+        } catch (error) {
+          message.error('修改密码失败，请确认旧密码输入正确')
+          console.log(error)
+        }
       }
     })
   }
@@ -100,7 +121,7 @@ export default class ModifyDirectly extends React.Component {
             <Input type="password" />
           )}
         </FormItem>
-        <FormItem wrapperCol={{span: 4, offset: 10}} styleName="form-item">
+        <FormItem wrapperCol={{ span: 4, offset: 10 }} styleName="form-item">
           <Button type="primary" htmlType="submit" styleName="confirm" >确认修改</Button>
           <a>取消</a>
         </FormItem>

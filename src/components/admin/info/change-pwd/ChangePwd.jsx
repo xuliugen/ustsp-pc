@@ -30,9 +30,9 @@ export default class ChangePwd extends React.Component {
     return (
       <div styleName="wrapper">
         <div styleName="tags">
-          <span styleName={this.state.method === 'directly' ? 'selected' : ''} onClick={this.handleClick.bind(this, 'directly')}>密码修改</span>
+          <span styleName={'method' + (this.state.method === 'directly' ? ' selected' : '')} onClick={this.handleClick.bind(this, 'directly')}>密码修改</span>
           &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span styleName={this.state.method === 'phone' ? 'selected' : ''} onClick={this.handleClick.bind(this, 'phone')}>手机验证</span>
+          <span styleName={'method' + (this.state.method === 'phone' ? ' selected' : '')} onClick={this.handleClick.bind(this, 'phone')}>手机验证</span>
         </div>
         <div styleName="content">
           <Content />

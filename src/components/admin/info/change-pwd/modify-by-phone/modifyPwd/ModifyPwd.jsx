@@ -1,5 +1,6 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
+import { UserInfoApi } from 'src/ajax'
 
 const FormItem = Form.Item
 
@@ -45,9 +46,22 @@ export default class ModifyPwd extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
+        try {
+          const modification = {
+            phone: this.props.phone,
+            confirm: values.confirm,
+            newPassword: values.newPassword,
+            code: this.props.code
+          }
+          await UserInfoApi.modifyPwdByPhone(modification)
+          message.success('密码修改成功')
+          this.props.setStep('verify')
+        } catch (error) {
+          message.error('密码修改失败，请使用已注册的手机号以及对应的验证码')
+          console.log(error.message)
+        }
       }
     })
   }
