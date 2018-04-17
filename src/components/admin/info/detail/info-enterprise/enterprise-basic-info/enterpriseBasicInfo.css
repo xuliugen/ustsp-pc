@@ -1,0 +1,22 @@
+.content {
+  margin: 20px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 70px;
+  background-color: lightgrey;
+}
+
+.entp-certificate-wrapper {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border: 1px solid lightgrey;
+  text-align: center;
+}
+
+.entp-certificate {
+  width: 200px;
+  height: 200px;
+}
