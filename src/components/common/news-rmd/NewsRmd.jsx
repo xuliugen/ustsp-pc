@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from 'components/detail/common/header/Header'
-import './stdNews.css'
+import './NewsRmd.css'
 import avatar2 from 'src/assets/avatar2.png'
 
 export default class StdNews extends React.Component<{}, State> {

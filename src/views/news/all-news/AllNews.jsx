@@ -1,7 +1,7 @@
 import React from 'react'
 import './allNews.css'
 
-import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
+import { Header, Footer, ProjectsRmd, TalentsRmd, NewsRmd } from 'components/common'
 import { AllNewsContent } from 'components/news'
 import { Others } from 'components/detail/common'
 
@@ -26,7 +26,7 @@ export default class AllNews extends React.Component {
       case 'student':
         RmdContent = (
           <div>
-            <News />
+            <NewsRmd />
             <TalentsRmd />
             {/* <CommonFriends /> */}
           </div>
