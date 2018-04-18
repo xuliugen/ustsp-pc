@@ -6,8 +6,8 @@ import { message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
 import './enterpriseInfo.css'
 
-@observer
 @inject('userStore')
+@observer
 export default class EnterpriseInfo extends React.Component {
   constructor() {
     super()

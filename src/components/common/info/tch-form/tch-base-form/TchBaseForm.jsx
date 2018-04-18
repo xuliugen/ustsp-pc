@@ -1,13 +1,14 @@
 import React from 'react'
+import './tchBaseForm.css'
 import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
-import { withRouter } from 'react-router-dom'
-import { FormTitle, UploadAvatar } from '../../common'
-import './tchBaseInfo.css'
-import UploadTchPhoto from './upload-tch-photo/uploadTchPhoto'
+
+import FormTitle from '../../form-title/FormTitle'
+import UploadAvatar from '../../upload-avatar/UploadAvatar'
+import UploadTchPhoto from './upload-tch-license/UploadTchLicense'
+
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
-@withRouter
 export default class TchBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form

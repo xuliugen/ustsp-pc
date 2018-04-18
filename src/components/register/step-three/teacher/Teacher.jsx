@@ -5,9 +5,10 @@ import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
 
-import TchBaseInfo from './base-info/TchBaseInfo'
-import PersonalExperience from './personal-experience/TchPersonalExperience'
-import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp } from 'components/common/info'
+// import TchBaseInfo from './base-info/TchBaseInfo'
+// import PersonalExperience from './personal-experience/TchPersonalExperience'
+import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
+  TchBaseForm, TchRemuseForm } from 'components/common/info'
 
 @withRouter
 @inject('registerStore')
@@ -106,13 +107,20 @@ class StepThreeTeacher extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
-            <TchBaseInfo form={this.props.form}
+            <TchBaseForm
+              form={this.props.form}
+              tchCertificate={this.state.tchCertificate}
+              setTchCertificate={this.setTchCertificate}
+              tchPhoto={this.state.tchPhoto}
+              setTchPhoto={this.setTchPhoto} />
+            {/* <TchBaseInfo form={this.props.form}
               tchCertificate={this.state.tchCertificate}
               setTchCertificate={this.setTchCertificate}
               tchPhoto={this.state.tchPhoto}
               setTchPhoto={this.setTchPhoto}
-            />
-            <PersonalExperience form={this.props.form} />
+            /> */}
+            <TchRemuseForm form={this.props.form} />
+            {/* <PersonalExperience form={this.props.form} /> */}
           </Form>
           <TchEduExp editable />
           <TchResearchExp editable />

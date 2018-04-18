@@ -1,13 +1,14 @@
 import React from 'react'
+import './tchResumeForm.css'
 import { Form, Input, Row, Col, Cascader, Select } from 'antd'
-import { FormTitle } from '../../common'
-import { withRouter } from 'react-router-dom'
-import './tchPersonalExperience.css'
 import { province, school, subject, title } from 'src/common/dataset'
+
+import FormTitle from '../../form-title/FormTitle'
 
 const FormItem = Form.Item
 const { TextArea } = Input
 const Option = Select.Option
+
 const [...options] = province.map(item => ({
   value: item,
   label: item,
@@ -25,8 +26,7 @@ const [...subjects] = Object.keys(subject).map(item => ({
   }))]
 }))
 
-@withRouter
-export default class PersonalExperience extends React.Component {
+export default class TchResumeForm extends React.Component {
   displayRender(label) {
     return label[label.length - 1]
   }
@@ -34,7 +34,7 @@ export default class PersonalExperience extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <div styleName="personal-experience">
+      <div styleName="root">
         <FormTitle title={'个人履历'} />
         <div styleName="personal-experience-item" layout="vertical" >
           <Row gutter={20}>

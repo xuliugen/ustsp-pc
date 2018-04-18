@@ -1,0 +1,21 @@
+.root {
+  margin-top: 39px;
+}
+
+.personal-experience-item{
+  margin-top: 26px;
+}
+
+.intro-container {
+  position: relative;
+}
+
+.word-limit{
+  /* position: relative;
+  top: -40px;
+  text-align: right;
+  padding-right: 8px; */
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+}
