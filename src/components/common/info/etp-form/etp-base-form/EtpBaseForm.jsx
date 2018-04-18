@@ -48,7 +48,7 @@ export default class EtpBaseForm extends React.Component {
               </FormItem>
               <FormItem label="成立时间">
                 {getFieldDecorator('birth', {
-                  initialValue: etpInfo && moment(etpInfo.birth)
+                  initialValue: (etpInfo && etpInfo.birth) && moment(etpInfo.birth)
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}

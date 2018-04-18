@@ -5,33 +5,33 @@ import { EtpInfoApi } from 'src/ajax'
 import { withRouter, Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 
-import EnterBaseInfo from './base-info/EnterBaseInfo'
-import EnterOtherInfo from './other-info/EnterOtherInfo'
+import { EtpBaseForm, EtpOthersForm } from 'components/common/info'
 
 @withRouter
 @inject('registerStore')
 @observer
 class StepThreeEnterprise extends React.Component {
   state = {
-    photo: '',
-    license: ''
+    etpInfo: {},
+    etpPhoto: null,
+    etpLicense: null
   }
 
   constructor() {
     super()
-    this.setPhoto = this.setPhoto.bind(this)
-    this.setLicense = this.setLicense.bind(this)
+    this.setEtpPhoto = this.setEtpPhoto.bind(this)
+    this.setEtpLicense = this.setEtpLicense.bind(this)
   }
 
-  setPhoto(url) {
+  setEtpPhoto(photo) {
     this.setState({
-      photo: url
+      etpPhoto: photo
     })
   }
 
-  setLicense(url) {
+  setEtpLicense(license) {
     this.setState({
-      license: url
+      etpLicense: license
     })
   }
 
@@ -64,13 +64,16 @@ class StepThreeEnterprise extends React.Component {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" onSubmit={this.handleSubmit}>
-            <EnterBaseInfo
+            <EtpBaseForm
               form={this.props.form}
-              photo={this.state.photo}
-              setPhoto={this.setPhoto}
-              license={this.state.license}
-              setLicense={this.setLicense} />
-            <EnterOtherInfo form={this.props.form} />
+              etpInfo={this.state.etpInfo}
+              etpPhoto={this.state.etpPhoto}
+              etpLicense={this.state.etpLicense}
+              setEtpPhoto={this.setEtpPhoto}
+              setEtpLicense={this.setEtpLicense} />
+            <EtpOthersForm
+              form={this.props.form}
+              etpInfo={this.state.etpInfo} />
             <div styleName="confirm-btn">
               <button type="submit">确认</button>
             </div>
