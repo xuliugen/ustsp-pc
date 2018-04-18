@@ -22,8 +22,7 @@ export {
   TchBaseForm,
   TchRemuseForm,
   StuBaseForm,
-  StuResumeForm
-  TchRemuseForm,
+  StuResumeForm,
   EtpBaseForm,
   EtpOthersForm
 }
