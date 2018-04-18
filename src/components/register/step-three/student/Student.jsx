@@ -5,10 +5,8 @@ import { observer, inject } from 'mobx-react'
 import { StuInfoApi } from 'src/ajax'
 import { withRouter, Link } from 'react-router-dom'
 
-import StuBaseInfo from './base-info/StuBaseInfo'
-import StuPersonalExperience from './personal-experience/StuPersonalExperience'
-import { StuEduExp } from 'components/common/info'
-import SideNav from '../common/side-nav/SideNav'
+import { StuEduExp, StuBaseForm, StuResumeForm } from 'components/common/info'
+// import SideNav from '../common/side-nav/SideNav'
 
 @withRouter
 @inject('registerStore')
@@ -46,7 +44,7 @@ class StepThreeStudent extends React.Component<{}> {
           college: null,
           major: null,
           grade: null,
-          skill: value.skill ? value.skills.map(i => ({skill: i})) : [],
+          skill: value.skill ? value.skill.map(i => ({skill: i})) : [],
           introduction: value.introduction,
           isRealName: 'false',
           photo: this.state.stuPhoto
@@ -67,7 +65,7 @@ class StepThreeStudent extends React.Component<{}> {
   }
 
   render() {
-    const navItems = ['基本信息', '教育经历', '个人履历']
+    // const navItems = ['基本信息', '教育经历', '个人履历']
     return (
       <div styleName="container" className="element-container">
         <div styleName="title-wrapper">
@@ -76,16 +74,16 @@ class StepThreeStudent extends React.Component<{}> {
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="form-info">
-            <StuBaseInfo
+            <StuBaseForm
               containerRef={el => (el ? this.pos.Elements.push(el) : 1)}
               form={this.props.form}
               stuPhoto={this.state.stuPhoto}
               setStuPhoto={this.setStuPhoto} />
             <StuEduExp editable containerRef={el => (el ? this.pos.Elements.push(el) : 1)} />
-            <StuPersonalExperience containerRef={el => (el ? this.pos.Elements.push(el) : 1)} form={this.props.form} />
+            <StuResumeForm containerRef={el => (el ? this.pos.Elements.push(el) : 1)} form={this.props.form} />
           </Form>
           <button styleName="confirm-button" onClick={this.handleClickConfirm} >确认</button>
-          <SideNav navItems={navItems} pos={this.pos} />
+          {/* <SideNav navItems={navItems} pos={this.pos} /> */}
         </div>
       </div>
     )

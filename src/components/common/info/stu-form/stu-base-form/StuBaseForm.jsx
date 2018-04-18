@@ -1,22 +1,27 @@
 import React from 'react'
+import './stuBaseForm.css'
 import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
-import { FormTitle, UploadAvatar } from '../../common'
-import './stuBaseInfo.css'
+import FormTitle from '../../form-title/FormTitle'
+import UploadAvatar from '../../upload-avatar/UploadAvatar'
+import moment from 'moment'
 
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
-export default class StudentBaseInfo extends React.Component {
+export default class StuBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
+    const { stuInfo } = this.props
+
     return (
-      <div styleName="base-info" ref={this.props.containerRef}>
+      <div>
         <FormTitle title={'基本信息'} />
         <div styleName="content">
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="姓名">
                 {getFieldDecorator('realName', {
+                  initialValue: stuInfo && stuInfo.realName,
                   validateTrigger: 'onBlur',
                   rules: [{ required: true, message: '请输入姓名' }]
                 })(
@@ -25,8 +30,8 @@ export default class StudentBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="性别">
                 {getFieldDecorator('sex', {
+                  initialValue: stuInfo && Number(stuInfo.sex),
                   validateTrigger: 'onBlur',
-                  initialValue: 1,
                   rules: [{ required: true, message: '请选择性别' }]
                 })(
                   <RadioGroup styleName="gender" name="radiogroup">
@@ -36,12 +41,16 @@ export default class StudentBaseInfo extends React.Component {
                 )}
               </FormItem>
               <FormItem label="选择出生日期">
-                {getFieldDecorator('birth')(
+                {getFieldDecorator('birth', {
+                  initialValue: stuInfo && moment(stuInfo.birth)
+                })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}
               </FormItem>
               <FormItem label="微信">
-                {getFieldDecorator('wechat')(
+                {getFieldDecorator('wechat', {
+                  initialValue: stuInfo && stuInfo.wechat
+                })(
                   <Input placeholder="微信" />
                 )}
               </FormItem>
@@ -49,7 +58,9 @@ export default class StudentBaseInfo extends React.Component {
             <Col span={12}>
               <UploadAvatar photo={this.props.stuPhoto} setPhoto={this.props.setStuPhoto} />
               <FormItem styleName="qq" label="QQ">
-                {getFieldDecorator('qq')(
+                {getFieldDecorator('qq', {
+                  initialValue: stuInfo && stuInfo.qq
+                })(
                   <Input placeholder="QQ" />
                 )}
               </FormItem>
