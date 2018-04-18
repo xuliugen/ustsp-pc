@@ -10,7 +10,6 @@ import { StuEduExp, StuBaseForm, StuResumeForm } from 'components/common/info'
 @Form.create()
 export default class ModifyStuInfo extends React.Component {
   state = {
-    userInfo: {},
     stuInfo: {},
     stuPhoto: null
   }
@@ -27,7 +26,6 @@ export default class ModifyStuInfo extends React.Component {
   async getInfo() {
     const { data } = await StuInfoApi.getInfo(this.props.userId)
     this.setState({
-      userInfo: data.userInfoDTO,
       stuInfo: data.studentInfoDTO,
       stuPhoto: data.studentInfoDTO.photo
     })
