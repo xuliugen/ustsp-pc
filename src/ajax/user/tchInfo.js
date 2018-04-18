@@ -32,6 +32,9 @@ export default {
 
   getTeacherInfo(userId) {
     return ajax.get(`/teacher/getInfo?id=${userId}`)
-  }
+  },
 
+  updateTeacherInfo(body) {
+    return ajax.put('/teacher/change-info', body)
+  }
 }

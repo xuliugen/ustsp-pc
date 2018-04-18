@@ -1,48 +1,26 @@
 import React from 'react'
-import './teacher.css'
-import { withRouter, Link } from 'react-router-dom'
+import './modifyTchInfo.css'
 import { Form, message } from 'antd'
-import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
+import { withRouter } from 'react-router-dom'
 
 import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
   TchBaseForm, TchRemuseForm } from 'components/common/info'
 
 @withRouter
-@inject('registerStore')
-@observer
-class StepThreeTeacher extends React.Component<{}> {
-  constructor() {
-    super()
-    this.handleOnClickConfirm = this.handleOnClickConfirm.bind(this)
-    this.setTchCertificate = this.setTchCertificate.bind(this)
-    this.setTchPhoto = this.setTchPhoto.bind(this)
-    this.state = {
-      tchCertificate: null,
-      tchPhoto: null
-    }
+@Form.create()
+export default class ModifyTchInfo extends React.Component {
+  state = {
+    tchPhoto: null,
+    tchCertificate: null,
+    userInfo: {},
+    tchInfo: {}
   }
 
-  componentDidMount() {
-    const { form } = this.props
-    const { claimData, isClaimDataAccept } = this.props.registerStore
-
-    if (isClaimDataAccept) {
-      form.setFieldsValue({
-        realName: claimData.name,
-        render: claimData.gender === '男' ? '0' : '1',
-        // school: claimData.university,
-        college: claimData.school,
-        title: claimData.title,
-        introduction: claimData.introduction ? claimData.introduction.substr(0, 3000) : '',
-        academicExperience: claimData.experience ? claimData.experience.substr(0, 3000) : '',
-        scienceIntroduction: claimData.project ? claimData.project.substr(0, 3000) : '',
-        publishPaper: claimData.paper ? claimData.paper.substr(0, 3000) : ''
-      })
-      this.setState({
-        tchPhoto: claimData.icon
-      })
-    }
+  constructor(props) {
+    super(props)
+    this.setTchPhoto = this.setTchPhoto.bind(this)
+    this.setTchCertificate = this.setTchCertificate.bind(this)
   }
 
   setTchPhoto(photo) {
@@ -57,12 +35,22 @@ class StepThreeTeacher extends React.Component<{}> {
     })
   }
 
-  handleOnClickConfirm(e) {
+  async getInfo() {
+    const { data } = await TchInfoApi.getTeacherInfo(this.props.userId)
+    this.setState({
+      userInfo: data.userInfoDTO,
+      tchInfo: data.teacherInfoDTO,
+      tchPhoto: data.teacherInfoDTO.photo,
+      tchCertificate: data.teacherInfoDTO.certificate
+    })
+  }
+
+  handleModifyClick = (e) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
         const tchInfo = {
-          id: this.props.registerStore.initial.uid,
+          id: this.props.userId,
           realName: values.realName,
           sex: values.sex,
           birth: values.birth ? values.birth.valueOf() : null,
@@ -79,14 +67,13 @@ class StepThreeTeacher extends React.Component<{}> {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: this.state.tchPhoto,
-          isRealName: this.props.registerStore.isClaimDataAccept
+          photo: this.state.tchPhoto
+          // isRealName: this.props.registerStore.isClaimDataAccept
         }
-        console.log(tchInfo)
         try {
-          await TchInfoApi.completeTchInfo(tchInfo)
-          message.success('完善信息成功')
-          this.props.history.push('/')
+          await TchInfoApi.updateTeacherInfo(tchInfo)
+          message.success('修改信息成功')
+          this.props.history.push('/admin/info/detail')
         } catch (e) {
           console.log(e)
         }
@@ -96,33 +83,37 @@ class StepThreeTeacher extends React.Component<{}> {
     })
   }
 
+  componentDidMount() {
+    this.getInfo()
+  }
+
   render() {
     return (
-      <div styleName="container">
+      <div styleName="root">
         <div styleName="title-wrapper">
-          <span styleName="title">step 3：完善详细信息</span>
-          <Link styleName="next-step" to="/">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
+          <span styleName="title">修改信息</span>
         </div>
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
             <TchBaseForm
               form={this.props.form}
+              tchInfo={this.state.tchInfo}
               tchCertificate={this.state.tchCertificate}
               setTchCertificate={this.setTchCertificate}
               tchPhoto={this.state.tchPhoto}
               setTchPhoto={this.setTchPhoto} />
-            <TchRemuseForm form={this.props.form} />
+            <TchRemuseForm
+              form={this.props.form}
+              tchInfo={this.state.tchInfo} />
           </Form>
           <TchEduExp editable />
           <TchResearchExp editable />
           <TchIpExp editable />
           <TchAwardExp editable isResearch />
           <TchAwardExp editable />
-          <button onClick={this.handleOnClickConfirm} styleName="confirm-button">确认</button>
+          <button onClick={this.handleModifyClick} styleName="confirm-button">确认修改</button>
         </div>
       </div>
     )
   }
 }
-
-export default Form.create()(StepThreeTeacher)

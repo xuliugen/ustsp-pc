@@ -1,0 +1,50 @@
+.upload-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 270px;
+  border:1px solid #eee;
+}
+
+.upload-avatar-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 120px;
+}
+
+.upload-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.upload-avatar-container .hoverLayer {
+  display: none
+}
+
+.upload-avatar-container:hover .hoverLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  cursor: pointer;
+}
+
+.upload-hoverText {
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.upload-icon {
+  font-size: 32px;
+}

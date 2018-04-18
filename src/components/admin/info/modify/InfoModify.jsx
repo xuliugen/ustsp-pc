@@ -1,18 +1,26 @@
 import React from 'react'
+import './infoModify.css'
+import { inject, observer } from 'mobx-react'
 
-import { StuEduExp, TchEduExp, TchResearchExp, TchIpExp, TchAwardExp } from 'components/common/info'
+import ModifyTchInfo from './tch/ModifyTchInfo'
 
+@inject('userStore')
+@observer
 export default class InfoModify extends React.Component {
   render() {
-    return (
-      <div>
-        <StuEduExp editable />
-        <TchEduExp editable />
-        <TchResearchExp editable />
-        <TchIpExp editable />,
-        <TchAwardExp editable isResearch />
-        <TchAwardExp editable />
-      </div>
-    )
+    const { userType, id } = this.props.userStore.user
+    let Content = null
+    switch (userType) {
+      case 1:
+        // content = <Student />
+        break
+      case 2:
+        Content = ModifyTchInfo
+        break
+      case 3:
+        // content = <Enterprise />
+        break
+    }
+    return (<div styleName="root"><Content userId={id} /></div>)
   }
 }
