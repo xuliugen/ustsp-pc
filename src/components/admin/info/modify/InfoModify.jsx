@@ -3,6 +3,7 @@ import './infoModify.css'
 import { inject, observer } from 'mobx-react'
 
 import ModifyTchInfo from './tch/ModifyTchInfo'
+import ModifyStuInfo from './stu/ModifyStuInfo'
 
 import ModifyEtpInfo from './etp/ModifyEtpInfo'
 
@@ -14,7 +15,7 @@ export default class InfoModify extends React.Component {
     let Content = null
     switch (userType) {
       case 1:
-        // content = <Student />
+        Content = ModifyStuInfo
         break
       case 2:
         Content = ModifyTchInfo
