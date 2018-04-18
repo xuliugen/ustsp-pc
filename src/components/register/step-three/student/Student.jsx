@@ -46,7 +46,7 @@ class StepThreeStudent extends React.Component<{}> {
           college: null,
           major: null,
           grade: null,
-          skill: value.skill ? value.skills.map(i => ({skill: i})) : [],
+          skill: value.skill ? value.skill.map(i => ({skill: i})) : [],
           introduction: value.introduction,
           isRealName: 'false',
           photo: this.state.stuPhoto

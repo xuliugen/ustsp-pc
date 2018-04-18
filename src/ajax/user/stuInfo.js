@@ -19,5 +19,9 @@ export default {
 
   getEduInfo(userId) {
     return ajax.get(`/student/getOtherAddInfo?id=${userId}`)
+  },
+
+  updateInfo(body) {
+    return ajax.put('/student/change-info', body)
   }
 }
