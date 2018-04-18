@@ -20,6 +20,7 @@ class StepThreeEnterprise extends React.Component {
   constructor() {
     super()
     this.setPhoto = this.setPhoto.bind(this)
+    this.setLicense = this.setLicense.bind(this)
   }
 
   setPhoto(url) {
