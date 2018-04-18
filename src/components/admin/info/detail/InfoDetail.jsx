@@ -18,7 +18,7 @@ export default class InfoDetail extends React.Component {
       case 3: InfoModule = EnterpriseInfo
     }
     return (
-      <div>
+      <div style={{ width: '900px' }}>
         <InfoModule uid={this.props.userStore.user.id} />
       </div>
     )

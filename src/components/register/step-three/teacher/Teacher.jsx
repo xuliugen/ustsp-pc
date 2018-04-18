@@ -5,8 +5,6 @@ import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
 
-// import TchBaseInfo from './base-info/TchBaseInfo'
-// import PersonalExperience from './personal-experience/TchPersonalExperience'
 import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
   TchBaseForm, TchRemuseForm } from 'components/common/info'
 
@@ -113,14 +111,7 @@ class StepThreeTeacher extends React.Component<{}> {
               setTchCertificate={this.setTchCertificate}
               tchPhoto={this.state.tchPhoto}
               setTchPhoto={this.setTchPhoto} />
-            {/* <TchBaseInfo form={this.props.form}
-              tchCertificate={this.state.tchCertificate}
-              setTchCertificate={this.setTchCertificate}
-              tchPhoto={this.state.tchPhoto}
-              setTchPhoto={this.setTchPhoto}
-            /> */}
             <TchRemuseForm form={this.props.form} />
-            {/* <PersonalExperience form={this.props.form} /> */}
           </Form>
           <TchEduExp editable />
           <TchResearchExp editable />
