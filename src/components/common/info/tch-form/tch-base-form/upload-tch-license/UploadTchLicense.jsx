@@ -7,7 +7,8 @@ import { observer, inject } from 'mobx-react'
 @observer
 export default class UploadTchLicense extends React.Component {
   state = {
-    loading: false
+    loading: false,
+    imageUrl: ''
   }
 
   handleChange = (info) => {
@@ -19,10 +20,10 @@ export default class UploadTchLicense extends React.Component {
       message.success('上传照片成功')
 
       // let pics = JSON.parse(info.file.response))
-
-      let tchCertificates = JSON.parse(JSON.stringify(info.file.response))
-      this.props.setTchCertificate(tchCertificates[0].file_url)
-      // Get this url from response in real world.
+      let tchPhotos = info.file.response
+      // console.log(tchPhotos[0].file_url)
+      let pics = JSON.parse(tchPhotos[0].result)
+      this.props.setTchCertificate(pics.data.access_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false
@@ -31,7 +32,7 @@ export default class UploadTchLicense extends React.Component {
   }
 
   render() {
-    const imageUrl = this.state.imageUrl
+    const imageUrl = this.state.imageUrl || this.props.tchCertificate
     const uploadButton = (
       <div styleName="upload-content">
         <Icon type={this.state.loading ? 'loading' : 'plus'} />

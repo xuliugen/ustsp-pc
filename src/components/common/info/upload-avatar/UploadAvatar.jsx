@@ -49,7 +49,7 @@ export default class UploadAvatar extends React.Component<Props, State> {
 
   render() {
     const imageUrl = this.state.imageUrl
-    const displayAvatar = this.props.tchPhoto ? this.props.tchPhoto : imgDefaultAvatar
+    const displayAvatar = this.props.photo || imgDefaultAvatar
     const uploadButton = (
       <div styleName="upload-avatar-container">
         <img styleName="upload-avatar" src={displayAvatar} />

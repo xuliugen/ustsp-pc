@@ -33,6 +33,22 @@ export default class TchResumeForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    const { tchInfo } = this.props
+    let provinceOfSchool, categoryOfMajor
+    if (tchInfo) {
+      for (let len = options.length, i = 0; i < len; i++) {
+        if (options[i].children.some(({ value }) => value === tchInfo.school)) {
+          provinceOfSchool = options[i].value
+          break
+        }
+      }
+      for (let len = subjects.length, i = 0; i < len; i++) {
+        if (subjects[i].children.some(({ value }) => value === tchInfo.major)) {
+          categoryOfMajor = subjects[i].value
+          break
+        }
+      }
+    }
     return (
       <div styleName="root">
         <FormTitle title={'个人履历'} />
@@ -41,6 +57,7 @@ export default class TchResumeForm extends React.Component {
             <Col span={12} >
               <FormItem label="学校" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('school', {
+                  initialValue: tchInfo && [provinceOfSchool, tchInfo.school],
                   validateTrigger: 'onChange',
                   rules: [
                     { required: true, message: '请输入学校' }
@@ -54,6 +71,7 @@ export default class TchResumeForm extends React.Component {
               </FormItem>
               <FormItem label="专业" style={{ flexFlow: '1' }}>
                 {getFieldDecorator('major', {
+                  initialValue: tchInfo && [categoryOfMajor, tchInfo.major],
                   validateTrigger: 'onChange',
                   rules: [
                     { required: true, message: '请输入专业' }
@@ -69,6 +87,7 @@ export default class TchResumeForm extends React.Component {
             <Col span={12}>
               <FormItem label="学院">
                 {getFieldDecorator('college', {
+                  initialValue: tchInfo && tchInfo.college,
                   validateTrigger: 'onBlur',
                   rules: [
                     { required: true, message: '请输入学院' }
@@ -79,6 +98,7 @@ export default class TchResumeForm extends React.Component {
               </FormItem>
               <FormItem label="职称">
                 {getFieldDecorator('title', {
+                  initialValue: tchInfo && tchInfo.title,
                   validateTrigger: 'onBlur',
                   rules: [
                     { required: true, message: '请输入职称' }
@@ -93,6 +113,7 @@ export default class TchResumeForm extends React.Component {
           </Row>
           <FormItem label="研究方向">
             {getFieldDecorator('researchArea', {
+              initialValue: tchInfo && tchInfo.researchArea,
               validateTrigger: 'onBlur'
             })(
               <Input size="large" />
@@ -100,6 +121,7 @@ export default class TchResumeForm extends React.Component {
           </FormItem>
           <FormItem label="教学情况">
             {getFieldDecorator('teachInfo', {
+              initialValue: tchInfo && tchInfo.teachInfo,
               validateTrigger: 'onBlur'
             })(
               <Input size="large" />
@@ -107,6 +129,7 @@ export default class TchResumeForm extends React.Component {
           </FormItem>
           <FormItem label="个人简介">
             {getFieldDecorator('introduction', {
+              initialValue: tchInfo && tchInfo.introduction,
               validateTrigger: 'onBlur',
               rules: [
                 { max: 3000, message: '字数不能超过3000' }
@@ -117,6 +140,7 @@ export default class TchResumeForm extends React.Component {
           </FormItem>
           <FormItem label="学术经历">
             {getFieldDecorator('academicExperience', {
+              initialValue: tchInfo && tchInfo.academicExperience,
               validateTrigger: 'onBlur',
               rules: [
                 { max: 3000, message: '字数不能超过3000' }
@@ -127,6 +151,7 @@ export default class TchResumeForm extends React.Component {
           </FormItem>
           <FormItem label="科研简介">
             {getFieldDecorator('scienceIntroduction', {
+              initialValue: tchInfo && tchInfo.scienceIntroduction,
               validateTrigger: 'onBlur',
               rules: [
                 { max: 3000, message: '字数不能超过3000' }
@@ -137,16 +162,13 @@ export default class TchResumeForm extends React.Component {
           </FormItem>
           <FormItem label="发表文章">
             {getFieldDecorator('publishPaper', {
+              initialValue: tchInfo && tchInfo.publishPaper,
               validateTrigger: 'onBlur',
               rules: [
                 { max: 3000, message: '字数不能超过3000' }
               ]
             })(
               <TextArea rows={8} maxLength={3000} />
-              // <div styleName="intro-container">
-              //   <TextArea rows={8} />
-              //   <span styleName="word-limit">字数限制: 0/2000</span>
-              // </div>
             )}
           </FormItem>
         </div>
