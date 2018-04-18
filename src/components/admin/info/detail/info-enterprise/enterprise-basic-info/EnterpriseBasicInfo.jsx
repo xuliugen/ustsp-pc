@@ -32,11 +32,11 @@ export default class CmpyBasicInfo extends React.Component {
                 <span>{etpBasicInfo.nature}</span>
               </FormItem>
               <FormItem label="企业营业执照号">
-                <span>{etpBasicInfo.businessLicense}</span>
+                <span>{etpBasicInfo.businessLicence}</span>
               </FormItem>
             </Col>
             <Col span={12}>
-              <img src={etpBasicInfo.avatar == null ? defaultAvatar : etpBasicInfo.avatar} styleName="avatar" />
+              <img src={etpBasicInfo.photo == null ? defaultAvatar : etpBasicInfo.photo} styleName="avatar" />
               <FormItem label="地点">
                 <span>{etpBasicInfo.place}</span>
               </FormItem>
@@ -48,7 +48,7 @@ export default class CmpyBasicInfo extends React.Component {
           <Row>
             <span>企业营业执照照片:</span>
             <div styleName="entp-certificate-wrapper">
-              <img src={etpBasicInfo.photo == null ? defaultAvatar : etpBasicInfo.photo} styleName="entp-certificate" />
+              <img src={etpBasicInfo.businessPhoto == null ? defaultAvatar : etpBasicInfo.businessPhoto} styleName="entp-certificate" />
             </div>
           </Row>
         </div>

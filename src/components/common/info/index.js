@@ -10,6 +10,9 @@ import TchRemuseForm from './tch-form/tch-resume-form/TchResumeForm'
 import StuBaseForm from './stu-form/stu-base-form/StuBaseForm'
 import StuResumeForm from './stu-form/stu-resume-form/StuResumeForm'
 
+import EtpBaseForm from './etp-form/etp-base-form/EtpBaseForm'
+import EtpOthersForm from './etp-form/etp-others-form/EtpOthersForm'
+
 export {
   StuEduExp,
   TchEduExp,
@@ -19,5 +22,7 @@ export {
   TchBaseForm,
   TchRemuseForm,
   StuBaseForm,
-  StuResumeForm
+  StuResumeForm,
+  EtpBaseForm,
+  EtpOthersForm
 }

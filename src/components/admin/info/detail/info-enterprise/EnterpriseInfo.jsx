@@ -30,10 +30,11 @@ export default class EnterpriseInfo extends React.Component {
           birth: data.birth,
           scale: data.scale,
           nature: data.nature,
-          businessLicense: data.businessLicense,
+          businessLicence: data.businessLicence,
           place: data.place,
           stage: data.stage,
-          photo: data.photo
+          photo: data.photo,
+          businessPhoto: data.businessPhoto
         },
         etpOtherInfo: {
           indexPage: data.indexPage,

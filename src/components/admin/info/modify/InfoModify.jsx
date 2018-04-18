@@ -5,6 +5,8 @@ import { inject, observer } from 'mobx-react'
 import ModifyTchInfo from './tch/ModifyTchInfo'
 import ModifyStuInfo from './stu/ModifyStuInfo'
 
+import ModifyEtpInfo from './etp/ModifyEtpInfo'
+
 @inject('userStore')
 @observer
 export default class InfoModify extends React.Component {
@@ -19,7 +21,7 @@ export default class InfoModify extends React.Component {
         Content = ModifyTchInfo
         break
       case 3:
-        // Content = ModifyEtpInfo
+        Content = ModifyEtpInfo
         break
     }
     return (<div styleName="root"><Content userId={id} /></div>)

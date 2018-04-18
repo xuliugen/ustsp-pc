@@ -1,11 +1,8 @@
 import React from 'react'
-import './uploadLicensePic.css'
+import './uploadEtpLicense.css'
 import { Upload, Icon, message } from 'antd'
-import { observer, inject } from 'mobx-react'
 
-@inject('registerStore')
-@observer
-export default class uploadLicensePic extends React.Component {
+export default class UploadEtpLicense extends React.Component {
   state = {
     loading: false,
     imageUrl: ''
@@ -30,7 +27,7 @@ export default class uploadLicensePic extends React.Component {
   }
 
   render() {
-    const imageUrl = this.state.imageUrl
+    const imageUrl = this.state.imageUrl || this.props.license
     const uploadButton = (
       <div styleName="upload-content">
         <Icon type={this.state.loading ? 'loading' : 'plus'} />
@@ -44,7 +41,7 @@ export default class uploadLicensePic extends React.Component {
         listType="picture"
         styleName="license-uploader"
         showUploadList={false}
-        data={{ id: this.props.registerStore.initial.uid }}
+        // data={{ id: this.props.registerStore.initial.uid }}
         action={`${window.config.API_ORIGIN}/upload/business`}
         onChange={this.handleChange}
       >

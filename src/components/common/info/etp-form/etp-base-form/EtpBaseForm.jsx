@@ -1,24 +1,30 @@
 import React from 'react'
 import { Form, Row, Col, Input, DatePicker, Select } from 'antd'
-import { FormTitle, UploadAvatar } from '../../common'
-import './enterBaseInfo.css'
-import UploadLicensePic from '../upload-license-picture/UploadLicensePic'
+import './etpBaseForm.css'
+import UploadEtpLicense from './upload-etp-license/UploadEtpLicense'
 import { major } from 'src/common/dataset'
+import moment from 'moment'
+
+import FormTitle from '../../form-title/FormTitle'
+import UploadAvatar from '../../upload-avatar/UploadAvatar'
 
 const FormItem = Form.Item
 const Option = Select.Option
 
-export default class EnterBaseInfo extends React.Component {
+export default class EtpBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
+    const { etpInfo } = this.props
+
     return (
-      <div styleName="base-info" >
+      <div>
         <FormTitle title={'基本信息'} />
         <div styleName="content" >
           <Row gutter={20}>
             <Col span={12}>
               <FormItem label="企业名">
                 {getFieldDecorator('realName', {
+                  initialValue: etpInfo && etpInfo.realName,
                   validateTrigger: 'onBlur',
                   rules: [
                     { required: true, message: '请输入企业名' }
@@ -29,6 +35,7 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="行业">
                 {getFieldDecorator('industry', {
+                  initialValue: etpInfo && etpInfo.industry,
                   validateTrigger: 'onBlur',
                   rules: [
                     { required: true, message: '请选择企业行业' }
@@ -40,12 +47,16 @@ export default class EnterBaseInfo extends React.Component {
                 )}
               </FormItem>
               <FormItem label="成立时间">
-                {getFieldDecorator('birth')(
+                {getFieldDecorator('birth', {
+                  initialValue: (etpInfo && etpInfo.birth) && moment(etpInfo.birth)
+                })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}
               </FormItem>
               <FormItem label="规模">
                 {getFieldDecorator('scale', {
+                  initialValue: etpInfo && etpInfo.scale
+                }, {
                   validateTrigger: 'onBlur'
                 })(
                   <Select style={{ width: '100%' }} >
@@ -57,6 +68,8 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="性质">
                 {getFieldDecorator('nature', {
+                  initialValue: etpInfo && etpInfo.nature
+                }, {
                   validateTrigger: 'onBlur'
                 })(
                   <Select style={{ width: '100%' }} >
@@ -68,6 +81,8 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="企业营业执照号">
                 {getFieldDecorator('businessLicence', {
+                  initialValue: etpInfo && etpInfo.businessLicence
+                }, {
                   validateTrigger: 'onBlur'
                 })(
                   <Input placeholder="企业营业执照号" />
@@ -75,9 +90,11 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
             </Col>
             <Col span={12}>
-              <UploadAvatar photo={this.props.photo} setPhoto={this.props.setPhoto} />
+              <UploadAvatar photo={this.props.etpPhoto} setPhoto={this.props.setEtpPhoto} />
               <FormItem label="地点" style={{ marginTop: '12px' }}>
                 {getFieldDecorator('place', {
+                  initialValue: etpInfo && etpInfo.place
+                }, {
                   validateTrigger: 'onBlur'
                 })(
                   <Input placeholder="地点" />
@@ -85,6 +102,8 @@ export default class EnterBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="发展阶段">
                 {getFieldDecorator('stage', {
+                  initialValue: etpInfo && etpInfo.stage
+                }, {
                   validateTrigger: 'onBlur'
                 })(
                   <Select style={{ width: '100%' }} >
@@ -111,7 +130,7 @@ export default class EnterBaseInfo extends React.Component {
             </Col>
           </Row>
           <FormItem label="企业营业执照照片">
-            <UploadLicensePic license={this.props.license} setLicense={this.props.setLicense} />
+            <UploadEtpLicense license={this.props.etpLicense} setLicense={this.props.setEtpLicense} />
           </FormItem>
         </div>
       </div>

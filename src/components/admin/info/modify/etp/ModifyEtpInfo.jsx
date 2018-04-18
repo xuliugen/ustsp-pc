@@ -1,24 +1,22 @@
 import React from 'react'
-import './enterprise.css'
+import './modifyEtpInfo.css'
 import { Form, message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
-import { withRouter, Link } from 'react-router-dom'
-import { observer, inject } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 import { EtpBaseForm, EtpOthersForm } from 'components/common/info'
 
 @withRouter
-@inject('registerStore')
-@observer
-class StepThreeEnterprise extends React.Component {
+@Form.create()
+export default class ModifyEtpInfo extends React.Component {
   state = {
     etpInfo: {},
     etpPhoto: null,
     etpLicense: null
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.setEtpPhoto = this.setEtpPhoto.bind(this)
     this.setEtpLicense = this.setEtpLicense.bind(this)
   }
@@ -35,35 +33,51 @@ class StepThreeEnterprise extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  async getInfo() {
+    const { data } = await EtpInfoApi.getEnterpriseInfo(this.props.userId)
+    this.setState({
+      etpInfo: data,
+      etpPhoto: data.photo,
+      etpLicense: data.businessPhoto
+    })
+  }
+
+  handleModifyClick = (e) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
-      console.log(err)
-      try {
-        await EtpInfoApi.completeInfo({
-          id: this.props.registerStore.initial.uid,
-          photo: this.state.photo,
-          businessPhoto: this.state.license,
+      if (!err) {
+        const etpInfo = {
+          id: this.props.userId,
+          photo: this.state.etpPhoto,
+          businessPhoto: this.state.etpLicense,
           ...values,
           birth: values.birth ? values.birth.valueOf() : null
-        })
-        message.success('注册成功')
-        this.props.history.push('/')
-      } catch (e) {
-        console.log(e)
+        }
+        try {
+          await EtpInfoApi.updateInfo(etpInfo)
+          message.success('修改信息成功')
+          this.props.history.push('/admin/info/detail')
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        message.error('请先完善必填信息')
       }
     })
   }
 
+  componentDidMount() {
+    this.getInfo()
+  }
+
   render() {
     return (
-      <div styleName="container" className="element-container" >
+      <div styleName="root">
         <div styleName="title-wrapper">
-          <span styleName="title">step 3：完善详细信息</span>
-          <Link to="/" styleName="next-step">|&nbsp;&nbsp;&nbsp;跳过此步骤</Link>
+          <span styleName="title">修改信息</span>
         </div>
         <div styleName="form-container">
-          <Form layout="vertical" onSubmit={this.handleSubmit}>
+          <Form layout="vertical" styleName="baseInfo-form">
             <EtpBaseForm
               form={this.props.form}
               etpInfo={this.state.etpInfo}
@@ -74,14 +88,10 @@ class StepThreeEnterprise extends React.Component {
             <EtpOthersForm
               form={this.props.form}
               etpInfo={this.state.etpInfo} />
-            <div styleName="confirm-btn">
-              <button type="submit">确认</button>
-            </div>
           </Form>
+          <button onClick={this.handleModifyClick} styleName="confirm-button">确认修改</button>
         </div>
       </div>
     )
   }
 }
-
-export default Form.create()(StepThreeEnterprise)

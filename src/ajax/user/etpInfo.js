@@ -7,5 +7,9 @@ export default {
 
   getEnterpriseInfo(etpId) {
     return ajax.get(`/enterprise/getInfo?id=${etpId}`)
+  },
+
+  updateInfo(body) {
+    return ajax.put('/enterprise/change-info', body)
   }
 }
