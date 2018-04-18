@@ -2,7 +2,7 @@ import React from 'react'
 import MsgItem from './msg-item/MsgItem'
 import './systemMsg.css'
 
-export default class StystemMsg extends React.Component {
+export default class SystemMsg extends React.Component {
   state = {
     mgnt: false
   }
@@ -15,7 +15,7 @@ export default class StystemMsg extends React.Component {
 
   render() {
     return (
-      <div styleName="msg-wrapper">
+      <div styleName="root">
         <div styleName="title">
           <span>系统消息</span>
           {this.state.mgnt ? (
