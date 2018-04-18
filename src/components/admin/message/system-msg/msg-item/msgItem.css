@@ -1,0 +1,32 @@
+.msg-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+  border-bottom: 1px dashed #eeee;
+}
+
+.item-detail {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+}
+
+.msg-info {
+  margin-left: 40px;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.time {
+  margin-left: 30px;
+}
+
+.content {
+  margin-top: 10px;
+  color: #3091e6;
+}
