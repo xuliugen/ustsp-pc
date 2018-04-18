@@ -26,5 +26,9 @@ export default {
 
   getMoreNews(queryType, page, row) {
     return ajax.get(`dynamics/query/type?queryType=${queryType}&page=${page}&rows=${row}`)
+  },
+
+  fetchNewsRmd(userId, num) {
+    return ajax.get(`/dynamics/query/user/list?userId=${userId}&itemNum=${num}`)
   }
 }
