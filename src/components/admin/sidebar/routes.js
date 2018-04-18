@@ -22,6 +22,27 @@ export const routes = [
       }
     ]
   }, {
+    key: 'message',
+    title: {
+      icon: 'notification',
+      text: '消息通知'
+    },
+    children: [
+      {
+        key: 'system-msg',
+        to: '/admin/message/system-msg',
+        text: '系统消息'
+      }, {
+        key: 'demand-news',
+        to: '/admin/message/demand-news',
+        text: '项目动态'
+      }, {
+        key: 'friends-msg',
+        to: '/admin/message/friends-msg',
+        text: '好友消息'
+      }
+    ]
+  }, {
     key: 'demand',
     title: {
       icon: 'check-square-o',
