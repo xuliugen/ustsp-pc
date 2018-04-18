@@ -7,6 +7,9 @@ import TchAwardExp from './info-exp/tch-award-exp/TchAwardExp'
 import TchBaseForm from './tch-form/tch-base-form/TchBaseForm'
 import TchRemuseForm from './tch-form/tch-resume-form/TchResumeForm'
 
+import EtpBaseForm from './etp-form/etp-base-form/EtpBaseForm'
+import EtpOthersForm from './etp-form/etp-others-form/EtpOthersForm'
+
 export {
   StuEduExp,
   TchEduExp,
@@ -14,5 +17,7 @@ export {
   TchIpExp,
   TchAwardExp,
   TchBaseForm,
-  TchRemuseForm
+  TchRemuseForm,
+  EtpBaseForm,
+  EtpOthersForm
 }
