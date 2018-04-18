@@ -1,11 +1,10 @@
-// @flow
 import React from 'react'
-import './login.css'
-import { LoginPanel } from 'components/login'
+import { ForgetPasswdPanel } from 'src/components/password'
 import imgLogo from 'src/assets/logo.png'
 import { Link } from 'react-router-dom'
+import './forgetPassword.css'
 
-export default class Login extends React.Component<{}> {
+export default class ForgetPassword extends React.Component<{}> {
   componentDidMount() {
     const height = document.documentElement.clientHeight + 'px'
     this.forgetPasswdContainer.style.height = height
@@ -13,12 +12,12 @@ export default class Login extends React.Component<{}> {
 
   render() {
     return (
-      <div styleName="login" ref={(div) => { this.forgetPasswdContainer = div }}>
-        <div styleName="login-inner">
+      <div styleName="passwd-forget" ref={(div) => { this.forgetPasswdContainer = div }}>
+        <div styleName="passwd-forget-inner">
           <Link to="/">
             <img src={imgLogo} styleName="logo" width="201" height="49" />
           </Link>
-          <LoginPanel />
+          <ForgetPasswdPanel />
         </div>
       </div>
     )
