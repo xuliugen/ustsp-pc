@@ -1,5 +1,6 @@
 import React from 'react'
 import MsgItem from './msg-item/MsgItem'
+import { Checkbox } from 'antd'
 import './systemMsg.css'
 
 export default class SystemMsg extends React.Component {
@@ -29,9 +30,18 @@ export default class SystemMsg extends React.Component {
           )}
         </div>
         <div styleName="content">
-          <MsgItem mgnt={this.state.mgnt} />
-          <MsgItem mgnt={this.state.mgnt} />
-          <MsgItem mgnt={this.state.mgnt} />
+          <div styleName="msg-item">
+            <MsgItem />
+            {this.state.mgnt ? <Checkbox /> : ''}
+          </div>
+          <div styleName="msg-item">
+            <MsgItem />
+            {this.state.mgnt ? <Checkbox /> : ''}
+          </div>
+          <div styleName="msg-item">
+            <MsgItem />
+            {this.state.mgnt ? <Checkbox /> : ''}
+          </div>
         </div>
       </div>
     )
