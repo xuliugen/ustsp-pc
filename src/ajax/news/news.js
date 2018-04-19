@@ -28,6 +28,10 @@ export default {
     return ajax.get(`dynamics/query/type?queryType=${queryType}&page=${page}&rows=${row}`)
   },
 
+  fetchNewsRmd(userId, num) {
+    return ajax.get(`/dynamics/query/user/list?userId=${userId}&itemNum=${num}`)
+  },
+
   // search
   searchNews(body) {
     return ajax.post('/search/dynamics/detail', body)

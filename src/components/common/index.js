@@ -2,7 +2,7 @@ import Header from './header/Header'
 import Footer from './footer/Footer'
 import ProjectsRmd from './projects-rmd/ProjectsRmd'
 import TalentsRmd from './talents-rmd/TalentsRmd'
-import News from './news/StdNews'
+import NewsRmd from './news-rmd/NewsRmd'
 import IpRmd from './ip-rmd/IpRmd'
 
 export {
@@ -10,6 +10,6 @@ export {
   Footer,
   ProjectsRmd,
   TalentsRmd,
-  News,
+  NewsRmd,
   IpRmd
 }
