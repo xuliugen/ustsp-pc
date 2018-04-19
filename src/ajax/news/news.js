@@ -26,5 +26,10 @@ export default {
 
   getMoreNews(queryType, page, row) {
     return ajax.get(`dynamics/query/type?queryType=${queryType}&page=${page}&rows=${row}`)
+  },
+
+  // search
+  searchNews(body) {
+    return ajax.post('/search/dynamics/detail', body)
   }
 }

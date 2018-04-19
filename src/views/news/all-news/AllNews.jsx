@@ -1,38 +1,15 @@
 import React from 'react'
 import './allNews.css'
 
-import { Header, Footer, ProjectsRmd, TalentsRmd, News } from 'components/common'
+import { Header, Footer, ProjectsRmd, TalentsRmd } from 'components/common'
 import { AllNewsContent } from 'components/news'
-import { Others } from 'components/detail/common'
 
 export default class AllNews extends React.Component {
   render() {
-    let RmdContent = null
-
-    const pathname = this.props.location.pathname
-    switch (pathname.split('/')[1]) {
-      case 'project':
-        RmdContent = <ProjectsRmd />
-        break
-      case 'teacher':
-        RmdContent = (
-          <div>
-            <TalentsRmd />
-            {/* <CommonFriends /> */}
-            <Others />
-          </div>
-        )
-        break
-      case 'student':
-        RmdContent = (
-          <div>
-            <News />
-            <TalentsRmd />
-            {/* <CommonFriends /> */}
-          </div>
-        )
-        break
-    }
+    let RmdContent = (<div>
+      <TalentsRmd />
+      <ProjectsRmd />
+    </div>)
 
     return (
       <div styleName="page-wrapper">
