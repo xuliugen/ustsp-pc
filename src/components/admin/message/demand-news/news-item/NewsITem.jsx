@@ -1,12 +1,12 @@
 import React from 'react'
-import ImgSystem from 'src/assets/systemIcon.png'
+import imgSystem from 'src/assets/systemIcon.png'
 import './newsItem.css'
 
 export default class NewsItem extends React.Component {
   render() {
     return (
       <div styleName="root">
-        <img src={ImgSystem} styleName="avatar" />
+        <img src={imgSystem} styleName="avatar" />
         <div styleName="news-info">
           <div>
             <span>基于Ffmpeg的直播推流系统</span>

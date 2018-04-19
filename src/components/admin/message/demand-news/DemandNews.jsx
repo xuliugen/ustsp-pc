@@ -1,5 +1,5 @@
 import React from 'react'
-import NewsItem from './news-item/NewsITem'
+import NewsItem from './news-item/NewsItem'
 import { Checkbox } from 'antd'
 import './demandNews.css'
 
