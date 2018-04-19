@@ -19,3 +19,11 @@
 .tags {
   cursor: pointer;
 }
+
+.news-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+  border-bottom: 1px dashed #eeee;
+}
