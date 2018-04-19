@@ -30,5 +30,10 @@ export default {
 
   fetchNewsRmd(userId, num) {
     return ajax.get(`/dynamics/query/user/list?userId=${userId}&itemNum=${num}`)
+  },
+
+  // search
+  searchNews(body) {
+    return ajax.post('/search/dynamics/detail', body)
   }
 }

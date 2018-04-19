@@ -7,6 +7,7 @@ import { hot } from 'react-hot-loader'
 import PrivateRoute from 'src/common/PrivateRoute'
 import Home from '@/home/Home'
 import Login from '@/login/Login'
+import ForgetPassword from '@/password/ForgetPassword'
 import Register from '@/register/Register'
 import Admin from '@/admin/Admin'
 import Detail from '@/detail/Detail'
@@ -23,6 +24,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/forget-pwd" component={ForgetPassword} />
           <Route path="/register" component={Register} />
           <PrivateRoute path="/admin" component={Admin} />
           {/* <Route path="/admin" component={Admin} /> */}

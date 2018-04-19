@@ -37,7 +37,10 @@ export default class LoginPanel extends React.Component {
       <div styleName="loginPanel-container">
         <header styleName="loginPanel-header">
           <div styleName="header-title">用户登录</div>
-          <div styleName="header-pwd">忘记密码<img styleName="ico-q" src={imgQ} /></div>
+          <div styleName="header-pwd">
+            <Link to="/forget-pwd">忘记密码</Link>
+            <img styleName="ico-q" src={imgQ} />
+          </div>
         </header>
         <div styleName="loginForm-wrapper">
           {wrongInfo && (

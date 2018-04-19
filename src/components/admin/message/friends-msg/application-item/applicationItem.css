@@ -1,16 +1,24 @@
 .root {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.detail {
+  display: flex;
+  align-items: center;
+}
+
 .avatar {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.msg-info {
-  margin-left: 40px;
+.application-info {
+  margin-left: 30px;
   font-size: 16px;
   color: #aaa;
 }
@@ -19,7 +27,11 @@
   margin-left: 30px;
 }
 
-.content {
+.notes {
   margin-top: 10px;
-  color: #3091e6;
+}
+
+.applicant {
+  margin-right: 15px;
+  color: #3091e6
 }

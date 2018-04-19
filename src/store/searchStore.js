@@ -1,5 +1,5 @@
 import { observable, action, reaction, runInAction } from 'mobx'
-import { TalentApi, ProjectApi, IpApi } from 'src/ajax'
+import { TalentApi, ProjectApi, IpApi, NewsApi } from 'src/ajax'
 
 const talTemplate = {
   major: '',
@@ -18,6 +18,12 @@ const patentTemplate = {
   industryCategory: '',
   patentType: '',
   legalStatus: ''
+}
+
+const newsTemplate = {
+  startTime: '',
+  endTime: '',
+  type: ''
 }
 
 class SearchStore {
@@ -147,6 +153,13 @@ class SearchStore {
             ...req
           }
           res = await IpApi.searchPatents(this.req)
+          break
+        case 'news':
+          this.req = {
+            ...newsTemplate,
+            ...req
+          }
+          res = await NewsApi.searchNews(this.req)
           break
         default:
           break
