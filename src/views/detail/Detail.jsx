@@ -3,7 +3,6 @@ import './detail.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd, NewsRmd } from 'components/common'
 import { ProjectContent, TeacherContent, StudentContent, IPContent } from 'components/detail'
-import { Others } from 'components/detail/common'
 
 export default class Detail extends React.Component {
   render() {
@@ -23,7 +22,6 @@ export default class Detail extends React.Component {
           <div>
             <TalentsRmd />
             {/* <CommonFriends /> */}
-            <Others />
             <NewsRmd />
           </div>
         )
