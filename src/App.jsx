@@ -24,7 +24,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/password" component={ForgetPassword} />
+          <Route path="/forget-pwd" component={ForgetPassword} />
           <Route path="/register" component={Register} />
           <PrivateRoute path="/admin" component={Admin} />
           {/* <Route path="/admin" component={Admin} /> */}

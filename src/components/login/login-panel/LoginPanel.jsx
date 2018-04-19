@@ -38,7 +38,7 @@ export default class LoginPanel extends React.Component {
         <header styleName="loginPanel-header">
           <div styleName="header-title">用户登录</div>
           <div styleName="header-pwd">
-            <Link to="/password">忘记密码</Link>
+            <Link to="/forget-pwd">忘记密码</Link>
             <img styleName="ico-q" src={imgQ} />
           </div>
         </header>
