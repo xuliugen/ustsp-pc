@@ -22,25 +22,28 @@ export default class FriendsMsg extends React.Component {
   }
 
   render() {
+    const titles = [
+      { title: '团队好友申请', name: 'team' },
+      { title: '个人好友申请', name: 'person' },
+      { title: '好友私信', name: 'msg' }]
     return (
       <div styleName="root">
         <div styleName="title">
           <div>
-            <span
-              styleName={'title-tags' + (this.state.curPanel === 'team' ? ' selected-tag' : '')}
-              onClick={this.handleChangePanel.bind(this, 'team')}>
-              团队好友申请
-            </span>
-            <span
-              styleName={'title-tags' + (this.state.curPanel === 'person' ? ' selected-tag' : '')}
-              onClick={this.handleChangePanel.bind(this, 'person')}>
-              个人好友申请
-            </span>
-            <span
-              styleName={'title-tags' + (this.state.curPanel === 'msg' ? ' selected-tag' : '')}
-              onClick={this.handleChangePanel.bind(this, 'msg')}>
-              好友私信
-            </span>
+            {titles.map((item, idx) => {
+              let styleName = 'title-tags'
+              if (this.state.curPanel === item.name) {
+                styleName += ' selected-tag'
+              }
+              return (
+                <span
+                  key={idx}
+                  styleName={styleName}
+                  onClick={this.handleChangePanel.bind(this, item.name)}>
+                  {item.title}
+                </span>
+              )
+            })}
           </div>
           {this.state.mgnt ? (
             <div>
