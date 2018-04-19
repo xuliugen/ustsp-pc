@@ -1,0 +1,37 @@
+.root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.application-info {
+  margin-left: 30px;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.time {
+  margin-left: 30px;
+}
+
+.notes {
+  margin-top: 10px;
+}
+
+.applicant {
+  margin-right: 15px;
+  color: #3091e6
+}

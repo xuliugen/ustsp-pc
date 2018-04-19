@@ -1,0 +1,43 @@
+.root {
+  width: 100%;
+  background-color: #fff;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+
+.title-tags {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.selected-tag {
+  color: #3091e6;
+  border-bottom: 4px solid #3091e6
+}
+
+.mgnt-tags {
+  display: inline-block;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.content {
+  padding: 0 60px;
+}
+
+.application-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+  border-bottom: 1px dashed #eeee;
+}
