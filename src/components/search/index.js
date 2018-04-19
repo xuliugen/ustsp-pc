@@ -5,6 +5,8 @@ import ProjectResult from './project/ProjectResult'
 import TalentResult from './talent/TalentResult'
 import IPResult from './ip/IPResult'
 import PatentFilterBox from './filter-box/PatentFilterBox'
+import NewsResult from './news/NewsResult'
+import NewsFilterBox from './filter-box/NewsFilterBox'
 
 export {
   SearchBar,
@@ -13,5 +15,7 @@ export {
   ProjectResult,
   TalentResult,
   IPResult,
-  PatentFilterBox
+  PatentFilterBox,
+  NewsResult,
+  NewsFilterBox
 }
