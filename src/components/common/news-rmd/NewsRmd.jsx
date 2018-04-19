@@ -33,7 +33,7 @@ export default class NewsRmd extends React.Component<{}, State> {
       return (
         <div styleName="news-item" key={idx}>
           <div styleName="publisher">
-            <img styleName="avatar"src={item.avatar} />
+            <img styleName="avatar" src={item.avatar} />
             <span styleName="name">{item.username}</span>
             <span styleName="company">{item.location}</span>
             <span styleName="time">{moment(item.date).format('YYYY-MM-DD HH:mm:ss')}</span>
