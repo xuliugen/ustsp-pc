@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom'
 export default class Login extends React.Component<{}> {
   componentDidMount() {
     const height = document.documentElement.clientHeight + 'px'
-    this.forgetPasswdContainer.style.height = height
+    this.loginContainer.style.height = height
   }
 
   render() {
     return (
-      <div styleName="login" ref={(div) => { this.forgetPasswdContainer = div }}>
+      <div styleName="login" ref={(div) => { this.loginContainer = div }}>
         <div styleName="login-inner">
           <Link to="/">
             <img src={imgLogo} styleName="logo" width="201" height="49" />
