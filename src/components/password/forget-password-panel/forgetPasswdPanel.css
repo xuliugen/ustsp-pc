@@ -1,0 +1,49 @@
+.panel-container {
+  background-color: #fff;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  color: #aaa;
+}
+
+.header-title {
+  font-size: 22px;
+}
+
+.header-pwd {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.form-wrapper {
+  position: relative;
+  padding: 20px 10% 10px 10%;
+}
+
+.verfiyRow .verifyIpt {
+  display: inline-block;
+  width: 305px;
+  margin-right: 10px;
+}
+
+.verfiyRow .verifyBtn {
+  width: 100px;
+}
+
+.nextBtn-container {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.nextBtn {
+  width: 160px;
+  height: 44px;
+}
