@@ -20,11 +20,6 @@
   cursor: pointer;
 }
 
-.selected-tag {
-  color: #3091e6;
-  border-bottom: 4px solid #3091e6
-}
-
 .content {
   padding: 0 60px;
 }

@@ -10,7 +10,6 @@ import { MessageApi } from 'src/ajax'
 export default class DemandNews extends React.Component {
   state = {
     news: [],
-    curPanel: 'owner',
     mgnt: false
   }
 
@@ -20,19 +19,13 @@ export default class DemandNews extends React.Component {
     })
   }
 
-  handleChangePanel(type) {
-    this.setState({
-      curPanel: type
-    })
-  }
-
   componentDidMount() {
     this.getMessages(1, 8)
   }
 
   async getMessages(currentPage, pageSize) {
     try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 22, currentPage, pageSize)
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 21, currentPage, pageSize)
       this.setState({
         news: data.data
       })
@@ -42,29 +35,10 @@ export default class DemandNews extends React.Component {
   }
 
   render() {
-    const titles = [
-      { title: '乙方消息', name: 'owner' },
-      { title: '甲方消息', name: 'partyB' }
-    ]
     return (
       <div styleName="root">
         <div styleName="title">
-          <div>
-            {titles.map((item, idx) => {
-              let styleName = 'title-tags'
-              if (this.state.curPanel === item.name) {
-                styleName += ' selected-tag'
-              }
-              return (
-                <span
-                  key={idx}
-                  styleName={styleName}
-                  onClick={this.handleChangePanel.bind(this, item.name)}>
-                  {item.title}
-                </span>
-              )
-            })}
-          </div>
+          <span styleName="title-tags">项目消息</span>
           {this.state.mgnt ? (
             <div>
               <span styleName="tags" >全选</span>
@@ -79,7 +53,7 @@ export default class DemandNews extends React.Component {
           {this.state.news.map((item, idx) => {
             return (
               <div key={idx} styleName="news-item">
-                <MsgItem item={item} party={this.state.curPanel} />
+                <MsgItem item={item} />
                 {this.state.mgnt ? <Checkbox /> : ''}
               </div>
             )
