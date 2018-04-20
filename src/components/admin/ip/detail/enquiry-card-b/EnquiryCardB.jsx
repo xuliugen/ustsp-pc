@@ -5,6 +5,8 @@ import './enquiryCardB.css'
 import { IpApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
 
+const confirm = Modal.confirm
+
 export default class EnquiryCardB extends React.Component {
   render() {
     const { partyB, patent, dispatch } = this.props
@@ -58,6 +60,23 @@ class Purchase extends React.Component {
     })
   }
 
+  handleCancelBuy = () => {
+    confirm({
+      title: '是否确认取消购买',
+      // content: '',
+      onOk: async () => {
+        try {
+          await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'cancelBuy')
+          message.success('取消购买成功')
+          this.props.history.replace(`/ip/${this.props.patent.id}`)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      // onCancel() { }
+    })
+  }
+
   render() {
     const { patent } = this.props
     return (
@@ -66,7 +85,7 @@ class Purchase extends React.Component {
         <div styleName="title">收到甲方发送专利评估文件： <a src={patent.appraisalDocument}>评估文件</a></div>
         <div styleName="title">在确认有购买意愿后与甲方沟通，发起购买请求</div>
         <Button type="primary" onClick={() => { this.changeDialogVisible(true) }}>发起购买请求</Button>
-        <Button style={{ marginLeft: '15px' }}>不购买</Button>
+        <Button style={{ marginLeft: '15px' }} onClick={this.handleCancelBuy}>不购买</Button>
         <Modal
           visible={this.state.dialogVisible}
           onOk={this.handleConfirm.bind(this)}

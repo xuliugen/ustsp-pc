@@ -18,12 +18,16 @@ export default class News extends React.Component<{}, State> {
   }
 
   async getNews() {
-    const { data } = await NewsApi.getMoreNews('', 1, 5)
-    const news = data.data
-    if (Array.isArray(news)) {
-      this.setState({
-        news
-      })
+    try {
+      const { data } = await NewsApi.getMoreNews('', 1, 5)
+      const news = data.data
+      if (Array.isArray(news)) {
+        this.setState({
+          news
+        })
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 

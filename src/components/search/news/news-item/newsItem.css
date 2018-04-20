@@ -1,0 +1,58 @@
+.root {
+  border-top:1px #ddd solid;
+  border-left:1px #ddd solid;
+  border-right:1px #ddd solid;
+  padding: 20px 20px 18px 20px;
+  width: 100%;
+}
+
+:global(.ant-avatar) > img {
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.info-text{
+  margin-left: 19px;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title-text {
+  color: #333;
+  font-size: 22px;
+}
+
+.abstract-wrapper {
+  margin-top: 10px;
+}
+
+.abstracts {
+  color: #666;
+  font-size: 14px;
+}
+
+.misc-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 11px;
+}
+
+.visible-icon{
+  font-size: 20px;
+  color: #8f9ba7;
+}
+
+.visible-person-number{
+  color: #8f9ba7;
+}
+
+.view {
+  margin-left: 10px;
+}

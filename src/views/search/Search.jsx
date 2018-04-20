@@ -4,7 +4,7 @@ import './search.css'
 
 import { Header, Footer, ProjectsRmd, TalentsRmd, IpRmd } from 'components/common/'
 import { SearchBar, TalentFilterBox, ProjectFilterBox, ProjectResult, TalentResult,
-  IPResult, PatentFilterBox } from 'components/search'
+  IPResult, PatentFilterBox, NewsResult, NewsFilterBox } from 'components/search'
 
 @inject('searchStore')
 @observer
@@ -48,6 +48,19 @@ export default class Search extends React.Component {
           <div>
             <PatentFilterBox />
             <IPResult />
+          </div>
+        )
+        rmd = (
+          <div>
+            <IpRmd />
+          </div>
+        )
+        break
+      case 'news':
+        searchPanel = (
+          <div>
+            <NewsFilterBox />
+            <NewsResult />
           </div>
         )
         rmd = (

@@ -37,7 +37,7 @@ export default class SignCardA extends React.Component {
   }
 
   render() {
-    const { ip, partyB } = this.props
+    const { ip, partyB = {} } = this.props
     const money = this.priceDigitUpper(ip.money)
     return (
       <div>
