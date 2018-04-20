@@ -26,16 +26,16 @@
 }
 
 .time {
-  padding-top: 3px;
+  float: right;
+  padding-top: 7px;
   display: inline-block;
   margin-right: 20px;
-  float: right;
   font-style: italic;
 }
 
 .content {
   position: relative;
-  margin: 0 0 20px 45px;
+  margin-left: 45px;
   line-height: 25px;
 }
 

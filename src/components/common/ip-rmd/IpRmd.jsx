@@ -16,9 +16,9 @@ export default class IpsRmd extends React.Component {
   async componentDidMount() {
     try {
       const { data } = await IpApi.fetchRmdPatent()
-      if (Array.isArray(data.data)) {
+      if (Array.isArray(data)) {
         this.setState({
-          list: data.data.slice(0, 4)
+          list: data.slice(0, 4)
         })
       }
     } catch (e) {
