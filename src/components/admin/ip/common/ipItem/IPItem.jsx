@@ -42,7 +42,7 @@ export default class IPItem extends React.Component {
         </div>
         <div styleName="right">
           <div styleName="release-date">
-            <span>发布于 {moment(patent.pulicationDate).format('YYYY-MM-DD')}</span>
+            <span>发布于 {moment(patent.publicationDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
             <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this)}>

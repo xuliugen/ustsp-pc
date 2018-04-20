@@ -1,10 +1,12 @@
 import React from 'react'
-import { Button, message } from 'antd'
+import { Button, message, Modal } from 'antd'
 import TransferInfo from '../common/transfer-info/TransferInfo'
 import './signCardB.css'
 import { IpApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
 import {inject, observer} from 'mobx-react'
+
+const confirm = Modal.confirm
 
 @withRouter
 @inject('userStore')
@@ -20,6 +22,23 @@ export default class SignCardB extends React.Component {
     }
   }
 
+  handleCancelSign = () => {
+    confirm({
+      title: '是否确认取消签订合同',
+      // content: '',
+      onOk: async () => {
+        try {
+          await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'cancelSign')
+          message.success('取消签订成功')
+          this.props.history.replace(`/ip/${this.props.patent.id}`)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      // onCancel() { }
+    })
+  }
+
   render() {
     return (
       <div>
@@ -31,7 +50,7 @@ export default class SignCardB extends React.Component {
           </div>
           <div styleName="btns">
             <Button type="primary" onClick={this.handelSign} style={{ paddingLeft: '20px', paddingRight: '20px' }}>确认签订</Button>
-            <span styleName="cancel">取消签订</span>
+            <span styleName="cancel" onClick={this.handleCancelSign}>取消签订</span>
           </div>
         </div>
       </div>
