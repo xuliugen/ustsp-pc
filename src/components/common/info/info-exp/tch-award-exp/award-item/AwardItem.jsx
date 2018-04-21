@@ -1,6 +1,6 @@
 import React from 'react'
 import './awardItem.css'
-import { Icon, message } from 'antd'
+import { Icon, message, Modal } from 'antd'
 import moment from 'moment'
 import { UserInfoApi } from 'src/ajax'
 
@@ -10,16 +10,22 @@ export default class AwardItem extends React.Component {
     this.props.setSelectedItem(item)
   }
 
-  async handleDelete(item) {
-    try {
-      await UserInfoApi.deleteAward(item.id)
-      this.props.deleteItem(item)
-      message.success('删除成功')
-    } catch (err) {
-      message.error('删除失败')
-      console.log(err)
-    }
+  handleDelete(item) {
+    Modal.confirm({
+      title: '是否确认删除',
+      onOk: async () => {
+        try {
+          await UserInfoApi.deleteAward(item.id)
+          this.props.deleteItem(item)
+          message.success('删除成功')
+        } catch (err) {
+          message.error('删除失败')
+          console.log(err)
+        }
+      }
+    })
   }
+
   render() {
     return (
       <div styleName="root">

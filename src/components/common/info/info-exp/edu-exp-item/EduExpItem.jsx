@@ -1,6 +1,6 @@
 import React from 'react'
 import './eduExpItem.css'
-import { Icon, message } from 'antd'
+import { Icon, message, Modal } from 'antd'
 import moment from 'moment'
 import { UserInfoApi } from 'src/ajax'
 
@@ -10,15 +10,20 @@ export default class EduExpItem extends React.Component {
     this.props.setSelectedItem(exp)
   }
 
-  async handleDelete(exp) {
-    try {
-      await UserInfoApi.deleteEdu(exp.id)
-      this.props.deleteItem(exp)
-      message.success('删除成功')
-    } catch (err) {
-      message.error('删除失败')
-      console.log(err)
-    }
+  handleDelete(exp) {
+    Modal.confirm({
+      title: '是否确认删除',
+      onOk: async () => {
+        try {
+          await UserInfoApi.deleteEdu(exp.id)
+          this.props.deleteItem(exp)
+          message.success('删除成功')
+        } catch (err) {
+          message.error('删除失败')
+          console.log(err)
+        }
+      }
+    })
   }
 
   render() {
