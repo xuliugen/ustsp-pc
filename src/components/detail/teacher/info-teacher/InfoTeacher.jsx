@@ -1,8 +1,32 @@
 import React from 'react'
-import { Icon, Button } from 'antd'
+import { Icon, Button, message } from 'antd'
+import { inject, observer } from 'mobx-react'
 import './infoTeacher.css'
+import { ContactsApi } from 'src/ajax'
 
+@inject('userStore')
+@observer
 export default class InfoTeacher extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      disable: false
+    }
+    this.handleAdFriends = this.handleAdFriends.bind(this)
+  }
+
+  async handleAdFriends() {
+    try {
+      await ContactsApi.sendAddFirend(this.props.userStore.user.id, this.props.infoTeacher.id)
+      message.success('已发送好友申请')
+      this.setState({
+        disable: true
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render() {
     return (
       <div styleName="info-teacher">
@@ -22,7 +46,7 @@ export default class InfoTeacher extends React.Component {
           </div>
         </div>
         <div styleName="friend-status">
-          <Button type="primary" icon="plus" size="large">加好友</Button>
+          <Button type="primary" icon="plus" size="large" onClick={this.handleAdFriends} disabled={this.state.disable} >加好友</Button>
         </div>
       </div>
     )
