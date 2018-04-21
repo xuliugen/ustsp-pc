@@ -5,11 +5,19 @@
 
 .title {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px 30px;
+  padding: 0 30px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
   color: #8f9ba7;
+}
+
+.title-tags {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 20px 0;
+  cursor: pointer;
 }
 
 .content {

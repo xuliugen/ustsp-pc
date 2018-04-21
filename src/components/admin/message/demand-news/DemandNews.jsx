@@ -1,10 +1,15 @@
 import React from 'react'
-import NewsItem from './news-item/NewsItem'
+import MsgItem from './msg-item/MsgItem'
 import { Checkbox } from 'antd'
+import { inject, observer } from 'mobx-react'
 import './demandNews.css'
+import { MessageApi } from 'src/ajax'
 
+@inject('userStore')
+@observer
 export default class DemandNews extends React.Component {
   state = {
+    news: [],
     mgnt: false
   }
 
@@ -14,11 +19,26 @@ export default class DemandNews extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.getMessages(1, 8)
+  }
+
+  async getMessages(currentPage, pageSize) {
+    try {
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 21, currentPage, pageSize)
+      this.setState({
+        news: data.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render() {
     return (
       <div styleName="root">
         <div styleName="title">
-          <span>项目动态</span>
+          <span styleName="title-tags">项目消息</span>
           {this.state.mgnt ? (
             <div>
               <span styleName="tags" >全选</span>
@@ -30,18 +50,14 @@ export default class DemandNews extends React.Component {
           )}
         </div>
         <div styleName="content">
-          <div styleName="news-item">
-            <NewsItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
-          <div styleName="news-item">
-            <NewsItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
-          <div styleName="news-item">
-            <NewsItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
+          {this.state.news.map((item, idx) => {
+            return (
+              <div key={idx} styleName="news-item">
+                <MsgItem item={item} />
+                {this.state.mgnt ? <Checkbox /> : ''}
+              </div>
+            )
+          })}
         </div>
       </div>
     )

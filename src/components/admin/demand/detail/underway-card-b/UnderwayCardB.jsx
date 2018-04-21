@@ -16,6 +16,7 @@ export default class UnderwayCardB extends React.Component {
   async handleToCheck(partyId, ownerId) {
     try {
       await DemandApi.changeDemandStatus({
+        currentUserId: this.props.userStore.user.id,
         partyId,
         ownerId,
         projectId: this.props.match.params.id,
@@ -36,6 +37,7 @@ export default class UnderwayCardB extends React.Component {
       onOk: async () => {
         try {
           await DemandApi.changeDemandStatus({
+            currentUserId: this.props.userStore.user.id,
             partyId: this.props.userStore.user.id,
             ownerId: partyA.ownerId,
             projectId: this.props.match.params.id,
