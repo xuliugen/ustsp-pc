@@ -37,6 +37,10 @@ export const routes = [
         to: '/admin/message/demand-news',
         text: '项目消息'
       }, {
+        key: 'ip-msg',
+        to: '/admin/message/ip-msg',
+        text: '专利消息'
+      }, {
         key: 'friends-msg',
         to: '/admin/message/friends-msg',
         text: '好友消息'
@@ -109,8 +113,8 @@ export const routes = [
     },
     children: [
       {
-        key: 'my-friends',
-        to: '/admin/contacts/my-friends',
+        key: 'friends',
+        to: '/admin/contacts/friends',
         text: '我的好友'
       }, {
         key: 'second-degree-contacts',

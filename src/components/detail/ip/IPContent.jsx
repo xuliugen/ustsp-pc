@@ -31,7 +31,7 @@ export default class IPContent extends React.Component {
   handleEnquiry = async () => {
     const userId = this.props.userStore.user.id
     try {
-      await IpApi.changePatentStatus(this.props.match.params.id, userId, 'apply')
+      await IpApi.changePatentStatus(this.props.match.params.id, userId, 'apply', userId)
       message.success('询价成功')
       this.setState(({
         enquiryBtn: {
