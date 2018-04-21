@@ -23,9 +23,10 @@ export default class FriendsMsg extends React.Component {
 
   render() {
     const titles = [
-      { title: '团队好友申请', name: 'team' },
-      { title: '个人好友申请', name: 'person' },
-      { title: '好友私信', name: 'msg' }]
+      // { title: '团队好友申请', name: 'team' },
+      { title: '个人好友申请', name: 'person' }
+      // { title: '好友私信', name: 'msg' }
+    ]
     return (
       <div styleName="root">
         <div styleName="title">
