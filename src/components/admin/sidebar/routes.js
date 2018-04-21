@@ -113,8 +113,8 @@ export const routes = [
     },
     children: [
       {
-        key: 'my-friends',
-        to: '/admin/contacts/my-friends',
+        key: 'friends',
+        to: '/admin/contacts/friends',
         text: '我的好友'
       }, {
         key: 'second-degree-contacts',

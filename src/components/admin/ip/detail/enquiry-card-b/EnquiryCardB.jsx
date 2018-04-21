@@ -8,8 +8,6 @@ import { inject, observer } from 'mobx-react'
 
 const confirm = Modal.confirm
 
-@inject('userStore')
-@observer
 export default class EnquiryCardB extends React.Component {
   render() {
     const { partyB, patent, dispatch } = this.props
@@ -41,6 +39,8 @@ const Enquiry = () => {
   )
 }
 
+@inject('userStore')
+@observer
 @withRouter
 class Purchase extends React.Component {
   state = { dialogVisible: false }

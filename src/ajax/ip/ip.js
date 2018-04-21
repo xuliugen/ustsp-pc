@@ -28,8 +28,8 @@ export default {
   },
 
   // 甲方发给乙方评估文件
-  sendEvaluateDoc(docUrl, money, partyId, patentId) {
-    return ajax.post(`/patent/send/document?docUrl=${docUrl}&money=${money}&partyId=${partyId}&patentId=${patentId}`)
+  sendEvaluateDoc(docUrl, money, partyId, patentId, currentUserId) {
+    return ajax.post(`/patent/send/document?docUrl=${docUrl}&money=${money}&partyId=${partyId}&patentId=${patentId}&currentUserId=${currentUserId}`)
   },
 
   // 专利详情界面获取详情

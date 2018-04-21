@@ -2,9 +2,14 @@ import React from 'react'
 import MsgItem from './msg-item/MsgItem'
 import { Checkbox } from 'antd'
 import './ipMsg.css'
+import { MessageApi } from 'src/ajax'
+import {inject, observer} from 'mobx-react'
 
+@inject('userStore')
+@observer
 export default class IPMsg extends React.Component {
   state = {
+    news: [],
     mgnt: false
   }
 
@@ -12,6 +17,21 @@ export default class IPMsg extends React.Component {
     this.setState({
       mgnt: status
     })
+  }
+
+  componentDidMount() {
+    this.getMessages(1, 8)
+  }
+
+  async getMessages(currentPage, pageSize) {
+    try {
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 31, currentPage, pageSize)
+      this.setState({
+        news: data.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {
@@ -30,18 +50,14 @@ export default class IPMsg extends React.Component {
           )}
         </div>
         <div styleName="content">
-          <div styleName="news-item">
-            <MsgItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
-          <div styleName="news-item">
-            <MsgItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
-          <div styleName="news-item">
-            <MsgItem />
-            {this.state.mgnt ? <Checkbox /> : ''}
-          </div>
+          {this.state.news.map((item, idx) => {
+            return (
+              <div key={idx} styleName="news-item">
+                <MsgItem item={item} />
+                {this.state.mgnt ? <Checkbox /> : ''}
+              </div>
+            )
+          })}
         </div>
       </div>
     )
