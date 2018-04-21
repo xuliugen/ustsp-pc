@@ -109,7 +109,7 @@ export const routes = [
     },
     children: [
       {
-        key: 'friends',
+        key: 'my-friends',
         to: '/admin/contacts/my-friends',
         text: '我的好友'
       }, {
