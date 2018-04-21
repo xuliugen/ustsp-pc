@@ -35,7 +35,11 @@ export const routes = [
       }, {
         key: 'demand-news',
         to: '/admin/message/demand-news',
-        text: '项目动态'
+        text: '项目消息'
+      }, {
+        key: 'ip-msg',
+        to: '/admin/message/ip-msg',
+        text: '专利消息'
       }, {
         key: 'friends-msg',
         to: '/admin/message/friends-msg',

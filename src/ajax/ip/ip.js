@@ -23,8 +23,8 @@ export default {
 
   // 改变状态
   // 传入乙方id status的状态是乙方的状态，apply 询价了；sended 发了文件；wonder 想购买专利
-  changePatentStatus(patentId, userId, status) {
-    return ajax.post(`/patent/status?patentId=${patentId}&userId=${userId}&status=${status}`)
+  changePatentStatus(patentId, userId, status, currentUserId) {
+    return ajax.post(`/patent/status?patentId=${patentId}&userId=${userId}&status=${status}&currentUserId=${currentUserId}`)
   },
 
   // 甲方发给乙方评估文件

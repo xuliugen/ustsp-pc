@@ -4,9 +4,12 @@ import { Icon, Button, Modal, message } from 'antd'
 import './enquiryCardB.css'
 import { IpApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
 
 const confirm = Modal.confirm
 
+@inject('userStore')
+@observer
 export default class EnquiryCardB extends React.Component {
   render() {
     const { partyB, patent, dispatch } = this.props
@@ -44,7 +47,7 @@ class Purchase extends React.Component {
 
   async handleConfirm() {
     try {
-      await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'wonder')
+      await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'wonder', this.props.userStore.user.id)
       message.success('已发起购买请求')
       this.props.dispatch()
     } catch (err) {
@@ -66,7 +69,7 @@ class Purchase extends React.Component {
       // content: '',
       onOk: async () => {
         try {
-          await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'cancelBuy')
+          await IpApi.changePatentStatus(this.props.match.params.id, this.props.partyB.partyId, 'cancelBuy', this.props.userStore.user.id)
           message.success('取消购买成功')
           this.props.history.replace(`/ip/${this.props.patent.id}`)
         } catch (err) {
