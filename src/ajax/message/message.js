@@ -12,6 +12,15 @@ export default {
 
   deleteMessages(body) {
     return ajax.post('/message/delete/batches', body)
+  },
+
+  // first 发起者 second 接受者
+  sendAddFirend(ownerId, partyId) {
+    return ajax.post(`/message/add/friend?ownerId=${ownerId}&partyId=${partyId}`)
+  },
+
+  rejectAddFirend(ownerId, partyId, msgId) {
+    return ajax.post(`/message/reject/friend?ownerId=${ownerId}&partyId=${partyId}&msgId=${msgId}`)
   }
 
 }

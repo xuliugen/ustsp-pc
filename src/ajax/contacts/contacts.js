@@ -1,8 +1,12 @@
 import ajax from 'src/ajax'
 
 export default {
-  // first 发起者 second 接受者
-  sendAddFirend(firstUserId, secondUserId) {
-    return ajax.post(`/relation/send/relation-message?firstUserId=${firstUserId}&secondUserId=${secondUserId}`)
+  // 同意添加好友
+  addFriendAgreement(ownerId, partyId, msgId) {
+    return ajax.post(`/connection/add/friend?ownerId=${ownerId}&partyId=${partyId}&msgId=${msgId}`)
+  },
+
+  fetchFriendsList(id) {
+    return ajax.get(`/connection/get/list?id=${id}`)
   }
 }
