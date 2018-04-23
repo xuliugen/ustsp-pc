@@ -1,16 +1,38 @@
 import React from 'react'
 import MsgItem from './msg-item/MsgItem'
-import { Checkbox } from 'antd'
+import { Checkbox, message, Modal, Pagination } from 'antd'
 import { inject, observer } from 'mobx-react'
 import './demandNews.css'
 import { MessageApi } from 'src/ajax'
+
+const confirm = Modal.confirm
 
 @inject('userStore')
 @observer
 export default class DemandNews extends React.Component {
   state = {
     news: [],
-    mgnt: false
+    mgnt: false,
+    checkedList: [],
+    selectAll: false,
+    pagination: { total: 1, currentPage: 1, pageSize: 5 }
+  }
+
+  componentDidMount() {
+    this.getMessages(1)
+  }
+
+  async getMessages(currentPage) {
+    try {
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 21, currentPage, this.state.pagination.pageSize)
+      this.setState(prev => ({
+        news: data.data,
+        checkedList: new Array(data.data.length).fill(false),
+        pagination: { total: data.totalNum, currentPage: currentPage, pageSize: prev.pagination.pageSize }
+      }))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   handleMgnt(status) {
@@ -19,19 +41,65 @@ export default class DemandNews extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getMessages(1, 8)
+  handleSelectedChange(idx) {
+    this.setState(prev => ({
+      checkedList: prev.checkedList.map((item, i) => {
+        return i === idx ? !item : item
+      })
+    }))
   }
 
-  async getMessages(currentPage, pageSize) {
-    try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 21, currentPage, pageSize)
-      this.setState({
-        news: data.data
-      })
-    } catch (error) {
-      console.log(error)
-    }
+  handleSelectAll = () => {
+    this.setState(prev => ({
+      checkedList: prev.checkedList.map(item => !prev.selectAll),
+      selectAll: !prev.selectAll
+    }))
+  }
+
+  showDeleteConfirm() {
+    let ids = []
+    let idxs = []
+    let num = this.state.checkedList.filter((item, idx) => {
+      if (item) {
+        ids.push(this.state.news[idx].id)
+        idxs.push(idx)
+      }
+      return item
+    }).length
+    confirm({
+      title: '确定要删除这 ' + num + ' 项吗？',
+      okText: '确认',
+      cancelText: '取消',
+      okType: 'danger',
+      onOk: async () => {
+        try {
+          const messages = {
+            userId: this.props.userStore.user.id,
+            messageIds: ids
+          }
+          const res = await MessageApi.deleteMessages(messages)
+          if (res.data === num) {
+            message.success('删除成功')
+            this.getMessages(this.state.pagination.currentPage)
+          } else {
+            message.error('删除失败')
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    })
+  }
+
+  handlePagiChange = (page, pageSize) => {
+    this.setState((prevState) => ({
+      pagination: {
+        total: prevState.pagination.total,
+        current: page,
+        pageSize: pageSize
+      }
+    }))
+    this.getMessages(page)
   }
 
   render() {
@@ -41,8 +109,8 @@ export default class DemandNews extends React.Component {
           <span styleName="title-tags">项目消息</span>
           {this.state.mgnt ? (
             <div>
-              <span styleName="tags" >全选</span>
-              <span styleName="tags" style={{ margin: '0px 20px' }}>删除</span>
+              <span styleName="tags" onClick={this.handleSelectAll} >{this.state.selectAll ? '取消全选' : '全选'}</span>
+              <span styleName="tags" style={{ margin: '0px 20px' }} onClick={this.showDeleteConfirm.bind(this)} >删除</span>
               <span styleName="tags" onClick={this.handleMgnt.bind(this, false)}>退出</span>
             </div>
           ) : (
@@ -54,10 +122,18 @@ export default class DemandNews extends React.Component {
             return (
               <div key={idx} styleName="news-item">
                 <MsgItem item={item} />
-                {this.state.mgnt ? <Checkbox /> : ''}
+                {this.state.mgnt ? <Checkbox checked={this.state.checkedList[idx]} onChange={this.handleSelectedChange.bind(this, idx)} /> : ''}
               </div>
             )
           })}
+          <Pagination
+            defaultCurrent={1}
+            total={this.state.pagination.total}
+            current={this.state.pagination.current}
+            pageSize={this.state.pagination.pageSize}
+            onChange={this.handlePagiChange}
+            hideOnSinglePage
+            style={{position: 'absolute', bottom: '10px', right: '25px'}} />
         </div>
       </div>
     )

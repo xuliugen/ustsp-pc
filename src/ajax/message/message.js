@@ -8,5 +8,10 @@ export default {
 
   fetchOneMessage(msgId) {
     return ajax.get(`/message/query/one?msgId=${msgId}`)
+  },
+
+  deleteMessages(body) {
+    return ajax.post('/message/delete/batches', body)
   }
+
 }
