@@ -2,7 +2,7 @@ import React from 'react'
 import './myFriends.css'
 import { Row, Col } from 'antd'
 import { inject, observer } from 'mobx-react'
-import FriendCard from './friend-card/FriendCard'
+import FriendCard from '../common/friend-card/FriendCard'
 import { ContactsApi } from 'src/ajax'
 
 @inject('userStore')
@@ -38,7 +38,7 @@ export default class MyFriends extends React.Component {
         </div>
         <div styleName="content">
           <Row gutter={16}>
-            {this.state.friends.map((item, idx) => {
+            {this.state.friends.length === 0 ? (<Col span={6} style={{margin: '20px', fontSize: '20px'}}>暂无相关好友</Col>) : this.state.friends.map((item, idx) => {
               return (
                 <Col span={6} key={idx}><FriendCard info={item} /></Col>
               )

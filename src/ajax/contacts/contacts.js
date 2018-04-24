@@ -8,5 +8,9 @@ export default {
 
   fetchFriendsList(id) {
     return ajax.get(`/connection/get/list?id=${id}`)
+  },
+
+  fetchSecondDegreeFriends(id) {
+    return ajax.get(`/connection/get/second/friend?id=${id}`)
   }
 }
