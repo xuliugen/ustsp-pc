@@ -24,7 +24,7 @@ export default class DemandNews extends React.Component {
 
   async getMessages(currentPage) {
     try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 21, currentPage, this.state.pagination.pageSize)
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 'demand', currentPage, this.state.pagination.pageSize)
       this.setState(prev => ({
         news: data.data,
         checkedList: new Array(data.data.length).fill(false),
