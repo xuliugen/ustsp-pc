@@ -17,8 +17,8 @@ export default class StuResumeForm extends React.Component {
     const { getFieldDecorator } = this.props.form
     const { stuInfo } = this.props
     let skillInitVal = []
-    if (stuInfo && Array.isArray(stuInfo.skill)) {
-      skillInitVal = stuInfo.skill.map(i => i.skill)
+    if (stuInfo && stuInfo.skill) {
+      skillInitVal = stuInfo.skill.trim().split(' ')
     }
 
     return (

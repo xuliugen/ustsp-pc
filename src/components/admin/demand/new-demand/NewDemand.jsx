@@ -94,7 +94,7 @@ class NewDemand extends React.Component {
         message.error('请完善需求信息')
       } else {
         const regData = {
-          projectSkillList: values.skills.map(i => ({skill: i})),
+          projectSkillList: values.skills && values.skills.map(i => ({skill: i})),
           projectResearchInfo: {
             projectName: values.projectName,
             type: values.type,
