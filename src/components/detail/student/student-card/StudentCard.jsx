@@ -1,8 +1,55 @@
 import React from 'react'
-import { Icon, Button } from 'antd'
+import { Icon, Button, message } from 'antd'
 import './studentCard.css'
+import { MessageApi } from 'src/ajax'
+import { inject, observer } from 'mobx-react'
 
+@inject('userStore')
+@observer
 export default class StudentCard extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      disable: false,
+      friend: false
+    }
+    this.handleAddFriends = this.handleAddFriends.bind(this)
+    this.checkIsFriend = this.checkIsFriend.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.checkIsFriend(nextProps)
+  }
+
+  async checkIsFriend(prop) {
+    try {
+      const msg = await MessageApi.checkIsFriend(this.props.userStore.user.id, prop.stuInfo.id)
+      if (msg.data > 0) {
+        this.setState({
+          friend: true
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async handleAddFriends() {
+    try {
+      const msg = await MessageApi.sendAddFirend(this.props.userStore.user.id, this.props.stuInfo.id)
+      if (msg.data === 0) {
+        message.warn('已有添加好友请求')
+      } else {
+        message.success('发送添加好友请求成功')
+      }
+      this.setState({
+        disable: true
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render() {
     return (
       <div styleName="student-card">
@@ -21,7 +68,11 @@ export default class StudentCard extends React.Component {
           </div>
         </div>
         <div styleName="friend-status">
-          <Button type="primary" icon="check" size="large">互为好友</Button>
+          {this.state.friend ? (
+            <Button type="primary" icon="check" size="large" style={{backgroundColor: '#1dbbae', border: 'none'}}>互为好友</Button>
+          ) : (
+            <Button type="primary" icon="plus" size="large" onClick={this.handleAddFriends} disabled={this.state.disable} >加好友</Button>
+          )}
         </div>
       </div>
     )

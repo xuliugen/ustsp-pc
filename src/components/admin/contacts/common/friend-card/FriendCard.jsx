@@ -7,7 +7,7 @@ export default class FriendCard extends React.Component {
   render() {
     const { userInfo } = this.props.info
     return (
-      <div styleName="card-wrapper">
+      <div styleName="root">
         <div styleName="avatar-wrapper"><img styleName="avatar" src={userInfo.avatar} /></div>
         <div styleName="friend-detail">
           <div styleName="name">{this.props.info.username}</div>

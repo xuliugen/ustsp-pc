@@ -12,11 +12,16 @@ export default class ApplicationItem extends React.Component {
 
   async handleAgree(item) {
     try {
-      await ContactsApi.addFriendAgreement(item.receiverId, item.senderId, item.id)
-      message.success('添加好友成功')
-      this.setState({
-        disable: true
-      })
+      const msg = await MessageApi.checkIsFriend(item.receiverId, item.senderId)
+      if (msg.data > 0) {
+        message.warn('你们已经是好友了')
+      } else {
+        await ContactsApi.addFriendAgreement(item.receiverId, item.senderId, item.id)
+        message.success('添加好友成功')
+        this.setState({
+          disable: true
+        })
+      }
     } catch (error) {
       console.log(error)
     }

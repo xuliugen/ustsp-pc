@@ -14,6 +14,10 @@ export default {
     return ajax.post('/message/delete/batches', body)
   },
 
+  checkIsFriend(ownerId, partyId) {
+    return ajax.get(`/connection/check/friend?ownerId=${ownerId}&partyId=${partyId}`)
+  },
+
   // first 发起者 second 接受者
   sendAddFirend(ownerId, partyId) {
     return ajax.post(`/message/add/friend?ownerId=${ownerId}&partyId=${partyId}`)
