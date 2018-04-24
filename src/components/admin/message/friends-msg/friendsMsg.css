@@ -31,7 +31,8 @@
 }
 
 .content {
-  padding: 0 60px;
+  position: relative;
+  padding: 0 60px 40px 60px;
 }
 
 .application-item {
