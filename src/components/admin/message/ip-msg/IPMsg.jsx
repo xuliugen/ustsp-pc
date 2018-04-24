@@ -30,7 +30,7 @@ export default class IPMsg extends React.Component {
 
   async getMessages(currentPage) {
     try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 31, currentPage, this.state.pagination.pageSize)
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 'ip', currentPage, this.state.pagination.pageSize)
       this.setState(prev => ({
         news: data.data,
         checkedList: new Array(data.data.length).fill(false),

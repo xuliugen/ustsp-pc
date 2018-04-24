@@ -25,7 +25,7 @@ export default class FriendsMsg extends React.Component {
 
   async getMessages(currentPage) {
     try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 11, currentPage, this.state.pagination.pageSize)
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 'friend', currentPage, this.state.pagination.pageSize)
       this.setState(prev => ({
         news: data.data,
         checkedList: new Array(data.data.length).fill(false),
