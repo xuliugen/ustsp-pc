@@ -52,7 +52,7 @@ export default class IPItem extends React.Component {
           </div>
           <div>
             <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, patent.status)}>
-              查看详情
+              {patent.status === -1 ? '修改' : '查看详情'}
             </button>
           </div>
         </div>

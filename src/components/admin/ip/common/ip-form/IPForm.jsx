@@ -8,7 +8,7 @@ const Option = Select.Option
 const { TextArea } = Input
 const Dragger = Upload.Dragger
 
-export default class NewIP extends React.Component {
+export default class IPForm extends React.Component {
   state = {
     document: null,
     appraisalDocument: null
