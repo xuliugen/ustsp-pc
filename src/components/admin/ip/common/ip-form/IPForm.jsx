@@ -310,7 +310,7 @@ export default class IPForm extends React.Component {
                   // valuePropName: 'fileList',
                   getValueFromEvent: this.normFile
                 })(
-                  <Dragger {...uploadProps} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
+                  <Dragger {...uploadProps} defaultFileList={[{uid: -2, name: 'pdf文件', status: 'done', url: this.props.ip.appraisalDocument}]} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
                     <p className="ant-upload-drag-icon">
                       <Icon type="inbox" />
                     </p>

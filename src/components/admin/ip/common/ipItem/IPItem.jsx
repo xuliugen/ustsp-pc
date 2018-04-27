@@ -37,7 +37,7 @@ export default class IPItem extends React.Component {
         <div styleName="left">
           <div styleName="ip-title">
             {patent.patentName}
-            <span styleName="inquire-price">{this.getStatusName(patent.status)}</span>
+            <span styleName="inquire-price" style={{backgroundColor: patent.status === -1 ? '#DB4D6D' : '#3091e6'}}>{this.getStatusName(patent.status)}</span>
           </div>
           <div styleName="ip-info">
             <span>申请号：{patent.applicationNumber}</span>
