@@ -29,19 +29,6 @@ export default class DemandForm extends React.Component {
     fileList: []
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.demand && nextProps.demand.uploadfileUrl) {
-      this.setState({
-        fileList: [{
-          uid: 1,
-          name: '需求文件',
-          status: 'done',
-          url: nextProps.demand.uploadfileUrl
-        }]
-      })
-    }
-  }
-
   displayRender(label) {
     return label[label.length - 1]
   }
