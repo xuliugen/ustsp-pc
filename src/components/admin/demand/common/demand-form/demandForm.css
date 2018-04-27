@@ -1,0 +1,16 @@
+.object {
+  display: flex;
+  width: 100%;
+}
+
+.object-radio {
+  padding: 15px 0;
+  flex-grow: 1;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.object-radio:last-child {
+  margin-right: 0px;
+}

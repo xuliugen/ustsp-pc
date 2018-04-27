@@ -25,7 +25,6 @@ for (let i = 0; i < skill.length; i++) {
   skillOptions.push(<Option key={i} value={skill[i]}>{skill[i]}</Option>)
 }
 
-@inject('registerStore')
 @inject('userStore')
 @observer
 class NewDemand extends React.Component {

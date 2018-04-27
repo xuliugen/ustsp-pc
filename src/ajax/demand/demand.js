@@ -31,6 +31,10 @@ export default {
   pubishDemand(body) {
     return ajax.post('/project/publish', body)
   },
+  // 更新项目信息
+  updateDemand(body) {
+    return ajax.put('/project', body)
+  },
   /**
    * 改变项目状态
    * 如 status 为 'toSign'，则表示甲方等待乙方进行签单确认

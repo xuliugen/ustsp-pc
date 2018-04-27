@@ -5,8 +5,12 @@ import './demandItem.css'
 
 @withRouter
 export default class DemandItem extends React.Component<{}> {
-  handleSeeDetailClick(id) {
-    this.props.history.push(`${this.props.match.url}/${id}`)
+  handleSeeDetailClick({ id, status }) {
+    if (status !== -1) {
+      this.props.history.push(`${this.props.match.url}/${id}`)
+    } else {
+      this.props.history.push(`/admin/demand/modify/${id}`)
+    }
   }
 
   render() {
@@ -28,7 +32,7 @@ export default class DemandItem extends React.Component<{}> {
         <div styleName="right">
           <div styleName="demand-time">发布于 {moment(this.props.demand.releaseTime).format('YYYY-MM-DD')}</div>
           <div styleName="demand-detail-btn">
-            <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand.id)}>
+            <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand)}>
               {this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}
             </button>
           </div>
@@ -53,6 +57,12 @@ function setStyleList(item) {
     border: ''
   }
   switch (item.status) {
+    case -1:
+      styleList.status = '审核未通过'
+      styleList.backgroundColor = '#ccc'
+      styleList.color = '#fff'
+      styleList.message = '修改'
+      return styleList
     case 0:
       styleList.status = '审核'
       styleList.backgroundColor = '#ccc'
