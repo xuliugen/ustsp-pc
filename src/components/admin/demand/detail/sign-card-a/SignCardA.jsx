@@ -43,6 +43,7 @@ export default class SignCardA extends React.Component {
       onOk: async () => {
         try {
           await DemandApi.changeDemandStatus({
+            currentUserId: this.props.userStore.user.id,
             partyId: partyB.partyId,
             ownerId: this.props.userStore.user.id,
             projectId: this.props.match.params.id,

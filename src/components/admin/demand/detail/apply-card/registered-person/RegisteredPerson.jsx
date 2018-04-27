@@ -54,6 +54,7 @@ export default class RegisteredPerson extends React.Component {
 
   async handleSign(partyId, ownerId) {
     await DemandApi.changeDemandStatus({
+      currentUserId: this.props.userStore.user.id,
       partyId,
       ownerId,
       projectId: this.props.match.params.id,

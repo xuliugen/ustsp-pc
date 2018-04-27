@@ -35,3 +35,9 @@
   margin-right: 15px;
   color: #3091e6
 }
+
+.refuse {
+  cursor: pointer;
+  margin-right: 40px;
+  color: #3091e6;
+}

@@ -3,9 +3,12 @@ import { Modal, Upload, Button, Icon, Avatar, Input, Form, message } from 'antd'
 import './sendDialog.css'
 import { withRouter } from 'react-router-dom'
 import { IpApi } from 'src/ajax'
+import { inject, observer } from 'mobx-react'
 
 const FormItem = Form.Item
 
+@inject('userStore')
+@observer
 @withRouter
 @Form.create()
 export default class SendDialog extends React.Component {
@@ -63,7 +66,7 @@ export default class SendDialog extends React.Component {
         message.error('请填写或上传')
       } else {
         try {
-          await IpApi.sendEvaluateDoc(values.docUrl, values.money, this.props.person.partyId, this.props.ip.id)
+          await IpApi.sendEvaluateDoc(values.docUrl, values.money, this.props.person.partyId, this.props.ip.id, this.props.userStore.user.id)
           message.success('发送评估文件成功')
           this.props.dispatch()
           this.props.changeSendDialogStatus(false)

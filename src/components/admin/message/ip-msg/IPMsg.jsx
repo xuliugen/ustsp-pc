@@ -1,21 +1,27 @@
 import React from 'react'
 import MsgItem from './msg-item/MsgItem'
 import { Checkbox, message, Modal, Pagination } from 'antd'
-import { inject, observer } from 'mobx-react'
-import './demandNews.css'
+import './ipMsg.css'
 import { MessageApi } from 'src/ajax'
+import {inject, observer} from 'mobx-react'
 
 const confirm = Modal.confirm
 
 @inject('userStore')
 @observer
-export default class DemandNews extends React.Component {
+export default class IPMsg extends React.Component {
   state = {
     news: [],
     mgnt: false,
     checkedList: [],
     selectAll: false,
-    pagination: { total: 1, currentPage: 1, pageSize: 5 }
+    pagination: { total: 1, currentPage: 1, pageSize: 10 }
+  }
+
+  handleMgnt(status) {
+    this.setState({
+      mgnt: status
+    })
   }
 
   componentDidMount() {
@@ -24,7 +30,7 @@ export default class DemandNews extends React.Component {
 
   async getMessages(currentPage) {
     try {
-      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 'demand', currentPage, this.state.pagination.pageSize)
+      const { data } = await MessageApi.fetchMessages(this.props.userStore.user.id, 'ip', currentPage, this.state.pagination.pageSize)
       this.setState(prev => ({
         news: data.data,
         checkedList: new Array(data.data.length).fill(false),
@@ -33,12 +39,6 @@ export default class DemandNews extends React.Component {
     } catch (error) {
       console.log(error)
     }
-  }
-
-  handleMgnt(status) {
-    this.setState({
-      mgnt: status
-    })
   }
 
   handleSelectedChange(idx) {
@@ -106,7 +106,7 @@ export default class DemandNews extends React.Component {
     return (
       <div styleName="root">
         <div styleName="title">
-          <span styleName="title-tags">项目消息</span>
+          <span>专利消息</span>
           {this.state.mgnt ? (
             <div>
               <span styleName="tags" onClick={this.handleSelectAll} >{this.state.selectAll ? '取消全选' : '全选'}</span>

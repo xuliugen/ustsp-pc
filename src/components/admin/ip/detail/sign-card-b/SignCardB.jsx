@@ -14,7 +14,7 @@ const confirm = Modal.confirm
 export default class SignCardB extends React.Component {
   handelSign = async () => {
     try {
-      await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'publicity')
+      await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'publicity', this.props.userStore.user.id)
       message.success('签订成功')
       this.props.dispatch()
     } catch (error) {
@@ -28,7 +28,7 @@ export default class SignCardB extends React.Component {
       // content: '',
       onOk: async () => {
         try {
-          await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'cancelSign')
+          await IpApi.changePatentStatus(this.props.match.params.id, this.props.userStore.user.id, 'cancelSign', this.props.userStore.user.id)
           message.success('取消签订成功')
           this.props.history.replace(`/ip/${this.props.patent.id}`)
         } catch (err) {
