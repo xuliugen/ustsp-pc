@@ -27,7 +27,7 @@ export default class ProjectItem extends React.Component<Props> {
           </div>
           <div styleName="time">
             <span>发布于 {moment(project.releaseTime).format('YYYY-MM-DD')}</span>
-            <span>截止于 {moment(project.dealine).format('YYYY-MM-DD')}</span>
+            <span>截止于 {moment(project.deadline).format('YYYY-MM-DD')}</span>
             <span><img src={imgSee} /> {project.projectView}</span>
           </div>
         </div>

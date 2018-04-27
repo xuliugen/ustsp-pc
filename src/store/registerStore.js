@@ -64,6 +64,14 @@ class RegisterStore {
   setClaimData(data) {
     this.claimData = data
   }
+
+  @action
+  clearRegData() {
+    this.initial = { userType: 2 }
+    this.claimData = {}
+    window.sessionStorage.removeItem('reg1')
+    window.sessionStorage.removeItem('reg2')
+  }
 }
 
 export default new RegisterStore()

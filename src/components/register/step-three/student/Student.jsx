@@ -52,6 +52,7 @@ class StepThreeStudent extends React.Component<{}> {
         try {
           await StuInfoApi.completeStuInfo(stuInfo)
           message.success('注册成功，进入下一步')
+          this.props.registerStore.clearRegData()
           this.props.history.push('/')
         } catch (e) {
           if (e.response) {

@@ -48,6 +48,7 @@ class StepThreeEnterprise extends React.Component {
           birth: values.birth ? values.birth.valueOf() : null
         })
         message.success('注册成功')
+        this.props.registerStore.clearRegData()
         this.props.history.push('/')
       } catch (e) {
         console.log(e)

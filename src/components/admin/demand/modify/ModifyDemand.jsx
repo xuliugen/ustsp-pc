@@ -11,7 +11,8 @@ import DemandForm from '../common/demand-form/DemandForm'
 @Form.create()
 export default class ModifyDemand extends React.Component {
   state = {
-    demand: {}
+    demand: {},
+    fileList: []
   }
 
   componentDidMount() {
@@ -26,6 +27,16 @@ export default class ModifyDemand extends React.Component {
         skills: data.projectInfoVo.projectSkillList
       }
     })
+    // if (data.projectInfoVo.projectResearchInfo.uploadfileUrl) {
+    //   this.setState({
+    //     fileList: [{
+    //       uid: 1,
+    //       name: data.projectInfoVo.projectResearchInfo.uploadfileName,
+    //       status: 'done',
+    //       url: data.projectInfoVo.projectResearchInfo.uploadfileUrl
+    //     }]
+    //   })
+    // }
   }
 
   handleModify = () => {
@@ -37,11 +48,12 @@ export default class ModifyDemand extends React.Component {
         message.error('请完善需求信息')
       } else {
         const data = {
-          projectSkillList: values.skills && values.skills.map(i => ({ skill: i })),
+          projectSkillList: values.skills && values.skills.map(i => ({ skill: i, projectId: this.props.match.params.id })),
           projectResearchInfo: {
+            id: this.props.match.params.id,
             projectName: values.projectName,
             type: values.type,
-            subject: values.subject[values.subject.length - 1],
+            subject: values.subject,
             major: null,
             startTime: values.timeInterval[0].valueOf(),
             endTime: values.timeInterval[1].valueOf(),
@@ -59,7 +71,7 @@ export default class ModifyDemand extends React.Component {
           }
         }
         try {
-          await DemandApi.pubishDemand(data)
+          await DemandApi.updateDemand(data)
           message.success('更新成功')
           this.props.history.push('/admin/demand/published-demand')
         } catch (err) {
