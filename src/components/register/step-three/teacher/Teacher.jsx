@@ -86,6 +86,7 @@ class StepThreeTeacher extends React.Component<{}> {
         try {
           await TchInfoApi.completeTchInfo(tchInfo)
           message.success('完善信息成功')
+          this.props.registerStore.clearRegData()
           this.props.history.push('/')
         } catch (e) {
           console.log(e)
