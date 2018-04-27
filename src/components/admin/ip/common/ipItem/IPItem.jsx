@@ -5,12 +5,18 @@ import './IPItem.css'
 
 @withRouter
 export default class IPItem extends React.Component {
-  handleSeeDetailClick() {
-    this.props.history.push(`${this.props.match.url}/${this.props.patent.id}`)
+  handleSeeDetailClick(status) {
+    if (status === -1) {
+      this.props.history.push(`/admin/ip/modify/${this.props.patent.id}`)
+    } else {
+      this.props.history.push(`${this.props.match.url}/${this.props.patent.id}`)
+    }
   }
 
   getStatusName(status) {
     switch (status) {
+      case -1:
+        return '审核未通过'
       case 0:
         return '审核'
       case 1: case 2: case 3: case 4:
@@ -31,7 +37,7 @@ export default class IPItem extends React.Component {
         <div styleName="left">
           <div styleName="ip-title">
             {patent.patentName}
-            <span styleName="inquire-price">{this.getStatusName(patent.status)}</span>
+            <span styleName="inquire-price" style={{backgroundColor: patent.status === -1 ? '#DB4D6D' : '#3091e6'}}>{this.getStatusName(patent.status)}</span>
           </div>
           <div styleName="ip-info">
             <span>申请号：{patent.applicationNumber}</span>
@@ -45,8 +51,8 @@ export default class IPItem extends React.Component {
             <span>发布于 {moment(patent.publicationDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
-            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this)}>
-              查看详情
+            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, patent.status)}>
+              {patent.status === -1 ? '修改' : '查看详情'}
             </button>
           </div>
         </div>

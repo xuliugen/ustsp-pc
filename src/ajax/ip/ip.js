@@ -6,6 +6,11 @@ export default {
     return ajax.post('/patent/publish', body)
   },
 
+  // 更新项目信息
+  updateIP(body) {
+    return ajax.put('/patent', body)
+  },
+
   // 获取转让专利
   fetchTransferPatents(ownerId, page, rows) {
     return ajax.get(`/patent/query/list?ownerId=${ownerId}&page=${page}&rows=${rows}`)

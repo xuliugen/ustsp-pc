@@ -59,7 +59,7 @@ function setStyleList(item) {
   switch (item.status) {
     case -1:
       styleList.status = '审核未通过'
-      styleList.backgroundColor = '#ccc'
+      styleList.backgroundColor = '#DB4D6D'
       styleList.color = '#fff'
       styleList.message = '修改'
       return styleList

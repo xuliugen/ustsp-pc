@@ -67,7 +67,8 @@ export default class ModifyDemand extends React.Component {
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
             ownerId: this.props.userStore.user.id,
-            status: 0
+            status: -1,
+            projectView: this.state.demand.projectView
           }
         }
         try {
