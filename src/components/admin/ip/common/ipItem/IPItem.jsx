@@ -5,12 +5,18 @@ import './IPItem.css'
 
 @withRouter
 export default class IPItem extends React.Component {
-  handleSeeDetailClick() {
-    this.props.history.push(`${this.props.match.url}/${this.props.patent.id}`)
+  handleSeeDetailClick(status) {
+    if (status === -1) {
+      this.props.history.push(`/admin/ip/modify/${this.props.patent.id}`)
+    } else {
+      this.props.history.push(`${this.props.match.url}/${this.props.patent.id}`)
+    }
   }
 
   getStatusName(status) {
     switch (status) {
+      case -1:
+        return '审核未通过'
       case 0:
         return '审核'
       case 1: case 2: case 3: case 4:
@@ -45,7 +51,7 @@ export default class IPItem extends React.Component {
             <span>发布于 {moment(patent.publicationDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
-            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this)}>
+            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, patent.status)}>
               查看详情
             </button>
           </div>

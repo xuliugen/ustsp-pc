@@ -8,6 +8,8 @@ const Step = Steps.Step
 export default class DetailInfo extends React.Component {
   setStatus(status) {
     switch (status) {
+      case 'audit':
+        return 0
       case 'enquiry':
         return 1
       case 'sign':
