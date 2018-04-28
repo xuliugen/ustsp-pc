@@ -93,6 +93,15 @@ export default class SendDialog extends React.Component {
     }
   }
 
+  validateMoney = (rule, value, callback) => {
+    if (isNaN(value)) {
+      callback(new Error('请输入数字'))
+    } else if (Number(value) <= 0) {
+      callback(new Error('请输入大于0的数值'))
+    }
+    callback()
+  }
+
   render() {
     const props = {
       onChange: this.handleFileChange,
@@ -122,7 +131,8 @@ export default class SendDialog extends React.Component {
               {getFieldDecorator('money', {
                 validateTrigger: 'onBlur',
                 rules: [
-                  { required: true, message: '请填写' }
+                  { required: true, message: '请填写' },
+                  { validator: this.validateMoney }
                 ]
               })(
                 <Input size="small" />

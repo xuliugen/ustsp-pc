@@ -1,6 +1,7 @@
 import React from 'react'
 import './detailInfo.css'
 import { Row, Col, Steps } from 'antd'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 const Step = Steps.Step
@@ -33,7 +34,7 @@ export default class DetailInfo extends React.Component {
             <span>著录项信息</span>
           </div>
           <div styleName="basic-info-content">
-            <div styleName="ip-title">{info.patentName}</div>
+            <div styleName="ip-title"><Link to={`/ip/${info.id}`} >{info.patentName}</Link></div>
             <div styleName="ip-content-items">
               <Row>
                 <Col span={4}>

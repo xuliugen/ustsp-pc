@@ -32,7 +32,7 @@ export default class NewsMgnt extends React.Component {
       this.setState(prev => ({
         news: data.data,
         checkedList: new Array(data.data.length).fill(false),
-        pagination: { ...prev.pagination, total: data.totalPage }
+        pagination: { ...prev.pagination, total: data.totalNum }
       }))
     } catch (err) {
       console.log(err)

@@ -20,7 +20,7 @@ export default class StuBaseForm extends React.Component {
         <div styleName="content">
           <Row gutter={20}>
             <Col span={12}>
-              <FormItem label="姓名">
+              <FormItem label="姓名（注册之后不可以修改）">
                 {getFieldDecorator('realName', {
                   initialValue: stuInfo && stuInfo.realName,
                   validateTrigger: 'onBlur',

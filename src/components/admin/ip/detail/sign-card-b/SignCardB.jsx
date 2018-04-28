@@ -4,7 +4,7 @@ import TransferInfo from '../common/transfer-info/TransferInfo'
 import './signCardB.css'
 import { IpApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
-import {inject, observer} from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 
 const confirm = Modal.confirm
 
@@ -44,14 +44,20 @@ export default class SignCardB extends React.Component {
       <div>
         <div styleName="title">签订合同</div>
         <div styleName="content">
-          <div styleName="message">甲方发起签订转让合同请求，摘要信息如下，请在与甲方确认后完成签订。</div>
-          <div styleName="abstract">
-            <TransferInfo patent={this.props.patent} />
-          </div>
-          <div styleName="btns">
-            <Button type="primary" onClick={this.handelSign} style={{ paddingLeft: '20px', paddingRight: '20px' }}>确认签订</Button>
-            <span styleName="cancel" onClick={this.handleCancelSign}>取消签订</span>
-          </div>
+          {this.props.partyB.status === 'sign' ? (
+            <div>
+              <div styleName="message">甲方发起签订转让合同请求，摘要信息如下，请在与甲方确认后完成签订。</div>
+              <div styleName="abstract">
+                <TransferInfo patent={this.props.patent} />
+              </div>
+              <div styleName="btns">
+                <Button type="primary" onClick={this.handelSign} style={{ paddingLeft: '20px', paddingRight: '20px' }}>确认签订</Button>
+                <span styleName="cancel" onClick={this.handleCancelSign}>取消签订</span>
+              </div>
+            </div>
+          ) : (
+            <div>甲方已向其他人发起签订转让合同请求</div>
+          )}
         </div>
       </div>
     )

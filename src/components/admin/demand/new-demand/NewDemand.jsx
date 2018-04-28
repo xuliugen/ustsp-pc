@@ -171,6 +171,13 @@ class NewDemand extends React.Component {
     }
   }
 
+  validateMoney = (rule, value, callback) => {
+    if (Number(value) <= 0) {
+      callback(new Error('请输入大于0的数值'))
+    }
+    callback()
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     const uploadProps = {
@@ -341,7 +348,8 @@ class NewDemand extends React.Component {
                 {getFieldDecorator('money', {
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请输入预设金额' }
+                    { required: true, message: '请输入预设金额' },
+                    { validator: this.validateMoney }
                   ]
                 })(
                   <Input placeholder="单位: 元" type="number" />
