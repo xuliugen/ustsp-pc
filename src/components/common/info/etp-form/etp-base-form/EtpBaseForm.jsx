@@ -14,7 +14,8 @@ const Option = Select.Option
 export default class EtpBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { etpInfo } = this.props
+    const { etpInfo, mode } = this.props
+    const disableNameIpt = mode === 'modify'
 
     return (
       <div>
@@ -30,7 +31,7 @@ export default class EtpBaseForm extends React.Component {
                     { required: true, message: '请输入企业名' }
                   ]
                 })(
-                  <Input placeholder="企业名" />
+                  <Input placeholder="企业名" disabled={disableNameIpt} />
                 )}
               </FormItem>
               <FormItem label="行业">
