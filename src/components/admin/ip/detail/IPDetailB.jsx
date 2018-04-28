@@ -48,7 +48,7 @@ export default class IPDetailB extends React.Component {
       case 'enquiry':
         return <EnquiryCardB patent={this.state.detail} partyB={partyOwn} dispatch={this.dispatchPatentDetail} />
       case 'sign':
-        return <SignCardB patent={this.state.detail} dispatch={this.dispatchPatentDetail} />
+        return <SignCardB patent={this.state.detail} partyB={partyOwn} dispatch={this.dispatchPatentDetail} />
       case 'publicity':
         return <TransferInfo patent={this.state.detail} partyB={partyPub} />
       default:

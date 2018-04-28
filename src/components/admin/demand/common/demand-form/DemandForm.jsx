@@ -319,7 +319,7 @@ export default class DemandForm extends React.Component {
             })(
               <Dragger
                 {...uploadProps}
-                defaultFileList={[{uid: -1, name: 'pdf文件', status: 'done', url: this.props.ip.uploadfileUrl}]}
+                defaultFileList={demand ? [{uid: -1, name: 'pdf文件', status: 'done', url: this.props.demand.uploadfileUrl}] : []}
                 action={`${window.config.API_ORIGIN}/upload/project/file`}
                 data={{ id: this.props.userStore.user.id }} >
                 <p className="ant-upload-drag-icon">
