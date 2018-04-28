@@ -11,7 +11,8 @@ const FormItem = Form.Item
 export default class StuBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { stuInfo } = this.props
+    const { stuInfo, mode } = this.props
+    const disableNameIpt = mode === 'modify'
 
     return (
       <div>
@@ -25,7 +26,7 @@ export default class StuBaseForm extends React.Component {
                   validateTrigger: 'onBlur',
                   rules: [{ required: true, message: '请输入姓名' }]
                 })(
-                  <Input placeholder="姓名" />
+                  <Input placeholder="姓名" disabled={disableNameIpt} />
                 )}
               </FormItem>
               <FormItem label="性别">

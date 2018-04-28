@@ -13,7 +13,9 @@ const FormItem = Form.Item
 export default class TchBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { tchInfo } = this.props
+    const { tchInfo, mode } = this.props
+    const disableNameIpt = mode === 'modify'
+
     return (
       <div>
         <FormTitle title={'基本信息'} />
@@ -28,8 +30,7 @@ export default class TchBaseInfo extends React.Component {
                     { required: true, message: '请输入姓名' }
                   ]
                 })(
-                  <Input
-                    placeholder="姓名" />
+                  <Input placeholder="姓名" disabled={disableNameIpt} />
                 )}
               </FormItem>
               <FormItem label="性别">

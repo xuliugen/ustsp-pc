@@ -96,6 +96,7 @@ export default class ModifyTchInfo extends React.Component {
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
             <TchBaseForm
+              mode="modify"
               form={this.props.form}
               tchInfo={this.state.tchInfo}
               tchCertificate={this.state.tchCertificate}

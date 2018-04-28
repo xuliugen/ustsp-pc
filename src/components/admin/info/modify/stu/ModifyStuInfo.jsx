@@ -82,6 +82,7 @@ export default class ModifyStuInfo extends React.Component {
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
             <StuBaseForm
+              mode="modify"
               form={this.props.form}
               stuInfo={this.state.stuInfo}
               stuPhoto={this.state.stuPhoto}

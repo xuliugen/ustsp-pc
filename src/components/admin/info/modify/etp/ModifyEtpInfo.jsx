@@ -79,6 +79,7 @@ export default class ModifyEtpInfo extends React.Component {
         <div styleName="form-container">
           <Form layout="vertical" styleName="baseInfo-form">
             <EtpBaseForm
+              mode="modify"
               form={this.props.form}
               etpInfo={this.state.etpInfo}
               etpPhoto={this.state.etpPhoto}
