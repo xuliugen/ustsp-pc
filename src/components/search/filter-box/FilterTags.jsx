@@ -14,8 +14,10 @@ export default class FilterTags extends React.Component {
     const searchStore = this.props.searchStore
     return (
       <div styleName="conditions">
-        {searchStore.conditions.map(({ category, field, value, label }) => {
-          return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, { field, value })}>{category}: {label}</Tag>
+        {searchStore.conditions.map(({ category, field, value, label, notCondition }) => {
+          if (!notCondition) {
+            return <Tag key={field + value} closable afterClose={this.handleTagClose.bind(this, { field, value })}>{category}: {label}</Tag>
+          }
         })}
       </div>
     )
