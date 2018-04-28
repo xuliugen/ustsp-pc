@@ -73,29 +73,33 @@ export default class FriendsMsg extends React.Component {
       }
       return item
     }).length
-    confirm({
-      title: '确定要删除这 ' + num + ' 项吗？',
-      okText: '确认',
-      cancelText: '取消',
-      okType: 'danger',
-      onOk: async () => {
-        try {
-          const messages = {
-            userId: this.props.userStore.user.id,
-            messageIds: ids
+    if (num === 0) {
+      message.warn('请选择需要删除的消息')
+    } else {
+      confirm({
+        title: '确定要删除这 ' + num + ' 项吗？',
+        okText: '确认',
+        cancelText: '取消',
+        okType: 'danger',
+        onOk: async () => {
+          try {
+            const messages = {
+              userId: this.props.userStore.user.id,
+              messageIds: ids
+            }
+            const res = await MessageApi.deleteMessages(messages)
+            if (res.data === num) {
+              message.success('删除成功')
+              this.getMessages(this.state.pagination.currentPage)
+            } else {
+              message.error('删除失败')
+            }
+          } catch (e) {
+            console.log(e)
           }
-          const res = await MessageApi.deleteMessages(messages)
-          if (res.data === num) {
-            message.success('删除成功')
-            this.getMessages(this.state.pagination.currentPage)
-          } else {
-            message.error('删除失败')
-          }
-        } catch (e) {
-          console.log(e)
         }
-      }
-    })
+      })
+    }
   }
 
   handlePagiChange = (page, pageSize) => {

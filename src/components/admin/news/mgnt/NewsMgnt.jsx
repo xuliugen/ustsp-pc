@@ -76,43 +76,47 @@ export default class NewsMgnt extends React.Component {
       }
       return item
     }).length
-    confirm({
-      title: '确定要删除这 ' + num + ' 项吗？',
-      okText: '确认',
-      cancelText: '取消',
-      okType: 'danger',
-      onOk: async () => {
-        if (num === 1) {
-          try {
-            const res = await NewsApi.deleteOneNews(this.props.userStore.user.id, ids[0])
-            if (res.data === 1) {
-              message.success('删除成功')
-              this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
-            } else {
-              message.error('删除失败')
+    if (num === 0) {
+      message.warn('请选择需要删除的消息')
+    } else {
+      confirm({
+        title: '确定要删除这 ' + num + ' 项吗？',
+        okText: '确认',
+        cancelText: '取消',
+        okType: 'danger',
+        onOk: async () => {
+          if (num === 1) {
+            try {
+              const res = await NewsApi.deleteOneNews(this.props.userStore.user.id, ids[0])
+              if (res.data === 1) {
+                message.success('删除成功')
+                this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
+              } else {
+                message.error('删除失败')
+              }
+            } catch (e) {
+              console.log(e)
             }
-          } catch (e) {
-            console.log(e)
-          }
-        } else {
-          try {
-            const dynamics = {
-              userId: this.props.userStore.user.id,
-              dynamicsIds: ids
+          } else {
+            try {
+              const dynamics = {
+                userId: this.props.userStore.user.id,
+                dynamicsIds: ids
+              }
+              const res = await NewsApi.deleteSomeNews(dynamics)
+              if (res.data === num) {
+                message.success('删除成功')
+                this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
+              } else {
+                message.error('删除失败')
+              }
+            } catch (e) {
+              console.log(e)
             }
-            const res = await NewsApi.deleteSomeNews(dynamics)
-            if (res.data === num) {
-              message.success('删除成功')
-              this.getNews(this.state.pagination.current, this.state.pagination.pageSize, this.setTime(this.state.time))
-            } else {
-              message.error('删除失败')
-            }
-          } catch (e) {
-            console.log(e)
           }
         }
-      }
-    })
+      })
+    }
   }
 
   showSingleDelete = (id, deleteFunc) => {
