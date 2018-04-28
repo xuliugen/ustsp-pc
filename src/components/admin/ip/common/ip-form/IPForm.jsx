@@ -292,7 +292,7 @@ export default class IPForm extends React.Component {
                     { required: true, message: '请上传' }
                   ]
                 })(
-                  <Dragger {...uploadProps} defaultFileList={[{uid: -1, name: 'pdf文件', status: 'done', url: this.props.ip.document}]} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentOriginal`}>
+                  <Dragger {...uploadProps} defaultFileList={ip ? [{uid: -1, name: 'pdf文件', status: 'done', url: ip.document}] : []} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentOriginal`}>
                     <p className="ant-upload-drag-icon">
                       <Icon type="inbox" />
                     </p>
@@ -310,7 +310,7 @@ export default class IPForm extends React.Component {
                   // valuePropName: 'fileList',
                   getValueFromEvent: this.normFile
                 })(
-                  <Dragger {...uploadProps} defaultFileList={[{uid: -2, name: 'pdf文件', status: 'done', url: this.props.ip.appraisalDocument}]} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
+                  <Dragger {...uploadProps} defaultFileList={ip ? [{uid: -2, name: 'pdf文件', status: 'done', url: ip.appraisalDocument}] : []} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
                     <p className="ant-upload-drag-icon">
                       <Icon type="inbox" />
                     </p>
