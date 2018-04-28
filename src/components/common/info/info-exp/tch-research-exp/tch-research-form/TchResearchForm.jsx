@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Row, Col, Input, DatePicker } from 'antd'
 import moment from 'moment'
+import { disabledStartDate, disabledEndDate } from 'src/common/dateRange.js'
 
 const FormItem = Form.Item
 
@@ -35,7 +36,9 @@ export default class TchResearchForm extends React.Component {
               {getFieldDecorator('endTime', {
                 initialValue: (item && item.endTime) && moment(item.endTime)
               })(
-                <DatePicker placeholder="请选择" style={{ width: '100%' }} />
+                <DatePicker placeholder="请选择" style={{ width: '100%' }}
+                  disabledDate={disabledEndDate.bind(this, 'startTime')}
+                />
               )}
             </FormItem>
           </Col>
@@ -52,7 +55,9 @@ export default class TchResearchForm extends React.Component {
               {getFieldDecorator('startTime', {
                 initialValue: (item && item.startTime) && moment(item.startTime)
               })(
-                <DatePicker placeholder="请选择" style={{ width: '100%' }} />
+                <DatePicker placeholder="请选择" style={{ width: '100%' }}
+                  disabledDate={disabledStartDate.bind(this, 'endTime')}
+                />
               )}
             </FormItem>
           </Col>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Input, Row, Col, DatePicker, Cascader } from 'antd'
 import { province, school, subject } from 'src/common/dataset'
 import moment from 'moment'
+import { disabledStartDate, disabledEndDate } from 'src/common/dateRange.js'
 
 const FormItem = Form.Item
 const MonthPicker = DatePicker.MonthPicker
@@ -80,7 +81,10 @@ export default class TchEduForm extends React.Component {
                 initialValue: exp && moment(exp.date),
                 rules: [{ required: true, message: '请选择开始时间' }]
               })(
-                <MonthPicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                <MonthPicker
+                  disabledDate={disabledStartDate.bind(this, 'endTime')}
+                  placeholder="请选择"
+                  style={{ width: '100%', marginTop: '10px' }} />
               )}
             </FormItem>
           </Col>
@@ -112,7 +116,10 @@ export default class TchEduForm extends React.Component {
                 initialValue: exp && moment(exp.endTime),
                 rules: [{ required: true, message: '请选择结束时间' }]
               })(
-                <MonthPicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
+                <MonthPicker
+                  disabledDate={disabledEndDate.bind(this, 'startTime')}
+                  placeholder="请选择"
+                  style={{ width: '100%', marginTop: '10px' }} />
               )}
             </FormItem>
           </Col>
