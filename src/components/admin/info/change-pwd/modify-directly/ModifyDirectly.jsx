@@ -7,7 +7,7 @@ import { UserInfoApi } from 'src/ajax'
 const FormItem = Form.Item
 
 @Form.create()
-@inject('userStore')
+@inject('userStore', 'authStore')
 @observer
 export default class ModifyDirectly extends React.Component {
   constructor() {
@@ -62,11 +62,7 @@ export default class ModifyDirectly extends React.Component {
           }
           await UserInfoApi.modifyPwd(modification)
           message.success('修改密码成功')
-          this.props.form.setFieldsValue({
-            oldPassword: '',
-            newPassword: '',
-            confirm: ''
-          })
+          this.props.authStore.logout()
         } catch (error) {
           message.error('修改密码失败，请确认旧密码输入正确')
           console.log(error)
