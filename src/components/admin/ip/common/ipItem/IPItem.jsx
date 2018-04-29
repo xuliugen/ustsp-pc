@@ -51,8 +51,8 @@ export default class IPItem extends React.Component {
             <span>发布于 {moment(patent.publicationDate).format('YYYY-MM-DD')}</span>
           </div>
           <div>
-            <button styleName="ip-transfer-detail-btn" onClick={this.handleSeeDetailClick.bind(this, patent.status)}>
-              {patent.status === -1 ? '修改' : '查看详情'}
+            <button styleName="ip-transfer-detail-btn" disabled={patent.status === 0} onClick={this.handleSeeDetailClick.bind(this, patent.status)}>
+              {patent.status === -1 ? '修改' : (patent.status === 0 ? '等待审核' : '查看详情')}
             </button>
           </div>
         </div>
