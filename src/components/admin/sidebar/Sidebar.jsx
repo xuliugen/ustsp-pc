@@ -1,12 +1,15 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import { Menu, Icon } from 'antd'
+import { Menu, Icon, Badge } from 'antd'
 import './sidebar.css'
 import { routes } from './routes'
+import { observer, inject } from 'mobx-react'
 
 const SubMenu = Menu.SubMenu
 
 @withRouter
+@inject('msgStore')
+@observer
 export default class Sidebar extends React.Component {
   state = {
     collased: false,
@@ -67,6 +70,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
+    const { msgStore } = this.props
     return (
       <section styleName="sidebar-inner">
         <Menu
@@ -79,12 +83,29 @@ export default class Sidebar extends React.Component {
           {/* // onSelect={this.handleItemSelect}> */}
           {routes.map(({key, title, children}) => {
             const SubMenuIcon = title.icon ? <Icon type={title.icon} /> : null
-            const MenuItems = children.map(({key, to, text}) => {
-              const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
-              return (
-                <Menu.Item key={key} style={{ fontSize: '18px' }}>{ItemLink}</Menu.Item>
-              )
-            })
+            let MenuItems
+            if (key !== 'message') {
+              MenuItems = children.map(({ key, to, text }) => {
+                const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
+                return (
+                  <Menu.Item key={key} style={{ fontSize: '18px' }}>{ItemLink}</Menu.Item>
+                )
+              })
+            } else {
+              MenuItems = children.map(({ key, to, text, type }) => {
+                const count = msgStore[type]
+                console.log(type, count)
+                const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
+                return (
+                  <Menu.Item key={key} style={{ fontSize: '18px', position: 'relative' }}>
+                    {ItemLink}
+                    <div style={{ position: 'absolute', top: '-2px', left: '135px' }}>
+                      <Badge count={count} />
+                    </div>
+                  </Menu.Item>
+                )
+              })
+            }
             return (
               <SubMenu
                 key={key}

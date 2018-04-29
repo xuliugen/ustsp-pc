@@ -27,6 +27,9 @@ export default {
 
   rejectAddFirend(ownerId, partyId, msgId) {
     return ajax.post(`/message/reject/friend?ownerId=${ownerId}&partyId=${partyId}&msgId=${msgId}`)
-  }
+  },
 
+  getMsgCounts(userId) {
+    return ajax.get(`/message/get/total-number?userId=${userId}`)
+  }
 }
