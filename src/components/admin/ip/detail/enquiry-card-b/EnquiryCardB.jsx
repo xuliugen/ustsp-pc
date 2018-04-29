@@ -13,6 +13,9 @@ export default class EnquiryCardB extends React.Component {
     const { partyB, patent, dispatch } = this.props
     let content = null
     switch (partyB.status) {
+      case 'enquiry':
+        content = <div>已经拒绝购买，请重新询价</div>
+        break
       case 'apply':
         content = <Enquiry />
         break

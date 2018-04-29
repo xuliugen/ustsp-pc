@@ -26,10 +26,10 @@ export default class TalentsRmd extends React.Component<{}, State> {
 
   async componentWillMount() {
     try {
-      const { data } = await ProjectApi.fetchRmdProjects()
+      const { data } = await ProjectApi.fetchRmdProjects(4)
       if (Array.isArray(data)) {
         this.setState({
-          projects: data.map(i => i.projectResearchInfo).slice(0, 4)
+          projects: data
         })
       }
     } catch (e) {
