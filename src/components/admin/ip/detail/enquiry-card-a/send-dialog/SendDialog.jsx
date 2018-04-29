@@ -132,7 +132,8 @@ export default class SendDialog extends React.Component {
                 validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请填写' },
-                  { validator: this.validateMoney }
+                  { validator: this.validateMoney },
+                  { max: 8, message: '不能超过8位' }
                 ]
               })(
                 <Input size="small" />

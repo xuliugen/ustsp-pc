@@ -235,7 +235,8 @@ export default class IPForm extends React.Component {
                   initialValue: ip && ip.applicant,
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请填写' }
+                    { required: true, message: '请填写' },
+                    { max: 30, message: '字数不能超过30' }
                   ]
                 })(
                   <Input />
@@ -321,7 +322,8 @@ export default class IPForm extends React.Component {
                   initialValue: ip && ip.abstracts,
                   validateTrigger: 'onBlur',
                   rules: [
-                    { required: true, message: '请填写' }
+                    { required: true, message: '请填写' },
+                    { max: 500, message: '字数不能超过500' }
                   ]
                 })(
                   <TextArea rows={8} />
