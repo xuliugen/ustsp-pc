@@ -1,8 +1,8 @@
 import ajax from 'src/ajax'
 
 export default {
-  fetchProjects() {
-    return ajax.get('/project/query/home-page/projects')
+  fetchProjects(showNum) {
+    return ajax.get(`/project/query/home-page/projects?showNum=${showNum}`)
   },
 
   getApplicationDetail(projectId, userId) {
@@ -23,7 +23,7 @@ export default {
   },
 
   // 获取推荐项目
-  fetchRmdProjects() {
-    return ajax.get('/project/query/home-page/projects')
+  fetchRmdProjects(showNum) {
+    return ajax.get(`/project/query/home-page/projects?showNum=${showNum}`)
   }
 }

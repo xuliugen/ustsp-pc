@@ -48,8 +48,8 @@ export default {
   },
 
   // 主页获取专利数据
-  fetchHomePageData() {
-    return ajax.get('/patent/home-page/patent')
+  fetchHomePageData(showNum) {
+    return ajax.get(`/patent/home-page/patent?showNum=${showNum}`)
   },
 
   fetchRmdPatent() {

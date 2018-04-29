@@ -25,7 +25,7 @@ export default class IP extends React.Component<{}, STATE> {
 
   async componentDidMount() {
     try {
-      let { data } = await IpApi.fetchHomePageData()
+      let { data } = await IpApi.fetchHomePageData(4)
       if (Array.isArray(data) && data.length >= 5) {
         data = data.slice(0, 4)
       }

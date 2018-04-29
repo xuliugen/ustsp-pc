@@ -25,10 +25,10 @@ export default class Project extends React.Component<{}, State> {
 
   async componentDidMount() {
     try {
-      const { data } = await ProjectApi.fetchProjects()
+      const { data } = await ProjectApi.fetchProjects(8)
       if (Array.isArray(data)) {
         this.setState({
-          projects: data.slice(0, 8)
+          projects: data
         })
       }
     } catch (e) {

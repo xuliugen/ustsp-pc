@@ -10,7 +10,7 @@ import './buyIP.css'
 export default class BuyIp extends React.Component {
   state = {
     patents: [],
-    type: '询价中',
+    type: '全部',
     pagination: { total: 0, current: 1, pageSize: 8 }
   }
 
@@ -35,7 +35,7 @@ export default class BuyIp extends React.Component {
   }
 
   handleTypeChange = (type, idx) => {
-    idx = idx + 1
+    // idx = idx + 1
     this.setState({
       type: type
     })
@@ -46,7 +46,7 @@ export default class BuyIp extends React.Component {
   }
 
   render() {
-    const statusTags = ['询价中', '购买成功', '购买失败']
+    const statusTags = ['全部', '询价中', '购买成功', '购买失败']
     const { pagination } = this.state
     return (
       <div>
