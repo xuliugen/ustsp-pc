@@ -4,7 +4,10 @@ import './msgItem.css'
 import { withRouter } from 'react-router-dom'
 import { MessageApi } from 'src/ajax'
 import moment from 'moment'
+import { observer, inject } from 'mobx-react'
 
+@inject('msgStore')
+@observer
 @withRouter
 export default class MsgItem extends React.Component {
   async handleClick() {
@@ -12,6 +15,7 @@ export default class MsgItem extends React.Component {
       await MessageApi.fetchOneMessage(this.props.item.id)
       const demandType = this.setDemandType(this.props.item.messageType)
       this.props.history.push(`/admin/demand/${demandType}/${this.props.item.relateId}`)
+      this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)
     }

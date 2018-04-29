@@ -4,7 +4,10 @@ import { withRouter } from 'react-router-dom'
 import { MessageApi } from 'src/ajax'
 import './msgItem.css'
 import moment from 'moment'
+import { observer, inject } from 'mobx-react'
 
+@inject('msgStore')
+@observer
 @withRouter
 export default class MsgItem extends React.Component {
   setMsg(type) {
@@ -39,6 +42,7 @@ export default class MsgItem extends React.Component {
           this.props.history.push(`/admin/ip/transfer-ip`)
           break
       }
+      this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)
     }

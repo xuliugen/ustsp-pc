@@ -4,7 +4,10 @@ import './applicationItem.css'
 // import ImgAvatar from 'src/assets/defaultAvatar.svg'
 import { ContactsApi, MessageApi } from 'src/ajax'
 import moment from 'moment'
+import { observer, inject } from 'mobx-react'
 
+@inject('msgStore')
+@observer
 export default class ApplicationItem extends React.Component {
   state = {
     disable: false
@@ -22,6 +25,7 @@ export default class ApplicationItem extends React.Component {
           disable: true
         })
       }
+      this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)
     }
@@ -34,6 +38,7 @@ export default class ApplicationItem extends React.Component {
       this.setState({
         disable: true
       })
+      this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)
     }

@@ -4,7 +4,10 @@ import './msgItem.css'
 import { withRouter } from 'react-router-dom'
 import { MessageApi } from 'src/ajax'
 import moment from 'moment'
+import { observer, inject } from 'mobx-react'
 
+@inject('msgStore')
+@observer
 @withRouter
 export default class msgItem extends React.Component {
   async handleClick() {
@@ -12,6 +15,7 @@ export default class msgItem extends React.Component {
       await MessageApi.fetchOneMessage(this.props.item.id)
       const ipType = this.setDemandType(this.props.item.messageType)
       this.props.history.push(`/admin/ip/${ipType}/${this.props.item.relateId}`)
+      this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)
     }
