@@ -24,7 +24,7 @@ export default class UnderwayCardA extends React.Component {
             partyId: partyB.partyId,
             ownerId: this.props.userStore.user.id,
             projectId: this.props.match.params.id,
-            status: 'applying'
+            status: 'underwayBreakA'
           })
           message.success('中断项目成功')
           // 刷新项目信息

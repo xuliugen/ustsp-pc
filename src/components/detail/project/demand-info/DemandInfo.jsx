@@ -99,6 +99,8 @@ export default class DemandInfo extends React.Component {
         this.setState({ signUpBtn: { msg: '报名结束', loading: false, disable: true } })
       } else if (this.props.userStore.user.id === projectInfo.ownerId) {
         this.setState({ signUpBtn: { msg: '报名中', loading: false, disable: true } })
+      } else if (data.dockingStatus === 11) {
+        this.setState({ signUpBtn: { msg: '已拒绝', loading: false, disable: true } })
       } else if (data.dockingStatus !== 0) {
         this.setState({ signUpBtn: { msg: '已报名', loading: false, disable: true } })
       }

@@ -15,15 +15,23 @@ export default class ProjectProgress extends React.Component {
           <span>项目进度</span>
         </div>
         <div styleName="progress">
-          <Steps progressDot current={this.props.demandStore.currentStatus}>
-            <Step title="审核" />
-            <Step title="报名" />
-            <Step title="待签单" />
-            <Step title="正在进行" />
-            <Step title="待验收" />
-            <Step title="评价" />
-            <Step title="完成" />
-          </Steps>
+          {this.props.demandStore.currentStatus === 13 ? (
+            <Steps progressDot current={1} status="error">
+              <Step title="审核" />
+              <Step title="中断" />
+            </Steps>
+          ) : (
+            <Steps progressDot current={this.props.demandStore.currentStatus}>
+              <Step title="审核" />
+              <Step title="报名" />
+              <Step title="待签单" />
+              <Step title="正在进行" />
+              <Step title="待验收" />
+              <Step title="评价" />
+              <Step title="完成" />
+            </Steps>
+          )}
+
         </div>
       </div>
     )
