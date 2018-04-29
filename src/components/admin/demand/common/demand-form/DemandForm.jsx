@@ -299,7 +299,8 @@ export default class DemandForm extends React.Component {
                 initialValue: demand && demand.money,
                 validateTrigger: 'onBlur',
                 rules: [
-                  { required: true, message: '请输入预设金额' }
+                  { required: true, message: '请输入预设金额' },
+                  { max: 8, message: '不能超过8位' }
                 ]
               })(
                 <Input placeholder="单位: 元" type="number" />
