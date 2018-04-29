@@ -133,10 +133,10 @@ export default class DemandForm extends React.Component {
     const { getFieldDecorator } = this.props.form
     const { demand } = this.props
     let initialDateRange, initialSkills
-    if (demand.startTime) {
+    if (demand && demand.startTime) {
       initialDateRange = [moment(demand.startTime), moment(demand.endTime)]
     }
-    if (demand.skills) {
+    if (demand && demand.skills) {
       initialSkills = demand.skills.map(({ skill }) => skill)
     }
 
@@ -198,9 +198,7 @@ export default class DemandForm extends React.Component {
                 //   displayRender={this.displayRender}
                 // />
                 <Select style={{ width: '100%' }} >
-                  {options.map(option => {
-                    return <Option key={option.value} value={options.value}>{options.label}</Option>
-                  })}
+                  {options.map((option, idx) => <Option key={idx} value={option.value}>{option.label}</Option>)}
                 </Select>
               )}
             </FormItem>

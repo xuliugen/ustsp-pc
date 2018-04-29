@@ -32,7 +32,7 @@ export default class DemandItem extends React.Component<{}> {
         <div styleName="right">
           <div styleName="demand-time">发布于 {moment(this.props.demand.releaseTime).format('YYYY-MM-DD')}</div>
           <div styleName="demand-detail-btn">
-            <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand)}>
+            <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand)} disabled={styleList.disabled}>
               {this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}
             </button>
           </div>
@@ -67,7 +67,8 @@ function setStyleList(item) {
       styleList.status = '审核'
       styleList.backgroundColor = '#ccc'
       styleList.color = '#fff'
-      styleList.message = '查看进展'
+      styleList.message = '等待审核'
+      styleList.disabled = true
       return styleList
     case 1:
       styleList.status = '报名中'
