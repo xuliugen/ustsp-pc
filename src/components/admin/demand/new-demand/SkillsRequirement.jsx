@@ -25,7 +25,6 @@ export default class EditableTagGroup extends React.Component {
 
   handleClose = (removedTag) => {
     const tags = this.state.tags.filter(tag => tag !== removedTag)
-    console.log(tags)
     this.setState({ tags })
     this.props.setSkills(tags)
   }

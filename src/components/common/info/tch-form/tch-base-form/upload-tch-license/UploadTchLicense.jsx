@@ -21,7 +21,6 @@ export default class UploadTchLicense extends React.Component {
 
       // let pics = JSON.parse(info.file.response))
       let tchPhotos = info.file.response
-      // console.log(tchPhotos[0].file_url)
       let pics = JSON.parse(tchPhotos[0].result)
       this.props.setTchCertificate(pics.data.access_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({

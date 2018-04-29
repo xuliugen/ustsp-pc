@@ -39,7 +39,6 @@ export default class PubNewsContent extends React.Component {
           text: '预览',
           className: 'preview-button',
           onClick: () => {
-            console.log(this.props.editorRef)
             window.open().document.write(this.state.htmlContent)
           }
         }

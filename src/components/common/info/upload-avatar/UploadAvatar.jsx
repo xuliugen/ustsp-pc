@@ -32,7 +32,6 @@ export default class UploadAvatar extends React.Component<Props, State> {
       // Get this url from response in real world.
       message.success('上传照片成功')
       let tchPhotos = info.file.response
-      // console.log(tchPhotos[0].file_url)
       let pics = JSON.parse(tchPhotos[0].result)
       this.props.setPhoto(pics.data.access_url)
       getBase64(info.file.originFileObj, imageUrl => this.setState({

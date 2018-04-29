@@ -94,7 +94,6 @@ export default class Sidebar extends React.Component {
             } else {
               MenuItems = children.map(({ key, to, text, type }) => {
                 const count = msgStore[type]
-                console.log(type, count)
                 const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
                 return (
                   <Menu.Item key={key} style={{ fontSize: '18px', position: 'relative' }}>
