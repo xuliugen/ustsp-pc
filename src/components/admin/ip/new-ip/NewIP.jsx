@@ -40,7 +40,7 @@ export default class NewIP extends React.Component {
         <div styleName="title-wrapper">
           <span styleName="title">发布专利</span>
         </div>
-        <IPForm form={this.props.form} ip={this.state.ip} />
+        <IPForm form={this.props.form} />
         <div styleName="modBtn-container">
           <Button size="large" type="primary" onClick={this.submitForm}>发布</Button>
         </div>

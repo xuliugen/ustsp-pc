@@ -1,6 +1,6 @@
 import React from 'react'
 import './ipForm.css'
-import { Form, Row, Col, Input, Select, DatePicker, Upload, Icon, message } from 'antd'
+import { Form, Row, Col, Input, Select, DatePicker, Upload, Icon } from 'antd'
 import moment from 'moment'
 
 const FormItem = Form.Item
@@ -10,8 +10,28 @@ const Dragger = Upload.Dragger
 
 export default class IPForm extends React.Component {
   state = {
-    document: null,
-    appraisalDocument: null
+    document: [],
+    appraisalDocument: []
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { ip } = nextProps
+    if (ip) {
+      this.setState({
+        document: [{
+          uid: -1,
+          name: 'pdf全文',
+          status: 'done',
+          url: ip.document
+        }],
+        appraisalDocument: [{
+          uid: -2,
+          name: '评估文件',
+          status: 'done',
+          url: ip.appraisalDocument
+        }]
+      })
+    }
   }
 
   normFile = (e) => {
@@ -24,21 +44,48 @@ export default class IPForm extends React.Component {
     }
   }
 
+  handleFileChange(fileType, info) {
+    let fileList = info.fileList
+
+    // 1. Limit the number of uploaded files
+    //    Only to show one recent uploaded files, and old ones will be replaced by the new
+    fileList = fileList.slice(-1)
+
+    // 2. read from response and show file link
+    fileList = fileList.map((file) => {
+      if (file.response) {
+        // Component will show file.url as link
+        file.response = file.response[0]
+        const fromTecent = JSON.parse(file.response.result)
+        file.url = fromTecent.data.access_url
+        file.name = file.response.original_name
+      }
+      return file
+    })
+
+    // 3. filter successfully uploaded files according to response from server
+    fileList = fileList.filter((file) => {
+      if (file.response) {
+        return file.status === 'done'
+      }
+      return true
+    })
+
+    if (fileType === 'document') {
+      this.setState({
+        document: fileList
+      })
+    } else {
+      this.setState({
+        appraisalDocument: fileList
+      })
+    }
+  }
+
   render() {
     const uploadProps = {
       name: 'files',
-      multiple: false,
-      onChange(info) {
-        const status = info.file.status
-        // if (status !== 'uploading') {
-        //   console.log(info.file, info.fileList)
-        // }
-        if (status === 'done') {
-          message.success(`${info.file.name} file uploaded successfully.`)
-        } else if (status === 'error') {
-          message.error(`${info.file.name} file upload failed.`)
-        }
-      }
+      multiple: false
     }
     const { getFieldDecorator } = this.props.form
     const { ip } = this.props
@@ -292,7 +339,11 @@ export default class IPForm extends React.Component {
                     { required: true, message: '请上传' }
                   ]
                 })(
-                  <Dragger {...uploadProps} defaultFileList={ip ? [{uid: -1, name: 'pdf文件', status: 'done', url: ip.document}] : []} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentOriginal`}>
+                  <Dragger
+                    {...uploadProps}
+                    onChange={this.handleFileChange.bind(this, 'document')}
+                    fileList={this.state.document}
+                    action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentOriginal`}>
                     <p className="ant-upload-drag-icon">
                       <Icon type="inbox" />
                     </p>
@@ -310,7 +361,11 @@ export default class IPForm extends React.Component {
                   // valuePropName: 'fileList',
                   getValueFromEvent: this.normFile
                 })(
-                  <Dragger {...uploadProps} defaultFileList={ip ? [{uid: -2, name: 'pdf文件', status: 'done', url: ip.appraisalDocument}] : []} action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
+                  <Dragger
+                    {...uploadProps}
+                    onChange={this.handleFileChange.bind(this, 'appraisalDocument')}
+                    fileList={this.state.appraisalDocument}
+                    action={`${window.config.API_ORIGIN}/upload/patent?fileType=patentEvalute`}>
                     <p className="ant-upload-drag-icon">
                       <Icon type="inbox" />
                     </p>

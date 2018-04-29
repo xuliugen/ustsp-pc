@@ -15,7 +15,7 @@ export default class DemandNews extends React.Component {
     mgnt: false,
     checkedList: [],
     selectAll: false,
-    pagination: { total: 1, currentPage: 1, pageSize: 5 }
+    pagination: { total: 1, currentPage: 1, pageSize: 10 }
   }
 
   componentDidMount() {
