@@ -29,7 +29,7 @@ export default class PublishedDemand extends React.Component {
     const { data } = res
     this.setState((prevState) => ({
       demands: data.data,
-      pagination: { ...prevState.pagination, total: data.totalPage }
+      pagination: { ...prevState.pagination, total: data.totalNum }
     }))
   }
 
@@ -69,7 +69,8 @@ export default class PublishedDemand extends React.Component {
       { name: '进行中', status: 3 },
       { name: '待验收', status: 4 },
       { name: '评价', status: 5 },
-      { name: '完成', status: 6 }
+      { name: '完成', status: 6 },
+      { name: '中断', status: 13 }
     ]
     const current = this.state.pagination.current
     const currentPageSize = this.state.pagination.currentPageSize

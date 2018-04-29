@@ -40,7 +40,7 @@ export default class SignCardB extends React.Component {
             partyId: this.props.userStore.user.id,
             ownerId: partyA.ownerId,
             projectId: this.props.match.params.id,
-            status: 'applying'
+            status: 'signRejectB'
           })
           message.success('拒绝签单成功')
           // 刷新项目信息

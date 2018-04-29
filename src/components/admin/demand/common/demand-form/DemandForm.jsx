@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Row, Col, Select, DatePicker, Radio, Upload, Icon, message } from 'antd'
+import { Form, Input, Row, Col, Select, DatePicker, Radio, Upload, Icon } from 'antd'
 import { province, city, major, skill } from 'src/common/dataset'
 import moment from 'moment'
 import { observer, inject } from 'mobx-react'
@@ -27,6 +27,20 @@ export default class DemandForm extends React.Component {
   state = {
     cities: city[province[0]],
     fileList: []
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { demand } = nextProps
+    if (demand) {
+      this.setState({
+        fileList: [{
+          uid: -1,
+          name: 'pdf全文',
+          status: 'done',
+          url: demand.uploadfileUrl
+        }]
+      })
+    }
   }
 
   displayRender(label) {
@@ -85,6 +99,36 @@ export default class DemandForm extends React.Component {
     }
   }
 
+  handleFileChange = (info) => {
+    let fileList = info.fileList
+
+    // 1. Limit the number of uploaded files
+    //    Only to show one recent uploaded files, and old ones will be replaced by the new
+    fileList = fileList.slice(-1)
+
+    // 2. read from response and show file link
+    fileList = fileList.map((file) => {
+      if (file.response) {
+        // Component will show file.url as link
+        file.response = file.response[0]
+        const fromTecent = JSON.parse(file.response.result)
+        file.url = fromTecent.data.access_url
+        file.name = file.response.original_name
+      }
+      return file
+    })
+
+    // 3. filter successfully uploaded files according to response from server
+    fileList = fileList.filter((file) => {
+      if (file.response) {
+        return file.status === 'done'
+      }
+      return true
+    })
+
+    this.setState({ fileList })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     const { demand } = this.props
@@ -98,18 +142,7 @@ export default class DemandForm extends React.Component {
 
     const uploadProps = {
       name: 'files',
-      multiple: false,
-      onChange(info) {
-        const status = info.file.status
-        if (status !== 'uploading') {
-          console.log(info.file, info.fileList)
-        }
-        if (status === 'done') {
-          message.success(`${info.file.name} file uploaded successfully.`)
-        } else if (status === 'error') {
-          message.error(`${info.file.name} file upload failed.`)
-        }
-      }
+      multiple: false
     }
 
     return (
@@ -314,12 +347,13 @@ export default class DemandForm extends React.Component {
           <FormItem label="上传文件">
             {getFieldDecorator('uploadfileUrl', {
               // valuePropName: 'fileList',
-              initialValue: demand && demand.uploadfileUrl,
+              // initialValue: demand && demand.uploadfileUrl,
               getValueFromEvent: this.normFile
             })(
               <Dragger
                 {...uploadProps}
-                defaultFileList={demand ? [{uid: -1, name: 'pdf文件', status: 'done', url: this.props.demand.uploadfileUrl}] : []}
+                onChange={this.handleFileChange}
+                fileList={this.state.fileList}
                 action={`${window.config.API_ORIGIN}/upload/project/file`}
                 data={{ id: this.props.userStore.user.id }} >
                 <p className="ant-upload-drag-icon">
