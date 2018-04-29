@@ -19,7 +19,6 @@ export default class EnterpriseInfo extends React.Component {
 
   componentDidMount = async () => {
     const etpId = this.props.userStore.user.id
-    console.log(this.props.userStore)
     try {
       const { data } = await EtpInfoApi.getEnterpriseInfo(etpId)
       this.setState({
@@ -42,7 +41,6 @@ export default class EnterpriseInfo extends React.Component {
           introduction: data.introduction
         }
       })
-      console.log(this.state.etpBasicInfo)
     } catch (e) {
       message.error('企业信息获取失败')
       console.log(e)

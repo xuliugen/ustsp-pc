@@ -29,18 +29,22 @@ export const routes = [
     },
     children: [
       {
+        type: 'systemMsgNum',
         key: 'system-msg',
         to: '/admin/message/system-msg',
         text: '系统消息'
       }, {
+        type: 'projectMsgNum',
         key: 'demand-news',
         to: '/admin/message/demand-news',
         text: '项目消息'
       }, {
+        type: 'patentMsgNum',
         key: 'ip-msg',
         to: '/admin/message/ip-msg',
         text: '专利消息'
       }, {
+        type: 'friendMsgNum',
         key: 'friends-msg',
         to: '/admin/message/friends-msg',
         text: '好友消息'

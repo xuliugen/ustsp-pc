@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import { hot } from 'react-hot-loader'
 // import DevTools from 'mobx-react-devtools'
 
@@ -16,6 +16,7 @@ import NewsDetail from '@/news/NewsDetail'
 import AllNews from '@/news/all-news/AllNews'
 
 @withRouter
+@inject('msgStore')
 @observer
 class App extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -23,6 +24,10 @@ class App extends React.Component {
     if (this.props.location !== nextProps.location) {
       window.scrollTo(0, 0)
     }
+  }
+
+  componentDidMount() {
+    this.props.msgStore.dispatchGetCounts()
   }
 
   render() {

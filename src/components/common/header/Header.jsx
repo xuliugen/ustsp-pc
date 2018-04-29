@@ -2,16 +2,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
+import { Badge } from 'antd'
 
 import './header.css'
 import logo from 'src/assets/logo.png'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
-@inject('userStore', 'authStore', 'searchStore')
+@inject('userStore', 'authStore', 'searchStore', 'msgStore')
 @observer
-class Header extends React.Component<{}> {
+class Header extends React.Component {
   render() {
-    const { userStore, authStore, searchStore } = this.props
+    const { userStore, authStore, searchStore, msgStore } = this.props
     const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
     return (
       <header styleName="header">
@@ -26,7 +27,9 @@ class Header extends React.Component<{}> {
           {userStore.isLogin ? (
             <div styleName="header-right">
               <Link to="/admin" styleName="header-profile">
-                <img styleName="header-avatar" src={avatar} />
+                <Badge dot={msgStore.hasMsg}>
+                  <img styleName="header-avatar" src={avatar} />
+                </Badge>
                 {userStore.user && userStore.user.realName && <div styleName="header-username">{userStore.user.realName}</div>}
               </Link>
               <span styleName="separator" />

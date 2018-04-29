@@ -21,7 +21,6 @@ export default class ModifyIP extends React.Component {
 
   async getDemandDetail() {
     const { data } = await IpApi.fetchPatentDetail(this.props.match.params.id)
-    // console.log(data)
     this.setState({
       ip: data.patentDTO
     })
