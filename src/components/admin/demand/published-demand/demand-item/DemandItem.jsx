@@ -4,7 +4,7 @@ import moment from 'moment'
 import './demandItem.css'
 
 @withRouter
-export default class DemandItem extends React.Component<{}> {
+export default class DemandItem extends React.Component {
   handleSeeDetailClick({ id, status }) {
     if (status !== -1) {
       this.props.history.push(`${this.props.match.url}/${id}`)
@@ -30,7 +30,7 @@ export default class DemandItem extends React.Component<{}> {
           </div>
         </div>
         <div styleName="right">
-          <div styleName="demand-time">发布于 {moment(this.props.demand.releaseTime).format('YYYY-MM-DD')}</div>
+          <div styleName="demand-time">发布于 {moment(this.props.demand.createTime).format('YYYY-MM-DD')}</div>
           <div styleName="demand-detail-btn">
             <button onClick={this.handleSeeDetailClick.bind(this, this.props.demand)} disabled={styleList.disabled}>
               {this.props.demand.number ? (<span style={{ color: '#3091e6' }}>{this.props.demand.number}</span>) : ''}{styleList.message}

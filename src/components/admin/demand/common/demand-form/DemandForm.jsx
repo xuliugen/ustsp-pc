@@ -311,7 +311,7 @@ export default class DemandForm extends React.Component {
                   { max: 8, message: '不能超过8位' }
                 ]
               })(
-                <Input placeholder="单位: 元" type="number" />
+                <Input placeholder="单位: 元" />
               )}
             </FormItem>
           </Col>
@@ -348,7 +348,10 @@ export default class DemandForm extends React.Component {
           <FormItem label="需求描述">
             {getFieldDecorator('projectIntroduction', {
               initialValue: demand && demand.projectIntroduction,
-              validateTrigger: 'onBlur'
+              validateTrigger: 'onBlur',
+              rules: [
+                { max: 400, message: '字数不能超过400' }
+              ]
             })(
               <TextArea rows={8} />
             )}

@@ -81,7 +81,7 @@ export default class SignCardB extends React.Component {
             </Row>
           </div>
           <div styleName="confirm">
-            <p styleName="confirmMsg">甲方发起签单请求，请确认签单。</p>
+            <p styleName="confirmMsg">乙方发起验收请求，请确认验收。</p>
             <Button type="primary" onClick={this.handleConfirmSign} style={{ marginRight: '10px' }}>确认签单</Button>
             <Button onClick={this.handleRejectSign.bind(this, partyA)}>拒绝签单</Button>
             <p styleName="confirmHint">若长时间未确认，甲方将撤回签单请求，项目将回到报名状态</p>

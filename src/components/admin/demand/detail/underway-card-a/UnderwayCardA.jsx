@@ -65,7 +65,7 @@ export default class UnderwayCardA extends React.Component {
             </Row>
           </div>
           <div styleName="operation">
-            <Button style={{ marginRight: '10px' }}>进度询问</Button>
+            {/* <Button style={{ marginRight: '10px' }}>进度询问</Button> */}
             <Button onClick={this.handleCancel.bind(this, partyB)}>中断项目</Button>
           </div>
         </div>
