@@ -3,7 +3,7 @@ import './home.css'
 import Project from './project/Project'
 import Teacher from './teacher/Teacher'
 import Student from './student/Student'
-import Company from './company/Company'
+// import Company from './company/Company'
 
 export default class Home extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class Home extends React.Component {
             <Student />
           </div>
         </div>
-        <Company />
+        {/* <Company /> */}
       </div>
     )
   }
