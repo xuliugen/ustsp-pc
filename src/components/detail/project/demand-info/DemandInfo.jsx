@@ -113,8 +113,12 @@ export default class DemandInfo extends React.Component {
   }
 
   handleSighUp = async () => {
+    const { userStore } = this.props
     if (this.props.userStore.user.userType === 3) {
       message.warning('企业暂时不可以报名')
+      return
+    }
+    if (!userStore.checkIfInfoCompleted()) {
       return
     }
     try {
@@ -153,6 +157,10 @@ export default class DemandInfo extends React.Component {
     //   message.warning('发布者不可以关注')
     //   return
     // }
+    const { userStore } = this.props
+    if (!userStore.checkIfInfoCompleted()) {
+      return
+    }
     try {
       const user = this.props.userStore.user
       const follow = {

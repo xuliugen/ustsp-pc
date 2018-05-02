@@ -43,7 +43,9 @@ class UserStore {
   checkIfInfoCompleted() {
     if (this.isLogin && !this.user.realName) {
       message.warn('请进入个人中心完善用户信息~')
+      return false
     }
+    return true
   }
 }
 

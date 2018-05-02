@@ -22,12 +22,21 @@ export default class PubNews extends React.Component {
     this.setTitle = this.setTitle.bind(this)
   }
 
+  componentDidMount() {
+    const { userStore } = this.props
+    userStore.checkIfInfoCompleted()
+  }
+
   setTitle(e) {
     this.setState({ title: e.target.value.trim() })
   }
 
   handleNewsPublish = async () => {
-    const {user} = this.props.userStore
+    const { userStore } = this.props
+    if (!userStore.checkIfInfoCompleted()) {
+      return
+    }
+    const { user } = userStore
     if (!this.state.title) {
       message.error('请填写标题')
       return

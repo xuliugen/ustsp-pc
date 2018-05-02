@@ -35,6 +35,10 @@ export default class StudentCard extends React.Component {
   }
 
   async handleAddFriends() {
+    const { userStore } = this.props
+    if (!userStore.checkIfInfoCompleted()) {
+      return
+    }
     try {
       const msg = await MessageApi.sendAddFirend(this.props.userStore.user.id, this.props.stuInfo.id)
       if (msg.data === 0) {
