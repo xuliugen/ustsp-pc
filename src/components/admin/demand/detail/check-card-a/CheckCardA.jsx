@@ -41,7 +41,7 @@ export default class CheckCardA extends React.Component {
             partyId: partyB.partyId,
             ownerId: this.props.userStore.user.id,
             projectId: this.props.match.params.id,
-            status: 'underway'
+            status: 'checkRejectA'
           })
           message.success('驳回验收成功')
           // 刷新项目信息

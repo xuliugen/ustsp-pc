@@ -18,7 +18,7 @@ export default class BuyIp extends React.Component {
     this.getPatents()
   }
 
-  async getPatents(type = 1, current = 1, pageSize = 8) {
+  async getPatents(type = 0, current = 1, pageSize = 8) {
     try {
       const { data } = await IpApi.fetchBuyPatents(this.props.userStore.user.id, type, current, pageSize)
       this.setState((prevState) => ({

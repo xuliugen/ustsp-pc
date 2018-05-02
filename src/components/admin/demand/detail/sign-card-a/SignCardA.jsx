@@ -47,7 +47,7 @@ export default class SignCardA extends React.Component {
             partyId: partyB.partyId,
             ownerId: this.props.userStore.user.id,
             projectId: this.props.match.params.id,
-            status: 'applying'
+            status: 'cancelSigningA'
           })
           message.success('撤销签单成功')
           // 刷新项目信息
