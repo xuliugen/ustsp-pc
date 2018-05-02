@@ -71,6 +71,7 @@ export default class Sidebar extends React.Component {
 
   render() {
     const { msgStore } = this.props
+
     return (
       <section styleName="sidebar-inner">
         <Menu
@@ -83,7 +84,7 @@ export default class Sidebar extends React.Component {
           {/* // onSelect={this.handleItemSelect}> */}
           {routes.map(({key, title, children}) => {
             const SubMenuIcon = title.icon ? <Icon type={title.icon} /> : null
-            let MenuItems
+            let MenuItems, titleText
             if (key !== 'message') {
               MenuItems = children.map(({ key, to, text }) => {
                 const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
@@ -91,6 +92,7 @@ export default class Sidebar extends React.Component {
                   <Menu.Item key={key} style={{ fontSize: '18px' }}>{ItemLink}</Menu.Item>
                 )
               })
+              titleText = title.text
             } else {
               MenuItems = children.map(({ key, to, text, type }) => {
                 const count = msgStore[type]
@@ -104,11 +106,14 @@ export default class Sidebar extends React.Component {
                   </Menu.Item>
                 )
               })
+              titleText = (<Badge dot={msgStore.hasMsg}>
+                <span styleName="msgTitle">{title.text}</span>
+              </Badge>)
             }
             return (
               <SubMenu
                 key={key}
-                title={<span>{SubMenuIcon}<span style={{ fontSize: '18px' }}>{title.text}</span></span>}
+                title={<span>{SubMenuIcon}<span styleName="msgTitle">{titleText}</span></span>}
                 onTitleClick={this.handleSubMenuClick}>
                 {MenuItems}
               </SubMenu>

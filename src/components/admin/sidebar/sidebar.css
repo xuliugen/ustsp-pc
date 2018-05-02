@@ -5,3 +5,10 @@
 .sidebar-inner .sidebar {
   width: 100%;
 }
+
+.msgTitle {
+  font-size: 18px;
+}
+.msgTitle:hover {
+  color: #3091e6;
+}
