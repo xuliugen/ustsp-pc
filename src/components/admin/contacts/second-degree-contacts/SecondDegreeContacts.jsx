@@ -40,7 +40,7 @@ export default class SecondDegreeContacts extends React.Component {
           <Row gutter={16}>
             {this.state.friends.length === 0 ? (<Col span={6} style={{margin: '20px', fontSize: '20px'}}>暂无相关好友</Col>) : this.state.friends.map((item, idx) => {
               return (
-                <Col span={6} key={idx}><FriendCard info={item} /></Col>
+                <Col span={6} key={idx}><FriendCard info={item} type="second-degree" /></Col>
               )
             })}
           </Row>
