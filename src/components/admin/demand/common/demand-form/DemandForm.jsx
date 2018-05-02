@@ -47,6 +47,16 @@ export default class DemandForm extends React.Component {
     return label[label.length - 1]
   }
 
+  handleDateRangeChange = (date) => {
+    this.setStartTime(date[0])
+  }
+
+  setStartTime(date) {
+    this.setState({
+      startTime: date
+    })
+  }
+
   disabledStartDate = (current) => {
     // Can not select days before today and today
     return current && current < moment().endOf('day')
@@ -217,7 +227,7 @@ export default class DemandForm extends React.Component {
                 <RangePicker
                   disabledDate={this.disabledStartDate}
                   showTime
-                  onChange={this.setStartTime}
+                  onChange={this.handleDateRangeChange}
                   style={{ width: '100%', marginTop: '10px' }} />
               )}
             </FormItem>

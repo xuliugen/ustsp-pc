@@ -30,7 +30,7 @@ export default class NewDemand extends React.Component {
           projectResearchInfo: {
             projectName: values.projectName,
             type: values.type,
-            subject: values.subject[values.subject.length - 1],
+            subject: values.subject,
             major: null,
             startTime: values.timeInterval[0].valueOf(),
             endTime: values.timeInterval[1].valueOf(),
