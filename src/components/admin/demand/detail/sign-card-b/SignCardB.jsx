@@ -43,8 +43,8 @@ export default class SignCardB extends React.Component {
             status: 'signRejectB'
           })
           message.success('拒绝签单成功')
-          // 刷新项目信息
-          this.props.demandStore.dispatchGetDemandInfo()
+          // 跳转到项目详情
+          this.props.history.push(`/project/${this.props.match.params.id}`)
         } catch (error) {
           console.log(error)
         }

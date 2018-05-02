@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './talentItem.css'
 import { Avatar, Icon } from 'antd'
 import authorityPic from './authority.png'
+import { AddFriendBtn } from 'components/common'
 
 export default class talentItem extends React.Component {
   render() {
@@ -38,7 +39,7 @@ export default class talentItem extends React.Component {
             </div>
           </div>
         </div>
-        <button styleName="add-friend">+ 加好友</button>
+        <AddFriendBtn info={talent} />
       </div>
     )
   }
