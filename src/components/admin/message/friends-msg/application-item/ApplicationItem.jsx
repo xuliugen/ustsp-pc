@@ -33,11 +33,16 @@ export default class ApplicationItem extends React.Component {
 
   async handleRefuse(item) {
     try {
-      await MessageApi.rejectAddFirend(item.receiverId, item.senderId, item.id)
-      message.success('拒绝添加成功')
-      this.setState({
-        disable: true
-      })
+      const msg = await MessageApi.checkIsFriend(item.receiverId, item.senderId)
+      if (msg.data > 0) {
+        message.warn('你们已经是好友了')
+      } else {
+        await MessageApi.rejectAddFirend(item.receiverId, item.senderId, item.id)
+        message.success('拒绝添加成功')
+        this.setState({
+          disable: true
+        })
+      }
       this.props.msgStore.dispatchGetCounts()
     } catch (error) {
       console.log(error)

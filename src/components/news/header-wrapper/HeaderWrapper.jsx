@@ -2,6 +2,7 @@ import React from 'react'
 import './headerWrapper.css'
 import moment from 'moment'
 import iconEye from 'src/assets/ico_eye.png'
+import AddFriendBtn from './add-friend-btn/AddFriendBtn'
 
 export default class NewsHeaderWrapper extends React.Component {
   render() {
@@ -19,12 +20,12 @@ export default class NewsHeaderWrapper extends React.Component {
                 <div>{this.props.publisher.username}</div>
               </div>
               <div styleName="add-wrapper">
-                <button styleName="add-btn">+ 好友</button>
+                <AddFriendBtn info={this.props.publisher} />
               </div>
             </div>
             <div styleName="other">
               <span styleName="view">
-                <img src={iconEye} style={{marginRight: '5px'}} />
+                <img src={iconEye} style={{ marginRight: '5px' }} />
                 {this.props.view}
               </span>
               <span>
