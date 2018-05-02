@@ -15,7 +15,17 @@ export default class NewIP extends React.Component {
     document: null,
     appraisalDocument: null
   }
+
+  componentDidMount() {
+    const { userStore } = this.props
+    userStore.checkIfInfoCompleted()
+  }
+
   submitForm = () => {
+    const { userStore } = this.props
+    if (!userStore.checkIfInfoCompleted()) {
+      return
+    }
     this.props.form.validateFields(async (err, values) => {
       if (err) {
         message.error('请完善信息')

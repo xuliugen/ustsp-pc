@@ -1,4 +1,5 @@
 import { observable, action, computed, reaction, extendObservable } from 'mobx'
+import { message } from 'antd'
 
 class UserStore {
   @observable user = null
@@ -37,6 +38,14 @@ class UserStore {
   @action
   clear() {
     this.user = null
+  }
+
+  checkIfInfoCompleted() {
+    if (this.isLogin && !this.user.realName) {
+      message.warn('请进入个人中心完善用户信息~')
+      return false
+    }
+    return true
   }
 }
 

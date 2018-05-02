@@ -7,7 +7,7 @@ import { message } from 'antd'
 import './loginPanel.css'
 import imgQ from './ico_q.png'
 
-@inject('authStore')
+@inject('authStore', 'userStore')
 @withRouter
 @observer
 export default class LoginPanel extends React.Component {
@@ -17,6 +17,9 @@ export default class LoginPanel extends React.Component {
       await this.props.authStore.login()
       message.success('登录成功')
       this.props.history.replace('/')
+      setTimeout(() => {
+        this.props.userStore.checkIfInfoCompleted()
+      }, 1000)
     } catch (err) {
       if (err.response) {
         const status = err.response.status

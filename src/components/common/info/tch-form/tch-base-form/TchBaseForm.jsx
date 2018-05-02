@@ -6,15 +6,18 @@ import moment from 'moment'
 import FormTitle from '../../form-title/FormTitle'
 import UploadAvatar from '../../upload-avatar/UploadAvatar'
 import UploadTchPhoto from './upload-tch-license/UploadTchLicense'
+import { inject, observer } from 'mobx-react'
 
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
+@inject('userStore')
+@observer
 export default class TchBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { tchInfo, mode } = this.props
-    const disableNameIpt = mode === 'modify'
+    const { tchInfo, mode, userStore } = this.props
+    const disableNameIpt = mode === 'modify' && userStore.user.realName
 
     return (
       <div>

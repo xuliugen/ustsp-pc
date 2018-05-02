@@ -15,11 +15,15 @@ class MsgStore {
     }
   }
 
-  @action setMsgNum({ systemMsgNum, projectMsgNum, patentMsgNum, friendMsgNum }) {
+  @action setMsgNum({ systemMsgNum = 0, projectMsgNum = 0, patentMsgNum = 0, friendMsgNum = 0 } = {}) {
     this.systemMsgNum = systemMsgNum
     this.projectMsgNum = projectMsgNum
     this.patentMsgNum = patentMsgNum
     this.friendMsgNum = friendMsgNum
+  }
+
+  @action clear() {
+    this.setMsgNum()
   }
 
   @computed get totalNum() {

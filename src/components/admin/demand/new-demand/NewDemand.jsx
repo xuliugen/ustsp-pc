@@ -11,13 +11,16 @@ import { DemandApi } from 'src/ajax'
 @observer
 @Form.create()
 export default class NewDemand extends React.Component {
+  componentDidMount() {
+    const { userStore } = this.props
+    userStore.checkIfInfoCompleted()
+  }
+
   submitForm = () => {
-    // let projectSkillList = []
-    // for (let i = 0; i < this.state.skills.length; i++) {
-    //   projectSkillList.push({
-    //     skill: this.state.skills[i]
-    //   })
-    // }
+    const { userStore } = this.props
+    if (!userStore.checkIfInfoCompleted()) {
+      return
+    }
     this.props.form.validateFields(async (err, values) => {
       if (err) {
         this.setState({

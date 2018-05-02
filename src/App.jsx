@@ -16,7 +16,7 @@ import NewsDetail from '@/news/NewsDetail'
 import AllNews from '@/news/all-news/AllNews'
 
 @withRouter
-@inject('msgStore')
+@inject('msgStore', 'userStore')
 @observer
 class App extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -28,6 +28,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.msgStore.dispatchGetCounts()
+    this.props.userStore.checkIfInfoCompleted()
   }
 
   render() {
