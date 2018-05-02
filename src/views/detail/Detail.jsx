@@ -1,7 +1,7 @@
 import React from 'react'
 import './detail.css'
 
-import { Header, Footer, ProjectsRmd, TalentsRmd, NewsRmd } from 'components/common'
+import { Header, Footer, ProjectsRmd, TalentsRmd, NewsRmd, IpRmd } from 'components/common'
 import { ProjectContent, TeacherContent, StudentContent, IPContent } from 'components/detail'
 
 export default class Detail extends React.Component {
@@ -38,7 +38,7 @@ export default class Detail extends React.Component {
         break
       case 'ip':
         MainContent = <IPContent />
-        RmdContent = <ProjectsRmd />
+        RmdContent = <IpRmd />
         break
       default:
         MainContent = null

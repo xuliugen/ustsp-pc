@@ -39,7 +39,7 @@ export default class TalentsRmd extends React.Component<{}, State> {
 
   render() {
     const projectItem = this.state.projects.map((item, idx) => {
-      return <ProjectItem project={item} key={idx} />
+      return <ProjectItem project={item.projectResearchInfo} key={idx} />
     })
     return (
       <div styleName="similar">
