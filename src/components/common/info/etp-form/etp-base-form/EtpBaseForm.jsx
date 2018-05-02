@@ -4,6 +4,7 @@ import './etpBaseForm.css'
 import UploadEtpLicense from './upload-etp-license/UploadEtpLicense'
 import { major } from 'src/common/dataset'
 import moment from 'moment'
+import { inject, observer } from 'mobx-react'
 
 import FormTitle from '../../form-title/FormTitle'
 import UploadAvatar from '../../upload-avatar/UploadAvatar'
@@ -11,11 +12,13 @@ import UploadAvatar from '../../upload-avatar/UploadAvatar'
 const FormItem = Form.Item
 const Option = Select.Option
 
+@inject('userStore')
+@observer
 export default class EtpBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { etpInfo, mode } = this.props
-    const disableNameIpt = mode === 'modify'
+    const { etpInfo, mode, userStore } = this.props
+    const disableNameIpt = mode === 'modify' && userStore.user.realName
 
     return (
       <div>

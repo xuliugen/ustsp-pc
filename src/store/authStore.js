@@ -1,6 +1,6 @@
 import { observable, action, extendObservable, reaction } from 'mobx'
 import { SessionApi } from 'src/ajax'
-import { userStore } from 'src/store'
+import { userStore, msgStore, registerStore } from 'src/store'
 
 class AuthStore {
   @observable username = ''
@@ -51,6 +51,8 @@ class AuthStore {
 
   @action logout() {
     userStore.clear()
+    msgStore.clear()
+    registerStore.clearRegData()
     this.setToken(null)
   }
 

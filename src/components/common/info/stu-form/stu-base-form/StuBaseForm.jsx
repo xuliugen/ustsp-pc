@@ -4,15 +4,18 @@ import { Form, Input, Radio, DatePicker, Row, Col } from 'antd'
 import FormTitle from '../../form-title/FormTitle'
 import UploadAvatar from '../../upload-avatar/UploadAvatar'
 import moment from 'moment'
+import { inject, observer } from 'mobx-react'
 
 const RadioGroup = Radio.Group
 const FormItem = Form.Item
 
+@inject('userStore')
+@observer
 export default class StuBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
-    const { stuInfo, mode } = this.props
-    const disableNameIpt = mode === 'modify'
+    const { stuInfo, mode, userStore } = this.props
+    const disableNameIpt = mode === 'modify' && userStore.user.realName
 
     return (
       <div>
