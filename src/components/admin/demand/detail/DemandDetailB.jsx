@@ -7,8 +7,9 @@ import UnderwayCardB from './underway-card-b/UnderwayCardB'
 import CheckCardB from './check-card-b/CheckCardB'
 import EvaluateCardB from './evaluate-card-b/EvaluateCardB'
 import FinishedCard from './finished-card/FinishedCard'
+import RejectCardB from './reject-card-b/RejectCardB'
 
-@inject('demandStore')
+@inject('demandStore', 'userStore')
 @observer
 export default class DemandDetailB extends React.Component {
   componentWillMount() {
@@ -31,6 +32,9 @@ export default class DemandDetailB extends React.Component {
     toCheck(4, "待验收"),
     toEvaluate(5, "评价"),
     finished(6, "完成"), */
+    if (this.props.demandStore.partyB.partyId !== this.props.userStore.user.id) {
+      return <RejectCardB status={this.props.demandStore.currentStatus} />
+    }
     switch (this.props.demandStore.currentStatus) {
       case 2:
         return <SignCardB />
