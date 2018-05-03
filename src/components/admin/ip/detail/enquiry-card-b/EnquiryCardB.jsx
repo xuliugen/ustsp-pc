@@ -88,7 +88,7 @@ class Purchase extends React.Component {
     return (
       <div>
         <div styleName="title">甲方预设专利转让价格： <span styleName="money">{patent.money}</span>元</div>
-        <div styleName="title">收到甲方发送专利评估文件： <a src={patent.appraisalDocument}>评估文件</a></div>
+        <div styleName="title">收到甲方发送专利评估文件： <a href={patent.appraisalDocument}>评估文件</a></div>
         <div styleName="title">在确认有购买意愿后与甲方沟通，发起购买请求</div>
         <Button type="primary" onClick={() => { this.changeDialogVisible(true) }}>发起购买请求</Button>
         <Button style={{ marginLeft: '15px' }} onClick={this.handleCancelBuy}>不购买</Button>
