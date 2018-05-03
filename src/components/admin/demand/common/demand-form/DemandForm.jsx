@@ -26,20 +26,28 @@ for (let i = 0; i < skill.length; i++) {
 export default class DemandForm extends React.Component {
   state = {
     cities: city[province[0]],
-    fileList: []
+    fileList: [],
+    propsChangeCount: 0
   }
 
   componentWillReceiveProps(nextProps) {
-    const { demand } = nextProps
-    if (demand) {
-      this.setState({
-        fileList: [{
-          uid: -1,
-          name: 'pdf全文',
-          status: 'done',
-          url: demand.uploadfileUrl
-        }]
-      })
+    this.setState(pre => ({
+      propsChangeCount: pre.propsChangeCount + 1
+    }))
+    if (this.state.propsChangeCount < 1) {
+      const { demand } = nextProps
+      if (demand) {
+        if (demand.uploadfileUrl) {
+          this.setState({
+            fileList: [{
+              uid: -1,
+              name: 'pdf全文',
+              status: 'done',
+              url: demand.uploadfileUrl
+            }]
+          })
+        }
+      }
     }
   }
 
@@ -307,8 +315,8 @@ export default class DemandForm extends React.Component {
                 initialValue: demand && demand.money,
                 validateTrigger: 'onBlur',
                 rules: [
-                  { required: true, message: '请输入预设金额' },
-                  { max: 8, message: '不能超过8位' }
+                  { required: true, message: '请输入预设金额' }
+                  // { len: 8, message: '不能超过8位' }
                 ]
               })(
                 <Input placeholder="单位: 元" />
@@ -359,7 +367,7 @@ export default class DemandForm extends React.Component {
           <FormItem label="上传文件">
             {getFieldDecorator('uploadfileUrl', {
               // valuePropName: 'fileList',
-              // initialValue: demand && demand.uploadfileUrl,
+              initialValue: demand && demand.uploadfileUrl,
               getValueFromEvent: this.normFile
             })(
               <Dragger
