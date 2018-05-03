@@ -29,7 +29,7 @@ export default class SendPerson extends React.Component {
         return <Button size="small" type="primary" onClick={this.handleSign.bind(this, info)}>签订合同</Button>
       case 'sended':
         return <span styleName="send-time">发送时间：{moment(info.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
-      case 'cancelBuy':
+      case 'cancelBuy': case 'cancelSign':
         return <Button size="small" disabled>已拒绝</Button>
       default:
         break
