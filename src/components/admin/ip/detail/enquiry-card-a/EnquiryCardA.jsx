@@ -60,7 +60,7 @@ export default class EnquiryCardA extends React.Component {
         case 'sended':
           sendedPersons.push(person)
           break
-        case 'wonder':
+        case 'wonder': case 'cancelBuy':
           wonderPerson.push(person)
           break
       }

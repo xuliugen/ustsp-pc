@@ -1,0 +1,10 @@
+.title{
+  padding: 13px 30px 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}

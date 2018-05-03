@@ -60,7 +60,7 @@ export default class IPContent extends React.Component {
         this.setStates(data, true, '询价结束')
       } else if (this.props.userStore.user.id === data.patent.ownerId) {
         this.setStates(data, true, '询价中')
-      } else if (data.surrendereeStatus === 12) {
+      } else if (data.surrendereeStatus === 12 || data.surrendereeStatus === 11) {
         this.setStates(data, true, '已拒绝')
       } else if (data.surrendereeStatus >= 2) {
         this.setStates(data, true, '已询价')
