@@ -11,26 +11,38 @@ const Dragger = Upload.Dragger
 export default class IPForm extends React.Component {
   state = {
     document: [],
-    appraisalDocument: []
+    appraisalDocument: [],
+    propsChangeCount: 0
   }
 
   componentWillReceiveProps(nextProps) {
-    const { ip } = nextProps
-    if (ip) {
-      this.setState({
-        document: [{
-          uid: -1,
-          name: 'pdf全文',
-          status: 'done',
-          url: ip.document
-        }],
-        appraisalDocument: [{
-          uid: -2,
-          name: '评估文件',
-          status: 'done',
-          url: ip.appraisalDocument
-        }]
-      })
+    this.setState(pre => ({
+      propsChangeCount: pre.propsChangeCount + 1
+    }))
+    if (this.state.propsChangeCount < 1) {
+      const { ip } = nextProps
+      if (ip) {
+        if (ip.document) {
+          this.setState({
+            document: [{
+              uid: -1,
+              name: 'pdf全文',
+              status: 'done',
+              url: ip.document
+            }]
+          })
+        }
+        if (ip.appraisalDocument) {
+          this.setState({
+            appraisalDocument: [{
+              uid: -2,
+              name: '评估文件',
+              status: 'done',
+              url: ip.appraisalDocument
+            }]
+          })
+        }
+      }
     }
   }
 
@@ -336,6 +348,7 @@ export default class IPForm extends React.Component {
               <FormItem label="PDF全文">
                 {getFieldDecorator('document', {
                   // valuePropName: 'fileList',
+                  initialValue: ip && ip.document,
                   getValueFromEvent: this.normFile,
                   rules: [
                     { required: true, message: '请上传' }
@@ -361,6 +374,7 @@ export default class IPForm extends React.Component {
               <FormItem label="评估文件">
                 {getFieldDecorator('appraisalDocument', {
                   // valuePropName: 'fileList',
+                  initialValue: ip && ip.appraisalDocument,
                   getValueFromEvent: this.normFile
                 })(
                   <Dragger
