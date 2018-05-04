@@ -11,6 +11,10 @@ import defaultAvatar from 'src/assets/defaultAvatar.svg'
 @inject('userStore', 'authStore', 'searchStore', 'msgStore')
 @observer
 class Header extends React.Component {
+  handleUserClick = () => {
+    this.props.msgStore.dispatchGetCounts()
+  }
+
   render() {
     const { userStore, authStore, searchStore, msgStore } = this.props
     const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
@@ -26,7 +30,7 @@ class Header extends React.Component {
           </nav>
           {userStore.isLogin ? (
             <div styleName="header-right">
-              <Link to="/admin" styleName="header-profile">
+              <Link to="/admin" styleName="header-profile" onClick={this.handleUserClick}>
                 <Badge dot={msgStore.hasMsg}>
                   <img styleName="header-avatar" src={avatar} />
                 </Badge>
