@@ -7,6 +7,10 @@ import IPItem from './ip-item/IPItem'
 @inject('searchStore')
 @observer
 export default class IPResult extends React.Component {
+  state = {
+    pagination: { total: 10, current: 1, currentPageSize: 10 }
+  }
+
   componentDidMount() {
     this.props.searchStore.dispatchSearch()
   }
