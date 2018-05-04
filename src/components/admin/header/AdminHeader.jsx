@@ -8,9 +8,13 @@ import './adminHeader.css'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
 @withRouter
-  @inject('userStore', 'authStore', 'searchStore')
+  @inject('userStore', 'authStore', 'searchStore', 'msgStore')
 @observer
 export default class Sidebar extends React.Component {
+  handleHomeClick = () => {
+    this.props.msgStore.dispatchGetCounts()
+  }
+
   handleLogoutClick = () => {
     this.props.authStore.logout()
     this.props.history.replace('/')
@@ -30,7 +34,7 @@ export default class Sidebar extends React.Component {
         </div>
         <nav styleName="nav">
           <ul styleName="navbar">
-            <Link to="/" styleName="nav-home-wrapper">
+            <Link to="/" styleName="nav-home-wrapper" onClick={this.handleHomeClick}>
               <Icon styleName="nav-home" type="home" />
             </Link>
             <Link styleName="navbar-li" to="/search" onClick={() => { searchStore.setType('talent') }}>找人才</Link>
