@@ -124,11 +124,11 @@ export const routes = [
         key: 'second-degree-contacts',
         to: '/admin/contacts/second-degree-contacts',
         text: '二度人脉'
-      }, {
-        key: 'friends-news',
-        to: '/admin/contacts/friends-news',
-        text: '好友动态'
       }
+      //   key: 'friends-news',
+      //   to: '/admin/contacts/friends-news',
+      //   text: '好友动态'
+      // }
     ]
   }
 ]
