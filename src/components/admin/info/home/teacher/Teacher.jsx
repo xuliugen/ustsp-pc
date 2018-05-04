@@ -3,6 +3,7 @@ import React from 'react'
 import './teacher.css'
 import CardHeader from '../common/header/CardHeader'
 import Card from '../common/card/Card'
+import { Row, Col } from 'antd'
 import { TalentApi } from 'src/ajax'
 import { inject, observer } from 'mobx-react'
 
@@ -46,13 +47,15 @@ export default class Teacher extends React.Component<{}, State> {
           <CardHeader title="可能感兴趣的老师" />
         </div>
         <div styleName="teacher-cards">
-          {this.state.person.length !== 0 ? this.state.person.map((item, idx) => {
-            return (
-              <div styleName="teacher-card-wrapper" key={idx}>
-                <Card person={item} />
-              </div>
-            )
-          }) : '暂无相关用户'}
+          <Row gutter={16}>
+            {this.state.person.length !== 0 ? this.state.person.map((item, idx) => {
+              return (
+                <Col span={12} key={idx} style={{margin: '10px 0'}}>
+                  <Card person={item} />
+                </Col>
+              )
+            }) : '暂无相关用户'}
+          </Row>
         </div>
       </div>
     )

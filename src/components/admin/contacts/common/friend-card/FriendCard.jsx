@@ -4,6 +4,7 @@ import './friendCard.css'
 // import ImgAvatar from 'src/assets/defaultAvatar.svg'
 import { ContactsApi } from 'src/ajax'
 import { inject, observer } from 'mobx-react'
+import { Link } from 'react-router-dom'
 
 const confirm = Modal.confirm
 
@@ -76,12 +77,24 @@ export default class FriendCard extends React.Component {
     }
   }
 
+  setUserType = (userType) => {
+    switch (userType) {
+      case 1:
+        return 'student'
+      case 2:
+        return 'teacher'
+      default:
+        return null
+    }
+  }
+
   render() {
     const { userInfo } = this.props.info
     let elements = this.setElements(this.props.type)
+    let userType = this.setUserType(userInfo.userType)
     return (
       <div styleName="root">
-        <div styleName="avatar-wrapper"><img styleName="avatar" src={userInfo.avatar} /></div>
+        <div styleName="avatar-wrapper"><Link to={`/${userType}/${userInfo.id}`}><img styleName="avatar" src={userInfo.avatar} /></Link></div>
         <div styleName="friend-detail">
           <div styleName="name">{this.props.info.username}</div>
           <div styleName="location">{userInfo.location}</div>

@@ -379,8 +379,8 @@ export default class DemandForm extends React.Component {
                 <p className="ant-upload-drag-icon">
                   <Icon type="inbox" />
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
+                <p className="ant-upload-text">点击或拖拽到此上传文件</p>
+                <p className="ant-upload-hint">支持上传一个文件，格式为.pdf,.doc,.ppt,.rar,.zip，大小不超过20M</p>
               </Dragger>
             )}
           </FormItem>
