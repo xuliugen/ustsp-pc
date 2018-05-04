@@ -26,6 +26,10 @@ export default class AddFriendBtn extends React.Component {
   }
 
   async checkIsFriend(prop) {
+    const { userStore } = this.props
+    if (!userStore.isLogin) {
+      return
+    }
     try {
       const msg = await MessageApi.checkIsFriend(this.props.userStore.user.id, prop.info.id)
       if (msg.data > 0) {
