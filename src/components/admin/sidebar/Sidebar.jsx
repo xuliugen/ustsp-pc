@@ -59,6 +59,10 @@ export default class Sidebar extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.props.msgStore.dispatchGetCounts()
+  }
+
   componentWillMount() {
     const { pathname } = this.props.history.location
     this.setKeys(pathname)

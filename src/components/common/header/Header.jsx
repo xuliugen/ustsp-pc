@@ -11,6 +11,9 @@ import defaultAvatar from 'src/assets/defaultAvatar.svg'
 @inject('userStore', 'authStore', 'searchStore', 'msgStore')
 @observer
 class Header extends React.Component {
+  componentDidMount() {
+    this.props.msgStore.dispatchGetCounts()
+  }
   render() {
     const { userStore, authStore, searchStore, msgStore } = this.props
     const avatar = (userStore.user && userStore.user.avatar) ? userStore.user.avatar : defaultAvatar
