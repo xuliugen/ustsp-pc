@@ -32,10 +32,11 @@ export default class DemandDetailB extends React.Component {
     toCheck(4, "待验收"),
     toEvaluate(5, "评价"),
     finished(6, "完成"), */
-    if (this.props.demandStore.partyB.partyId !== this.props.userStore.user.id) {
-      return <RejectCardB status={this.props.demandStore.currentStatus} />
+    const status = this.props.demandStore.currentStatus
+    if (status >= 2 && this.props.demandStore.partyB.partyId !== this.props.userStore.user.id) {
+      return <RejectCardB status={status} />
     }
-    switch (this.props.demandStore.currentStatus) {
+    switch (status) {
       case 2:
         return <SignCardB />
       case 3:
