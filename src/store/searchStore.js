@@ -64,14 +64,16 @@ class SearchStore {
 
   @action
   setType(type) {
-    this.type = type
-    this.content = ''
-    this.conditions = []
-    this.pageSize = 10
-    this.currentPage = 1
-    this.req = {}
-    this.result = {
-      data: []
+    if (this.type !== type) {
+      this.type = type
+      this.content = ''
+      this.conditions = []
+      this.pageSize = 10
+      this.currentPage = 1
+      this.req = {}
+      this.result = {
+        data: []
+      }
     }
   }
 
