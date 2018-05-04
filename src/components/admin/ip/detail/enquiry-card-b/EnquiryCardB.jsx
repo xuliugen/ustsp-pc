@@ -13,7 +13,7 @@ export default class EnquiryCardB extends React.Component {
     const { partyB, patent, dispatch } = this.props
     let content = null
     switch (partyB.status) {
-      case 'cancelBuy':
+      case 'cancelBuy': case 'cancelSign':
         content = <Purchase partyB={partyB} patent={patent} dispatch={dispatch} />
         break
       case 'apply':
