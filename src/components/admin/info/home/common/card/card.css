@@ -7,12 +7,10 @@
   padding: 40px 0;
 }
 
-.avatar {
-  width: 23.5%;
-}
-
 .avatar img {
-  width: 100%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
 }
 
 .detail {
@@ -25,7 +23,7 @@
 }
 
 .academic-title {
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   background-color: #8f9ba7;
   border-radius: 4px;

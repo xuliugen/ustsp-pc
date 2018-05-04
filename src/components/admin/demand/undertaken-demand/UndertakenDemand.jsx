@@ -62,7 +62,6 @@ export default class UndertakenDemand extends React.Component {
   render() {
     const statusTags = [
       { name: '全部', status: '' },
-      { name: '待审核', status: 0 },
       { name: '报名', status: 1 },
       { name: '待签单', status: 2 },
       { name: '进行中', status: 3 },
