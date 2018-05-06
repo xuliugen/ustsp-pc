@@ -37,7 +37,7 @@ const Enquiry = () => {
   return (
     <div styleName="message">
       <Icon type="check-circle" style={{ color: '#62f326', fontSize: '30px' }} />
-      <div styleName="hint">询价请求已经发送，代收专业评估文件。</div>
+      <div styleName="hint">询价请求已经发送，待收专业评估文件。</div>
     </div>
   )
 }

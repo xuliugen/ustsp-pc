@@ -27,6 +27,7 @@ class Header extends React.Component {
             <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('talent') }}>人才</Link>
             <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('project') }}>项目</Link>
             <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('ip') }}>知识产权</Link>
+            <Link styleName="header-navItem" to="/search" onClick={() => { searchStore.setType('news') }}>动态</Link>
           </nav>
           {userStore.isLogin ? (
             <div styleName="header-right">

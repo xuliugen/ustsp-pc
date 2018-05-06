@@ -56,6 +56,7 @@ class SearchStore {
         })
         runInAction(() => {
           this.req = req
+          this.currentPage = 1
         })
         this.dispatchSearch()
       }
