@@ -23,6 +23,7 @@
   overflow: hidden;
   font-size: 22px;
   color: #666666;
+  cursor: pointer;
 }
 
 .ip-card-type span{

@@ -3,18 +3,23 @@ import './headerWrapper.css'
 import moment from 'moment'
 import iconEye from 'src/assets/ico_eye.png'
 import AddFriendBtn from './add-friend-btn/AddFriendBtn'
+import { userTypeNumToStr } from 'src/common/formatter'
+import { Link } from 'react-router-dom'
 
 export default class NewsHeaderWrapper extends React.Component {
   render() {
+    const userType = userTypeNumToStr(this.props.publisher.userType)
+    const userId = this.props.userId
+
     return (
       <div styleName="header-wrapper">
         <div styleName="header-inner">
           <div styleName="title">{this.props.title}</div>
           <div styleName="info">
             <div styleName="publisher">
-              <div>
+              <Link to={`/${userType}/${userId}`}>
                 <img styleName="avatar" src={this.props.publisher.avatar} />
-              </div>
+              </Link>
               <div styleName="pub-wrapper">
                 <div>发布人</div>
                 <div>{this.props.publisher.username}</div>

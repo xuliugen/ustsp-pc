@@ -17,7 +17,7 @@ export default class IpCard extends React.Component {
     return (
       <div styleName="ip-card">
         <div styleName="ip-card-basic">
-          <span styleName="ip-card-title">{ip.patentDTO.patentName}</span>
+          <span styleName="ip-card-title" onClick={this.handleClick.bind(this, ip.patentDTO.id)}>{ip.patentDTO.patentName}</span>
           <div styleName="ip-card-type">
             <span>{ip.patentDTO.patentType}</span>
           </div>
