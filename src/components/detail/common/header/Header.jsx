@@ -11,7 +11,7 @@ export default class FriendHeader extends React.Component<Props> {
     return (
       <div styleName="header-warpper">
         <span styleName="title">{ this.props.title }</span>
-        {this.props.title === '其他内容' ? '' : <span styleName="more">更多</span>}
+        {/* {this.props.title === '其他内容' ? '' : <span styleName="more">更多</span>} */}
       </div>
     )
   }
