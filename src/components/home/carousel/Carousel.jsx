@@ -2,6 +2,8 @@
 import React from 'react'
 import './carousel.css'
 import imgBanner from './banner.png'
+import imgBanner2 from 'src/assets/banner2.jpg'
+import imgBanner3 from 'src/assets/banner4.jpg'
 import SliderItem from './slider-item/SliderItem'
 import SliderDots from './slider-dots/SliderDots'
 
@@ -22,9 +24,9 @@ export default class Carousel extends React.Component<{}, State> {
       imgData: [{
         src: imgBanner
       }, {
-        src: imgBanner
+        src: imgBanner2
       }, {
-        src: imgBanner
+        src: imgBanner3
       }],
       delay: 5,
       autoplay: true,
