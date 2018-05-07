@@ -19,7 +19,7 @@ export default class StuBaseForm extends React.Component {
 
     return (
       <div>
-        <FormTitle title={'基本信息'} />
+        <FormTitle title={'学生基本信息'} />
         <div styleName="content">
           <Row gutter={20}>
             <Col span={12}>
@@ -46,7 +46,7 @@ export default class StuBaseForm extends React.Component {
               </FormItem>
               <FormItem label="选择出生日期">
                 {getFieldDecorator('birth', {
-                  initialValue: stuInfo && moment(stuInfo.birth)
+                  initialValue: stuInfo && stuInfo.birth && moment(stuInfo.birth)
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}

@@ -21,7 +21,7 @@ export default class TchBaseInfo extends React.Component {
 
     return (
       <div>
-        <FormTitle title={'基本信息'} />
+        <FormTitle title={'教师基本信息'} />
         <div styleName="content">
           <Row gutter={20}>
             <Col span={12}>
@@ -52,7 +52,7 @@ export default class TchBaseInfo extends React.Component {
               </FormItem>
               <FormItem label="选择出生日期">
                 {getFieldDecorator('birth', {
-                  initialValue: tchInfo && moment(tchInfo.birth)
+                  initialValue: tchInfo && tchInfo.birth && moment(tchInfo.birth)
                 })(
                   <DatePicker placeholder="请选择" style={{ width: '100%', marginTop: '10px' }} />
                 )}
