@@ -20,9 +20,9 @@ export default class Detail extends React.Component {
         MainContent = <TeacherContent />
         RmdContent = (
           <div>
+            <NewsRmd />
             <TalentsRmd />
             {/* <CommonFriends /> */}
-            <NewsRmd />
           </div>
         )
         break
