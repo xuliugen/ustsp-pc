@@ -2,7 +2,7 @@ import React from 'react'
 import Header from 'components/detail/common/header/Header'
 import './newsRmd.css'
 import moment from 'moment'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { NewsApi } from 'src/ajax'
 
 @withRouter
@@ -38,13 +38,14 @@ export default class NewsRmd extends React.Component<{}, State> {
             <span styleName="company">{item.location}</span>
             <span styleName="time">{moment(item.date).format('YYYY-MM-DD HH:mm')}</span>
           </div>
-          <div styleName="content">
-            <span styleName="text">{item.abstracts}
-              {/* <span styleName="preview">{item.dynamics}</span> */}
-            </span>
-          </div>
+          <Link to={`/news/${item.id}`}>
+            <div styleName="content">
+              <span styleName="text">{item.abstracts}
+                {/* <span styleName="preview">{item.dynamics}</span> */}
+              </span>
+            </div>
+          </Link>
         </div>
-
       )
     })
 
