@@ -43,12 +43,12 @@ export default class TchResearchForm extends React.Component {
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem label="经费">
+            <FormItem label="经费（万元）">
               {getFieldDecorator('funding', {
                 initialValue: item && item.funding,
                 validateTrigger: 'onBlur'
               })(
-                <Input placeholder="经费" type="number" />
+                <Input placeholder="单位万元" type="number" />
               )}
             </FormItem>
             <FormItem label="开始时间" style={{ flexFlow: '1' }}>

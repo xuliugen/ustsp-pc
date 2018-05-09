@@ -41,7 +41,7 @@ export default class ResearchItem extends React.Component<{}> {
           <ul style={{ paddingLeft: '18px' }}>
             {(props.projectLevel) && <li styleName="li-text">级别: {props.projectLevel}</li>}
             <li styleName="li-text">
-              <span>经费:   {props.funding ? '¥' + props.funding : '暂无'}</span>
+              <span>经费:   {props.funding ? `¥${props.funding}万元` : '暂无'}</span>
               {editable && <div styleName="operate-container">
                 <button styleName="operate-text" onClick={this.handleDelete.bind(this, props)}>删除</button>
                 <div>
