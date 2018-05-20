@@ -42,7 +42,9 @@ export default class ProjectResult extends React.Component {
         {result.data.map((project, idx) => {
           return <ProjectItem key={idx} project={project} />
         })}
-        <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        <div styleName="pagination">
+          <Pagination hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        </div>
       </div>
     )
   }

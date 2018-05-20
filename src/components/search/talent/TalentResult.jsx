@@ -42,7 +42,9 @@ export default class TalentResult extends React.Component {
         {result.data.map((talent, idx) => {
           return <TalentItem key={idx} talent={talent} />
         })}
-        <Pagination styleName="pagination" current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        <div styleName="pagination">
+          <Pagination current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        </div>
       </div>
     )
   }

@@ -38,7 +38,9 @@ export default class IPResult extends React.Component {
         {result.data.map((patent, idx) => {
           return <IPItem key={idx} patent={patent} />
         })}
-        <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        <div styleName="pagination">
+          <Pagination hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        </div>
       </div>
     )
   }

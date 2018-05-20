@@ -40,7 +40,7 @@ export default class TalentItem extends React.Component {
         <div styleName="talent-info-box">
           <Link to={url} styleName="info-name">{this.props.talent.realName}</Link>
           <div styleName="info-title">{this.props.talent.title}</div>
-          <div styleName="info-department">{this.props.talent.major}</div>
+          <div styleName="info-department">{this.props.talent.school}</div>
         </div>
       </div>
     )

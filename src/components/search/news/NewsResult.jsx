@@ -39,7 +39,9 @@ export default class NewsResult extends React.Component {
         {result.data.map((news, idx) => {
           return <NewsItem key={idx} news={news} />
         })}
-        <Pagination styleName="pagination" hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        <div styleName="pagination">
+          <Pagination hideOnSinglePage current={currentPage} total={total} pageSize={pageSize} onChange={this.handlePagiChange} />
+        </div>
       </div>
     )
   }
