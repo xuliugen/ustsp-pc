@@ -43,6 +43,13 @@ export default class TchResearchForm extends React.Component {
             </FormItem>
           </Col>
           <Col span={12}>
+            <FormItem label="甲方名">
+              {getFieldDecorator('firstParty', {
+                initialValue: item && item.firstParty
+              })(
+                <Input />
+              )}
+            </FormItem>
             <FormItem label="经费（万元）">
               {getFieldDecorator('funding', {
                 initialValue: item && item.funding,

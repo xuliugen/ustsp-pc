@@ -17,7 +17,7 @@ export default class TchBaseInfo extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     const { tchInfo, mode, userStore } = this.props
-    const disableNameIpt = mode === 'modify' && userStore.user.realName
+    const disableNameIpt = Boolean(mode === 'modify' && userStore.user.realName)
 
     return (
       <div>
