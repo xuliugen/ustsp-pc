@@ -12,10 +12,11 @@ export default class Experiences extends React.Component {
       }, {
         prop: 'projectLevel',
         text: '级别'
-      }, {
-        prop: 'funding',
-        text: '经费'
       }]
+      // {
+      //   prop: 'funding',
+      //   text: '经费'
+      // }
       const descVisibleLabelArr = []
       descLabelArr.forEach(({ prop, text }) => {
         if (item[prop]) {
