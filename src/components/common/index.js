@@ -6,6 +6,7 @@ import NewsRmd from './news-rmd/NewsRmd'
 import IpRmd from './ip-rmd/IpRmd'
 import addFriend from './add-friend/AddFriend'
 import AddFriendBtn from './add-friend-btn/AddFriendBtn'
+import EnterpriceRmd from './enterprice-rmd/EnterpriceRmd'
 
 export {
   Header,
@@ -15,5 +16,6 @@ export {
   NewsRmd,
   IpRmd,
   addFriend,
-  AddFriendBtn
+  AddFriendBtn,
+  EnterpriceRmd
 }
