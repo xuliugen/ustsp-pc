@@ -13,7 +13,7 @@ export default {
     return ajax.put('/enterprise/change-info', body)
   },
 
-  fetchRmdEtp(id) {
-    return ajax.get(`/enterprise/introduce?id=${id}`)
+  fetchRmdEtp() {
+    return ajax.get(`/enterprise/introduce`)
   }
 }

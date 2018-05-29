@@ -7,8 +7,8 @@ export default class EnterpriceItem extends React.Component {
     return (
       <div styleName="enterprice-item">
         <img styleName="photo" src={enterprice.photo} />
-        <span styleName="name">{ enterprice.name }</span>
-        <span styleName="type">{ enterprice.type }</span>
+        <span styleName="name">{ enterprice.realName }</span>
+        <span styleName="type">{ enterprice.industry }</span>
       </div>
     )
   }
