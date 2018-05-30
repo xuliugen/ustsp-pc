@@ -1,0 +1,26 @@
+.tags {
+  width: 100%;
+  text-align: center;
+  background-color: #efeef0;
+}
+
+.info-tag {
+  display: inline-block;
+  margin-right: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #8f9ba7;
+  cursor: pointer;
+}
+
+.active {
+  color: #3091e6;
+  border-bottom: 2px solid #3091e6;
+}
+
+.content {
+  padding: 30px;
+  font-size: 16px;
+  line-height: 25px;
+  text-indent: 2em;
+}

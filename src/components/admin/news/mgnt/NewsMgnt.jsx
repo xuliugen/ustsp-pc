@@ -2,7 +2,7 @@ import React from 'react'
 import './newsMgnt.css'
 import { Input, Checkbox, Pagination, Modal, message } from 'antd'
 import { NewsApi } from 'src/ajax'
-import NewsItem from './news-item/NewsItem'
+import NewsItem from 'components/common/news-item/NewsItem'
 import { observer, inject } from 'mobx-react'
 
 const Search = Input.Search
