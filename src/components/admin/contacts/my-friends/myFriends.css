@@ -1,0 +1,17 @@
+.title {
+  border-bottom:1px solid #ddd;
+  font-size: 14px;
+  color: #aaa;
+  background-color: #fdfcfc;
+}
+
+.title-info {
+  display: inline-block;
+  width: 100%;
+  padding: 13px 0 13px 30px;
+}
+
+.content {
+  padding: 13px 30px;
+  background-color: #fff;
+}

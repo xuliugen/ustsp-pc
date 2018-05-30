@@ -1,0 +1,20 @@
+.side-nav-container {
+  position: fixed;
+}
+
+.side-nav-container ul li {
+  list-style: none;
+  color: #aaa;
+}
+
+.side-nav-container span {
+  display: inline-block;
+  padding: 14px 0 14px 41px;
+  border-left: 2px solid;
+  cursor: pointer;
+}
+
+:global(.active-nav) {
+  color: #3091e6;
+  border-left: 2px solid #3091e6;
+}

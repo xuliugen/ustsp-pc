@@ -1,0 +1,33 @@
+.root {
+  width: 100%;
+  background-color: #fff;
+}
+
+.title-wrapper {
+  padding: 40px 0 0 40px;
+}
+
+.title {
+  margin-right: 20px;
+  font-size: 16px;
+  color: #666;
+  text-align: left;
+}
+
+.baseInfo-form {
+  width: 100%;
+}
+
+.form-container {
+  width: 600px;
+  margin: 50px auto 0 auto;
+}
+
+.confirm-button{
+  margin: 61px 0px 40px 225px;
+  padding: 15px 65px 15px 65px;
+  color: #fff;
+  border-radius: 4px;
+  border: 1px solid;
+  background-color: #3a96e7;
+}

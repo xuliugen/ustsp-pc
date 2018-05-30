@@ -1,0 +1,24 @@
+.talent-item {
+  width: 330px;
+  height: 50px;
+  font-size: 14px;
+  line-height: 50px;
+  margin: 0 20px;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.name {
+  margin-left: 10px;
+  color: #666;
+}
+
+.university-item {
+  float: right;
+  color: #8f9ba7;
+}

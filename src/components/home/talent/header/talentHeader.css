@@ -1,0 +1,17 @@
+.talent-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.talent-title {
+  margin-top: 30px;
+  border-left: 6px solid #3091e6;
+  padding-left: 21px;
+  font-size: 22px;
+  color: #666;
+}
+
+.talent-more {
+  margin: 35px 20px 0 0;
+  font-size: 14px;
+}

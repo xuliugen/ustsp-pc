@@ -1,0 +1,29 @@
+.title {
+  color: #aaa;
+  padding: 13px 30px;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.content {
+  padding: 60px;
+  background-color: #fff;
+}
+
+.message {
+  font-weight: 600;
+}
+
+.abstract {
+  margin-top: 30px;
+}
+
+.btns {
+  text-align: center;
+  color: #3091e6;
+}
+
+.cancel {
+  margin-left: 35px;
+  cursor: pointer;
+}

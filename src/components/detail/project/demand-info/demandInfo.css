@@ -1,0 +1,95 @@
+.demand-info {
+  width: 100%;
+  background-color: #fff;
+}
+
+.name-card {
+  padding: 30px 30px 20px 30px;
+  background-color: #f0f0f0;
+}
+
+.card-title {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #8f9ba7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 22px;
+  color: #333;
+}
+
+.other {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 13px;
+}
+
+.visit-num {
+  margin-left: 30px;
+}
+
+.sign-up, .follow {
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid #3091e6;
+  border-radius: 4px;
+}
+
+.sign-up {
+  color: #fff;
+  background-color: #3091e6;
+}
+
+.follow {
+  margin-left: 10px;
+  color: #3091e6;
+  background-color: transparent;
+}
+
+.content {
+  width: 100%;
+  display: table;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+.content li {
+  margin-bottom: 19px;
+}
+
+.left, .right {
+  display: table-cell;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.list-title {
+  color: #8f9ba7;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.demand-intr, .skill, .PartAInfo, .download {
+  margin-top: 40px;
+}
+
+.intr-content, .skill-content, .PartAInfo-content, .download-content{
+  padding: 38px 30px 0 30px;
+}
+
+.skill-content button {
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #666;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.download {
+  margin-bottom: 60px;
+}

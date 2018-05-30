@@ -1,0 +1,68 @@
+.root {
+  position: relative;
+  margin-bottom: 60px;
+  padding-right: 17px;
+}
+
+.ip:last-child {
+  margin-bottom: 0;
+}
+
+.ip-name{
+  font-size: 22px;
+  color: #333;
+}
+
+.ip-name-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ip-type{
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  font-size: 14px;
+  color: #666;
+}
+
+.ip-info{
+  margin-top: 19px
+}
+
+.ip-info-text{
+  font-size: 14px;
+  color: #aaa;
+  margin-left: 3px;
+}
+
+.ul-container{
+  margin-top: 10px;
+}
+
+.li-text {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.li-text:last-child {
+  margin-bottom: 0;
+}
+
+.edit-container{
+  position: absolute;
+  bottom: 0;
+  right: 17px;
+}
+
+.edit-icon{
+}
+
+.edit-text{
+  padding-left: 2px;
+  color: #8f9ba7;
+  font-size: 14px;
+  text-decoration: underline;
+}

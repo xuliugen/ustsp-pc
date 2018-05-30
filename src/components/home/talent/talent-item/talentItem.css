@@ -1,0 +1,69 @@
+.talentItem-container {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+}
+
+.talent-avatar-container {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.talent-avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.talent-avatar-container .hoverLayer {
+  display: none
+}
+
+.talent-avatar-container:hover .hoverLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.avatar-hoverText {
+  margin-top: 13px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.avatar-hoverText .highlight {
+  color: #1dbbae;
+}
+
+.talent-info-box {
+  text-align: center;
+}
+
+.info-name {
+  display: inline-block;
+  margin-top: 16px;
+  margin-bottom: 11px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.info-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.info-department {
+  font-size: 14px;
+  color: #8f9ba7;
+}

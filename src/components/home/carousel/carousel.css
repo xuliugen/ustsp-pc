@@ -1,0 +1,16 @@
+.carousel {
+  position: relative;
+  /* width: 100%; */
+  /* height: 460px; */
+  overflow: hidden;
+}
+
+.list {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 0;
+  overflow: hidden;
+  transition: left 1s;
+}

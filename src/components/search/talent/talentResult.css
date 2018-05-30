@@ -1,0 +1,20 @@
+
+.talent-items{
+  border-bottom:1px #ddd solid;
+}
+
+.title{
+  background-color: #e0e6f0;
+  padding: 19px 0 18px 19px;
+  color: #b7c0cb;
+  margin-bottom: 20px;
+}
+
+.talents-number{
+  color: #3091e6;
+}
+
+.pagination{
+  float: right;
+  margin-top: 19px;
+}

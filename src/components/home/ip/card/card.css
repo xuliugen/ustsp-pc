@@ -1,0 +1,86 @@
+.ip-card {
+  position: relative;
+  height: 100%;
+  width: 290px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.ip-card-basic, .ip-card-publisher {
+  width: 250px;
+}
+
+.ip-card-basic {
+  /* height: 162px; */
+  padding: 20px 0 0 20px;
+}
+
+.ip-card-title {
+  display: block;
+  width: 223px;
+  max-height: 48px;
+  line-height: 24px;
+  overflow: hidden;
+  font-size: 22px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.ip-card-type span{
+  display: inline-block;
+  margin: 10px 0 0 0;
+  color: #fff;
+  padding: 4px 5px;
+  background-color: #aaaaaa;
+  border-radius: 4px;
+}
+
+.ip-card-productID {
+  display: block;
+  margin: 10px 0;
+}
+
+.ip-card-productID, .ip-card-patentNum, .ip-card-time {
+   color: #8f9ba7;
+}
+
+.ip-card-publisher {
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  margin: 0 20px 24px 20px;
+}
+
+.ip-card-avatar img {
+  width: 36px;
+  height: 36px;
+}
+
+.ip-card-detail {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+.ip-card-name {
+  display: inline-block;
+  padding-bottom: 4px;
+  color: #666666
+}
+
+.ip-card-time {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.ip-card-checked {
+  float: right;
+}
+.ip-card-checked {
+  font-size: 16px;
+  width: 80px;
+  height: 44px;
+  border-radius: 4px;
+  background-color: #3091e6;
+  color: #fff;
+}

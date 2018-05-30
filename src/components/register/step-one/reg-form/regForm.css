@@ -1,0 +1,34 @@
+.form-wrapper {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.form-wrapper .form {
+  width: 100%;
+}
+
+.row > * {
+  width: 100%;
+}
+
+.verfiyRow .verifyIpt {
+  display: inline-block;
+  width: 290px;
+  margin-right: 10px;
+}
+
+.verfiyRow .verifyBtn {
+  width: 100px;
+}
+
+.nextBtn-container {
+  margin-top: 60px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.nextBtn {
+  width: 160px;
+  height: 44px;
+}

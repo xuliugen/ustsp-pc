@@ -13,6 +13,9 @@ const getClientEnvironment = require('./env')
 const paths = require('./paths')
 const baseWebpackConfig = require('./webpack.config.base')
 const webpackMerge = require('webpack-merge')
+const fs = require('fs')
+const lessToJs = require('less-vars-to-js')
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'))
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -154,9 +157,10 @@ module.exports = webpackMerge(baseWebpackConfig, {
                 [
                   'react-css-modules',
                   {
-                    'generateScopedName': '[local]-[hash:base64:5]'
+                    'generateScopedName': '[name]--[local]-[hash:base64:5]'
                   }
-                ]
+                ],
+                'react-hot-loader/babel'
               ]
             }
           },
@@ -167,6 +171,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            exclude: /node_modules|antd\.css/,
             use: [
               require.resolve('style-loader'),
               {
@@ -174,7 +179,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: '[local]-[hash:base64:5]'
+                  localIdentName: '[name]--[local]-[hash:base64:5]'
                 }
               },
               {
@@ -195,6 +200,55 @@ module.exports = webpackMerge(baseWebpackConfig, {
                       flexbox: 'no-2009'
                     })
                   ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.css$/,
+            include: /node_modules|antd\.css/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1
+                  // 改动
+                  // modules: true,   // 新增对css modules的支持
+                  // localIdentName: '[name]__[local]__[hash:base64:5]', //
+                }
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9' // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.less$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              {
+                loader: 'less-loader',
+                options: {
+                  modifyVars: themeVariables
                 }
               }
             ]

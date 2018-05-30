@@ -1,0 +1,19 @@
+.types {
+  padding: 0 0 30px 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.type-status {
+  display: inline-block;
+  margin-right: 14px;
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+}
+
+.type-status-selected {
+  border-radius: 18px;
+  background-color: #fff;
+  color: #3091e6;
+}

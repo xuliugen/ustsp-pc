@@ -1,0 +1,19 @@
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.hint {
+  margin-left: 20px;
+}
+
+.title {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+.money {
+  color: #3091e6;
+}

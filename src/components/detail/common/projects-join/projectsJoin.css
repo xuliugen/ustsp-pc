@@ -1,0 +1,32 @@
+.project-item {
+  width: 760px;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 20px;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.project-name {
+  font-size: 16px;
+}
+
+.project-name:after {
+  content: ' - ';
+}
+
+.project-role {
+  font-size: 14px;
+  color: #a9b2bb;
+}
+
+.project-process {
+  float: right;
+  color: #aaaaaa
+}
+
+.more-project{
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 20px;
+  float: right;
+}

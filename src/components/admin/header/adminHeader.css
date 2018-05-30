@@ -1,0 +1,104 @@
+.header {
+  width: 100%;
+  height: 90px;
+  background-color: #fff;
+}
+
+.logo-block {
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 290px;
+  height: 100%;
+  padding: 0 20px 0 30px;
+  border-right: 1px #ddd solid;
+  box-sizing: border-box;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 290px;
+  height: 100%;
+  padding: 0 30px;
+  color: #8f9ba7;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar > * {
+  float: left;
+}
+
+.nav-home-wrapper {
+  float: left;
+  margin-right: 16px;
+  padding: 10px;
+  background-color: #8f9ba7;
+  border-radius: 50%;
+}
+
+.nav-home-wrapper .nav-home {
+  color: #fff;
+  font-size: 18px;
+}
+
+.navbar-li {
+  position: relative;
+  padding: 0 16px;
+  color: #8f9ba7;
+}
+
+.navbar-li::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: '';
+  height: 100%;
+  width: 1px;
+  background-color: #8f9ba7;
+}
+
+.navbar-li:last-child {
+  margin-right: 0;
+}
+
+.navbar-li:last-child::after {
+  display: none;
+}
+
+/* user */
+.header-right {
+  display: flex;
+  align-items: center;
+  flex: 1 1;
+  justify-content: flex-end;
+  color: #aaa;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.header-username {
+  padding-left: 11px;
+  color: #3091e6;
+}
+
+.header-avatar {
+  width: 50px;
+}
+
+.header-logout {
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.content {
+  margin: 20px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 70px;
+  background-color: lightgrey;
+  object-fit: cover;
+}
+
+.tch-certificate-wrapper {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border: 1px solid lightgrey;
+}
+
+.tch-certificate {
+  width: 200px;
+  height: 200px;
+}

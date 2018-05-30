@@ -1,0 +1,21 @@
+.order-detail {
+  width: 100%;
+}
+
+.order-title{
+  font-size: 14px;
+  color: #aaa;
+  background-color: #fdfcfc;
+  border-bottom:1px solid #ddd;
+}
+
+.order-title span {
+  display: inline-block;
+  width: 100%;
+  padding: 13px 0 13px 30px;
+}
+
+.order-content {
+  background-color: #fff;
+  padding: 40px 30px;
+}

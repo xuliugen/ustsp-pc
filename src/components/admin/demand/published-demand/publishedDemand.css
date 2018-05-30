@@ -1,0 +1,21 @@
+.published-demand-container {
+  width: 100%;
+  min-height: 800px;
+  background-color: #e0e6f0;
+}
+
+.demand-items {
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30px 0 30px;
+}
+
+.demand-blank {
+  padding: 30px 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.demand-pagination {
+  margin-top: 30px;
+}

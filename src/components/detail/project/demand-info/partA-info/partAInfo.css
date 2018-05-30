@@ -1,0 +1,41 @@
+.PartA {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar {
+  display: inline-block;
+  margin-right: 19px;
+}
+
+.avatar img {
+  width: 80px;
+  height: 80px;
+}
+
+.identity {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+
+.name {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.contact {
+  height: 80px;
+  margin: 21px 60px 0 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #8f9ba7;
+}
+
+.phone{
+  margin-bottom: 10px;
+}

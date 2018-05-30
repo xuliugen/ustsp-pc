@@ -1,0 +1,23 @@
+.root {
+  margin-top: 40px;
+}
+
+.content {
+  margin-top: 25px;
+}
+
+.other-info-form {
+  width: 100%;
+}
+
+.intro-container {
+  position: relative;
+}
+
+.word-limit {
+  font-size: 14px;
+  color: #666666;
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+}

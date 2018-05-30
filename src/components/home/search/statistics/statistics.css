@@ -1,0 +1,22 @@
+.statistic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.info-item::before {
+  content: '|';
+  padding: 0 5px;
+  color: #aaa;
+}
+
+.info-item:first-child::before {
+  content: '';
+  padding: 0;
+}
+
+.info-item .num {
+  color: #3091e6;
+}
