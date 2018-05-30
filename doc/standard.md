@@ -12,10 +12,10 @@
 ...
 ```
 
-> 注：
-positioning 相关属性包括：position / top / right / bottom / left / float / display / overflow 等
-Box Model 相关属性包括：border / margin / padding / width / height 等
-Typographic 相关属性包括：font / line-height / text-align / word-wrap 等
+> 注：<br />
+positioning 相关属性包括：position / top / right / bottom / left / float / display / overflow 等；<br />
+Box Model 相关属性包括：border / margin / padding / width / height 等；<br />
+Typographic 相关属性包括：font / line-height / text-align / word-wrap 等；<br />
 Visual 相关属性包括：background / color / transition / list-style 等
 
 ### class 选择器的命名
