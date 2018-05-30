@@ -11,5 +11,9 @@ export default {
 
   updateInfo(body) {
     return ajax.put('/enterprise/change-info', body)
+  },
+
+  fetchRmdEtp() {
+    return ajax.get(`/enterprise/introduce`)
   }
 }

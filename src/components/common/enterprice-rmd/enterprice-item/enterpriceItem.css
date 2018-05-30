@@ -1,0 +1,23 @@
+.enterprice-item{
+  width: 330px;
+  margin: 10px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.photo{
+  width: 30px;
+  height: 30px;
+  margin: 6px 0;
+}
+
+.name{
+  margin: 5px 10px;
+  color: #666;
+}
+
+.type{
+  float: right;
+  margin: 10px 0;
+  color: #8f9ba7;
+}
