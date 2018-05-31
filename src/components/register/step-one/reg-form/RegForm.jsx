@@ -91,6 +91,14 @@ class RegForm extends React.Component {
     }
   }
 
+  validateUserAgree = (rule, value, callback) => {
+    if (value === true) {
+      callback()
+    } else {
+      callback(new Error('请同意用户注册协议'))
+    }
+  }
+
   validateTelExist = async (rule, value, callback) => {
     const { getFieldValue } = this.props.form
     const tel = getFieldValue('userTel')
@@ -333,7 +341,9 @@ class RegForm extends React.Component {
           </FormItem>
           <FormItem>
             {getFieldDecorator('userAgree', {
-              rules: [{ required: true, message: '请选择同意' }]
+              rules: [
+                { validator: this.validateUserAgree }
+              ]
             })(
               <Checkbox><span>我已阅读并同意《UppFind用户注册协议》</span></Checkbox>
             )}
