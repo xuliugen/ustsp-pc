@@ -16,7 +16,11 @@ export default class LoginPanel extends React.Component {
     try {
       await this.props.authStore.login()
       message.success('登录成功')
-      this.props.history.replace('/')
+      if (this.props.userStore.user.userType === 3) {
+        this.props.history.replace('/admin')
+      } else {
+        this.props.history.replace('/')
+      }
       setTimeout(() => {
         this.props.userStore.checkIfInfoCompleted()
       }, 1000)
