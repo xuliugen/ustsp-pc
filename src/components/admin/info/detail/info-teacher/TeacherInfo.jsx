@@ -18,12 +18,13 @@ export default class TeacherInfo extends React.Component {
       tchPersonalExp: {}
     }
   }
-
   componentDidMount = async () => {
     const userId = this.props.userStore.user.id
     const sexArray = ['男', '女']
     try {
       const { data } = await TchInfoApi.getTeacherInfo(userId)
+      const newAvatar = data.teacherInfoDTO.photo
+      this.props.userStore.changeAvatar(newAvatar)
       this.setState({
         tchBasicInfo: {
           name: data.teacherInfoDTO.realName,
