@@ -23,9 +23,8 @@ export default class TeacherInfo extends React.Component {
     const sexArray = ['男', '女']
     try {
       const { data } = await TchInfoApi.getTeacherInfo(userId)
-      const userInfo = JSON.parse(JSON.stringify(this.props.userStore.user))
-      userInfo.avatar = data.teacherInfoDTO.photo
-      this.props.userStore.save(userInfo)
+      const newAvatar = data.teacherInfoDTO.photo
+      this.props.userStore.changeAvatar(newAvatar)
       this.setState({
         tchBasicInfo: {
           name: data.teacherInfoDTO.realName,
