@@ -13,8 +13,8 @@ import { observer, inject } from 'mobx-react'
 @inject('userStore')
 @observer
 export default class StudentContent extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       stuInfo: {
         id: '5f7afed348164f0db1f3ae321568fbc3',
@@ -29,14 +29,14 @@ export default class StudentContent extends React.Component {
         updateTime: 1516712893000,
         qq: '',
         wechat: '',
-        realName: '刘俊男',
+        realName: '',
         sex: '0',
         location: null,
         birth: 1449072000000,
-        stuLevel: '研究生',
-        school: '电子科技大学',
-        college: '信息与软件工程学院',
-        major: '软件工程',
+        stuLevel: '',
+        school: '',
+        college: '',
+        major: '',
         grade: 2,
         skill: 'JAVA',
         introduction: '',
@@ -54,12 +54,11 @@ export default class StudentContent extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.match.params.id)
+  getDerivedStateFromProps(nextProps) {
     this.getStuDetail(nextProps.match.params.id)
   }
 
-  getDerivedStateFromProps() {
+  componentDidMount() {
     this.getStuDetail(this.props.match.params.id)
   }
 

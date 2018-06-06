@@ -23,6 +23,8 @@ export default class InfoModify extends React.Component {
       case 3:
         Content = ModifyEtpInfo
         break
+      default:
+        return null
     }
     return (<div styleName="root"><Content userId={id} /></div>)
   }
