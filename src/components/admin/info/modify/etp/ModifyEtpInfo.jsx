@@ -3,6 +3,7 @@ import './modifyEtpInfo.css'
 import { Form, message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { EtpBaseForm, EtpOthersForm } from 'components/common/info'
 
@@ -46,9 +47,10 @@ export default class ModifyEtpInfo extends React.Component {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
+        let photo = getPhotoRelativeUrl(this.state.etpPhoto)
         const etpInfo = {
           id: this.props.userId,
-          photo: this.state.etpPhoto,
+          photo: photo,
           businessPhoto: this.state.etpLicense,
           ...values,
           birth: values.birth ? values.birth.valueOf() : null

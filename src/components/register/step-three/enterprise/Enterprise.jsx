@@ -4,6 +4,7 @@ import { Form, message } from 'antd'
 import { EtpInfoApi } from 'src/ajax'
 import { withRouter, Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { EtpBaseForm, EtpOthersForm } from 'components/common/info'
 
@@ -40,9 +41,10 @@ class StepThreeEnterprise extends React.Component {
     this.props.form.validateFields(async (err, values) => {
       console.log(err)
       try {
+        let photo = getPhotoRelativeUrl(this.state.etpPhoto)
         const req = {
           id: this.props.registerStore.initial.uid,
-          photo: this.state.etpPhoto,
+          photo: photo,
           businessPhoto: this.state.license,
           ...values,
           birth: values.birth ? values.birth.valueOf() : null

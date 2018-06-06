@@ -5,25 +5,15 @@ import { observer, inject } from 'mobx-react'
 import './uploadAvatar.css'
 import imgDefaultAvatar from 'src/assets/defaultAvatar.svg'
 
-type Props = {
-  photo: string,
-  setPhoto: (param: string) => mixed
-}
-
-type State = {
-  loading: boolean,
-  imageUrl: string
-}
-
 @inject('registerStore')
 @observer
-export default class UploadAvatar extends React.Component<Props, State> {
+export default class UploadAvatar extends React.Component {
   state = {
     loading: false,
     imageUrl: ''
   }
 
-  handleChange = (info: any) => {
+  handleChange = (info) => {
     // if (info.file.status === 'uploading') {
     //   this.setState({ loading: true })
     //   return
@@ -33,9 +23,10 @@ export default class UploadAvatar extends React.Component<Props, State> {
       message.success('上传照片成功')
       let tchPhotos = info.file.response
       let pics = JSON.parse(tchPhotos[0].result)
-      const avatarUrls = pics.data.resource_path.split('/')
-      this.props.setPhoto(avatarUrls[2])
-      console.log(avatarUrls[2])
+      // const avatarUrls = pics.data.resource_path.split('/')
+      // this.props.setPhoto(avatarUrls[2])
+      // console.log(avatarUrls[2])
+      this.props.setPhoto(pics.data.resource_path)
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false
@@ -77,7 +68,7 @@ export default class UploadAvatar extends React.Component<Props, State> {
   }
 }
 
-function getBase64(img, callback: Function) {
+function getBase64(img, callback) {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
   reader.readAsDataURL(img)

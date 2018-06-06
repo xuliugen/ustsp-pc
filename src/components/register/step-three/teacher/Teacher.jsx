@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { TchInfoApi } from 'src/ajax'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
   TchBaseForm, TchRemuseForm } from 'components/common/info'
@@ -11,7 +12,7 @@ import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
 @withRouter
 @inject('registerStore')
 @observer
-class StepThreeTeacher extends React.Component<{}> {
+class StepThreeTeacher extends React.Component {
   constructor() {
     super()
     this.handleOnClickConfirm = this.handleOnClickConfirm.bind(this)
@@ -61,6 +62,7 @@ class StepThreeTeacher extends React.Component<{}> {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
+        let photo = getPhotoRelativeUrl(this.state.tchPhoto)
         const tchInfo = {
           id: this.props.registerStore.initial.uid,
           realName: values.realName,
@@ -79,7 +81,7 @@ class StepThreeTeacher extends React.Component<{}> {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: this.state.tchPhoto,
+          photo: photo,
           isRealName: this.props.registerStore.isClaimDataAccept
         }
         console.log(tchInfo)

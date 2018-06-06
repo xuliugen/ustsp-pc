@@ -3,6 +3,7 @@ import './modifyStuInfo.css'
 import { Form, message } from 'antd'
 import { StuInfoApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { StuEduExp, StuBaseForm, StuResumeForm } from 'components/common/info'
 
@@ -41,6 +42,7 @@ export default class ModifyStuInfo extends React.Component {
     e.preventDefault()
     this.props.form.validateFields(async (err, value) => {
       if (!err) {
+        let photo = getPhotoRelativeUrl(this.state.stuPhoto)
         const stuInfo = {
           id: this.props.userId,
           realName: value.realName,
@@ -56,7 +58,7 @@ export default class ModifyStuInfo extends React.Component {
           skill: value.skill ? value.skill.map(i => ({ skill: i })) : [],
           introduction: value.introduction,
           // isRealName: 'false',
-          photo: this.state.stuPhoto
+          photo: photo
         }
         try {
           await StuInfoApi.updateInfo(stuInfo)

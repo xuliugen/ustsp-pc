@@ -3,6 +3,7 @@ import './modifyTchInfo.css'
 import { Form, message } from 'antd'
 import { TchInfoApi } from 'src/ajax'
 import { withRouter } from 'react-router-dom'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { TchEduExp, TchResearchExp, TchIpExp, TchAwardExp,
   TchBaseForm, TchRemuseForm } from 'components/common/info'
@@ -49,6 +50,7 @@ export default class ModifyTchInfo extends React.Component {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
+        let photo = getPhotoRelativeUrl(this.state.tchPhoto)
         const tchInfo = {
           id: this.props.userId,
           realName: values.realName,
@@ -67,7 +69,7 @@ export default class ModifyTchInfo extends React.Component {
           academicExperience: values.academicExperience,
           publishPaper: values.publishPaper,
           introduction: values.introduction,
-          photo: this.state.tchPhoto
+          photo: photo
           // isRealName: this.props.registerStore.isClaimDataAccept
         }
         try {
