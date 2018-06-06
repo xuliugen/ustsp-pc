@@ -14,7 +14,7 @@ export default {
   },
 
   getInfo(userId) {
-    return ajax.get(`./student/getInfo?id=${userId}`)
+    return ajax.get(`/student/getInfo?id=${userId}`)
   },
 
   getEduInfo(userId) {
