@@ -4,6 +4,7 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import './projectItem.css'
 import imgSee from './see.png'
+import { projectStatusNum2Str } from 'src/common/formatter'
 
 type ProjectObj = {
   title: string,
@@ -16,32 +17,9 @@ type Props = {
 }
 
 export default class ProjectItem extends React.Component<Props> {
-  convertStatus(status) {
-    switch (status) {
-      case 0:
-        return '待审核'
-      case 1:
-        return '报名中'
-      case 2:
-        return '待签单'
-      case 3:
-        return '进行中'
-      case 4:
-        return '待验收'
-      case 5:
-        return '评价'
-      case 6:
-        return '完成'
-      case 13:
-        return '中断'
-      default:
-        return ''
-    }
-  }
-
   render() {
     const { project } = this.props
-    const status = this.convertStatus(project.status)
+    const status = projectStatusNum2Str(project.status)
     return (
       <div styleName="project-item">
         <div>

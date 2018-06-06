@@ -8,8 +8,6 @@ import imgAuth from './authority.png'
 export default class InfoManager extends React.Component {
   render() {
     const { manager } = this.props
-    // 暂时这样。。。
-    manager.isValid = true
     return (
       <div styleName="root">
         <div>
