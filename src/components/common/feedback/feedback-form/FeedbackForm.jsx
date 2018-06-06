@@ -3,19 +3,20 @@ import { Form, Input, Radio, Button, Tag, message } from 'antd'
 import { inject, observer } from 'mobx-react'
 import { FeedbackApi } from 'src/ajax'
 import './feedbackForm.css'
+
 const FormItem = Form.Item
 const { TextArea } = Input
 const RadioGroup = Radio.Group
-const url = window.location.href
 
-@observer
 @inject('userStore')
+@observer
 class FeedbackForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       checkState: this.props.checkState,
-      loading: false
+      loading: false,
+      url: ''
     }
   }
 
@@ -29,7 +30,7 @@ class FeedbackForm extends React.Component {
           this.setState({loading: true})
           if (userStore.isLogin) {
             feedbackData = {
-              pageUrl: url,
+              pageUrl: this.state.url,
               message: value.message,
               contactName: userStore.user.realName,
               contactRegion: userStore.user.location,
@@ -38,7 +39,7 @@ class FeedbackForm extends React.Component {
             }
           } else {
             feedbackData = {
-              pageUrl: url,
+              pageUrl: this.state.url,
               message: value.message,
               contactName: 'guest',
               contactRegion: '',
@@ -48,7 +49,6 @@ class FeedbackForm extends React.Component {
           }
           try {
             const state = await FeedbackApi.sendfeedbackData(feedbackData)
-            console.log(state)
             if (state.status === 200) {
               message.success('您的反馈我们已经收到，感谢您对我们的支持与帮助！')
             } else {
@@ -71,8 +71,13 @@ class FeedbackForm extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({ url: window.location.href })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
+
     return (
       <div styleName="root">
         <Form layout="inline">
@@ -106,9 +111,7 @@ class FeedbackForm extends React.Component {
                 { required: true, message: '请输入问题描述' }
               ]
             })(
-              <TextArea
-                rows={4}
-                placeholder="请详细描述您的建议、意见及问题，这将有助于我们更快地发现和解决问题。" />
+              <TextArea rows={4} placeholder="请详细描述您的建议、意见及问题，这将有助于我们更快地发现和解决问题。" />
             )}
           </FormItem>
         </Form>
@@ -117,7 +120,7 @@ class FeedbackForm extends React.Component {
             <span styleName="label">问题页面链接：</span>
           </FormItem>
           <FormItem styleName="form-item-url" >
-            <Tag styleName="url">{url}</Tag>
+            <Tag styleName="url">{this.state.url}</Tag>
           </FormItem>
         </Form>
         <Form>

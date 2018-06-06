@@ -39,7 +39,7 @@ export default class ModalButton extends React.Component {
           title="前端用户反馈"
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          destroyOnClose={'true'}
+          destroyOnClose
           footer={null}
           width={580}
         >

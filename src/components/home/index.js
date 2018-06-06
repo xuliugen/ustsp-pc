@@ -5,7 +5,6 @@ import Project from './project/Project'
 import News from './news/News'
 import IP from './ip/IP'
 import Footer from './footer/Footer'
-import ModalButton from './modal/ModalButton'
 
 export {
   Carousel,
@@ -14,6 +13,5 @@ export {
   Project,
   News,
   IP,
-  Footer,
-  ModalButton
+  Footer
 }
