@@ -7,6 +7,7 @@ import EtpInfoApi from './user/etpInfo'
 import StuInfoApi from './user/stuInfo'
 import TalentApi from './user/talent'
 import UserInfoApi from './user/userInfo'
+import MgrInfoApi from './user/mgrInfo'
 // project module
 import DemandApi from './demand/demand'
 import ProjectApi from './demand/project'
@@ -34,5 +35,6 @@ export {
   IpApi,
   MessageApi,
   ContactsApi,
-  FeedbackApi
+  FeedbackApi,
+  MgrInfoApi
 }
