@@ -21,6 +21,8 @@ export default class EnterpriseInfo extends React.Component {
     const etpId = this.props.userStore.user.id
     try {
       const { data } = await EtpInfoApi.getEnterpriseInfo(etpId)
+      const newAvatar = data.photo
+      this.props.userStore.changeAvatar(newAvatar)
       this.setState({
         etpBasicInfo: {
           name: data.realName,
