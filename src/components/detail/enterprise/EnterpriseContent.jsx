@@ -3,7 +3,9 @@ import './enterpriseContent.css'
 import InfoEnterprise from './info-enterprise/InfoEnterprise'
 import { DetailOptions } from '../common'
 import { EtpInfoApi } from 'src/ajax'
+import { withRouter } from 'react-router-dom'
 
+@withRouter
 export default class EnterpriseContent extends React.Component {
   constructor(props) {
     super(props)
