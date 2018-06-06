@@ -15,7 +15,7 @@ export default class StuBaseForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     const { stuInfo, mode, userStore } = this.props
-    const disableNameIpt = mode === 'modify' && userStore.user.realName
+    const disableNameIpt = Boolean(mode === 'modify' && userStore.user.realName)
 
     return (
       <div>
