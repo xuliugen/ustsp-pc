@@ -1,3 +1,8 @@
+.root{
+  position:relative;
+  padding-bottom: 30px;
+}
+
 .label{
   font-weight: bold;
 }
@@ -11,8 +16,9 @@
 }
 
 .button{
-  margin-top: 10px;
-  text-align: right;
+  position: absolute;
+  bottom:-30;
+  right:0;
 }
 
 .form-item-url{

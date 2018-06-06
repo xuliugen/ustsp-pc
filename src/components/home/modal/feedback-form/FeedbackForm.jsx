@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Radio, Button, Tag, message } from 'antd'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { FeedbackApi } from 'src/ajax'
 import './feedbackForm.css'
 const FormItem = Form.Item
@@ -8,6 +8,7 @@ const { TextArea } = Input
 const RadioGroup = Radio.Group
 const url = window.location.href
 
+@observer
 @inject('userStore')
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -19,9 +20,8 @@ class FeedbackForm extends React.Component {
   }
 
   handleSubmit = (e) => {
-    const { userStore } = this.props
-    console.log(userStore)
     e.preventDefault()
+    const { userStore } = this.props
     this.props.form.validateFields(
       async (err, value) => {
         if (!err) {
@@ -74,7 +74,7 @@ class FeedbackForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <div>
+      <div styleName="root">
         <Form layout="inline">
           <FormItem styleName="form-item">
             <span styleName="label">问题类型：</span>

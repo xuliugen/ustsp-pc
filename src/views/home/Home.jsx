@@ -25,7 +25,7 @@ export default class Home extends React.Component<Object> {
         </div>
         <Footer />
         <div styleName="modal">
-          {<ModalButton />}
+          <ModalButton />
         </div>
       </div>
     )
