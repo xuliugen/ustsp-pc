@@ -8,7 +8,7 @@ import { observer, inject } from 'mobx-react'
 const SubMenu = Menu.SubMenu
 
 @withRouter
-@inject('msgStore')
+@inject('msgStore', 'userStore')
 @observer
 export default class Sidebar extends React.Component {
   state = {
@@ -43,7 +43,7 @@ export default class Sidebar extends React.Component {
     })
   }
 
-  handleSubMenuClick = ({key}) => {
+  handleSubMenuClick = ({ key }) => {
     this.setState(pre => {
       if (pre.openKeys.includes(key)) {
         let openKeys = pre.openKeys
@@ -82,10 +82,13 @@ export default class Sidebar extends React.Component {
           inlineCollapsed={this.state.collapsed}
           inlineIndent={30}>
           {/* // onSelect={this.handleItemSelect}> */}
-          {routes.map(({key, title, children}) => {
+          {routes.map(({ key, title, children }) => {
             const SubMenuIcon = title.icon ? <Icon type={title.icon} /> : null
             let MenuItems, titleText
             if (key !== 'message') {
+              if (key === 'ip' && this.props.userStore.user.userType === 3) {
+                children = children.slice(2)
+              }
               MenuItems = children.map(({ key, to, text }) => {
                 const ItemLink = to ? <Link to={to}>{text}</Link> : <span>{text}</span>
                 return (

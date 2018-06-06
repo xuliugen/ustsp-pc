@@ -7,6 +7,7 @@ import Awards from './awards/Awards'
 import Experiences from './experiences/Experiences'
 import Educations from './educations/Educations'
 import Introduction from './introduction/Introduction'
+import { DetailOptions } from '../common'
 
 import { TchInfoApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
@@ -73,9 +74,8 @@ export default class TeacherContent extends React.Component {
   }
 
   render() {
-    return (
+    const intro = (
       <div>
-        <InfoTeacher infoTeacher={this.state.infoTeacher} />
         <Divider><span styleName="divider">个人履历</span></Divider>
         <Introduction introduction={this.state.intro} />
         {/* <Divider><span styleName="divider">TA参与的平台项目</span></Divider>
@@ -86,6 +86,12 @@ export default class TeacherContent extends React.Component {
         <Experiences researchInfos={this.state.researchInfos} />
         <Divider><span styleName="divider">获奖经历</span></Divider>
         <Awards userAwardInfos={this.state.userAwardInfos} />
+      </div>
+    )
+    return (
+      <div>
+        <InfoTeacher infoTeacher={this.state.infoTeacher} />
+        <DetailOptions type="teacher" intro={intro} />
       </div>
     )
   }

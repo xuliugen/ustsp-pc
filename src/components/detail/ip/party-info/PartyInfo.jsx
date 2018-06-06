@@ -1,4 +1,6 @@
 import React from 'react'
+import { userTypeNumToStr } from 'src/common/formatter'
+import { Link } from 'react-router-dom'
 import './partyInfo.css'
 
 export default class PartyInfo extends React.Component {
@@ -6,10 +8,13 @@ export default class PartyInfo extends React.Component {
     const { info } = this.props
     const userInfo = info.userInfo || {}
     const username = info.username
+    console.log(info)
     return (
       <div styleName="PartA">
         <div>
-          <div styleName="avatar"><img src={userInfo.avatar} /></div>
+          <Link to={`/${userTypeNumToStr(userInfo.userType)}/${userInfo.id}`}>
+            <div styleName="avatar"><img src={userInfo.avatar} /></div>
+          </Link>
           <div styleName="identity">
             <div styleName="name">{username}</div>
             <div>{userInfo.location} / {getOwnerType(userInfo.userType)}</div>

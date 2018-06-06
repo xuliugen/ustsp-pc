@@ -1,8 +1,8 @@
 import React from 'react'
 import './detail.css'
 
-import { Header, Footer, ProjectsRmd, TalentsRmd, NewsRmd, IpRmd, EnterpriceRmd } from 'components/common'
-import { ProjectContent, TeacherContent, StudentContent, IPContent, EnterpriseContent } from 'components/detail'
+import { Header, Footer, ProjectsRmd, TalentsRmd, IpRmd, EnterpriceRmd } from 'components/common'
+import { ProjectContent, TeacherContent, StudentContent, IPContent, EnterpriseContent, ManagerContent } from 'components/detail'
 
 export default class Detail extends React.Component {
   render() {
@@ -20,7 +20,7 @@ export default class Detail extends React.Component {
         MainContent = <TeacherContent />
         RmdContent = (
           <div>
-            <NewsRmd />
+            {/* <NewsRmd /> */}
             <TalentsRmd />
             {/* <CommonFriends /> */}
           </div>
@@ -30,7 +30,7 @@ export default class Detail extends React.Component {
         MainContent = <StudentContent />
         RmdContent = (
           <div>
-            <NewsRmd />
+            {/* <NewsRmd /> */}
             <TalentsRmd />
             {/* <CommonFriends /> */}
           </div>
@@ -43,6 +43,9 @@ export default class Detail extends React.Component {
       case 'enterprise':
         MainContent = <EnterpriseContent />
         RmdContent = <EnterpriceRmd />
+        break
+      case 'manager':
+        MainContent = <ManagerContent />
         break
       default:
         MainContent = null

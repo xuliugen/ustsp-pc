@@ -19,7 +19,7 @@ export default class Introduction extends React.Component {
         </div>
         <div>
           <h4>发表文章</h4>
-          <p>  {this.props.introduction.publishPaper}</p>
+          <p style={{ wordWrap: 'break-word' }}>{this.props.introduction.publishPaper}</p>
         </div>
       </div>
     )

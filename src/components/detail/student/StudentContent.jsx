@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import StudentCard from 'components/detail/student/student-card/StudentCard'
 import Introduction from './introduction/Introduction'
 import Educations from './educations/Educations'
+import { DetailOptions } from '../common'
 import { StuInfoApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
 
@@ -79,15 +80,20 @@ export default class StudentContent extends React.Component {
   }
 
   render() {
-    return (
+    const intro = (
       <div>
-        <StudentCard stuInfo={this.state.stuInfo} />
         {/* <Divider><span styleName="divider">TA参与的平台项目</span></Divider> */}
         {/* <ProjectsJoin /> */}
         <Divider><span styleName="divider">个人简介</span></Divider>
         <Introduction introduction={this.state.introduction} />
         <Divider><span styleName="divider">教育经历</span></Divider>
         <Educations educations={this.state.educations} />
+      </div>
+    )
+    return (
+      <div>
+        <StudentCard stuInfo={this.state.stuInfo} />
+        <DetailOptions type="student" intro={intro} />
       </div>
     )
   }
