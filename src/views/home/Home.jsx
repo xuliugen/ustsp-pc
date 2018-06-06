@@ -1,10 +1,9 @@
-// @flow
 import React from 'react'
 import { Header, Footer } from 'components/common'
 import { Carousel, Search, Talent, Project, News, IP } from 'components/home'
 import './home.css'
 
-export default class Home extends React.Component<Object> {
+export default class Home extends React.Component {
   render() {
     return (
       <div styleName="page-wrapper">

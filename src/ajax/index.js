@@ -17,6 +17,8 @@ import NewsApi from './news/news'
 import IpApi from './ip/ip'
 import MessageApi from './message/message'
 import ContactsApi from './contacts/contacts'
+// feedback
+import FeedbackApi from './user/feedback'
 
 export default axios
 export {
@@ -33,5 +35,6 @@ export {
   IpApi,
   MessageApi,
   ContactsApi,
+  FeedbackApi,
   MgrInfoApi
 }
