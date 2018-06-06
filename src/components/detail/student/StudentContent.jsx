@@ -9,9 +9,9 @@ import { DetailOptions } from '../common'
 import { StuInfoApi } from 'src/ajax'
 import { observer, inject } from 'mobx-react'
 
+@withRouter
 @inject('userStore')
 @observer
-@withRouter
 export default class StudentContent extends React.Component {
   constructor() {
     super()
@@ -27,8 +27,8 @@ export default class StudentContent extends React.Component {
         isValid: true,
         createTime: 1516712893000,
         updateTime: 1516712893000,
-        qq: '123123123',
-        wechat: '123123',
+        qq: '',
+        wechat: '',
         realName: '刘俊男',
         sex: '0',
         location: null,
@@ -39,7 +39,7 @@ export default class StudentContent extends React.Component {
         major: '软件工程',
         grade: 2,
         skill: 'JAVA',
-        introduction: '牛逼',
+        introduction: '',
         photo: 'http://ufind-10067447.cossh.myqcloud.com/userAvatar/defaultAvatar.svg',
         isRealName: true,
         domainName: null,
@@ -55,10 +55,11 @@ export default class StudentContent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.match.params.id)
     this.getStuDetail(nextProps.match.params.id)
   }
 
-  componentDidMount() {
+  getDerivedStateFromProps() {
     this.getStuDetail(this.props.match.params.id)
   }
 

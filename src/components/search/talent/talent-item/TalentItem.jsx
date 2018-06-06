@@ -30,7 +30,7 @@ export default class talentItem extends React.Component {
               {talent.isClaim === 1 && <img size="small" src={authorityPic} style={{ marginLeft: '9px' }} />}
             </div>
             <div style={{ marginTop: '10px' }}>
-              <span styleName="school-info">{talent.school} / {talent.title}</span>
+              <span styleName="school-info">{talent.school} / {talent.title || talent.stuLevel}</span>
               <span styleName="major">{talent.college} / {talent.major} </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '11px' }}>

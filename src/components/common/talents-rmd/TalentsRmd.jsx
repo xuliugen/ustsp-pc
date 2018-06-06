@@ -6,20 +6,9 @@ import { inject, observer } from 'mobx-react'
 import TalentItem from './talent-item/TalentItem'
 import './talentsRmd.css'
 
-type SimilarObj = {
-  name: string,
-  university: string,
-  title: string,
-  avatar: string
-}
-
-type State = {
-  similar: Array<SimilarObj>
-}
-
 @inject('userStore')
 @observer
-export default class TalentsRmd extends React.Component<{}, State> {
+export default class TalentsRmd extends React.Component {
   constructor() {
     super()
     this.state = {

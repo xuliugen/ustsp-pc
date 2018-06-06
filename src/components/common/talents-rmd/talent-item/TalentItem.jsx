@@ -1,16 +1,16 @@
 // @flow
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './talentItem.css'
 
-type Props = {
-  name: string,
-  university: string,
-  title: string,
-  avatar: string
-}
+@withRouter
+export default class TalentItem extends React.Component {
+  handleClick = (url) => {
+    this.props.history.push({
+      pathname: url
+    })
+  }
 
-export default class TalentItem extends React.Component<Props> {
   render() {
     const { talent } = this.props
     let url = ''
@@ -24,10 +24,10 @@ export default class TalentItem extends React.Component<Props> {
     }
     return (
       <div styleName="talent-item">
-        <Link to={url}>
+        <a onClick={this.handleClick.bind(this, url)}>
           <img styleName="avatar" src={talent.photo} />
           <span styleName="name">{talent.name}</span>
-        </Link>
+        </a>
         <span styleName="university-item">{talent.school} / {talent.title}</span>
       </div>
     )
