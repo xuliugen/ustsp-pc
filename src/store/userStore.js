@@ -40,6 +40,11 @@ class UserStore {
     this.user = null
   }
 
+  @action
+  changeAvatar(avatar) {
+    this.user.avatar = avatar
+  }
+
   checkIfInfoCompleted() {
     if (this.isLogin && !this.user.realName) {
       message.warn('请进入个人中心完善用户信息~')

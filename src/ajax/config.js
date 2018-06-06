@@ -18,7 +18,9 @@ instance.interceptors.request.use(function(config) {
   // Do something with request error
   return Promise.reject(error)
 })
-instance.defaults.headers.common['Authorization'] = `${window.sessionStorage.token}`
+if (typeof window.sessionStorage.token !== 'undefined') {
+  instance.defaults.headers.common['Authorization'] = 'Bearer ' + window.sessionStorage.getItem('token')
+}
 // Add a response interceptor
 instance.interceptors.response.use((res) => {
   // Do something with response data

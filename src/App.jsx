@@ -15,6 +15,8 @@ import Search from '@/search/Search'
 import NewsDetail from '@/news/NewsDetail'
 import AllNews from '@/news/all-news/AllNews'
 
+import { ModalButton } from 'components/common'
+
 @withRouter
 @inject('msgStore', 'userStore')
 @observer
@@ -32,8 +34,13 @@ class App extends React.Component {
   }
 
   render() {
+    const feedbackStyle = {
+      position: 'fixed',
+      right: '10px',
+      bottom: '10px'
+    }
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
@@ -47,11 +54,15 @@ class App extends React.Component {
           <Route path="/news/:id" component={NewsDetail} />
           <Route path="/ip/:id" component={Detail} />
           <Route path="/enterprise/:id" component={Detail} />
+          <Route path="/manager/:id" component={Detail} />
           <Route path="/search" component={Search} />
           <Route path="/news" component={AllNews} />
           <Redirect from="/" to="/" />
         </Switch>
         {/* <DevTools /> */}
+        <div style={feedbackStyle}>
+          <ModalButton />
+        </div>
       </div>
     )
   }

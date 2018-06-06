@@ -4,6 +4,7 @@ import { Form, message } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { StuInfoApi } from 'src/ajax'
 import { withRouter, Link } from 'react-router-dom'
+import { getPhotoRelativeUrl } from 'src/common/utils'
 
 import { StuEduExp, StuBaseForm, StuResumeForm } from 'components/common/info'
 // import SideNav from '../common/side-nav/SideNav'
@@ -11,7 +12,7 @@ import { StuEduExp, StuBaseForm, StuResumeForm } from 'components/common/info'
 @withRouter
 @inject('registerStore')
 @observer
-class StepThreeStudent extends React.Component<{}> {
+class StepThreeStudent extends React.Component {
   constructor() {
     super()
     this.pos = {
@@ -32,6 +33,7 @@ class StepThreeStudent extends React.Component<{}> {
     e.preventDefault()
     this.props.form.validateFields(async (err, value) => {
       if (!err) {
+        let photo = getPhotoRelativeUrl(this.state.stuPhoto)
         const stuInfo = {
           id: this.props.registerStore.initial.uid,
           realName: value.realName,
@@ -47,7 +49,7 @@ class StepThreeStudent extends React.Component<{}> {
           skill: value.skill ? value.skill.map(i => ({skill: i})) : [],
           introduction: value.introduction,
           isRealName: 'false',
-          photo: this.state.stuPhoto
+          photo: photo
         }
         try {
           await StuInfoApi.completeStuInfo(stuInfo)

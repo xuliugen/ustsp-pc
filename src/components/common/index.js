@@ -7,6 +7,7 @@ import IpRmd from './ip-rmd/IpRmd'
 import addFriend from './add-friend/AddFriend'
 import AddFriendBtn from './add-friend-btn/AddFriendBtn'
 import EnterpriceRmd from './enterprice-rmd/EnterpriceRmd'
+import ModalButton from './feedback/ModalButton'
 
 export {
   Header,
@@ -17,5 +18,6 @@ export {
   IpRmd,
   addFriend,
   AddFriendBtn,
-  EnterpriceRmd
+  EnterpriceRmd,
+  ModalButton
 }

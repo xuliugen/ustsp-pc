@@ -1,6 +1,6 @@
 import React from 'react'
 import './card.css'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import moment from 'moment'
 
 @withRouter
@@ -25,7 +25,9 @@ export default class IpCard extends React.Component {
           <span styleName="ip-card-patentNum">行业类型: {ip.patentDTO.industryCategory}</span>
         </div>
         <div styleName="ip-card-publisher">
-          <span styleName="ip-card-avatar"><img src={ip.photo} /></span>
+          <Link to={`/manager/${ip.patentDTO.ownerId}`}>
+            <span styleName="ip-card-avatar"><img src={ip.photo} /></span>
+          </Link>
           <div styleName="ip-card-detail">
             <span styleName="ip-card-name">{ip.name}</span>
             <br />

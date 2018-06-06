@@ -1,36 +1,28 @@
 .project-item {
   width: 100%;
-}
-
-.item {
-  float: left;
-}
-
-.head {
   display: flex;
+  justify-content: space-between;
 }
 
 .title {
   font-size: 22px;
+  margin-right: 20px;
 }
 
-.school {
-  margin-left: 20px;
+.status {
+  background-color: #1dbbae;
   color: #ffffff;
-  padding: 4px 5px;
+  padding: 4px 6px;
   border-radius: 5px;
 }
 
-.school, .time {
+.status, .time {
   font-size: 14px;
 }
 
 .time{
   margin-top: 20px;
-  /* width: 350px; */
   color: #8f9ba7;
-  /* display: flex; */
-  /* justify-content: space-between; */
 }
 
 .time span {
