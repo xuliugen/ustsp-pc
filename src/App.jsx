@@ -47,6 +47,7 @@ class App extends React.Component {
           <Route path="/news/:id" component={NewsDetail} />
           <Route path="/ip/:id" component={Detail} />
           <Route path="/enterprise/:id" component={Detail} />
+          <Route path="/manager/:id" component={Detail} />
           <Route path="/search" component={Search} />
           <Route path="/news" component={AllNews} />
           <Redirect from="/" to="/" />

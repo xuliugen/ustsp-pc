@@ -6,6 +6,8 @@ export function userTypeNumToStr(userType) {
       return 'teacher'
     case 3:
       return 'enterprise'
+    case 4:
+      return 'manager'
     default:
       return null
   }
