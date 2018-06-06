@@ -12,7 +12,13 @@ import DemandForm from '../common/demand-form/DemandForm'
 export default class ModifyDemand extends React.Component {
   state = {
     demand: {},
-    fileList: []
+    uploadFileName: null
+  }
+
+  setFileName(fileName) {
+    this.setState({
+      uploadfileName: fileName
+    })
   }
 
   componentDidMount() {
@@ -62,7 +68,7 @@ export default class ModifyDemand extends React.Component {
             province: values.province,
             city: values.city,
             uploadfileUrl: values.uploadfileUrl,
-            uploadfileName: '需求文件',
+            uploadfileName: this.state.uploadFileName,
             money: Number(values.money),
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
@@ -88,7 +94,7 @@ export default class ModifyDemand extends React.Component {
         <div styleName="title-wrapper">
           <span styleName="title">修改</span>
         </div>
-        <DemandForm form={this.props.form} demand={this.state.demand} />
+        <DemandForm form={this.props.form} demand={this.state.demand} setFileName={this.setFileName} />
         <div styleName="modBtn-container">
           <Button size="large" type="primary" onClick={this.handleModify}>修改</Button>
         </div>

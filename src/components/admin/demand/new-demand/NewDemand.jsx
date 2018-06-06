@@ -11,6 +11,20 @@ import { DemandApi } from 'src/ajax'
 @observer
 @Form.create()
 export default class NewDemand extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      uploadfileName: null
+    }
+    this.setFileName = this.setFileName.bind(this)
+  }
+
+  setFileName(fileName) {
+    this.setState({
+      uploadfileName: fileName
+    })
+  }
+
   componentDidMount() {
     const { userStore } = this.props
     userStore.checkIfInfoCompleted()
@@ -29,7 +43,7 @@ export default class NewDemand extends React.Component {
         message.error('请完善需求信息')
       } else {
         const regData = {
-          projectSkillList: values.skills && values.skills.map(i => ({skill: i})),
+          projectSkillList: values.skills && values.skills.map(i => ({ skill: i })),
           projectResearchInfo: {
             projectName: values.projectName,
             type: values.type,
@@ -44,7 +58,7 @@ export default class NewDemand extends React.Component {
             // uploadfileUrl: this.state.uploadFile ? this.state.uploadFile.fileUrl : null,
             // uploadfileName: this.state.uploadFile ? this.state.uploadFile.fileName : null,
             uploadfileUrl: values.uploadfileUrl,
-            uploadfileName: '需求文件',
+            uploadfileName: this.state.uploadfileName,
             money: Number(values.money),
             toOriented: values.oriented,
             projectIntroduction: values.projectIntroduction,
@@ -69,7 +83,7 @@ export default class NewDemand extends React.Component {
         <div styleName="title-wrapper">
           <span styleName="title">发布需求</span>
         </div>
-        <DemandForm form={this.props.form} />
+        <DemandForm form={this.props.form} setFileName={this.setFileName} />
         <div styleName="modBtn-container">
           <Button size="large" type="primary" onClick={this.submitForm}>发布</Button>
         </div>
