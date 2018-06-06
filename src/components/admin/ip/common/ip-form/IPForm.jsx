@@ -51,8 +51,8 @@ export default class IPForm extends React.Component {
       return null
     } else if (e.file.status === 'done') {
       let files = e.file.response
-      let result = JSON.parse(files[0].result)
-      return result.data.access_url
+      // let result = JSON.parse(files[0].result)
+      return files[0].file_url
     }
   }
 
