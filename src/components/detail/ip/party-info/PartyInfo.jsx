@@ -8,7 +8,6 @@ export default class PartyInfo extends React.Component {
     const { info } = this.props
     const userInfo = info.userInfo || {}
     const username = info.username
-    console.log(info)
     return (
       <div styleName="PartA">
         <div>
@@ -17,7 +16,7 @@ export default class PartyInfo extends React.Component {
           </Link>
           <div styleName="identity">
             <div styleName="name">{username}</div>
-            <div>{userInfo.location} / {getOwnerType(userInfo.userType)}</div>
+            <div>{userInfo.location || userInfo.school} / {getOwnerType(userInfo.userType)}</div>
           </div>
         </div>
         <div styleName="contact">

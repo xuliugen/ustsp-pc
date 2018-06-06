@@ -1,5 +1,7 @@
 // @flow
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { userTypeNumToStr } from 'src/common/formatter'
 import './card.css'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
@@ -15,21 +17,24 @@ export default class Card extends React.Component<{}> {
   }
 
   render() {
+    const {person} = this.props
     const academicTitle = (
       <span styleName="academic-title">{this.props.person.title}</span>
     )
     return (
-      <div styleName="card-wrapper">
-        <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} /></div>
-        <div styleName="detail">
-          <div styleName="name">
-            {this.props.person.name}
-            {this.props.person.title ? academicTitle : ''}
+      <Link to={`/${userTypeNumToStr(person.type)}/${person.id}`}>
+        <div styleName="card-wrapper">
+          <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} /></div>
+          <div styleName="detail">
+            <div styleName="name">
+              {person.name}
+              {person.title ? academicTitle : ''}
+            </div>
+            <div styleName="school" >{person.school}</div>
+            <div styleName="research-field">{person.major}</div>
           </div>
-          <div styleName="school" >{this.props.person.school}</div>
-          <div styleName="research-field">{this.props.person.major}</div>
         </div>
-      </div>
+      </Link>
     )
   }
 }

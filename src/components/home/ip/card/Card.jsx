@@ -31,7 +31,7 @@ export default class IpCard extends React.Component {
           <div styleName="ip-card-detail">
             <span styleName="ip-card-name">{ip.name}</span>
             <br />
-            <span styleName="ip-card-time">发布于 {moment(ip.patentDTO.publicationDate).format('MM-DD')}</span>
+            <span styleName="ip-card-time">发布于 {moment(ip.patentDTO.createTime).format('MM-DD')}</span>
           </div>
           <button styleName="ip-card-checked" onClick={this.handleClick.bind(this, ip.patentDTO.id)}>查看</button>
         </div>
