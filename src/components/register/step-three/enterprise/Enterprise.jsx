@@ -40,13 +40,14 @@ class StepThreeEnterprise extends React.Component {
     this.props.form.validateFields(async (err, values) => {
       console.log(err)
       try {
-        await EtpInfoApi.completeInfo({
+        const req = {
           id: this.props.registerStore.initial.uid,
-          photo: this.state.photo,
+          photo: this.state.etpPhoto,
           businessPhoto: this.state.license,
           ...values,
           birth: values.birth ? values.birth.valueOf() : null
-        })
+        }
+        await EtpInfoApi.completeInfo(req)
         message.success('注册成功')
         this.props.registerStore.clearRegData()
         this.props.history.push('/')
