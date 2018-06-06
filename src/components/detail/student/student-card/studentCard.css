@@ -33,6 +33,7 @@
   height: 120px;
   margin-top: 40px;
   align-self: center;
+  object-fit: cover;
 }
 
 .name {

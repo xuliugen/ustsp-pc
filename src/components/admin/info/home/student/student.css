@@ -1,5 +1,6 @@
 .student-interested {
-  height: 48.5%;
+  /* min-height: 48.5%; */
+  margin-top: 20px;
   background-color: white;
 }
 
@@ -9,7 +10,5 @@
 }
 
 .student-cards {
-  padding: 0 10px 10px 10px;
-  width: 100%;
-  height: 85%;
+  padding: 10px;
 }
