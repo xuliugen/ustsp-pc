@@ -11,7 +11,7 @@ export default class ProjectFilterBox extends React.Component {
       <div styleName="filter-box">
         <FilterLine
           conditions={Subject}
-          style={{ height: '100px' }} />
+          hasMore />
         <FilterLine conditions={Oriented} />
         <FilterLine conditions={Publisher} />
         <FilterTags />

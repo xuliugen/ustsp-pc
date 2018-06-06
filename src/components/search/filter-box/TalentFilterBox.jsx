@@ -40,7 +40,7 @@ export default class TalentFilterBox extends React.Component {
       <div styleName="filter-box">
         <FilterLine
           conditions={Major}
-          style={{height: '100px'}} />
+          hasMore />
         <FilterLine
           conditions={Province}
           addDisabled

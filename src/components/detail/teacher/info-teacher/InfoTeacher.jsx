@@ -26,7 +26,7 @@ export default class InfoTeacher extends React.Component {
           <span styleName="name">{this.props.infoTeacher.realName}</span>
           <span styleName="details">{this.props.infoTeacher.title}</span>
           <span styleName="details">{this.props.infoTeacher.school}</span>
-          <span styleName="details">擅长领域:{this.props.infoTeacher.major} / {this.props.infoTeacher.researchArea}</span>
+          <span styleName="details">擅长领域: {this.props.infoTeacher.major}</span>
           <div styleName="contact">
             <Icon styleName="contact-icon" type="wechat" /><span>{this.props.infoTeacher.wechat}</span>
             <Icon type="qq" styleName="contact-icon" /><span>{this.props.infoTeacher.qq}</span>
