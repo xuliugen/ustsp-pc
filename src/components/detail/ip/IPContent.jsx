@@ -112,6 +112,7 @@ export default class IPContent extends React.Component {
                 <div styleName="info-item"><span styleName="info-item-title">专利权人</span>{patent.applicant}</div>
                 <div styleName="info-item"><span styleName="info-item-title">主分类号</span>{patent.classificationNumber}</div>
                 <div styleName="info-item"><span styleName="info-item-title">地址</span>{patent.address}</div>
+                <div styleName="info-item"><span styleName="info-item-title">法律状态</span>{patent.legalStatus}</div>
               </Col>
               <Col span={10}>
                 <div styleName="info-item"><span styleName="info-item-title">申请日</span>{patent.applicationDate && moment(patent.applicationDate).format('YYYY-MM-DD')}</div>

@@ -46,6 +46,7 @@ export default class Detail extends React.Component {
         break
       case 'manager':
         MainContent = <ManagerContent />
+        RmdContent = <TalentsRmd />
         break
       default:
         MainContent = null
