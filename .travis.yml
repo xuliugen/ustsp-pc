@@ -1,0 +1,39 @@
+language: node_js
+node_js: stable
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+# 环境变量
+env:
+  global:
+
+# 只检测 dev 分支的 push
+branches:
+  only:
+  - dev
+
+# build lifecycle start
+install:
+- yarn
+script:
+- yarn build
+- tar -cvf ./build.zip ./build
+- scp -P 23722 ./build.zip xuliugen@xuliugen.vicp.io:/home/xuliugen/www/
+- ssh xuliugen@xuliugen.vicp.io -p 23722
+- cd /home/xuliugen/www
+- expect -c "
+  spawn rm -rf ufind-pc/
+  expect  \"*assword\" {set timeout 300; send \"uppfind415\r\";}
+  expect \"*#\"
+  interact"
+- unzip ./build.zip
+- mv build ufind-pc
+- cd /usr/local/nginx-1.12.0/sbin
+- expect -c "
+  sudo ./nginx -s reload
+  expect  \"*assword\" {set timeout 300; send \"uppfind415\r\";}
+  expect \"*#\"
+  interact"
