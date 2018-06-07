@@ -46,9 +46,9 @@ class RegForm extends React.Component {
         try {
           const { data } = await RegisterApi.register(regData)
           if (data && data.user.id) {
-            message.success('注册成功，进入下一步')
             registerStore.setInitialData({ uid: data.user.id, email: values.userMail })
             if (values.userType === 2) {
+              message.success('注册成功，请等待认领')
               // YuLiu@uestc.edu.cn
               const { data } = await TchInfoApi.claimTchInfo(values.userMail)
               if (data.code === 200) {
@@ -60,6 +60,7 @@ class RegForm extends React.Component {
                 this.props.history.replace('/register/3')
               }
             } else {
+              message.success('注册成功，进入下一步')
               this.props.history.replace('/register/3')
             }
           }

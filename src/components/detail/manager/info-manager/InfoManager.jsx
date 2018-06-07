@@ -14,17 +14,19 @@ export default class InfoManager extends React.Component {
             <img src={imgView} />
             <span styleName="view">{manager.pageView}</span>
           </Col>
-          <Col span={8} styleName="detail">
-            <img styleName="avatar" src={manager.photo} />
-            <div styleName="name">
-              <span>{manager.realName}</span>
-              {manager.isValid ? <img src={imgAuth} style={{ verticalAlign: 'top' }} /> : ''}
-            </div>
-            <div styleName="basic">{manager.school}</div>
-            <div styleName="contact">
-              <Icon type="mail" styleName="contact-icon" /><span>{manager.email}</span>
-              <Icon styleName="contact-icon" type="wechat" /><span>{manager.wechat}</span>
-              <Icon type="qq" styleName="contact-icon" /><span>{manager.qq}</span>
+          <Col span={8} >
+            <div styleName="detail">
+              <img styleName="avatar" src={manager.photo} />
+              <div styleName="name">
+                <span>{manager.realName}</span>
+                {manager.isValid ? <img src={imgAuth} style={{ verticalAlign: 'top' }} /> : ''}
+              </div>
+              <div styleName="basic">{manager.school}</div>
+              <div styleName="contact">
+                <Icon type="mail" styleName="contact-icon" /><span>{manager.email}</span>
+                <Icon styleName="contact-icon" type="wechat" /><span>{manager.wechat}</span>
+                <Icon type="qq" styleName="contact-icon" /><span>{manager.qq}</span>
+              </div>
             </div>
           </Col>
         </Row>
