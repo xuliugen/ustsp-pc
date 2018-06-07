@@ -2,21 +2,14 @@
 import React from 'react'
 import './carousel.css'
 import imgBanner from './banner.png'
-import imgBanner2 from 'src/assets/banner2.jpg'
+// import imgBanner2 from 'src/assets/banner2.jpg'
 import imgBanner3 from 'src/assets/banner4.jpg'
+import imgBannerBirthday from 'src/assets/banner_birthday.jpg'
 import SliderItem from './slider-item/SliderItem'
 import SliderDots from './slider-dots/SliderDots'
 
-type State = {
-  curIdx: number,
-  imgData: Array<{}>,
-  delay: number,
-  autoplay: boolean,
-  pause: boolean
-}
-
-export default class Carousel extends React.Component<{}, State> {
-  autoPlayFlag: number
+export default class Carousel extends React.Component {
+  autoPlayFlag = null
   constructor() {
     super()
     this.state = {
@@ -24,7 +17,7 @@ export default class Carousel extends React.Component<{}, State> {
       imgData: [{
         src: imgBanner
       }, {
-        src: imgBanner2
+        src: imgBannerBirthday
       }, {
         src: imgBanner3
       }],
@@ -34,7 +27,7 @@ export default class Carousel extends React.Component<{}, State> {
     }
   }
   // 跳转到第n张图
-  turn(n: number) {
+  turn(n) {
     let _n = this.state.curIdx + n
     if (_n < 0) {
       _n = _n + this.state.imgData.length
