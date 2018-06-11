@@ -16,8 +16,12 @@ export default class Home extends React.Component {
             <Search />
             <Talent />
             <div styleName="pn-container">
-              <Project />
-              <News />
+              <div styleName="project-wrapper">
+                <Project />
+              </div>
+              <div styleName="news-wrapper">
+                <News />
+              </div>
             </div>
             <IP />
           </main>

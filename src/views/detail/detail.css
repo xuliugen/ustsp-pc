@@ -45,7 +45,7 @@
   padding-left: 30px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
   .mid-container {
     width: 100%;
   }
@@ -55,15 +55,25 @@
   }
 }
 
-@media (max-width: 800px) {
-  .left-container {
-    width: 100%;
-  }
-
-  .right-container {
+@media (max-width: 1200px) {
+  /* .right-container {
     float: left;
     width: 400px;
     margin-left: 0;
     padding-left: 0;
+  } */
+  .left-container {
+    float: none;
+    margin: 0 auto;
+  }
+
+  .right-container {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .left-container {
+    width: 100%;
   }
 }

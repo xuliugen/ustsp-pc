@@ -1,5 +1,5 @@
 .project {
-  width: 795px;
+  /* width: 795px; */
   height: 652px;
   background-color: #fff;
 }
@@ -15,7 +15,7 @@
 .project-item-wrapper {
   margin: 0px 21px;
   height: 115px;
-  width: 755px;
+  /* width: 755px; */
   display: flex;
   align-items: center;
   border-bottom: 1px dashed #f0f0f0;

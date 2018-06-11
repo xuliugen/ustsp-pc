@@ -1,5 +1,5 @@
 .news {
-  width: 392px;
+  /* width: 392px; */
   height: 652px;
   /* margin-left: 10px; */
   background-color: #fff;
@@ -15,7 +15,7 @@
 
 .news-item-wrapper {
   margin: 13px 20px 0 15px;
-  width: 357px;
+  /* width: 357px; */
   height: 92px;
   display: flex;
   align-items: center;

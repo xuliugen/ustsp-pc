@@ -5,17 +5,7 @@ import ProjectItem from '../../../../common/project-item/ProjectItem'
 import CardHeader from '../common/header/CardHeader'
 import { ProjectApi } from 'src/ajax'
 
-type ProjectObj = {
-  title: string,
-  school: string
-  // ...
-}
-
-type State = {
-  projects: Array<ProjectObj>
-}
-
-export default class Project extends React.Component<{}, State> {
+export default class Project extends React.Component {
   constructor() {
     super()
     this.state = {

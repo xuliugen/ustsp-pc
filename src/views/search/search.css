@@ -27,3 +27,14 @@
   left: 0;
   width: 100%;
 }
+
+@media (max-width: 1200px) {
+  /* .left-container {
+    float: none;
+    margin: 0 auto;
+  } */
+
+  .right-container {
+    display: none;
+  }
+}

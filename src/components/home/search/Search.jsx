@@ -5,7 +5,7 @@ import SearchTitle from './title/SearchTitle'
 import SearchInput from './search-input/SearchInput'
 import Statistics from './statistics/Statistics'
 
-export default class Search extends React.Component<{}> {
+export default class Search extends React.Component {
   render() {
     return (
       <div styleName="search">

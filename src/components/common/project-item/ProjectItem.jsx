@@ -6,17 +6,7 @@ import './projectItem.css'
 import imgSee from './see.png'
 import { projectStatusNum2Str } from 'src/common/formatter'
 
-type ProjectObj = {
-  title: string,
-  school: string
-  // ...
-}
-
-type Props = {
-  project: ProjectObj
-}
-
-export default class ProjectItem extends React.Component<Props> {
+export default class ProjectItem extends React.Component {
   render() {
     const { project } = this.props
     const status = projectStatusNum2Str(project.status)

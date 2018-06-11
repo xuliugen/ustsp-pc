@@ -17,10 +17,37 @@
   margin: 0 auto;
   position: relative;
   top: -80px;
+  overflow-x: hidden;
 }
 
 .pn-container {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+}
+
+.project-wrapper {
+  width: 66%;
+}
+
+.news-wrapper {
+  width: 32%;
+}
+
+@media (max-width: 1200px) {
+  .main {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .project-wrapper {
+    width: 100%;
+  }
+
+  .news-wrapper {
+    display: none;
+  }
 }
