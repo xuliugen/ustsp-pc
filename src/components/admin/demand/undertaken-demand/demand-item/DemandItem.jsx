@@ -4,7 +4,7 @@ import moment from 'moment'
 import './demandItem.css'
 
 @withRouter
-export default class DemandItem extends React.Component<{}> {
+export default class DemandItem extends React.Component {
   handleSeeDetailClick(id) {
     this.props.history.push(`${this.props.match.url}/${id}`)
   }
@@ -92,7 +92,13 @@ function setStyleList(item) {
       styleList.message = '查看进展'
       return styleList
     case 13:
-      styleList.status = '中断'
+      styleList.status = '甲方中断'
+      styleList.backgroundColor = '#DB4D6D'
+      styleList.color = '#fff'
+      styleList.message = '查看详情'
+      return styleList
+    case 14:
+      styleList.status = '乙方中断'
       styleList.backgroundColor = '#DB4D6D'
       styleList.color = '#fff'
       styleList.message = '查看详情'
