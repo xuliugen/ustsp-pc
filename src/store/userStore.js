@@ -43,6 +43,8 @@ class UserStore {
   @action
   changeAvatar(avatar) {
     this.user.avatar = avatar
+    const storageStr = JSON.stringify(this.user)
+    window.sessionStorage.setItem('user', storageStr)
   }
 
   checkIfInfoCompleted() {
