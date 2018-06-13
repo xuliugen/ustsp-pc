@@ -6,19 +6,9 @@ import ProjectItem from './project-item/ProjectItem'
 import { ProjectApi } from 'src/ajax'
 import './projectsRmd.css'
 
-type SimilarObj = {
-  name: string,
-  major: string,
-  money: string,
-}
-
-type State = {
-  similar: Array<SimilarObj>
-}
-
-export default class TalentsRmd extends React.Component<{}, State> {
-  constructor() {
-    super()
+export default class ProjectsRmd extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
       projects: []
     }

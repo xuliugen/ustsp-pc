@@ -54,7 +54,7 @@ export default class StudentContent extends React.Component {
     }
   }
 
-  getDerivedStateFromProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.getStuDetail(nextProps.match.params.id)
   }
 

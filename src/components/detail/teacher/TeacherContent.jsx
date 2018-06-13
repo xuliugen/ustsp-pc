@@ -16,8 +16,8 @@ import { observer, inject } from 'mobx-react'
 @inject('userStore')
 @observer
 export default class TeacherContent extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       intro: {
         introduction: '',

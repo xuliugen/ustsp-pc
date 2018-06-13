@@ -4,21 +4,29 @@ import './newsRmd.css'
 import moment from 'moment'
 import { withRouter, Link } from 'react-router-dom'
 import { NewsApi } from 'src/ajax'
+import { inject, observer } from 'mobx-react'
 
 @withRouter
-export default class NewsRmd extends React.Component<{}, State> {
-  constructor() {
-    super()
+@inject('userStore')
+@observer
+export default class NewsRmd extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
       news: []
     }
   }
+
   async componentDidMount() {
     try {
-      const { data } = await NewsApi.fetchNewsRmd(this.props.match.params.id, 4)
-      if (Array.isArray(data)) {
+      // const { userStore } = this.props
+      // const uid = userStore.isLogin ? userStore.user.id : ''
+      // const { data } = await NewsApi.fetchNewsRmd(uid, 4)
+      const { data } = await NewsApi.getMoreNews('', 1, 5)
+      const news = data.data
+      if (Array.isArray(news)) {
         this.setState({
-          news: data
+          news: news
         })
       }
     } catch (e) {
