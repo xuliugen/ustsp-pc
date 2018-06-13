@@ -1,9 +1,8 @@
-// @flow
 import React from 'react'
 import { Menu } from 'antd'
 import './nav.css'
 
-export default class Nav extends React.Component<{}> {
+export default class Nav extends React.Component {
   render() {
     return (
       <Menu styleName="nav-menu" mode="inline" defaultOpenKeys={['1']}>
