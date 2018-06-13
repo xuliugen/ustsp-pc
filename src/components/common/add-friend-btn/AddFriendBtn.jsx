@@ -1,6 +1,6 @@
 import React from 'react'
 import addFriend from '../add-friend/AddFriend'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import { inject, observer } from 'mobx-react'
 import { MessageApi } from 'src/ajax'
 
@@ -43,7 +43,11 @@ export default class AddFriendBtn extends React.Component {
   }
 
   handleAdd = () => {
-    this.props.handleAddFriend(this.props.userStore.user.id, this.props.info.id)
+    if (!this.props.userStore.isLogin) {
+      message.warn('请先登录在进行操作')
+    } else {
+      this.props.handleAddFriend(this.props.userStore.user.id, this.props.info.id)
+    }
   }
 
   render() {

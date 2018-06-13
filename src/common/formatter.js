@@ -30,7 +30,9 @@ export function projectStatusNum2Str(status) {
     case 6:
       return '完成'
     case 13:
-      return '中断'
+      return '甲方中断'
+    case 14:
+      return '乙方中断'
     default:
       return ''
   }

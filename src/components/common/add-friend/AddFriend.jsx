@@ -10,20 +10,16 @@ const addFriend = WrappedComponent => inject('userStore')(observer(class extends
   }
 
   async handleAddFriend(ownerId, partyId) {
-    if (!this.props.userStore.isLogin) {
-      message.warn('请先登录再进行操作')
+    if (partyId === ownerId) {
+      message.warn('请不要加自己为好友~')
     } else {
-      if (partyId === ownerId) {
-        message.warn('请不要加自己为好友~')
-      } else {
-        const isComplete = this.props.userStore.checkIfInfoCompleted()
-        if (isComplete) {
-          try {
-            await MessageApi.sendAddFirend(ownerId, partyId)
-            message.success('发送添加好友请求成功')
-          } catch (error) {
-            console.log(error)
-          }
+      const isComplete = this.props.userStore.checkIfInfoCompleted()
+      if (isComplete) {
+        try {
+          await MessageApi.sendAddFirend(ownerId, partyId)
+          message.success('发送添加好友请求成功')
+        } catch (error) {
+          console.log(error)
         }
       }
     }

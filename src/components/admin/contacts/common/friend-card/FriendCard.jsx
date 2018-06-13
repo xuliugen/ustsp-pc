@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon, Modal, message, Input } from 'antd'
 import './friendCard.css'
 // import ImgAvatar from 'src/assets/defaultAvatar.svg'
+import { userTypeNumToStr } from 'src/common/formatter'
 import { ContactsApi } from 'src/ajax'
 import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
@@ -77,21 +78,10 @@ export default class FriendCard extends React.Component {
     }
   }
 
-  setUserType = (userType) => {
-    switch (userType) {
-      case 1:
-        return 'student'
-      case 2:
-        return 'teacher'
-      default:
-        return null
-    }
-  }
-
   render() {
     const { userInfo } = this.props.info
     let elements = this.setElements(this.props.type)
-    let userType = this.setUserType(userInfo.userType)
+    let userType = userTypeNumToStr(userInfo.userType)
     return (
       <div styleName="root">
         <div styleName="avatar-wrapper"><Link to={`/${userType}/${userInfo.id}`}><img styleName="avatar" src={userInfo.avatar} /></Link></div>

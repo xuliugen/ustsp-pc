@@ -75,13 +75,13 @@ export default class DetailOptions extends React.Component {
         return this.props.intro
       case '项目':
         // 去掉待审核项目
-        const projects = this.state.projects.filter(item => item.projectResearchInfo.status !== 0)
+        const projects = this.state.projects.filter(item => item.projectResearchInfo ? item.projectResearchInfo.status !== 0 : item.status !== 0)
         return projects.length === 0 ? (
           <div style={{ fontSize: '18px' }}>他暂时还没有{this.state.projectType === 'published' ? '发布' : '承接'}项目</div>
         ) : projects.map((item, idx) => {
           return (
-            <div style={{ padding: '20px 0', borderBottom: '1px solid #ddd' }} key={item.projectResearchInfo.id}>
-              <ProjectItem project={item.projectResearchInfo} detail />
+            <div style={{ padding: '20px 0', borderBottom: '1px solid #ddd' }} key={item.id || item.projectResearchInfo.id}>
+              <ProjectItem project={item.projectResearchInfo || item} detail />
             </div>
           )
         })
