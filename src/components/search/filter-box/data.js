@@ -107,6 +107,10 @@ const Publisher = {
     {
       label: '企业',
       value: 3
+    },
+    {
+      label: '管理员',
+      value: 4
     }
   ]
 }
