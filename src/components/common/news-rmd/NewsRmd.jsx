@@ -36,8 +36,8 @@ export default class NewsRmd extends React.Component {
 
   render() {
     const newsItem = this.state.news.map((item, idx) => {
-      item.dynamics = item.dynamics.toString().replace(/<[^>]*?>(.*?)/gi, '$1')
-      item.dynamics = item.dynamics.toString().replace(/(.*?)<\/[^>]*?>/gi, '$1')
+      // item.dynamics = item.dynamics.toString().replace(/<[^>]*?>(.*?)/gi, '$1')
+      // item.dynamics = item.dynamics.toString().replace(/(.*?)<\/[^>]*?>/gi, '$1')
       return (
         <div styleName="news-item" key={idx}>
           <div styleName="publisher">
