@@ -81,6 +81,12 @@
   padding: 38px 30px 0 30px;
 }
 
+.pre-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 .skill-content button {
   padding: 8px 10px;
   font-size: 14px;

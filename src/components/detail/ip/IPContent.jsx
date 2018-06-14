@@ -125,7 +125,7 @@ export default class IPContent extends React.Component {
           </div>
         </div>
         <Divider><span styleName="divider">摘要</span></Divider>
-        <div styleName="content" style={{ textIndent: '28px' }}>
+        <div styleName="content pre-text">
           {patent.abstracts}
         </div>
         {(assignor && assignor.userInfo) && (

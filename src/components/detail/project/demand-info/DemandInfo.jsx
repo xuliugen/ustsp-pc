@@ -231,7 +231,7 @@ export default class DemandInfo extends React.Component {
         </div>
         <div styleName="demand-intr">
           <Header title="需求信息描述" />
-          <div styleName="intr-content">
+          <div styleName="intr-content pre-text">
             {demandDetail.demandIntr}
           </div>
         </div>
