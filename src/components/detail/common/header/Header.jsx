@@ -1,12 +1,7 @@
-// @flow
 import React from 'react'
 import './header.css'
 
-type Props = {
-  title: string
-}
-
-export default class FriendHeader extends React.Component<Props> {
+export default class RmdHeader extends React.Component {
   render() {
     return (
       <div styleName="header-warpper">

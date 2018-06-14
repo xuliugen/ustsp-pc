@@ -206,7 +206,7 @@ export default class DemandInfo extends React.Component {
                     <button styleName="sign-up" onClick={this.handleSighUp} disabled={this.state.signUpBtn.disable} >{this.state.signUpBtn.msg}</button>
                   </Spin>
                 </div>
-                {this.userStore.user.userType !== 3 && (
+                {this.props.userStore.user.userType !== 3 && (
                   <div style={{ display: 'inline-block' }}>
                     <Spin spinning={this.state.followBtn.loading}>
                       <button styleName="follow" onClick={this.handleFollow} disabled={this.state.followBtn.disable} >{this.state.followBtn.msg}</button>
@@ -231,7 +231,7 @@ export default class DemandInfo extends React.Component {
         </div>
         <div styleName="demand-intr">
           <Header title="需求信息描述" />
-          <div styleName="intr-content">
+          <div styleName="intr-content pre-text">
             {demandDetail.demandIntr}
           </div>
         </div>

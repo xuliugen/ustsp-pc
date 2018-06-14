@@ -5,9 +5,9 @@ import NewsItem from './news-item/NewsItem'
 import './news.css'
 import { NewsApi } from 'src/ajax'
 
-export default class News extends React.Component<{}, State> {
-  constructor() {
-    super()
+export default class News extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
       news: []
     }
