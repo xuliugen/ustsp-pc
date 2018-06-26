@@ -9,6 +9,7 @@ import Mgnt from './mgnt'
 import News from './news'
 import IP from './ip'
 import Contacts from './contacts'
+import Push from './push'
 
 export {
   Demand,
@@ -20,5 +21,6 @@ export {
   News,
   IP,
   Info,
-  Contacts
+  Contacts,
+  Push
 }
