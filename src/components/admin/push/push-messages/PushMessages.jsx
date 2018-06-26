@@ -4,6 +4,7 @@ import './pushMessages.css'
 
 import PushTagtForm from './push-target-form/PushTagtForm'
 import PushTagtResult from './push-target-result/PushTagtResult'
+import PushContent from './push-content/PushContent'
 
 @Form.create()
 export default class PushMessages extends React.Component {
@@ -18,7 +19,10 @@ export default class PushMessages extends React.Component {
         <div styleName="result-card">
           <PushTagtResult />
         </div>
-        <div styleName="push-content-title">title</div>
+        <div styleName="push-content-title">推送内容编辑</div>
+        <div styleName="content-edit">
+          <PushContent />
+        </div>
       </div>
     )
   }
