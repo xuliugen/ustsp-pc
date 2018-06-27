@@ -40,10 +40,10 @@ export default class PushTagtForm extends React.Component {
           <Col span={12}>
             <FormItem label="学科行业">
               {getFieldDecorator('major', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  { required: true, message: '请选择学科行业' }
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   { required: true, message: '请选择学科行业' }
+                // ]
               })(
                 <Select style={{ width: '100%' }}>
                   {major.map(item => <Option key={item}>{item}</Option>)}
@@ -56,10 +56,10 @@ export default class PushTagtForm extends React.Component {
           <Col span={12}>
             <FormItem label="省份">
               {getFieldDecorator('province', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  { required: true, message: '请选择所在省份' }
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   { required: true, message: '请选择所在省份' }
+                // ]
               })(
                 <Select style={{ width: '100%' }} onChange={this.handleProvinceChange}>
                   {province.map(prov => <Option key={prov}>{prov}</Option>)}
@@ -68,10 +68,10 @@ export default class PushTagtForm extends React.Component {
             </FormItem>
             <FormItem label="学校">
               {getFieldDecorator('school', {
-                validateTrigger: 'onChange',
-                rules: [
-                  { required: true, message: '请选择所在学校' }
-                ]
+                validateTrigger: 'onChange'
+                // rules: [
+                //   { required: true, message: '请选择所在学校' }
+                // ]
               })(
                 <Cascader style={{width: '100%'}} placeholder="学校" options={options}
                   expandTrigger="hover"
@@ -81,10 +81,10 @@ export default class PushTagtForm extends React.Component {
             </FormItem>
             <FormItem label="身份">
               {getFieldDecorator('role', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  {required: true, message: '请选择用户身份'}
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   {required: true, message: '请选择用户身份'}
+                // ]
               })(
                 <Select style={{ width: '100%' }}>
                   {role.map(item => <Option key={item}>{item}</Option>)}
@@ -95,10 +95,10 @@ export default class PushTagtForm extends React.Component {
           <Col span={12}>
             <FormItem label="城市">
               {getFieldDecorator('city', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  {required: true, message: '请选择所在城市'}
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   {required: true, message: '请选择所在城市'}
+                // ]
               })(
                 <Select style={{ width: '100%' }}>
                   {this.state.cities.map(item => <Option key={item}>{item}</Option>)}
@@ -107,20 +107,20 @@ export default class PushTagtForm extends React.Component {
             </FormItem>
             <FormItem label="学院">
               {getFieldDecorator('institute', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  {required: true, message: '请输入所在学院'}
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   {required: true, message: '请输入所在学院'}
+                // ]
               })(
                 <Input placeholder="学院" />
               )}
             </FormItem>
             <FormItem label="学历/职称">
               {getFieldDecorator('title', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  {required: true, message: '请选择学历或职称'}
-                ]
+                validateTrigger: 'onBlur'
+                // rules: [
+                //   {required: true, message: '请选择学历或职称'}
+                // ]
               })(
                 <Select style={{width: '100%'}}>
                   {title.map(item => <Option key={item}>{item}</Option>)}
