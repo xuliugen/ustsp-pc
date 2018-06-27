@@ -1,0 +1,27 @@
+.container {
+  width: 1000px;
+  padding: 20px 0px;
+  background-color: white;
+}
+
+.records-title {
+  padding: 3px 0px 3px 37px;
+  margin-bottom: 25px;
+  border-left: 3px solid #199ED8;
+  color: #8F98AA;
+}
+
+.records-content {
+  padding: 0px 40px;
+}
+
+.push-methods {
+  margin-bottom: 25px;
+}
+
+.push-method {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 15px;
+}
+

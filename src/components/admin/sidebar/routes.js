@@ -141,6 +141,11 @@ export const routes = [
         key: 'push-messages',
         to: '/admin/push/push-messages',
         text: '推送消息'
+      },
+      {
+        key: 'push-records',
+        to: '/admin/push/push-records',
+        text: '推送记录'
       }
     ]
   }

@@ -1,0 +1,50 @@
+.card {
+  margin-bottom: 20px;
+  padding: 30px 20px 20px 50px;
+  border: 1px solid #eee;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  margin-right: 30px;
+}
+
+.image {
+  height: 90px;
+  width: 120px;
+}
+
+.basic-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 90px;
+}
+
+.to-news {
+  align-self: center;
+  font-size: 13px;
+  color: #199ED8;
+}
+
+.message-title {
+  font-size: 18px;
+  color: #333;
+}
+
+.message-content {
+  font-size: 14px;
+  color: #AEAEAE;
+}
+
+.message-time {
+  font-size: 14px;
+  color: #AEAEAE;
+}
+
+
