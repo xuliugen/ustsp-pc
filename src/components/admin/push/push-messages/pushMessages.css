@@ -1,0 +1,45 @@
+.content-container {
+  width: 900px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: white;
+}
+
+.push-target {
+  padding-left: 40px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 30px;
+  border-left: 3px solid #199ED8;
+  color: #8F98AA;
+}
+
+.target-form {
+  padding: 0px  80px 0px 80px;
+  margin-bottom: 10px;
+}
+
+.result-num {
+  margin: 0px 80px 20px 80px;
+  padding: 5px 20px 5px 20px;
+  background-color: #F2F2F2;
+}
+
+.result-card {
+  padding: 0px  80px 0px 80px;
+}
+
+.push-content-title {
+  padding-left: 40px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  border-left: 3px solid #199ED8;
+  color: #8F98AA;
+}
+
+.content-edit {
+  padding: 0px  80px 0px 80px;
+}
+

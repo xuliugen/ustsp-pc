@@ -130,5 +130,18 @@ export const routes = [
       //   text: '好友动态'
       // }
     ]
+  }, {
+    key: 'push',
+    title: {
+      icon: 'pushpin-o',
+      text: '消息推送'
+    },
+    children: [
+      {
+        key: 'push-messages',
+        to: '/admin/push/push-messages',
+        text: '推送消息'
+      }
+    ]
   }
 ]
