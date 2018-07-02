@@ -27,7 +27,7 @@ export default class Card extends React.Component {
           <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} /></div>
           <div styleName="detail">
             <div styleName="name">
-              {person.name}
+              {person.name || person.username}
               {person.title ? academicTitle : ''}
             </div>
             <div styleName="school" >{person.school}</div>

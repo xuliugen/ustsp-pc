@@ -31,7 +31,7 @@ export default {
   },
 
   fetchRecordDetail(notificationId, userId) {
-    return ajax.get(`/notification/get/detaill`, {
+    return ajax.get(`/notification/get/detail`, {
       params: {
         notificationId,
         userId

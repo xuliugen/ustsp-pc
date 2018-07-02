@@ -1,0 +1,25 @@
+.root {
+  width: 100%;
+  /* padding: 20px 0px; */
+  background-color: white;
+}
+
+.header {
+  background-color: #f0f0f0;
+}
+
+.title {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.content {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}

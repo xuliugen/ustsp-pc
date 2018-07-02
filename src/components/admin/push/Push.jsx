@@ -9,7 +9,7 @@ export default class Push extends React.Component {
     return (
       <Switch>
         <Route path={`${match.url}/push-messages`} component={PushMessages} />
-        <Route path={`${match.url}/push-records`} component={PushRecords} />
+        <Route path={`${match.url}/push-records`} component={PushRecords} exact />
         <Route path={`${match.url}/push-records/:id`} component={RecordDetail} />
       </Switch>
     )
