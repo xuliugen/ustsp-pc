@@ -13,10 +13,29 @@ export default {
   },
 
   send(notification, userId) {
-    return ajax.post(`notification/send`, {
+    return ajax.post(`/notification/send`, {
       ...notification
     }, {
       params: { userId }
+    })
+  },
+
+  fetchRecords(method, page, rows) {
+    return ajax.get(`/notification/get/list`, {
+      params: {
+        method,
+        page,
+        rows
+      }
+    })
+  },
+
+  fetchRecordDetail(notificationId, userId) {
+    return ajax.get(`/notification/get/detaill`, {
+      params: {
+        notificationId,
+        userId
+      }
     })
   }
 }

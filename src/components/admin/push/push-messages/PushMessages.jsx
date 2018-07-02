@@ -9,11 +9,11 @@ import PushContent from './push-content/PushContent'
 import { inject, observer } from 'mobx-react'
 
 const initialCondition = {
-  major: '',
-  school: '',
-  college: '',
+  major: null,
+  school: null,
+  college: null,
   userType: 0,
-  degree: ''
+  degree: null
 }
 const initialPage = {
   page: 1,
@@ -21,17 +21,17 @@ const initialPage = {
 }
 const initialNotification = {
   method: 1,
-  title: '',
-  abstracts: '',
-  content: '',
-  major: '',
-  province: '',
-  city: '',
-  school: '',
-  college: '',
-  userType: '',
-  degree: '',
-  totalNum: '',
+  title: null,
+  abstracts: null,
+  content: null,
+  major: null,
+  province: null,
+  city: null,
+  school: null,
+  college: null,
+  userType: 0,
+  degree: null,
+  totalNum: 0,
   isPhoneRemind: false,
   isPublishDynamics: false
 }
@@ -104,7 +104,7 @@ export default class PushMessages extends React.Component {
       ...prev,
       targetsPage: {
         page: page,
-        row: prev.row
+        row: prev.targetsPage.row
       }
     }), () => {
       this.dispatchSearchTargets()
