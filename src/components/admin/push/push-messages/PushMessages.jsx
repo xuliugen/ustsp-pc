@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox, Button } from 'antd'
+import { Checkbox, Button, message } from 'antd'
 import './pushMessages.css'
 import { PushApi } from 'src/ajax'
 
@@ -9,29 +9,31 @@ import PushContent from './push-content/PushContent'
 import { inject, observer } from 'mobx-react'
 
 const initialCondition = {
-  major: null,
-  school: null,
-  college: null,
+  major: '',
+  school: '',
+  college: '',
   userType: 0,
-  degree: null
+  degree: ''
 }
 const initialPage = {
   page: 1,
   row: 9
 }
 const initialNotification = {
-  method: null,
-  title: null,
-  abstracts: null,
-  content: null,
-  major: null,
-  province: null,
-  city: null,
-  school: null,
-  college: null,
-  userType: null,
-  degree: null,
-  totalNum: null
+  method: 1,
+  title: '',
+  abstracts: '',
+  content: '',
+  major: '',
+  province: '',
+  city: '',
+  school: '',
+  college: '',
+  userType: '',
+  degree: '',
+  totalNum: '',
+  isPhoneRemind: false,
+  isPublishDynamics: false
 }
 
 @inject('userStore')
@@ -40,12 +42,46 @@ export default class PushMessages extends React.Component {
   constructor(props) {
     super(props)
     this.setCondition = this.setCondition.bind(this)
+    this.setTargetsPage = this.setTargetsPage.bind(this)
+    this.setNotification = this.setNotification.bind(this)
     this.state = {
       conditions: initialCondition,
       targetsPage: initialPage,
       targets: [],
       notification: initialNotification
     }
+  }
+
+  handlePubClick = () => {
+    const { notification, targets } = this.state
+    if (targets.length === 0) {
+      message.error('请先选择发送对象')
+      return
+    }
+    if (!notification.title) {
+      message.error('请填写标题')
+      return
+    }
+    if (!this.editorElement.getContent('raw').blocks[0].text.trim()) {
+      message.error('请填写内容')
+      return
+    }
+    let content = this.editorElement.getContent()
+    let abstracts = this.editorElement.getContent('raw').blocks[0].text
+    this.setState(prev => ({
+      notification: {
+        ...prev.notification,
+        content,
+        abstracts
+      }
+    }), async () => {
+      try {
+        await this.sendNotification()
+        message.success('发送成功')
+      } catch (err) {
+        console.log(err)
+      }
+    })
   }
 
   setCondition(key, value) {
@@ -74,13 +110,37 @@ export default class PushMessages extends React.Component {
       this.dispatchSearchTargets()
     })
   }
+  setNotification(key, value) {
+    this.setState(prev => {
+      const prevNotification = prev.notification
+      let curNotification = {
+        ...prevNotification,
+        [key]: value
+      }
+      return {
+        ...prev,
+        notification: curNotification
+      }
+    })
+  }
 
   async dispatchSearchTargets() {
     const { conditions, targetsPage } = this.state
     const { data } = await PushApi.fetchTargets(conditions, targetsPage.page, targetsPage.row)
-    this.setState({
-      targets: data.data
-    })
+    this.setState(prev => ({
+      targets: data.data,
+      notification: {
+        ...prev.notification,
+        major: prev.conditions.major,
+        province: '',
+        city: '',
+        school: prev.conditions.school,
+        college: prev.conditions.college,
+        userType: prev.conditions.userType,
+        degree: prev.conditions.degree,
+        totalNum: data.data.length
+      }
+    }))
   }
 
   async sendNotification() {
@@ -101,18 +161,20 @@ export default class PushMessages extends React.Component {
           <div styleName="result-num">共匹配到<span style={{ color: '#199ED8' }}> {this.state.targets.length} </span>个发送对象</div>
         }
         <div styleName="result-card">
-          <PushTagtResult targets={this.state.targets} targetsPage={this.state.targetsPage} setPage={this.setTargetsPage.bind(this)} />
+          <PushTagtResult targets={this.state.targets} targetsPage={this.state.targetsPage} setPage={this.setTargetsPage} />
         </div>
         <div styleName="push-content-title">推送内容编辑</div>
         <div styleName="content-edit">
-          <PushContent />
+          <PushContent editorElement={el => { this.editorElement = el }} notification={this.state.notification} setNotification={this.setNotification} />
           <div>
             <div>
-              <Checkbox>同时发布到动态</Checkbox>
-              <Checkbox>发送手机短信提醒</Checkbox>
+              <Checkbox value={this.state.notification.isPublishDynamics}
+                onChange={evt => { this.setNotification('isPublishDynamics', evt.target.value) }}>同时发布到动态</Checkbox>
+              <Checkbox value={this.state.notification.isPhoneRemind}
+                onChange={evt => { this.setNotification('isPhoneRemind', evt.target.value) }}>发送手机短信提醒</Checkbox>
             </div>
             <div styleName="confirm">
-              <Button type="primary" style={{ 'marginRight': '10px' }}>发布</Button>
+              <Button type="primary" style={{ 'marginRight': '10px' }} onClick={this.handlePubClick}>发布</Button>
               <Button type="ghost">取消</Button>
             </div>
           </div>

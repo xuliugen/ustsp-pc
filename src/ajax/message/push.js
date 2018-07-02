@@ -14,8 +14,9 @@ export default {
 
   send(notification, userId) {
     return ajax.post(`notification/send`, {
-      notification,
-      userId
+      ...notification
+    }, {
+      params: { userId }
     })
   }
 }
