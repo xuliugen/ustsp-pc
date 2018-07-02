@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Checkbox, Button } from 'antd'
+import { Input } from 'antd'
 import './pushContent.css'
 
 import PushMessagesContent from '../../../news/pub-news/PubNewsContent'
@@ -23,15 +23,6 @@ export default class PushContent extends React.Component {
           <label styleName="label-style">内容编辑</label>
           <div styleName="content-wrapper">
             <PushMessagesContent />
-          </div>
-        </div>
-        <div>
-          <div>
-            <Checkbox>同时发布到动态</Checkbox>
-          </div>
-          <div styleName="confirm">
-            <Button type="primary" style={{'marginRight': '10px'}}>发布</Button>
-            <Button type="ghost">取消</Button>
           </div>
         </div>
       </div>

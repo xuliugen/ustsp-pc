@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'antd'
+import { Form, Checkbox, Button } from 'antd'
 import './pushMessages.css'
 
 import PushTagtForm from './push-target-form/PushTagtForm'
@@ -22,6 +22,15 @@ export default class PushMessages extends React.Component {
         <div styleName="push-content-title">推送内容编辑</div>
         <div styleName="content-edit">
           <PushContent />
+          <div>
+            <div>
+              <Checkbox>同时发布到动态</Checkbox>
+            </div>
+            <div styleName="confirm">
+              <Button type="primary" style={{ 'marginRight': '10px' }}>发布</Button>
+              <Button type="ghost">取消</Button>
+            </div>
+          </div>
         </div>
       </div>
     )
