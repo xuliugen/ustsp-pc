@@ -5,7 +5,7 @@ import { userTypeNumToStr } from 'src/common/formatter'
 import './card.css'
 import defaultAvatar from 'src/assets/defaultAvatar.svg'
 
-export default class Card extends React.Component<{}> {
+export default class Card extends React.Component {
   state = {
     avatar: this.props.person.photo
   }
