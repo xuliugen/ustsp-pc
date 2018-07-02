@@ -1,22 +1,9 @@
 import React from 'react'
-import { Input, Tag, Checkbox, Button } from 'antd'
+import { Input, Checkbox, Button } from 'antd'
 import './pushContent.css'
 
 import PushMessagesContent from '../../../news/pub-news/PubNewsContent'
-
-const { CheckableTag } = Tag
-
-class MyTag extends React.Component {
-  state = { checked: true }
-
-  handleChange = (checked) => {
-    this.setState({ checked })
-  }
-
-  render() {
-    return <CheckableTag {...this.props} checked={this.state.checked} onChange={this.handleChange} />
-  }
-}
+import PushMethod from './push-method/PushMethod'
 
 export default class PushContent extends React.Component {
   render() {
@@ -24,9 +11,9 @@ export default class PushContent extends React.Component {
       <div>
         <div style={{'marginBottom': '15px'}}>
           <label styleName="label-style">推送形式：</label>
-          <MyTag styleName="push-method">站内信</MyTag>
-          <MyTag styleName="push-method">邮件</MyTag>
-          <MyTag styleName="push-method">手机短信</MyTag>
+          <PushMethod styleName="push-method">站内信</PushMethod>
+          <PushMethod styleName="push-method">邮件</PushMethod>
+          <PushMethod styleName="push-method">手机短信</PushMethod>
         </div>
         <div style={{'marginBottom': '15px'}}>
           <label styleName="label-style">标题</label>
