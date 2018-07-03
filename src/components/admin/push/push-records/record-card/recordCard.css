@@ -26,12 +26,18 @@
   justify-content: space-between;
 }
 
-.to-news {
+.to {
   position: absolute;
   right: 0px;
+  display: flex;
+  flex-direction: column;
   align-self: center;
   font-size: 13px;
   color: #199ED8;
+}
+
+.to-item {
+  margin-top: 10px;
 }
 
 .message-title {

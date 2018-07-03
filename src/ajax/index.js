@@ -15,10 +15,11 @@ import ProjectApi from './demand/project'
 import NewsApi from './news/news'
 // ip module
 import IpApi from './ip/ip'
-import MessageApi from './message/message'
 import ContactsApi from './contacts/contacts'
 // feedback
 import FeedbackApi from './user/feedback'
+import MessageApi from './message/message'
+import PushApi from './message/push'
 
 export default axios
 export {
@@ -34,6 +35,7 @@ export {
   NewsApi,
   IpApi,
   MessageApi,
+  PushApi,
   ContactsApi,
   FeedbackApi,
   MgrInfoApi
