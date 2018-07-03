@@ -3,7 +3,7 @@ import ajax from 'src/ajax'
 export default {
   fetchTargets(queryCommand, page, rows) {
     return ajax.post(`/search/notification/user`, {
-      queryCommand
+      ...queryCommand
     }, {
       params: {
         page,
