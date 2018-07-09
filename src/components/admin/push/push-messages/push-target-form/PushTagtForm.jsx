@@ -14,6 +14,7 @@ const [...options] = province.map(item => ({
   }))]
 }))
 const majorData = ['全部'].concat(major)
+const titleData = ['学生'].concat(title)
 
 @Form.create({
   onFieldsChange: (props, fields) => {
@@ -99,9 +100,9 @@ export default class PushTagtForm extends React.Component {
                 <Select style={{ width: '100%' }}>
                   <Option value={1}>学生</Option>
                   <Option value={2}>教师</Option>
-                  <Option value={3}>企业</Option>
+                  {/* <Option value={3}>企业</Option>
                   <Option value={4}>科研管理人员</Option>
-                  <Option value={5}>政府管理人员</Option>
+                  <Option value={5}>政府管理人员</Option> */}
                 </Select>
               )}
             </FormItem>
@@ -132,7 +133,7 @@ export default class PushTagtForm extends React.Component {
                 // ]
               })(
                 <Select style={{width: '100%'}}>
-                  {title.map(item => <Option key={item}>{item}</Option>)}
+                  {titleData.map(item => <Option key={item}>{item}</Option>)}
                 </Select>
               )}
             </FormItem>
