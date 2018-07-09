@@ -14,7 +14,7 @@ const [...options] = province.map(item => ({
   }))]
 }))
 const majorData = ['全部'].concat(major)
-const titleData = ['学生'].concat(title)
+const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].concat(title)
 
 @Form.create({
   onFieldsChange: (props, fields) => {

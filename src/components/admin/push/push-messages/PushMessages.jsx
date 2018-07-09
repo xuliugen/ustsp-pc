@@ -78,6 +78,7 @@ export default class PushMessages extends React.Component {
       try {
         await this.sendNotification()
         message.success('发送成功')
+        this.props.history.push(`/admin/push/push-records`)
       } catch (err) {
         console.log(err)
       }
@@ -169,10 +170,10 @@ export default class PushMessages extends React.Component {
           <PushContent editorElement={el => { this.editorElement = el }} notification={this.state.notification} setNotification={this.setNotification} />
           <div>
             <div>
-              <Checkbox value={this.state.notification.isPublishDynamics}
-                onChange={evt => { this.setNotification('isPublishDynamics', evt.target.value) }}>同时发布到动态</Checkbox>
-              <Checkbox value={this.state.notification.isPhoneRemind}
-                onChange={evt => { this.setNotification('isPhoneRemind', evt.target.value) }}>发送手机短信提醒</Checkbox>
+              <Checkbox checked={this.state.notification.isPublishDynamics}
+                onChange={evt => { this.setNotification('isPublishDynamics', evt.target.checked) }}>同时发布到动态</Checkbox>
+              <Checkbox checked={this.state.notification.isPhoneRemind}
+                onChange={evt => { this.setNotification('isPhoneRemind', evt.target.checked) }}>发送手机短信提醒</Checkbox>
             </div>
             <div styleName="confirm">
               <Button type="primary" style={{ 'marginRight': '10px' }} onClick={this.handlePubClick}>发布</Button>
