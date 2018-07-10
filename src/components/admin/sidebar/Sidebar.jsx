@@ -85,6 +85,9 @@ export default class Sidebar extends React.Component {
           {routes.map(({ key, title, children }) => {
             const SubMenuIcon = title.icon ? <Icon type={title.icon} /> : null
             let MenuItems, titleText
+            if (key === 'push' && this.props.userStore.user.userType !== 4) {
+              return null
+            }
             if (key !== 'message') {
               if (key === 'ip' && this.props.userStore.user.userType !== 4) {
                 children = children.slice(2)

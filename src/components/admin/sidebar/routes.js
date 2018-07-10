@@ -48,6 +48,11 @@ export const routes = [
         key: 'friends-msg',
         to: '/admin/message/friends-msg',
         text: '好友消息'
+      }, {
+        type: 'PostMsgNum',
+        key: 'post-msg',
+        to: '/admin/message/post-msg',
+        text: '站内信'
       }
     ]
   }, {
