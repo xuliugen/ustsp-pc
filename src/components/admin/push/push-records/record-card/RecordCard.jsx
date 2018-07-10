@@ -22,8 +22,8 @@ export default class RecordCard extends React.Component {
               <div styleName="message-time">发送于 {moment(record.createTime).format('YYYY-MM-DD HH:MM')}</div>
             </div>
             <div styleName="to">
-              <div styleName="to-item">已发布到动态</div>
-              <div styleName="to-item">已发送短信</div>
+              {record.isPublishDynamics && <div styleName="to-item">已发布到动态</div>}
+              {record.isPhoneRemind && <div styleName="to-item">已发送短信</div>}
             </div>
           </div>
         </Link>

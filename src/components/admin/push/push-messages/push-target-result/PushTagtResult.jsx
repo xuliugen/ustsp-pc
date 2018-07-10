@@ -17,7 +17,7 @@ export default class PushTagtResult extends React.Component {
             {targets.length > 0 && targets.map((item) => {
               return (
                 <Col span={8} key={item.userId} style={{margin: '10px 0'}}>
-                  <Card person={item} />
+                  <Card person={item} notTouchable />
                 </Col>
               )
             })}

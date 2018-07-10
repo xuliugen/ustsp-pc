@@ -17,12 +17,12 @@ export default class Card extends React.Component {
   }
 
   render() {
-    const {person} = this.props
+    const { person, notTouchable } = this.props
     const academicTitle = (
       <span styleName="academic-title">{this.props.person.title}</span>
     )
-    return (
-      <Link to={`/${userTypeNumToStr(person.type)}/${person.id}`}>
+    if (notTouchable) {
+      return (
         <div styleName="card-wrapper">
           <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} /></div>
           <div styleName="detail">
@@ -34,7 +34,23 @@ export default class Card extends React.Component {
             <div styleName="research-field">{person.major}</div>
           </div>
         </div>
-      </Link>
-    )
+      )
+    } else {
+      return (
+        <Link to={`/${userTypeNumToStr(person.type)}/${person.id}`}>
+          <div styleName="card-wrapper">
+            <div styleName="avatar"><img src={this.state.avatar} onError={this.onLoadAvatarError.bind(this)} /></div>
+            <div styleName="detail">
+              <div styleName="name">
+                {person.name || person.username}
+                {person.title ? academicTitle : ''}
+              </div>
+              <div styleName="school" >{person.school}</div>
+              <div styleName="research-field">{person.major}</div>
+            </div>
+          </div>
+        </Link>
+      )
+    }
   }
 }
