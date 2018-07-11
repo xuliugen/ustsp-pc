@@ -7,9 +7,9 @@ import { MessageApi } from 'src/ajax'
 
 @withRouter
 export default class MsgItem extends React.Component {
-  handleSeeDetail = async () => {
+  handleSeeDetail = () => {
     try {
-      await MessageApi.fetchOneMessage(this.props.item.id)
+      MessageApi.fetchOneMessage(this.props.item.id)
       this.props.history.push(`/admin/message/post-msg/${this.props.item.id}`)
     } catch (error) {
       console.log(error)
