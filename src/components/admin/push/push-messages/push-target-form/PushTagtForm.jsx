@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Row, Col, Cascader, Select, Input } from 'antd'
-import { province, school, major, city, title } from 'src/common/dataset'
+import { province, school, subject, city, title } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -13,7 +13,22 @@ const [...options] = province.map(item => ({
     label: university
   }))]
 }))
-const majorData = ['全部'].concat(major)
+const subjects = Object.keys(subject).map(item => ({
+  value: item,
+  label: item,
+  children: subject[item].map(majors => ({
+    value: majors,
+    label: majors
+  }))
+}))
+const subjectData = [{
+  value: '全部',
+  label: '全部',
+  children: [{
+    value: '全部',
+    label: '全部'
+  }]
+}].concat(subjects)
 const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].concat(title)
 
 @Form.create({
@@ -61,9 +76,11 @@ export default class PushTagtForm extends React.Component {
                 //   { required: true, message: '请选择学科行业' }
                 // ]
               })(
-                <Select style={{ width: '100%' }}>
-                  {majorData.map(item => <Option key={item}>{item}</Option>)}
-                </Select>
+                <Cascader placeholder="就读专业" options={subjectData}
+                  expandTrigger="hover"
+                  displayRender={this.displayRender}
+                  style={{ width: '100%' }}
+                />
               )}
             </FormItem>
           </Col>
@@ -84,7 +101,7 @@ export default class PushTagtForm extends React.Component {
                 //   { required: true, message: '请选择所在学校' }
                 // ]
               })(
-                <Cascader style={{width: '100%'}} placeholder="学校" options={options}
+                <Cascader style={{ width: '100%' }} placeholder="学校" options={options}
                   expandTrigger="hover"
                   displayRender={this.displayRender}
                 />
@@ -132,7 +149,7 @@ export default class PushTagtForm extends React.Component {
                 //   {required: true, message: '请选择学历或职称'}
                 // ]
               })(
-                <Select style={{width: '100%'}}>
+                <Select style={{ width: '100%' }}>
                   {titleData.map(item => <Option key={item}>{item}</Option>)}
                 </Select>
               )}
