@@ -1,9 +1,9 @@
 import ajax from 'src/ajax'
 
 export default {
-  // queryType 1系统消息，11好友消息，21项目消息， 31专利消息'
+  // queryType 1系统消息，11好友消息，21项目消息， 31专利消息，41团队，51站内信'
   fetchMessages(userId, queryType, page, rows) {
-    const queryTypes = ['system', 'friend', 'demand', 'ip']
+    const queryTypes = ['system', 'friend', 'demand', 'ip', 'team', 'post']
     queryType = queryTypes.indexOf(queryType) * 10 + 1
     return ajax.get(`/message/query/messages?userId=${userId}&queryType=${queryType}&page=${page}&rows=${rows}`)
   },
@@ -31,5 +31,10 @@ export default {
 
   getMsgCounts(userId) {
     return ajax.get(`/message/get/total-number?userId=${userId}`)
+  },
+
+  // 查询站内信详情
+  getPostMsgDetail(msgId) {
+    return ajax.get(`/message/get/notification?msgId=${msgId}`)
   }
 }
