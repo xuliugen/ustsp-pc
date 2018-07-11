@@ -13,13 +13,13 @@ const [...options] = province.map(item => ({
     label: university
   }))]
 }))
-const [...subjects] = Object.keys(subject).map(item => ({
+const subjects = Object.keys(subject).map(item => ({
   value: item,
   label: item,
-  children: [...subject[item].map(majors => ({
+  children: subject[item].map(majors => ({
     value: majors,
     label: majors
-  }))]
+  }))
 }))
 const subjectData = [{
   value: '全部',
