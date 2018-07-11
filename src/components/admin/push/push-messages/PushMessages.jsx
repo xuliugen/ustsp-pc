@@ -9,7 +9,7 @@ import PushContent from './push-content/PushContent'
 import { inject, observer } from 'mobx-react'
 
 const initialCondition = {
-  major: null,
+  subject: null,
   school: null,
   college: null,
   userType: 0,
@@ -24,7 +24,7 @@ const initialNotification = {
   title: null,
   abstracts: null,
   content: null,
-  major: null,
+  subject: null,
   province: null,
   city: null,
   school: null,
@@ -86,7 +86,7 @@ export default class PushMessages extends React.Component {
   }
 
   setCondition(key, value) {
-    const resolvedValue = value === '' ? null : value
+    const resolvedValue = value === '' ? null : value[1]
     this.setState(prev => {
       const prevConditions = prev.conditions
       let curConditions = {
@@ -133,7 +133,7 @@ export default class PushMessages extends React.Component {
       targets: data.data,
       notification: {
         ...prev.notification,
-        major: prev.conditions.major,
+        subject: prev.conditions.subject,
         province: '',
         city: '',
         school: prev.conditions.school,
