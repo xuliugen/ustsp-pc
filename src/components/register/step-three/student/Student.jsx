@@ -62,7 +62,7 @@ class StepThreeStudent extends React.Component {
           }
         }
       } else {
-        message.error('请先完善必填信息')
+        message.error('请先完善必填信息，教育经历属于必填项')
       }
     })
   }
