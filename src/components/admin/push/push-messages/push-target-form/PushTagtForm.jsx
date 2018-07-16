@@ -44,13 +44,11 @@ const titleData = ['全部', '专科', '本科', '硕士研究生', '博士研�
     Object.entries(fields).forEach(([k, v]) => {
       let key = v.name
       let value
-      console.log('key:' + key + ' value: ' + v.value)
       if (k === 'school' || k === 'major') {
         value = v.value[1]
       } else {
         value = v.value
       }
-      console.log('key:' + key + ' value: ' + value)
       props.setCondition(key, value)
     })
   }
