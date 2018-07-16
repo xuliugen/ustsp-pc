@@ -13,6 +13,14 @@ const [...options] = province.map(item => ({
     label: university
   }))]
 }))
+const provinceData = [{
+  value: '全部',
+  label: '全部',
+  children: [{
+    value: '全部',
+    label: '全部'
+  }]
+}].concat(options)
 const subjects = Object.keys(subject).map(item => ({
   value: item,
   label: item,
@@ -29,18 +37,20 @@ const subjectData = [{
     label: '全部'
   }]
 }].concat(subjects)
-const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].concat(title)
+const titleData = ['全部', '专科', '本科', '硕士研究生', '博士研究生'].concat(title)
 
 @Form.create({
   onFieldsChange: (props, fields) => {
     Object.entries(fields).forEach(([k, v]) => {
       let key = v.name
       let value
-      if (k === 'school') {
+      console.log('key:' + key + ' value: ' + v.value)
+      if (k === 'school' || k === 'major') {
         value = v.value[1]
       } else {
         value = v.value
       }
+      console.log('key:' + key + ' value: ' + value)
       props.setCondition(key, value)
     })
   }
@@ -101,7 +111,7 @@ export default class PushTagtForm extends React.Component {
                 //   { required: true, message: '请选择所在学校' }
                 // ]
               })(
-                <Cascader style={{ width: '100%' }} placeholder="学校" options={options}
+                <Cascader style={{ width: '100%' }} placeholder="学校" options={provinceData}
                   expandTrigger="hover"
                   displayRender={this.displayRender}
                 />
@@ -115,6 +125,7 @@ export default class PushTagtForm extends React.Component {
                 // ]
               })(
                 <Select style={{ width: '100%' }}>
+                  <Option value={0}>全部</Option>
                   <Option value={1}>学生</Option>
                   <Option value={2}>教师</Option>
                   {/* <Option value={3}>企业</Option>

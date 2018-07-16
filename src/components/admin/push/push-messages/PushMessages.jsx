@@ -86,7 +86,7 @@ export default class PushMessages extends React.Component {
   }
 
   setCondition(key, value) {
-    const resolvedValue = value === '' ? null : value[1]
+    const resolvedValue = value === '' ? null : value
     this.setState(prev => {
       const prevConditions = prev.conditions
       let curConditions = {
