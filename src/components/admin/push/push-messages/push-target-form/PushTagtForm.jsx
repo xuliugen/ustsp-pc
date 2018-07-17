@@ -37,6 +37,7 @@ const subjectData = [{
     label: '全部'
   }]
 }].concat(subjects)
+const collegeData = ['全部'].concat(college)
 const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].concat(title)
 
 @Form.create({
@@ -46,12 +47,9 @@ const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].con
       let value
       if (k === 'school' || k === 'major') {
         value = v.value[1]
-      } else if (k === 'college') {
-        value = v.value[0]
       } else {
         value = v.value
       }
-      console.log('key:' + key + ' value: ' + value)
       props.setCondition(key, value)
     })
   }
@@ -152,7 +150,7 @@ export default class PushTagtForm extends React.Component {
               })(
                 // <Input placeholder="学院" />
                 <Select showSearch allowClear style={{ width: '100%' }}>
-                  {college.map(item => <Option key={item}>{item}</Option>)}
+                  {collegeData.map(item => item === '全部' ? <Option key={item} value="" >{item}</Option> : <Option key={item}>{item}</Option>)}
                 </Select>
               )}
             </FormItem>
