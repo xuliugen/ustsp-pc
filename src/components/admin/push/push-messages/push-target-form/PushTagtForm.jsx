@@ -1,6 +1,6 @@
 import React from 'react'
-import { Form, Row, Col, Cascader, Select, Input } from 'antd'
-import { province, school, subject, city, title } from 'src/common/dataset'
+import { Form, Row, Col, Cascader, Select } from 'antd'
+import { province, school, subject, city, title, college } from 'src/common/dataset'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -13,6 +13,14 @@ const [...options] = province.map(item => ({
     label: university
   }))]
 }))
+const provinceData = [{
+  value: '',
+  label: '全部',
+  children: [{
+    value: '',
+    label: '全部'
+  }]
+}].concat(options)
 const subjects = Object.keys(subject).map(item => ({
   value: item,
   label: item,
@@ -22,10 +30,10 @@ const subjects = Object.keys(subject).map(item => ({
   }))
 }))
 const subjectData = [{
-  value: '全部',
+  value: '',
   label: '全部',
   children: [{
-    value: '全部',
+    value: '',
     label: '全部'
   }]
 }].concat(subjects)
@@ -36,11 +44,14 @@ const titleData = ['专科', '本科', '硕士研究生', '博士研究生'].con
     Object.entries(fields).forEach(([k, v]) => {
       let key = v.name
       let value
-      if (k === 'school') {
+      if (k === 'school' || k === 'major') {
         value = v.value[1]
+      } else if (k === 'college') {
+        value = v.value[0]
       } else {
         value = v.value
       }
+      console.log('key:' + key + ' value: ' + value)
       props.setCondition(key, value)
     })
   }
@@ -101,7 +112,7 @@ export default class PushTagtForm extends React.Component {
                 //   { required: true, message: '请选择所在学校' }
                 // ]
               })(
-                <Cascader style={{ width: '100%' }} placeholder="学校" options={options}
+                <Cascader allowClear style={{ width: '100%' }} placeholder="学校" options={provinceData}
                   expandTrigger="hover"
                   displayRender={this.displayRender}
                 />
@@ -114,7 +125,7 @@ export default class PushTagtForm extends React.Component {
                 //   {required: true, message: '请选择用户身份'}
                 // ]
               })(
-                <Select style={{ width: '100%' }}>
+                <Select allowClear style={{ width: '100%' }}>
                   <Option value={1}>学生</Option>
                   <Option value={2}>教师</Option>
                   {/* <Option value={3}>企业</Option>
@@ -139,7 +150,10 @@ export default class PushTagtForm extends React.Component {
                 //   {required: true, message: '请输入所在学院'}
                 // ]
               })(
-                <Input placeholder="学院" />
+                // <Input placeholder="学院" />
+                <Select showSearch allowClear style={{ width: '100%' }}>
+                  {college.map(item => <Option key={item}>{item}</Option>)}
+                </Select>
               )}
             </FormItem>
             <FormItem label="学历/职称">
@@ -149,7 +163,7 @@ export default class PushTagtForm extends React.Component {
                 //   {required: true, message: '请选择学历或职称'}
                 // ]
               })(
-                <Select style={{ width: '100%' }}>
+                <Select allowClear style={{ width: '100%' }}>
                   {titleData.map(item => <Option key={item}>{item}</Option>)}
                 </Select>
               )}

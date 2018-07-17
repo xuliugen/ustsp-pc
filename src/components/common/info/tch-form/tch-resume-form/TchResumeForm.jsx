@@ -1,7 +1,7 @@
 import React from 'react'
 import './tchResumeForm.css'
 import { Form, Input, Row, Col, Cascader, Select } from 'antd'
-import { province, school, subject, title } from 'src/common/dataset'
+import { province, school, subject, title, college } from 'src/common/dataset'
 
 import FormTitle from '../../form-title/FormTitle'
 
@@ -93,7 +93,9 @@ export default class TchResumeForm extends React.Component {
                     { required: true, message: '请输入学院' }
                   ]
                 })(
-                  <Input placeholder="学院" />
+                  <Select showSearch allowClear style={{ width: '100%' }}>
+                    {college.map(item => <Option key={item}>{item}</Option>)}
+                  </Select>
                 )}
               </FormItem>
               <FormItem label="职称">

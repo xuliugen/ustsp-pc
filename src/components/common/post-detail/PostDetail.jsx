@@ -22,7 +22,6 @@ export default class PostDetail extends React.Component {
     } else {
       data = await PushApi.fetchRecordDetail(this.props.match.params.id, this.props.userStore.user.id)
     }
-    console.log(data)
     this.setState({
       notification: data.data.notification,
       manager: data.data.manager

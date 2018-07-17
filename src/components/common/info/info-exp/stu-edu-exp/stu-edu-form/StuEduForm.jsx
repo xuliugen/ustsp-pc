@@ -1,6 +1,6 @@
 import React from 'react'
-import { Form, Input, Row, Col, DatePicker, Select, Cascader } from 'antd'
-import { province, school, subject } from 'src/common/dataset'
+import { Form, Row, Col, DatePicker, Select, Cascader } from 'antd'
+import { province, school, subject, college } from 'src/common/dataset'
 import moment from 'moment'
 import { disabledStartDate, disabledEndDate } from 'src/common/dateRange.js'
 
@@ -73,7 +73,9 @@ export default class StuEduForm extends React.Component {
                 initialValue: exp && exp.college,
                 rules: [{ required: true, message: '请输入学院' }]
               })(
-                <Input />
+                <Select showSearch allowClear style={{ width: '100%' }}>
+                  {college.map(item => <Option key={item}>{item}</Option>)}
+                </Select>
               )}
             </FormItem>
             <FormItem label="入学时间">
