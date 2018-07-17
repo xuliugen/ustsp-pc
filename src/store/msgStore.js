@@ -7,7 +7,7 @@ class MsgStore {
   @observable projectMsgNum = 0
   @observable patentMsgNum = 0
   @observable friendMsgNum = 0
-  @observable postMsgNum = 0
+  @observable notificationMsgNum = 0
 
   async dispatchGetCounts() {
     if (userStore.isLogin) {
@@ -16,12 +16,12 @@ class MsgStore {
     }
   }
 
-  @action setMsgNum({ systemMsgNum = 0, projectMsgNum = 0, patentMsgNum = 0, friendMsgNum = 0, postMsgNum = 0 } = {}) {
+  @action setMsgNum({ systemMsgNum = 0, projectMsgNum = 0, patentMsgNum = 0, friendMsgNum = 0, notificationMsgNum = 0 } = {}) {
     this.systemMsgNum = systemMsgNum
     this.projectMsgNum = projectMsgNum
     this.patentMsgNum = patentMsgNum
     this.friendMsgNum = friendMsgNum
-    this.postMsgNum = postMsgNum
+    this.notificationMsgNum = notificationMsgNum
   }
 
   @action clear() {
@@ -29,7 +29,7 @@ class MsgStore {
   }
 
   @computed get totalNum() {
-    return this.systemMsgNum + this.projectMsgNum + this.patentMsgNum + this.friendMsgNum + this.postMsgNum
+    return this.systemMsgNum + this.projectMsgNum + this.patentMsgNum + this.friendMsgNum + this.notificationMsgNum
   }
 
   @computed get hasMsg() {

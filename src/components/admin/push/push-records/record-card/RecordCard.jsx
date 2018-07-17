@@ -14,13 +14,13 @@ export default class RecordCard extends React.Component {
       case 2:
         return '教师'
       default:
-        return '全部'
+        return null
     }
   }
 
   render() {
     const { record } = this.props
-    const userType = record.userType && this.userTypeNumToStr(record.userType)
+    const userType = this.userTypeNumToStr(record.userType)
     return (
       <div styleName="card">
         <Link to={`push-records/${record.id}`}>
@@ -41,13 +41,13 @@ export default class RecordCard extends React.Component {
         </Link>
         <div>
           <span style={{ 'marginRight': '10px' }}>发送对象：</span>
-          {(record.major || record.school || record.college || record.degree || record.userType) && userType !== 0 ? (
+          {record.major || record.school || record.college || record.degree || record.userType !== 0 ? (
             <span>
               {record.major && <Tag>{record.major}</Tag>}
               {record.school && <Tag>{record.school}</Tag>}
               {record.college && <Tag>{record.college}</Tag>}
               {record.degree && <Tag>{record.degree}</Tag>}
-              {record.userType && <Tag>{userType}</Tag>}
+              {record.userType !== 0 && <Tag>{userType}</Tag>}
             </span>
           ) : <Tag>全部</Tag>}
           <span style={{ 'marginLeft': '10px' }}>共<span style={{ color: '#199ED8' }}> {record.totalNum} </span>人</span>
