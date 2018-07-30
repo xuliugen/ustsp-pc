@@ -5,17 +5,19 @@ import { hot } from 'react-hot-loader'
 // import DevTools from 'mobx-react-devtools'
 
 import PrivateRoute from 'src/common/PrivateRoute'
+// import asyncComponent from 'src/common/AsyncComponent'
+import { ModalButton } from 'components/common'
+
 import Home from '@/home/Home'
 import Login from '@/login/Login'
 import ForgetPassword from '@/password/ForgetPassword'
 import Register from '@/register/Register'
-import Admin from '@/admin/Admin'
 import Detail from '@/detail/Detail'
 import Search from '@/search/Search'
 import NewsDetail from '@/news/NewsDetail'
 import AllNews from '@/news/all-news/AllNews'
-
-import { ModalButton } from 'components/common'
+import Admin from '@/admin/Admin'
+// const AsyncAdmin = asyncComponent(() => import('@/admin/Admin'))
 
 @withRouter
 @inject('msgStore', 'userStore')
